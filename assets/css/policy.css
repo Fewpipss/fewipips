@@ -1,0 +1,199 @@
+/* ================================
+   FEWPIPS LEGAL PAGES GLOBAL STYLE
+   ================================ */
+
+:root {
+    --primary: #0fcd37;
+    --bg: #0b0b0b;
+    --card: #121212;
+    --text: #ffffff;
+    --text-gray: #a8a8a8;
+    --border: #222;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* Container */
+.policy-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+/* Title */
+.policy-title {
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.policy-subtitle {
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    font-size: 15px;
+}
+
+/* Section */
+.policy-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 30px;
+    margin-bottom: 28px;
+    transition: 0.3s;
+}
+
+.policy-section:hover {
+    border-color: var(--primary);
+}
+
+/* Heading */
+.policy-section h2 {
+    color: var(--primary);
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.policy-section h3 {
+    margin-top: 14px;
+}
+
+/* Paragraph */
+.policy-section p {
+    color: var(--text-gray);
+    font-size: 15px;
+}
+
+/* Lists */
+.policy-section ul {
+    padding-left: 20px;
+    margin-top: 12px;
+}
+
+.policy-section li {
+    margin-bottom: 10px;
+    color: var(--text-gray);
+    
+}
+.policy-section ol li{
+list-style-position: inside;
+}
+
+/* Footer */
+.policy-footer {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--text-gray);
+    font-size: 14px;
+}
+
+.policy-footer span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+
+    .policy-title {
+        font-size: 30px;
+    }
+
+    .policy-section {
+        padding: 22px 20px;
+    }
+}
+
+
+/* ================= TABLE DESIGN ================= */
+
+.policy-table-wrapper {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.policy-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+    background: #0f0f0f;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* Header */
+.policy-table thead {
+    background: #151515;
+}
+
+.policy-table th {
+    color: #ffffff;
+    font-weight: 600;
+    padding: 14px 16px;
+    text-align: center;
+    border: 1px solid #2a2a2a;
+}
+
+/* Body */
+.policy-table td {
+    padding: 14px 16px;
+    text-align: center;
+    color: #bfbfbf;
+    border: 1px solid #2a2a2a;
+}
+
+/* First column highlight */
+.policy-table td:first-child {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Row hover */
+.policy-table tbody tr:hover {
+    background: #111;
+}
+
+/* Green accent top border */
+.policy-table {
+    border-top: 3px solid #0fcd37;
+}
+.floating-button {
+  position: fixed;
+  bottom: 6rem; /* bottom-24 */
+  right: 1.25rem; /* right-5 */
+  width: 3rem; /* w-12 */
+  height: 3rem; /* h-12 */
+  border-radius: 9999px; /* rounded-full */
+  background-color: #57dc73;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  transition: transform 0.2s ease;
+  z-index: 50;
+}
+
+.floating-button:hover {
+  transform: scale(1.1);
+}
+/* Mobile */
+@media(max-width:768px) {
+
+    .policy-table th,
+    .policy-table td {
+        padding: 12px;
+        font-size: 14px;
+    }
+}

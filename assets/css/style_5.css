@@ -1,0 +1,13 @@
+.Celebrity_title_60__XhsQX {
+    font-size: calc(20.61538px + 2.05128vw)
+}
+
+.border_gradient_top_left {
+    aspect-ratio: 1/1;
+    background-image: linear-gradient(to top right,transparent 25%,#25eb6734,#05aa4e 62%,#25eb6734,transparent 75%);
+    bottom: 30%;
+    right: 50%;
+    transform: rotate(-15deg);
+    transform-origin: bottom right;
+    width: 100%
+}

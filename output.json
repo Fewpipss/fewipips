@@ -1,0 +1,840 @@
+{
+  "One-Step": [
+    {
+      "price": "5000.00",
+      "equityPrice": "69.00",
+      "equityLabel": "$5,000",
+      "uuid": "f432f123-1f23-4bb2-bb23-d62ab7eba71d",
+      "planName": "One-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "f432f123-1f23-4bb2-bb23-d62ab7eba71d",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "6.00",
+          "profitTarget": "10.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "0d2ca653-ad26-4d8e-b46e-77d4237bdb49",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "6.00",
+          "profitTarget": "0.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": "8.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "10000.00",
+      "equityPrice": "99.00",
+      "equityLabel": "$10,000",
+      "uuid": "bbd1b857-e191-4aa2-b0fb-fc839da10a4d",
+      "planName": "One-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "bbd1b857-e191-4aa2-b0fb-fc839da10a4d",
+          "minTradingDays": 0,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "6.00",
+          "profitTarget": "10.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "c8689e56-50ef-4267-83c4-90dacc429021",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "6.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "25000.00",
+      "equityPrice": "239.00",
+      "equityLabel": "$25,000",
+      "uuid": "3d074b41-e132-452e-bf99-daa38df0944d",
+      "planName": "One-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "3d074b41-e132-452e-bf99-daa38df0944d",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "6.00",
+          "profitTarget": "10.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "08b4dbfa-7414-46db-b765-769ef6450d42",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "6.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "50000.00",
+      "equityPrice": "399.00",
+      "equityLabel": "$50,000",
+      "uuid": "9c36f6be-33cc-499e-a2bb-89d4454db7b1",
+      "planName": "One-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "9c36f6be-33cc-499e-a2bb-89d4454db7b1",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "6.00",
+          "profitTarget": "10.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "d08eafea-7db0-47b4-9183-3d42ca58b7fb",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "6.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "8.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "100000.00",
+      "equityPrice": "599.00",
+      "equityLabel": "$100,000",
+      "uuid": "67a8244f-47db-4ff0-9841-8b4f2fb141a2",
+      "planName": "One-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "67a8244f-47db-4ff0-9841-8b4f2fb141a2",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "6.00",
+          "profitTarget": "10.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "ac52919e-b301-402f-ab09-5cde3acd1a24",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "6.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "8.00",
+          "consistency": 40
+        }
+      ]
+    }
+  ],
+  "Two-Step": [
+    {
+      "price": "5000.00",
+      "equityPrice": "59.00",
+      "equityLabel": "$5,000",
+      "uuid": "0098a48e-aa55-499f-b609-d5ebb01166db",
+      "planName": "Two-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "0098a48e-aa55-499f-b609-d5ebb01166db",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "8.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 2",
+          "uuid": "0dd5a629-5952-4de6-a770-73f62c8e29b7",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "5.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "0e34a519-da19-4332-91bc-65e63544ab68",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "8.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "10000.00",
+      "equityPrice": "89.00",
+      "equityLabel": "$10,000",
+      "uuid": "eb5275cf-d081-4e88-8119-a30915626d04",
+      "planName": "Two-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "eb5275cf-d081-4e88-8119-a30915626d04",
+          "minTradingDays": 0,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "8.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 2",
+          "uuid": "6999682f-945c-4539-80ea-ea269f5415fa",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "5.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "5e4b446e-4a2d-4b2b-a42e-8d618d6e4ecb",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "8.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "25000.00",
+      "equityPrice": "219.00",
+      "equityLabel": "$25,000",
+      "uuid": "ac533479-b2f4-4c6a-8736-e40e4ae95d70",
+      "planName": "Two-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "ac533479-b2f4-4c6a-8736-e40e4ae95d70",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "8.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 2",
+          "uuid": "825a0f51-b728-4463-9d97-3b8ef5856a09",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "5.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "bf3924db-2691-4080-a57f-fa41b603e0ef",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "8.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "50000.00",
+      "equityPrice": "369.00",
+      "equityLabel": "$50,000",
+      "uuid": "7ba95833-3826-4078-8493-31916ab68bc6",
+      "planName": "Two-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "7ba95833-3826-4078-8493-31916ab68bc6",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "8.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 2",
+          "uuid": "e10ffbfa-4a34-49c2-bc04-2ff37e5101e8",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "5.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "ad8505fb-f00f-4eb0-bcd9-dbf1f413b2a9",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "8.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "100000.00",
+      "equityPrice": "569.00",
+      "equityLabel": "$100,000",
+      "uuid": "1895b6b2-82c9-4a28-bee7-23068f2e4a29",
+      "planName": "Two-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "1895b6b2-82c9-4a28-bee7-23068f2e4a29",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "8.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 2",
+          "uuid": "60f9008f-d9ed-4fc0-85d0-020f55c98e89",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "5.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "dd78a4a8-febc-4a91-a421-605cf7462d29",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "4.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "8.00",
+          "consistency": 40
+        }
+      ]
+    }
+  ],
+  "Three-Step": [
+    {
+      "price": "10000.00",
+      "equityPrice": "69.00",
+      "equityLabel": "$10,000",
+      "uuid": "dcc2d7be-d95d-4c07-9718-b9ec2651b3c2",
+      "planName": "Three-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "dcc2d7be-d95d-4c07-9718-b9ec2651b3c2",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "8.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 2",
+          "uuid": "09a93bb1-30ed-47b6-9861-f3df551d86ca",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "4.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 3",
+          "uuid": "8e3d3dc5-f3be-4898-8c1e-19852ae8f149",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "4.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "d9b3e29c-5a75-436a-b1df-aa049f9d1dbd",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "0.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": "10.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "25000.00",
+      "equityPrice": "149.00",
+      "equityLabel": "$25,000",
+      "uuid": "16cd4985-62c1-4652-8bc6-b332c22aee3d",
+      "planName": "Three-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "16cd4985-62c1-4652-8bc6-b332c22aee3d",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "8.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 2",
+          "uuid": "7210b25b-35bf-4e7b-8100-ff017dc20c9b",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "4.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 3",
+          "uuid": "c7de5f7a-6018-4ad3-aff6-7b6ef89d9b1a",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "4.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "71688605-3b83-44c8-b931-5aba86184763",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "10.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "50000.00",
+      "equityPrice": "239.00",
+      "equityLabel": "$50,000",
+      "uuid": "15b6d7fe-09d5-48c8-88e7-55e3490b4f7f",
+      "planName": "Three-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "15b6d7fe-09d5-48c8-88e7-55e3490b4f7f",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "8.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 2",
+          "uuid": "200a425e-4c89-4048-998e-00228bfab2df",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "4.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 3",
+          "uuid": "d64f8761-6522-4628-a56f-abdfe5c72a56",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "4.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "4f022ef6-3fca-4cfb-b9e1-d9f9ffbe6d83",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "10.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "100000.00",
+      "equityPrice": "399.00",
+      "equityLabel": "$100,000",
+      "uuid": "0f9fde23-816a-47e4-abe6-7d70d8a218fc",
+      "planName": "Three-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "0f9fde23-816a-47e4-abe6-7d70d8a218fc",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "8.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 2",
+          "uuid": "70537223-d5b0-4344-97a5-65679c6a96e6",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "4.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 3",
+          "uuid": "1cdfc9cc-50e7-44a4-8257-87f40c7777df",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "4.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "1d8c31fd-5d6d-42b4-9f3b-ea09a752d940",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "10.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "200000.00",
+      "equityPrice": "719.00",
+      "equityLabel": 200000,
+      "uuid": "b0130510-3d6f-4956-b3cb-dd1916ade033",
+      "planName": "Three-Step",
+      "phases": [
+        {
+          "type": "phase",
+          "name": "Phase 1",
+          "uuid": "b0130510-3d6f-4956-b3cb-dd1916ade033",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "8.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 2",
+          "uuid": "beec13c4-9ce9-4ca1-8821-e0e68fe01d23",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "4.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "phase",
+          "name": "Phase 3",
+          "uuid": "08c54fff-5d94-44c5-a3a7-d415706d1168",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": "4.00",
+          "maxProfitTarget": null,
+          "maxWithdrawal": null,
+          "consistency": null
+        },
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "87df885b-877e-4235-8c44-6bf4ac0675d6",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "5.00",
+          "maxOverallLoss": "8.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "10.00",
+          "consistency": 40
+        }
+      ]
+    }
+  ],
+  "Instant": [
+    {
+      "price": "3000.00",
+      "equityPrice": "129.00",
+      "equityLabel": "$3,000",
+      "uuid": "f8fb6275-3a1f-4e78-b167-31e387bdbf31",
+      "planName": "Instant",
+      "phases": [
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "f8fb6275-3a1f-4e78-b167-31e387bdbf31",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "3.00",
+          "maxOverallLoss": "5.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "6.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "5000.00",
+      "equityPrice": "239.00",
+      "equityLabel": "$5,000",
+      "uuid": "3e97939a-ef27-4ccf-9407-e909b5f3bc72",
+      "planName": "Instant",
+      "phases": [
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "3e97939a-ef27-4ccf-9407-e909b5f3bc72",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "3.00",
+          "maxOverallLoss": "5.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "6.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "10000.00",
+      "equityPrice": "459.00",
+      "equityLabel": "$10,000",
+      "uuid": "aa86431a-f1f9-4ada-a7a1-c0ff123b9b0c",
+      "planName": "Instant",
+      "phases": [
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "aa86431a-f1f9-4ada-a7a1-c0ff123b9b0c",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "3.00",
+          "maxOverallLoss": "5.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "6.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "25000.00",
+      "equityPrice": "899.00",
+      "equityLabel": "$25,000",
+      "uuid": "3896d30c-3bf2-4155-8e2f-e36cb86ca185",
+      "planName": "Instant",
+      "phases": [
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "3896d30c-3bf2-4155-8e2f-e36cb86ca185",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "3.00",
+          "maxOverallLoss": "5.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "6.00",
+          "consistency": 40
+        }
+      ]
+    },
+    {
+      "price": "50000.00",
+      "equityPrice": "1739.00",
+      "equityLabel": "$50,000",
+      "uuid": "f43a1dbf-5e9f-4874-afa4-4c21683e5266",
+      "planName": "Instant",
+      "phases": [
+        {
+          "type": "funded",
+          "name": "Funded",
+          "uuid": "f43a1dbf-5e9f-4874-afa4-4c21683e5266",
+          "minTradingDays": 5,
+          "maxTradingDays": null,
+          "maxDailyLoss": "3.00",
+          "maxOverallLoss": "5.00",
+          "profitTarget": null,
+          "maxProfitTarget": null,
+          "maxWithdrawal": "6.00",
+          "consistency": 40
+        }
+      ]
+    }
+  ]
+}

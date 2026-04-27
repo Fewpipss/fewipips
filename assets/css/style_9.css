@@ -1,0 +1,47 @@
+.tooltip-box-table {
+  min-width: 320px;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Firefox scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #22c55e transparent; /* light green */
+}
+
+/* Chrome, Safari, Edge */
+.tooltip-box-table::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tooltip-box-table::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tooltip-box-table::-webkit-scrollbar-thumb {
+  background-color: #22c55e; /* light green */
+  border-radius: 10px;
+}
+
+.tooltip-box-table::-webkit-scrollbar-thumb:hover {
+  background-color: #16a34a; /* slightly darker on hover */
+}
+
+.tooltip-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin: 6px 0 10px;
+}
+
+.tooltip-table th,
+.tooltip-table td {
+  text-align: left;
+  padding: 4px 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.tooltip-table th {
+  font-weight: 600;
+  opacity: 0.8;
+}
