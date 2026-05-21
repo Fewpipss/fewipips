@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /_next/
-Disallow: /functions/
-Disallow: /.wrangler/
-
-Sitemap: https://fewpips.com/sitemap.xml
