@@ -29,8 +29,8 @@
     <div class="legal-tabs" role="tablist">
       <button class="legal-tab on" data-doc="cfd-challenge" role="tab">CFD Challenge</button>
       <button class="legal-tab" data-doc="cfd-funded" role="tab">CFD Funded</button>
+      <button class="legal-tab" data-doc="futures-challenge" role="tab">Futures Challenge</button>
       <button class="legal-tab" data-doc="futures-funded" role="tab">Futures Funded</button>
-      <button class="legal-tab" data-doc="futures-instant" role="tab">Futures Instant</button>
     </div>
 
     <!-- ================= CFD CHALLENGE RULES ================= -->
@@ -130,6 +130,7 @@
         <li>Feed exploitation</li>
         <li>One-sided betting</li>
         <li>Loss on a single trade should not exceed 2% of the account size (initial balance)</li>
+        <li><strong>SL and TP must be placed on all trades on funded accounts.</strong></li>
       </ul>
 
       <h4>7. Allowed Instruments</h4>
@@ -338,38 +339,32 @@
       <p><strong>Automated Account Upgrade:</strong> Prior to upgrading to a Funded account, a human audit takes place. The audit covers rule criteria, violation checks, and compliance with all Fewpips terms and conditions.</p>
     </article>
 
-    <!-- ================= FUTURES FUNDED ================= -->
-    <article class="legal-doc legal-fade" data-doc="futures-funded" hidden>
-      <h2>Fewpips Future Based CFDs - Funded Account Rules &amp; Terms</h2>
-      <p class="legal-stamp">Fewpips Operations Team · March 2026 · 1-Step Post-Evaluation Phase</p>
+    <!-- ================= FUTURES CHALLENGE ================= -->
+    <article class="legal-doc legal-fade" data-doc="futures-challenge" hidden>
+      <h2>Fewpips Future Based CFDs - 1-Step Challenge Rules</h2>
+      <p class="legal-stamp">Fewpips Operations Team · Effective May 2026 · MetaTrader 5</p>
 
-      <p>Congratulations - you have passed the Fewpips Future Based CFDs 1-Step evaluation. This document governs your funded account phase. Having demonstrated consistent, disciplined trading through the evaluation, you are entitled to wider risk parameters and a higher withdrawal cap than the Instant Account model.</p>
-      <p>These rules are designed to:</p>
-      <ul>
-        <li><strong>Protect traders and simulated capital</strong> via risk limits that reflect proven trading discipline.</li>
-        <li><strong>Maintain fairness</strong> - latency trading, copy trading and one-sided betting remain banned. Passing the evaluation does not relax these standards.</li>
-        <li><strong>Replicate real futures conditions</strong> - the trailing drawdown model and contract expiry rules mirror professional futures trading.</li>
-      </ul>
-      <p><strong>Resets are not available on the funded account.</strong> If the funded account is breached, it will be disabled. The trader must re-purchase and pass the 1-Step challenge to regain funded status.</p>
+      <p>The Fewpips Future Based CFDs 1-Step Challenge is a single-phase evaluation that gives traders a route to a simulated funded futures account. Hit the profit target within the time limit while respecting risk parameters, and your account is upgraded to the Futures Funded phase. Resets are not available on the funded account; if the funded account is breached you must re-purchase and pass the 1-Step Challenge again.</p>
 
       <h3>Account Sizes</h3>
       <p>$25,000 · $50,000 · $100,000</p>
 
       <h3>Key Metrics at a Glance</h3>
       <table class="rules-tbl">
-        <thead><tr><th>Metric</th><th>1-Step Funded Account</th></tr></thead>
+        <thead><tr><th>Metric</th><th>Futures 1-Step Challenge</th></tr></thead>
         <tbody>
-          <tr><td>Max Daily Loss</td><td>3% of starting day balance</td></tr>
-          <tr><td>Max Total Loss</td><td>5% trailing drawdown</td></tr>
+          <tr><td>Profit Target</td><td>5% within 35 days</td></tr>
+          <tr><td>Time Limit</td><td>35 calendar days</td></tr>
+          <tr><td>Max Daily Loss</td><td>4% of starting day balance</td></tr>
+          <tr><td>Max Drawdown (Trailing)</td><td>8% - 10% by account size</td></tr>
           <tr><td>Trailing Type</td><td>Equity peak trailing (floor never falls)</td></tr>
-          <tr><td>Profit Target</td><td>N/A - evaluation already passed</td></tr>
-          <tr><td>Min. Trading Days</td><td>5 days per cycle</td></tr>
-          <tr><td>Consistency Rule</td><td>40% max profit in a single day</td></tr>
-          <tr><td>Payout Cycle</td><td>Every 21 calendar days</td></tr>
-          <tr><td>Profit Split</td><td>80% trader / 20% company</td></tr>
-          <tr><td>Withdrawal Cap</td><td>15% of account balance per cycle</td></tr>
+          <tr><td>Min. Trading Days</td><td>2 - 3 days by account size</td></tr>
+          <tr><td>Consistency Rule</td><td>50% max single day (of profit target)</td></tr>
+          <tr><td>Profit Split (post-pass)</td><td>Up to 90% (80% first 3 payouts, 90% from 4th)</td></tr>
+          <tr><td>Payouts (post-pass)</td><td>Every 5 business days</td></tr>
           <tr><td>Minimum Withdrawal</td><td>$100 USD</td></tr>
-          <tr><td>Withdrawal Type</td><td>Full withdrawal (no partial)</td></tr>
+          <tr><td>EAs</td><td>Allowed with pre-approval</td></tr>
+          <tr><td>Weekend Holding</td><td>Not permitted</td></tr>
           <tr><td>Inactivity Cancellation</td><td>14 consecutive days</td></tr>
         </tbody>
       </table>
@@ -378,256 +373,228 @@
 
       <h3>Rules</h3>
 
-      <h4>1. Daily Loss Rule</h4>
-      <p>Start-of-day balance minus the lowest floating equity of the day must not exceed 3%. Applies to floating and closed trades.</p>
+      <h4>1. Profit Target</h4>
+      <p>Reach a profit of <strong>5% above the starting balance within 35 calendar days</strong> while respecting all risk parameters. The 5% target is measured on the initial account balance.</p>
+
+      <h4>2. Daily Loss Rule</h4>
+      <p>Start-of-day balance minus the lowest floating equity of the day must not exceed 4%. Applies to floating and closed trades.</p>
       <div class="example-box">
-        <strong>Example - $50,000 1-Step Funded:</strong> Daily loss limit = 3% = $1,500. If trader starts at $50,000, they cannot lose more than $1,500 that day. Start: $50,000 → Low: $48,700 → Loss: $1,300 → <span class="ok">OK</span>. Start: $50,000 → Low: $48,400 → Loss: $1,600 → <span class="vio">Violation</span>.
+        <strong>Example - $50,000 1-Step Challenge:</strong> Daily loss limit = 4% = $2,000. Start: $50,000 → Low: $48,200 → Loss: $1,800 → <span class="ok">OK</span>. Start: $50,000 → Low: $47,900 → Loss: $2,100 → <span class="vio">Violation</span>.
       </div>
 
-      <h4>2. Maximum Total Loss - Trailing Drawdown</h4>
-      <p>The Maximum Total Loss is a trailing drawdown referenced to the <strong>highest historical balance</strong> reached by the account, not the starting balance. The floor only ever moves up - it never falls back down, even when the balance drops.</p>
-      <p>Drawdown floor = highest historical balance × (1 − 5%).</p>
+      <h4>3. Max Drawdown - Trailing</h4>
+      <p>The Max Drawdown is a trailing limit referenced to the <strong>highest historical balance</strong> reached by the account. The floor only ever moves up; never falls back down. Drawdown is <strong>8% - 10%</strong> of starting balance depending on account size.</p>
       <div class="example-box">
-        <strong>Example - $50,000 account, 5% trailing drawdown:</strong><br/>
-        Starting balance $50,000 → floor = $50,000 × 95% = $47,500.<br/>
-        Balance rises to $52,000 → new floor = $52,000 × 95% = $49,400.<br/>
-        Balance rises to $55,000 → new floor = $55,000 × 95% = $52,250.<br/>
-        Balance drops to $53,000 → floor stays at $52,250 (does not move down).<br/>
-        If balance drops to $52,249 → account violated.<br/><br/>
-        Having passed the evaluation, the 1-Step Funded Account is rewarded with wider parameters (3% / 5%) compared to the Instant Account (2% / 4%).
+        <strong>Example - $100,000 account, 10% trailing drawdown:</strong><br/>
+        Starting balance $100,000 → floor = $100,000 × 90% = $90,000.<br/>
+        Balance rises to $105,000 → new floor = $105,000 × 90% = $94,500.<br/>
+        Balance drops to $99,000 → floor stays at $94,500 (does not move down).<br/>
+        If balance drops to $94,499 → account violated.
       </div>
 
-      <h4>3. Minimum Trading Days</h4>
-      <p>5 minimum active trading days per cycle. Days do not need to be consecutive. To qualify as an active trading day, at least 1 trade must be held open for <strong>3 minutes or more</strong>. Trades held open less than 3 minutes do not count.</p>
+      <h4>4. Minimum Trading Days</h4>
+      <p>2 - 3 active trading days per account size. Days do not need to be consecutive. To qualify as an active trading day, at least 1 trade must be held open for <strong>3 minutes or more</strong>. The "No Minimum Trading Days" add-on removes this requirement entirely.</p>
 
-      <h4>4. Consistency Rule</h4>
-      <p>No single trading day's profit may exceed 40% of the total profit for the current cycle. If the threshold is exceeded, the trader must continue trading to grow total profit until the flagged day represents 40% or less.</p>
+      <h4>5. Consistency Rule</h4>
+      <p>No single trading day's profit may exceed <strong>50% of the profit target</strong>. This prevents reaching the target through a single aggressive day. If the threshold is exceeded the trader must continue trading to grow total profit until the flagged day falls within 50% or less.</p>
+      <div class="example-box">
+        <strong>Example - $50K Challenge, 5% target ($2,500):</strong> No single day can earn more than $1,250 (50% of target).
+      </div>
 
-      <h4>5. News Trading Policy</h4>
+      <h4>6. News Trading Policy</h4>
       <p>Trading prohibited 5 minutes before and 5 minutes after high-impact news. Restricted events: FOMC, NFP, CPI, interest rate decisions.</p>
 
-      <h4>6. EAs &amp; Bots</h4>
-      <p>Expert Advisors and automated bots are <strong>NOT permitted</strong> on the Future Based CFDs 1-Step Funded Account. All trading must be executed manually by the registered account holder.</p>
+      <h4>7. EAs &amp; Bots</h4>
+      <p>EAs and automated bots are <strong>allowed with prior approval</strong> on the Future Based CFDs 1-Step Challenge. Submit strategy documentation for review.</p>
+      <p><strong>Prohibited:</strong> HFT, latency arbitrage, tick manipulation, extreme grids/martingales, replication across multi-IPs, copy trading.</p>
 
-      <h4>7. Prohibited Activities</h4>
+      <h4>8. Prohibited Activities</h4>
       <ul>
-        <li>Latency scalping / HFT / tick scalping</li>
-        <li>Copy trading and managed accounts</li>
-        <li>Third-party operation (including real-time signal services)</li>
-        <li>Hedging between accounts</li>
-        <li>Extreme martingale and grid strategies</li>
-        <li>One-sided betting</li>
-        <li>Multiple IPs without justification</li>
+        <li>Hedging between multiple accounts</li>
+        <li>Multi-IP abuse</li>
+        <li>Artificial volume creation</li>
+        <li>Arbitrage exploitation</li>
+        <li>Multi-account scaling abuse</li>
+        <li>Trading accounts of third parties</li>
+        <li>Sale of trader accounts</li>
+        <li>Replication farms</li>
         <li>Feed exploitation</li>
-      </ul>
-
-      <h4>8. Allowed Instruments</h4>
-      <p>Feed -F series of futures-based CFDs: US30-F, US500-F, NAS100-F, GER40-F, UK100-F, XAUUSD-F, XAGUSD-F, Brent-F, Crude-F and others. These instruments replicate real futures prices without overnight swap. They are <strong>not</strong> real contracts from CME, NYMEX, or any other regulated exchange.</p>
-
-      <h4>9. Contract Expiry</h4>
-      <p>All Future Based CFD instruments carry real expiry dates. Traders are responsible for monitoring contract expiry and closing or rolling positions before expiration. The Company is not liable for losses from failure to manage contract expiry. Feed -F instruments carry rolling quarterly expiration managed by the provider. Positions held through an expiry date may be forcibly closed at the prevailing market price.</p>
-
-      <h4>10 - 13. Enforcement, Inactivity &amp; Limits</h4>
-      <ul>
-        <li>All rules apply to floating and closed trades. Violations immediately breach the account - no grace period.</li>
-        <li>System uses the lowest equity point of the day for daily loss checks.</li>
-        <li>Accounts with no trading activity for 14 consecutive calendar days are automatically cancelled.</li>
-        <li>Each trader may hold a maximum of <strong>3 simultaneous Future Based CFD accounts</strong>, regardless of model.</li>
-        <li>Position limits per instrument and account size are pending. Clients will be notified once confirmed.</li>
-      </ul>
-
-      <hr class="sec-rule"/>
-
-      <h3>Terms</h3>
-
-      <p>These Funded Terms govern your participation in the funded phase of the trading simulations offered by Fewpips (Business Registration No. 203341234), registered office La Place Creole Building, Rodney Bay, Gros Islet, St. Lucia. By progressing to the funded phase, you confirm your agreement to be legally bound by these Terms.</p>
-
-      <h4>Section 1: Account Architecture</h4>
-      <p><strong>1.1 Account Model.</strong> The 1-Step Funded Account is the post-evaluation funded phase. Access is granted exclusively upon successful completion of the 1-Step challenge evaluation. Available sizes: $25,000 / $50,000 / $100,000.</p>
-      <p><strong>1.3 The 40% Consistency Rule.</strong> No single trading day's profit can exceed 40% of total profit generated during a withdrawal cycle. Fewpips reserves the right to deduct inconsistent profits and reset the cycle, or invalidate the payout request for that cycle.</p>
-      <p><strong>1.4 Activity &amp; Maintenance.</strong> 14 consecutive calendar days of zero trading activity results in the account being marked inactive and automatically cancelled.</p>
-      <p><strong>1.5 Technical &amp; Strategy Restrictions.</strong> Exploitation of system flaws or data-feed latencies is prohibited. Cross-account hedging is forbidden. EAs and bots are not permitted on any Future Based CFD funded account. Switching between automated and manual is prohibited. Access is restricted to a maximum of 3 unique devices.</p>
-
-      <h4>Section 2: Prohibited Trading Methodologies</h4>
-      <p>Strictly forbidden: latency &amp; arbitrage, HFT &amp; system abuse, copy trading, group coordination, extreme martingale/grid strategies, one-sided betting, hedging between accounts, feed exploitation, multiple IPs without justification, account sharing or sale.</p>
-
-      <h4>Section 3: Reward Disbursement &amp; KYC</h4>
-      <p>KYC verification must be completed prior to the first reward disbursement. Clients have exactly 30 calendar days from passing the evaluation to complete KYC; failure results in invalidation of the funded account. Required documentation: government-issued photo ID (Passport or National ID) and, where requested, Proof of Address. All payouts subject to a post-trade audit. <strong>Withdrawal fees: 3% processing/admin fee deducted from the requested amount.</strong></p>
-
-      <h4>Section 4: Financial Specifications</h4>
-      <p><strong>4.1 The Trading Cycle.</strong> The cycle begins automatically when the Client places their first trade in the funded account, or following a prior payout. Payout cycle: every 21 calendar days.</p>
-      <p><strong>4.2 Cycle Maintenance.</strong> 5 active trading days per cycle; 3-minute quality rule; 40% consistency rule; net profit requirement (balance must exceed initial); net loss extension if cycle ends in net loss.</p>
-      <p><strong>4.3 Payout Logistics.</strong> Minimum withdrawal $100 USD. Withdrawal cap 15% of account balance per cycle.</p>
-      <table class="rules-tbl">
-        <thead><tr><th>Account Size</th><th>Withdrawal Limit / Cycle</th></tr></thead>
-        <tbody>
-          <tr><td>$25,000</td><td>$3,750</td></tr>
-          <tr><td>$50,000</td><td>$7,500</td></tr>
-          <tr><td>$100,000</td><td>$15,000</td></tr>
-        </tbody>
-      </table>
-      <p>Full withdrawals only - no partial. No open positions when requesting withdrawal. Processing: 24-48 hours audit + 24-48 hours processing. Total lead time 5-7 business days.</p>
-      <p><strong>4.4 Profit Split.</strong> Default 80% trader / 20% company.</p>
-      <p><strong>4.6 Fees &amp; Commission.</strong> 3% processing fee on all deposits and withdrawals. MT5 commission per round trip: Forex $6/lot, Indices $6/lot, Commodities/Metals $6/lot, Crypto 0.04% of opening price per lot.</p>
-
-      <h4>Section 5: Refund &amp; Termination</h4>
-      <p>Execution of the first trade in the funded account constitutes a request for immediate service performance. The original challenge purchase fee is non-refundable at this stage. <strong>No resets available</strong> on the funded account. Breach termination requires re-purchase and re-pass of the 1-Step challenge to regain funded status. Accounts cancelled for 14 days of inactivity require a new challenge purchase.</p>
-      <p><strong>A $10 administration charge applies per approved refund.</strong></p>
-
-      <h4>Section 6: Dispute &amp; Chargeback</h4>
-      <p>Raising a false dispute results in a permanent ban and immediate forfeiture of all account progress. If a dispute is raised, the associated account is paused. To reactivate: withdraw the dispute with the financial institution, provide official proof of withdrawal, allow up to 45-60 business days for risk management to verify and reactivate credentials.</p>
-
-      <h4>Section 7: Final Legal Provisions</h4>
-      <p>Governing law: St. Lucia. Disputes settled exclusively in the courts of St. Lucia. Clients responsible for ensuring participation does not violate local laws. Fewpips reserves the right to adjust metrics and terms; clients receive 7 days' notice of significant changes via registered email. Non-disparagement: clients agree not to engage in disparagement or smear campaigns; such conduct is grounds for immediate account termination.</p>
-    </article>
-
-    <!-- ================= FUTURES INSTANT ================= -->
-    <article class="legal-doc legal-fade" data-doc="futures-instant" hidden>
-      <h2>Fewpips Future Based CFDs - Instant Account Rules &amp; Terms</h2>
-      <p class="legal-stamp">Fewpips Operations Team · March 2026 · Version 4 · MetaTrader 5</p>
-
-      <p>The Future Based CFDs Instant Account provides immediate access to a simulated funded account <strong>without any prior evaluation phase</strong>. There is no challenge to complete - you begin trading immediately. Because the trader has not passed any prior evaluation filter, the risk parameters are more conservative than the 1-Step Funded model.</p>
-      <p><strong>No reset is offered on the Instant Account.</strong> If the account is lost, a new purchase is required.</p>
-
-      <h3>Account Sizes</h3>
-      <p>$10,000 · $30,000 · $60,000</p>
-
-      <h3>Key Metrics at a Glance</h3>
-      <table class="rules-tbl">
-        <thead><tr><th>Metric</th><th>Instant Account</th></tr></thead>
-        <tbody>
-          <tr><td>Max Daily Loss</td><td>2% of starting day balance</td></tr>
-          <tr><td>Max Total Loss</td><td>4% trailing drawdown</td></tr>
-          <tr><td>Trailing Type</td><td>Equity peak trailing (floor never falls)</td></tr>
-          <tr><td>Profit Target</td><td>N/A - direct access, no evaluation</td></tr>
-          <tr><td>Min. Trading Days</td><td>5 days per cycle</td></tr>
-          <tr><td>Consistency Rule</td><td>25% max profit in a single day</td></tr>
-          <tr><td>Payout Cycle</td><td>Every 21 calendar days</td></tr>
-          <tr><td>Profit Split</td><td>80% trader / 20% company</td></tr>
-          <tr><td>Withdrawal Cap</td><td>10% of account balance per cycle</td></tr>
-          <tr><td>Minimum Withdrawal</td><td>$100 USD</td></tr>
-          <tr><td>Withdrawal Type</td><td>Full withdrawal (no partial)</td></tr>
-          <tr><td>Inactivity Cancellation</td><td>14 consecutive days</td></tr>
-          <tr><td>Reset</td><td>Not available - new purchase required if lost</td></tr>
-        </tbody>
-      </table>
-
-      <hr class="sec-rule"/>
-
-      <h3>Rules</h3>
-
-      <h4>1. Daily Loss Rule</h4>
-      <p>Start-of-day balance minus the lowest floating equity of the day must not exceed 2%. Applies to floating and closed trades.</p>
-      <div class="example-box">
-        <strong>Example - $30,000 Instant account:</strong> Daily loss limit = 2% = $600. Start: $30,000 → Low: $29,500 → Loss: $500 → <span class="ok">OK</span>. Start: $30,000 → Low: $29,350 → Loss: $650 → <span class="vio">Violation</span>.
-      </div>
-
-      <h4>2. Maximum Total Loss - Trailing Drawdown</h4>
-      <p>Drawdown floor = highest historical balance × (1 − 4%). The floor only moves up; never falls back down.</p>
-      <div class="example-box">
-        <strong>Example - $30,000 account, 4% trailing drawdown:</strong><br/>
-        Starting balance $30,000 → floor = $28,800.<br/>
-        Balance rises to $31,000 → new floor = $29,760.<br/>
-        Balance rises to $33,000 → new floor = $31,680.<br/>
-        Balance drops to $32,000 → floor stays at $31,680.<br/>
-        If balance drops to $31,679 → account violated.<br/><br/>
-        The Instant Account has more conservative limits (2% / 4%) because the trader has not passed any prior evaluation filter. A tighter loss range acts as a selection mechanism and protects simulated corporate capital.
-      </div>
-
-      <h4>3. Minimum Trading Days</h4>
-      <p>5 minimum active trading days per cycle. Days do not need to be consecutive. To qualify as an active trading day, at least 1 trade must be held open for <strong>3 minutes or more</strong>.</p>
-
-      <h4>4. Consistency Rule</h4>
-      <p>No single trading day's profit may exceed 25% of the total profit for the current cycle. The Instant Account applies a stricter consistency limit (25%) than the 1-Step Funded Account (40%) because direct access tends to attract more aggressive trading profiles that require tighter control.</p>
-      <div class="example-box">
-        <strong>Example - $30,000 Instant:</strong> If total cycle profit is $1,000, no single day can exceed $250. If a trader earns $300 in one day, that day is flagged as inconsistent.
-      </div>
-
-      <h4>5. News Trading Policy</h4>
-      <p>Trading prohibited 5 minutes before and 5 minutes after high-impact news. Restricted events: FOMC, NFP, CPI, interest rate decisions.</p>
-
-      <h4>6. EAs &amp; Bots</h4>
-      <p>Expert Advisors and automated bots are <strong>NOT permitted</strong> on the Future Based CFDs Instant Account. All trading must be executed manually by the registered account holder.</p>
-
-      <h4>7. Prohibited Activities</h4>
-      <ul>
-        <li>Latency scalping / HFT / tick scalping</li>
-        <li>Copy trading and managed accounts</li>
-        <li>Third-party operation (including real-time signal services)</li>
-        <li>Hedging between accounts</li>
-        <li>Extreme martingale and grid strategies</li>
         <li>One-sided betting</li>
-        <li>Multiple IPs without justification</li>
-        <li>Feed exploitation</li>
+        <li>Loss on a single trade should not exceed 2% of the account size (initial balance)</li>
+        <li><strong>SL and TP must be placed on all trades on funded accounts.</strong></li>
       </ul>
 
-      <h4>8. Allowed Instruments</h4>
-      <p>MetaTrader 5 (MT5) using the Feed -F series of futures-based CFDs: US30-F, US500-F, NAS100-F, GER40-F, UK100-F, XAUUSD-F, XAGUSD-F, Brent-F, Crude-F and others. These instruments replicate real futures prices without overnight swap. They are <strong>not</strong> real contracts from CME, NYMEX, or any other regulated exchange.</p>
+      <h4>9. Allowed Instruments</h4>
+      <p>41 symbols across 7 asset categories: Indices, Metals, Energy, FX/Dollar, Commodities, Bonds, Volatility. All instruments are Feed -F futures-based CFDs that replicate real futures prices without overnight swap. They are <strong>not</strong> real exchange contracts from CME, NYMEX, or any other regulated exchange.</p>
 
-      <h4>9. Contract Expiry</h4>
-      <p>All Future Based CFD instruments carry real expiry dates. Traders are responsible for monitoring contract expiry. Feed -F instruments carry rolling quarterly expiration. Positions held through expiry may be forcibly closed.</p>
+      <h4>10. Contract Expiry</h4>
+      <p>All Future Based CFD instruments carry real expiry dates. Traders are responsible for monitoring contract expiry and closing or rolling positions before expiration. Feed -F instruments carry rolling quarterly expiration managed by the provider. Positions held through an expiry date may be forcibly closed at the prevailing market price.</p>
 
-      <h4>10 - 13. Enforcement, Inactivity &amp; Limits</h4>
+      <h4>11 - 13. Enforcement, Inactivity &amp; Limits</h4>
       <ul>
         <li>All rules apply to floating and closed trades. Violations immediately breach the account - no grace period.</li>
         <li>System uses the lowest equity point of the day for daily loss checks.</li>
         <li>14 consecutive calendar days of no trading triggers automatic cancellation.</li>
         <li>Maximum of <strong>3 simultaneous Future Based CFD accounts</strong> per trader.</li>
-        <li>Position limits pending - clients will be notified once confirmed.</li>
+        <li>Weekend holding is <strong>not</strong> permitted on Futures CFDs.</li>
+      </ul>
+
+      <hr class="sec-rule"/>
+
+      <h3>Pricing &amp; Fees</h3>
+      <p>One-time fee per challenge. Fully refundable within 7 days of purchase, provided no trades have been placed. A $10 administration charge applies per approved refund. 3% processing fee on all deposits and withdrawals.</p>
+      <p><strong>MT5 Commission Structure (per round trip):</strong> FX $6 / standard lot · Indices $6 / standard lot · Commodities &amp; Metals $6 / standard lot · Crypto 0.04% of opening price per lot.</p>
+
+      <h4>Automated Account Upgrade</h4>
+      <p>When the trader completes the 5% profit target within 35 days while respecting all risk parameters, a human audit takes place (rule criteria, violation checks, terms compliance). On approval the account is upgraded to the Futures Funded phase and new credentials are issued.</p>
+    </article>
+
+    <!-- ================= FUTURES FUNDED (Post-Eval + Instant) ================= -->
+    <article class="legal-doc legal-fade" data-doc="futures-funded" hidden>
+      <h2>Fewpips Future Based CFDs - Funded Account Rules &amp; Terms</h2>
+      <p class="legal-stamp">Fewpips Operations Team · Effective May 2026 · MetaTrader 5</p>
+
+      <p>The Fewpips Futures Funded Account covers two routes to funded status: the <strong>1-Step Funded Account</strong> (entered by passing the 1-Step Challenge) and the <strong>Instant Account</strong> (direct funded access with no evaluation phase). Both share the same profit split and payout structure; risk parameters differ because the Instant Account has not been pre-filtered through a challenge.</p>
+
+      <h3>Account Sizes</h3>
+      <ul>
+        <li><strong>1-Step Funded</strong> (post-evaluation): $25,000 · $50,000 · $100,000</li>
+        <li><strong>Instant</strong> (direct funded access): $10,000 · $30,000 · $60,000</li>
+      </ul>
+
+      <h3>Key Metrics at a Glance</h3>
+      <table class="rules-tbl">
+        <thead><tr><th>Metric</th><th>1-Step Funded</th><th>Instant</th></tr></thead>
+        <tbody>
+          <tr><td>Profit Target</td><td>N/A (already passed)</td><td>None - direct access</td></tr>
+          <tr><td>Max Daily Loss</td><td>4% of starting day balance</td><td>4% of starting day balance</td></tr>
+          <tr><td>Max Drawdown (Trailing)</td><td>8% - 10% by account size</td><td>4% - 8% by account size</td></tr>
+          <tr><td>Trailing Type</td><td colspan="2">Equity peak trailing (floor never falls)</td></tr>
+          <tr><td>Min. Trading Days</td><td>2 - 3 days by account size</td><td>2 - 5 days by account size</td></tr>
+          <tr><td>Consistency Rule</td><td colspan="2">50% max single day</td></tr>
+          <tr><td>Profit Split</td><td colspan="2">Up to 90% (80% first 3 payouts, 90% from 4th)</td></tr>
+          <tr><td>Payout Frequency</td><td>Every 5 business days</td><td>Every 14 days OR On-Demand at &gt;5% growth</td></tr>
+          <tr><td>Faster Payouts Add-On</td><td>Not applicable</td><td>Bi-weekly add-on (7 days)</td></tr>
+          <tr><td>Minimum Withdrawal</td><td>$100 USD</td><td>$100 USD</td></tr>
+          <tr><td>Open Trades on Payout</td><td>Not allowed</td><td>Not allowed</td></tr>
+          <tr><td>EAs</td><td>Not permitted on funded</td><td>Not permitted</td></tr>
+          <tr><td>Weekend Holding</td><td colspan="2">Not permitted</td></tr>
+          <tr><td>Inactivity Cancellation</td><td colspan="2">14 consecutive days</td></tr>
+          <tr><td>Reset</td><td>Not available</td><td>Not available</td></tr>
+        </tbody>
+      </table>
+
+      <hr class="sec-rule"/>
+
+      <h3>Rules</h3>
+
+      <h4>1. Daily Loss Rule</h4>
+      <p>Start-of-day balance minus the lowest floating equity of the day must not exceed 4%. Applies to floating and closed trades, on both 1-Step Funded and Instant accounts.</p>
+      <div class="example-box">
+        <strong>Example - $30,000 Instant account:</strong> Daily loss limit = 4% = $1,200. Start: $30,000 → Low: $29,000 → Loss: $1,000 → <span class="ok">OK</span>. Start: $30,000 → Low: $28,700 → Loss: $1,300 → <span class="vio">Violation</span>.
+      </div>
+
+      <h4>2. Max Drawdown - Trailing</h4>
+      <p>The Max Drawdown is a trailing limit referenced to the <strong>highest historical balance</strong> reached by the account. The floor only ever moves up; never falls back down.</p>
+      <ul>
+        <li><strong>1-Step Funded:</strong> 8% - 10% of starting balance, by account size.</li>
+        <li><strong>Instant:</strong> 4% - 8% of starting balance, by account size (tighter range since there is no prior evaluation filter).</li>
+      </ul>
+
+      <h4>3. Minimum Trading Days</h4>
+      <p>Active trading days do not need to be consecutive. To qualify as an active trading day, at least 1 trade must be held open for <strong>3 minutes or more</strong>.</p>
+      <ul>
+        <li><strong>1-Step Funded:</strong> 2 - 3 days per cycle by account size.</li>
+        <li><strong>Instant:</strong> 2 - 5 days per cycle by account size.</li>
+      </ul>
+
+      <h4>4. Consistency Rule</h4>
+      <p>No single trading day's profit may exceed <strong>50% of the cycle's total profit</strong>. If the threshold is exceeded the trader must continue trading to grow total profit until the flagged day falls within 50%. Inconsistent profits may be deducted and the cycle reset, or the payout request invalidated.</p>
+
+      <h4>5. News Trading Policy</h4>
+      <p>Trading prohibited 5 minutes before and 5 minutes after high-impact news. Restricted events: FOMC, NFP, CPI, interest rate decisions.</p>
+
+      <h4>6. EAs &amp; Bots</h4>
+      <p>Expert Advisors and automated bots are <strong>NOT permitted</strong> on any Futures Funded account (1-Step Funded or Instant). All trading must be executed manually by the registered account holder.</p>
+
+      <h4>7. Prohibited Activities</h4>
+      <ul>
+        <li>Latency scalping / HFT / tick scalping</li>
+        <li>Copy trading and managed accounts</li>
+        <li>Third-party operation (including real-time signal services)</li>
+        <li>Hedging between accounts (within Fewpips or across firms)</li>
+        <li>Extreme martingale and grid strategies</li>
+        <li>One-sided betting</li>
+        <li>Multiple IPs without justification</li>
+        <li>Feed exploitation</li>
+        <li>Account sharing or sale</li>
+        <li>Loss on a single trade should not exceed 2% of the account size (initial balance)</li>
+        <li><strong>SL and TP must be placed on all trades on funded accounts.</strong></li>
+      </ul>
+
+      <h4>8. Allowed Instruments</h4>
+      <p>41 symbols across 7 asset categories: Indices, Metals, Energy, FX/Dollar, Commodities, Bonds, Volatility. All instruments are Feed -F futures-based CFDs replicating real futures prices without overnight swap. They are <strong>not</strong> real contracts from CME, NYMEX, or any other regulated exchange.</p>
+
+      <h4>9. Contract Expiry</h4>
+      <p>All Future Based CFD instruments carry real expiry dates. Traders are responsible for monitoring contract expiry. Feed -F instruments carry rolling quarterly expiration managed by the provider. Positions held through an expiry date may be forcibly closed at the prevailing market price.</p>
+
+      <h4>10 - 13. Enforcement, Inactivity &amp; Limits</h4>
+      <ul>
+        <li>All rules apply to floating and closed trades. Violations immediately breach the account - no grace period.</li>
+        <li>System uses the lowest equity point of the day for daily loss checks.</li>
+        <li>14 consecutive calendar days of no trading triggers automatic cancellation. One executed trade resets the timer.</li>
+        <li>Maximum of <strong>3 simultaneous Future Based CFD accounts</strong> per trader, regardless of model.</li>
+        <li>Weekend holding is <strong>not</strong> permitted.</li>
       </ul>
 
       <hr class="sec-rule"/>
 
       <h3>Terms</h3>
 
-      <p>These Instant Terms govern your participation in the trading simulations offered by Fewpips (Business Registration No. 203341234), registered office La Place Creole Building, Rodney Bay, Gros Islet, St. Lucia. By purchasing a Future Based CFDs Instant Account, you confirm your agreement to be legally bound by these Terms.</p>
+      <p>These Funded Terms govern your participation in the funded phase of the trading simulations offered by Fewpips (Business Registration No. 203341234), registered office La Place Creole Building, Rodney Bay, Gros Islet, St. Lucia. By holding a Futures Funded account (1-Step Funded or Instant) you confirm your agreement to be legally bound by these Terms.</p>
 
       <h4>Section 1: Account Architecture</h4>
-      <p><strong>1.1 Account Model.</strong> One Instant Account model - direct access to a simulated funded account with no prior evaluation phase. Available sizes: $10,000 / $30,000 / $60,000.</p>
-      <p><strong>1.3 The 25% Consistency Rule.</strong> No single trading day's profit can exceed 25% of total profit generated during a withdrawal cycle. Fewpips reserves the right to deduct inconsistent profits and reset the cycle, or invalidate the payout request for that cycle.</p>
-      <p><strong>1.4 Activity &amp; Maintenance.</strong> 14 consecutive calendar days of zero trading activity results in automatic cancellation.</p>
-      <p><strong>1.5 Technical &amp; Strategy Restrictions.</strong> Exploitation of system flaws or data-feed latencies prohibited. Cross-account hedging forbidden. EAs and bots not permitted. Trading style consistency required - no switching between automated and manual. Maximum 3 unique devices.</p>
+      <p><strong>1.1 Account Models.</strong> The 1-Step Funded Account is the post-evaluation funded phase, granted on successful completion of the 1-Step Challenge. The Instant Account provides direct funded access without an evaluation phase.</p>
+      <p><strong>1.2 The 50% Consistency Rule.</strong> No single trading day's profit can exceed 50% of total profit generated during a withdrawal cycle. Fewpips reserves the right to deduct inconsistent profits and reset the cycle, or invalidate the payout request for that cycle.</p>
+      <p><strong>1.3 Activity &amp; Maintenance.</strong> 14 consecutive calendar days of zero trading activity results in the account being marked inactive and automatically cancelled.</p>
+      <p><strong>1.4 Technical &amp; Strategy Restrictions.</strong> Exploitation of system flaws or data-feed latencies is prohibited. Cross-account hedging is forbidden. EAs and bots are not permitted on any Futures Funded account. Switching between automated and manual trading styles is prohibited. Access is restricted to a maximum of 3 unique devices.</p>
 
       <h4>Section 2: Prohibited Trading Methodologies</h4>
       <p>Strictly forbidden: latency &amp; arbitrage, HFT &amp; system abuse, copy trading, group coordination, extreme martingale/grid strategies, one-sided betting, hedging between accounts, feed exploitation, multiple IPs without justification, account sharing or sale.</p>
 
       <h4>Section 3: Reward Disbursement &amp; KYC</h4>
-      <p>Verification triggered prior to first reward disbursement. Required documentation: government-issued photo ID and Proof of Address where requested. <strong>KYC deadline: 30 calendar days from account activation</strong>; failure results in account invalidation. All payouts subject to post-trade audit. <strong>3% processing/admin fee</strong> deducted from withdrawal.</p>
+      <p>KYC verification must be completed prior to the first reward disbursement. Clients have exactly <strong>30 calendar days from passing the evaluation (or activating an Instant account) to complete KYC</strong>; failure results in account invalidation. Required documentation: government-issued photo ID (Passport or National ID) and, where requested, Proof of Address. All payouts subject to a post-trade audit.</p>
 
       <h4>Section 4: Financial Specifications</h4>
-      <p><strong>4.1 The Trading Cycle.</strong> Begins on first trade or following prior payout. 21 calendar days per cycle.</p>
-      <p><strong>4.2 Cycle Maintenance.</strong> 5 active trading days; 3-minute quality rule; 25% consistency rule; net profit requirement; net loss extension.</p>
-      <p><strong>4.3 Payout Logistics.</strong> Minimum withdrawal $100 USD. Withdrawal cap 10% of account balance per cycle.</p>
-      <table class="rules-tbl">
-        <thead><tr><th>Account Size</th><th>Withdrawal Limit / Cycle</th></tr></thead>
-        <tbody>
-          <tr><td>$10,000</td><td>$1,000</td></tr>
-          <tr><td>$30,000</td><td>$3,000</td></tr>
-          <tr><td>$60,000</td><td>$6,000</td></tr>
-        </tbody>
-      </table>
-      <p>Full withdrawals only. No open positions when requesting. Processing lead time 5-7 business days. <strong>10% cap reflects the absence of a prior evaluation filter</strong> (vs 15% on the 1-Step Funded Account).</p>
-      <p><strong>4.4 Profit Split.</strong> Default 80% trader / 20% company.</p>
-      <p><strong>4.6 Fees &amp; Commission.</strong> 3% processing fee on deposits and withdrawals. MT5 commission per round trip: Forex $6/lot, Indices $6/lot, Commodities/Metals $6/lot, Crypto 0.04% of opening price per lot.</p>
+      <p><strong>4.1 The Trading Cycle.</strong> A cycle begins when the Client places their first trade in the funded account, or following a prior payout.</p>
+      <ul>
+        <li><strong>1-Step Funded</strong> payout cycle: every 5 business days.</li>
+        <li><strong>Instant</strong> payout cycle: every 14 calendar days, or On-Demand once balance is &gt;5% above starting balance, or every 7 days with the Bi-weekly Add-On.</li>
+      </ul>
+      <p><strong>4.2 Cycle Maintenance.</strong> Active trading days requirement (see Rule 3); 3-minute quality rule per active day; 50% consistency rule; net profit requirement (balance must exceed initial); net loss extension if cycle ends in net loss.</p>
+      <p><strong>4.3 Payout Logistics.</strong> Minimum withdrawal $100 USD. Full withdrawals only - no partial. <strong>No open positions</strong> are permitted when requesting a withdrawal. Processing: 24-48 hours audit + 24-48 hours processing.</p>
+      <p><strong>4.4 Profit Split.</strong> Up to 90%. The trader receives 80% on the first three withdrawals and 90% from the fourth withdrawal onwards.</p>
+      <p><strong>4.5 Account Refresh.</strong> Trading credentials are retained after a payout. Upon confirmation of a withdrawal the account balance updates to the new starting equity and a new cycle begins automatically with the next executed trade.</p>
+      <p><strong>4.6 Fees &amp; Commission.</strong> 3% processing fee on all deposits and withdrawals. MT5 commission per round trip: FX $6 / standard lot · Indices $6 / standard lot · Commodities &amp; Metals $6 / standard lot · Crypto 0.04% of opening price per lot.</p>
 
       <h4>Section 5: Refund &amp; Termination</h4>
-      <p>Execution of the first trade waives the right to a refund under standard consumer withdrawal laws. Refund may be requested within 7 days of purchase, provided no trades have been placed. Accounts closed for rule violations are not eligible for refund. <strong>No resets</strong> - if account is lost, new purchase is required. Accounts not activated within 30 days of purchase will be archived.</p>
+      <p>Execution of the first trade constitutes a request for immediate service performance and waives the right to a refund under standard consumer withdrawal laws. Refund may be requested within 7 days of purchase provided no trades have been placed. Accounts closed for rule violations are not eligible for refund. <strong>No resets available</strong> - if a funded account is lost, a new challenge purchase (1-Step) or new Instant account purchase is required.</p>
       <p><strong>A $10 administration charge applies per approved refund.</strong></p>
 
       <h4>Section 6: Dispute &amp; Chargeback</h4>
-      <p>Raising a false dispute results in a permanent ban and immediate forfeiture of all account progress. To reactivate after a dispute: withdraw the dispute with the financial institution, provide official proof of withdrawal, allow 45-60 business days for risk management to verify and reactivate credentials.</p>
+      <p>Raising a false dispute results in a permanent ban and immediate forfeiture of all account progress. If a dispute is raised the associated account is paused. To reactivate: withdraw the dispute with the financial institution, provide official proof of withdrawal, allow up to 45-60 business days for risk management to verify and reactivate credentials.</p>
 
       <h4>Section 7: Final Legal Provisions</h4>
-      <p>Governing law: St. Lucia. Disputes settled exclusively in the courts of St. Lucia. Clients responsible for ensuring participation does not violate local laws. Fewpips reserves the right to adjust metrics and terms; 7 days' notice of significant changes via registered email. Non-disparagement: clients agree not to engage in disparagement; grounds for immediate account termination.</p>
+      <p>Governing law: St. Lucia. Disputes settled exclusively in the courts of St. Lucia. Clients responsible for ensuring participation does not violate local laws. Fewpips reserves the right to adjust metrics and terms; clients receive 7 days' notice of significant changes via registered email. Non-disparagement: clients agree not to engage in disparagement or smear campaigns; such conduct is grounds for immediate account termination.</p>
     </article>
 
   </div>
 </main>
 
-<footer><div class="c"><div class="ft-top"><div class="ft-brand"><a href="/" class="nav-logo"><img src="/fewpips-logo.png" alt="Fewpips"/></a><p>Premier proprietary trading firm. Backed by discipline, powered by talent. Dubai - Amsterdam - Warsaw.</p><div class="ft-brand-soc"><a href="https://instagram.com/officialfewpips" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a><a href="https://youtube.com/@Fewpips" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48"></polygon></svg></a><a href="https://discord.gg/3UTqHFJPAC" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128c.12-.098.246-.198.373-.292a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"></path></svg></a><a href="https://t.co/yET4tmu5tE" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a><a href="https://t.me/FewpipsSupport" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg></a></div></div><div class="ft-col"><h4>Challenges</h4><a href="https://crm.fewpips.com/auth/signup">Instant</a><a href="https://crm.fewpips.com/auth/signup">1-Step</a><a href="https://crm.fewpips.com/auth/signup">2-Step</a><a href="https://crm.fewpips.com/auth/signup">3-Step</a><a href="/fewpips-futures.html">Futures</a></div><div class="ft-col"><h4>Resources</h4><a href="/faq">FAQ</a><a href="/blog">Blog</a><a href="/#about">About Us</a><a href="/#challenges">Challenges</a><a href="/#compare">Compare Plans</a><a href="/#instruments">Instruments</a></div><div class="ft-col"><h4>Trading Rules</h4><a href="/legal/#cfd-challenge">CFD Challenge Rules</a><a href="/legal/#cfd-funded">CFD Funded Rules</a><a href="/legal/#futures-funded">Futures Funded Rules</a><a href="/legal/#futures-instant">Futures Instant Rules</a></div><div class="ft-col"><h4>Legal</h4><a href="/terms">Terms &amp; Conditions</a><a href="/terms">Privacy Policy</a><a href="/terms">Cookie Policy</a><a href="/terms">AML Policy</a><a href="/terms">Verification &amp; KYC</a><a href="/legal/">Trading Rules Hub</a></div></div><div class="ft-bot"><span>© 2026 Fewpips. All rights reserved. Registered in St. Lucia.</span><span><a href="/terms" style="color:var(--t3);transition:color .2s">Terms</a> · <a href="/legal/" style="color:var(--t3);transition:color .2s">Rules</a> · <a href="/terms" style="color:var(--t3);transition:color .2s">Privacy</a> · <a href="/terms" style="color:var(--t3);transition:color .2s">Cookies</a></span></div><div class="ft-disc"><strong>Risk Disclaimer:</strong> Fewpips is a simulation-based evaluation platform. All trading is conducted with virtual funds. Performance rewards are based on simulated results. Fewpips is not a broker-dealer, exchange, or investment advisor. Past performance does not guarantee future results.</div></div></footer>
+<footer><div class="c"><div class="ft-top"><div class="ft-brand"><a href="/" class="nav-logo"><img src="/fewpips-logo.png" alt="Fewpips"/></a><p>Premier proprietary trading firm. Backed by discipline, powered by talent. Dubai - Amsterdam - Warsaw.</p><div class="ft-brand-soc"><a href="https://instagram.com/officialfewpips" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a><a href="https://youtube.com/@Fewpips" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48"></polygon></svg></a><a href="https://discord.gg/3UTqHFJPAC" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128c.12-.098.246-.198.373-.292a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"></path></svg></a><a href="https://t.co/yET4tmu5tE" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a><a href="https://t.me/FewpipsSupport" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg></a></div></div><div class="ft-col"><h4>Challenges</h4><a href="https://crm.fewpips.com/auth/signup">Instant</a><a href="https://crm.fewpips.com/auth/signup">1-Step</a><a href="https://crm.fewpips.com/auth/signup">2-Step</a><a href="https://crm.fewpips.com/auth/signup">3-Step</a><a href="/fewpips-futures.html">Futures</a></div><div class="ft-col"><h4>Resources</h4><a href="/faq">FAQ</a><a href="/blog">Blog</a><a href="/#about">About Us</a><a href="/#challenges">Challenges</a><a href="/#compare">Compare Plans</a><a href="/#instruments">Instruments</a></div><div class="ft-col"><h4>Trading Rules</h4><a href="/legal/#cfd-challenge">CFD Challenge Rules</a><a href="/legal/#cfd-funded">CFD Funded Rules</a><a href="/legal/#futures-challenge">Futures Challenge Rules</a><a href="/legal/#futures-funded">Futures Funded Rules</a></div><div class="ft-col"><h4>Legal</h4><a href="/terms">Terms &amp; Conditions</a><a href="/terms">Privacy Policy</a><a href="/terms">Cookie Policy</a><a href="/terms">AML Policy</a><a href="/terms">Verification &amp; KYC</a><a href="/legal/">Trading Rules Hub</a></div></div><div class="ft-bot"><span>© 2026 Fewpips. All rights reserved. Registered in St. Lucia.</span><span><a href="/terms" style="color:var(--t3);transition:color .2s">Terms</a> · <a href="/legal/" style="color:var(--t3);transition:color .2s">Rules</a> · <a href="/terms" style="color:var(--t3);transition:color .2s">Privacy</a> · <a href="/terms" style="color:var(--t3);transition:color .2s">Cookies</a></span></div><div class="ft-disc"><strong>Risk Disclaimer:</strong> Fewpips is a simulation-based evaluation platform. All trading is conducted with virtual funds. Performance rewards are based on simulated results. Fewpips is not a broker-dealer, exchange, or investment advisor. Past performance does not guarantee future results.</div></div></footer>
 
 <script>
-  var DOCS = ['cfd-challenge','cfd-funded','futures-funded','futures-instant'];
+  var DOCS = ['cfd-challenge','cfd-funded','futures-challenge','futures-funded'];
   var tabs = document.querySelectorAll('.legal-tab');
   var articles = document.querySelectorAll('.legal-doc');
 
