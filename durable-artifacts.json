@@ -1,0 +1,74 @@
+{
+  "site": "fewpips.com",
+  "live_url": "https://www.fewpips.com",
+  "notes": [
+    "Durable artifacts that MUST survive every deploy of this site.",
+    "The deploy gate (scripts/deploy-gate.sh) checks every item here against the build BEFORE it can deploy.",
+    "SELF-ANNEALING: whenever a deploy silently wipes something, add a check here so it can never happen again.",
+    "If you INTENTIONALLY change site behaviour (e.g. add a new promo banner), update the matching check in the same PR - the gate is a safety net, not a cage."
+  ],
+  "checks": [
+    {
+      "id": "ga4-every-page",
+      "desc": "GA4 tag G-67ZBBEE4JC on every route page (re-exports silently drop it)",
+      "type": "in_all_pages",
+      "pattern": "G-67ZBBEE4JC"
+    },
+    {
+      "id": "popup-function-present",
+      "desc": "Popup signup Cloudflare Pages Function exists (missing = popup POST 405s, all signups dropped)",
+      "type": "file_exists",
+      "path": "functions/api/popup-signup.ts"
+    },
+    {
+      "id": "popup-frontend-wired",
+      "desc": "Frontend still POSTs to /api/popup-signup",
+      "type": "present",
+      "pattern": "api/popup-signup"
+    },
+    {
+      "id": "sitemap-min-urls",
+      "desc": "sitemap.xml exists with >= 15 URLs (GSC discovery; re-exports drop it -> 404)",
+      "type": "sitemap_min_urls",
+      "path": "sitemap.xml",
+      "min": 15
+    },
+    {
+      "id": "brand-casing",
+      "desc": "No wrong-cased 'FewPips' anywhere in text/markup (brand is 'Fewpips')",
+      "type": "absent",
+      "pattern": "FewPips"
+    },
+    {
+      "id": "wc48-banner-removed",
+      "desc": "WC48 World Cup promo banner stays removed (came back on Djordje's revert 2026-06-24)",
+      "type": "absent",
+      "pattern": "wc48-banner"
+    },
+    {
+      "id": "mll-uncapped",
+      "desc": "Max loss limit trails the highest balance / is uncapped on /legal",
+      "type": "present_in",
+      "path": "legal/index.html",
+      "pattern": "highest balance"
+    },
+    {
+      "id": "refund-48h-10fee",
+      "desc": "Refund window = 48h with $10 administration charge (terms)",
+      "type": "present",
+      "pattern": "10 administration charge"
+    },
+    {
+      "id": "min-payout-per-product",
+      "desc": "Per-product minimum payout text present (CFD $50 / Futures $100)",
+      "type": "present",
+      "pattern": "Minimum payout is"
+    },
+    {
+      "id": "leverage-per-instrument",
+      "desc": "Per-instrument leverage matrix present (Indices/Commodities/Metals/Crypto, not just FX)",
+      "type": "present",
+      "pattern": "1:7.5"
+    }
+  ]
+}
