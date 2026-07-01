@@ -71,24 +71,50 @@ function bannerScript(b: { img: string; imgM: string; alt: string }): string {
   );
 }
 
+// Official Fewpips Traders Community - added to the footer social row on every page.
+// The footer is client-hydrated (its socials render from JS chunks), so we inject a
+// resilient script that appends the Telegram icon to .ft-brand-soc after hydration.
+const TELEGRAM = "https://t.me/fewpips_traders";
+
+function footerScript(): string {
+  const svg =
+    "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' " +
+    "stroke-linecap='round' stroke-linejoin='round'>" +
+    "<line x1='22' y1='2' x2='11' y2='13'></line>" +
+    "<polygon points='22 2 15 22 11 13 2 9 22 2'></polygon></svg>";
+  return (
+    "<script>(function(){var TG=" + JSON.stringify(TELEGRAM) + ";" +
+    "function ic(){var a=document.createElement('a');a.href=TG;a.target='_blank';a.rel='noopener';" +
+    "a.className='ft-tg';a.setAttribute('aria-label','Telegram');a.innerHTML=" + JSON.stringify(svg) + ";return a}" +
+    "function add(){var r=document.querySelectorAll('.ft-brand-soc');" +
+    "for(var i=0;i<r.length;i++){if(!r[i].querySelector('.ft-tg')){r[i].appendChild(ic())}}}" +
+    "var o=new MutationObserver(function(){add()});" +
+    "if(document.body){o.observe(document.body,{childList:!0,subtree:!0})}" +
+    "add();setTimeout(add,1200);document.addEventListener('DOMContentLoaded',add)})();</script>"
+  );
+}
+
 export const onRequest: PagesFunction<Env> = async (ctx) => {
   const res = await ctx.next();
   try {
     const ct = res.headers.get("content-type") || "";
+    if (!ct.includes("text/html")) return res;
     const path = new URL(ctx.request.url).pathname;
-    if (!ct.includes("text/html") || !TARGET_PATHS.has(path)) return res;
+    const b = TARGET_PATHS.has(path) ? SCHEDULE[pickDate(ctx.request.url)] : null;
 
-    const b = SCHEDULE[pickDate(ctx.request.url)];
-    const transformed = b
-      ? new HTMLRewriter()
-          .on("body", { element(el) { el.append(bannerScript(b), { html: true }); } })
-          .transform(res)
-      : res;
+    const transformed = new HTMLRewriter()
+      .on("body", {
+        element(el) {
+          el.append(footerScript(), { html: true });         // Telegram community link, ALL pages
+          if (b) el.append(bannerScript(b), { html: true });  // promo banner, / and /futures only
+        },
+      })
+      .transform(res);
 
-    // The banner changes daily at midnight ET, so the edge must not serve a
-    // stale cached copy across the date boundary. Force these two pages fresh.
     const out = new Response(transformed.body, transformed);
-    out.headers.set("cache-control", "no-store");
+    // Banner pages change daily at midnight ET -> never serve stale across the date
+    // boundary. The footer link is static, so other pages keep normal caching.
+    if (b) out.headers.set("cache-control", "no-store");
     return out;
   } catch (_e) { return res; }
 };
