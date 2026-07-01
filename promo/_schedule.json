@@ -1,0 +1,134 @@
+{
+ "2026-07-01": {
+  "img": "/promo/2026-07-01.png",
+  "imgM": "/promo/2026-07-01-m.png",
+  "alt": "Fewpips Free Reset promo",
+  "code": "FREESET"
+ },
+ "2026-07-03": {
+  "img": "/promo/2026-07-03.png",
+  "imgM": "/promo/2026-07-03-m.png",
+  "alt": "Fewpips Independence Sale promo",
+  "code": "FREEDOM60"
+ },
+ "2026-07-04": {
+  "img": "/promo/2026-07-04.png",
+  "imgM": "/promo/2026-07-04-m.png",
+  "alt": "Fewpips Independence Day promo",
+  "code": "FREEDOM60"
+ },
+ "2026-07-05": {
+  "img": "/promo/2026-07-05.png",
+  "imgM": "/promo/2026-07-05-m.png",
+  "alt": "Fewpips Last Full Day promo",
+  "code": "FREEDOM60"
+ },
+ "2026-07-06": {
+  "img": "/promo/2026-07-06.png",
+  "imgM": "/promo/2026-07-06-m.png",
+  "alt": "Fewpips Final Hours promo",
+  "code": "FREEDOM60"
+ },
+ "2026-07-10": {
+  "img": "/promo/2026-07-10.png",
+  "imgM": "/promo/2026-07-10-m.png",
+  "alt": "Fewpips Flash Friday promo",
+  "code": "FRIDAY50"
+ },
+ "2026-07-12": {
+  "img": "/promo/2026-07-12.png",
+  "imgM": "/promo/2026-07-12-m.png",
+  "alt": "Fewpips Power-Up Weekend promo",
+  "code": "POWERUP"
+ },
+ "2026-07-13": {
+  "img": "/promo/2026-07-13.png",
+  "imgM": "/promo/2026-07-13-m.png",
+  "alt": "Fewpips Power-Up \u00b7 Final Day promo",
+  "code": "POWERUP"
+ },
+ "2026-07-15": {
+  "img": "/promo/2026-07-15.png",
+  "imgM": "/promo/2026-07-15-m.png",
+  "alt": "Fewpips Mid-Year Flash promo",
+  "code": "MIDYEAR50"
+ },
+ "2026-07-17": {
+  "img": "/promo/2026-07-17.png",
+  "imgM": "/promo/2026-07-17-m.png",
+  "alt": "Fewpips Flash Friday promo",
+  "code": "FRIDAY50"
+ },
+ "2026-07-20": {
+  "img": "/promo/2026-07-20.png",
+  "imgM": "/promo/2026-07-20-m.png",
+  "alt": "Fewpips Whale Week promo",
+  "code": "WHALE"
+ },
+ "2026-07-21": {
+  "img": "/promo/2026-07-21.png",
+  "imgM": "/promo/2026-07-21-m.png",
+  "alt": "Fewpips Whale Week promo",
+  "code": "WHALE"
+ },
+ "2026-07-22": {
+  "img": "/promo/2026-07-22.png",
+  "imgM": "/promo/2026-07-22-m.png",
+  "alt": "Fewpips Whale Week \u00b7 Halfway promo",
+  "code": "WHALE"
+ },
+ "2026-07-23": {
+  "img": "/promo/2026-07-23.png",
+  "imgM": "/promo/2026-07-23-m.png",
+  "alt": "Fewpips Whale Week promo",
+  "code": "WHALE"
+ },
+ "2026-07-24": {
+  "img": "/promo/2026-07-24.png",
+  "imgM": "/promo/2026-07-24-m.png",
+  "alt": "Fewpips Flash Friday \u00d7 Whale Week promo",
+  "code": "FRIDAY50 + WHALE"
+ },
+ "2026-07-25": {
+  "img": "/promo/2026-07-25.png",
+  "imgM": "/promo/2026-07-25-m.png",
+  "alt": "Fewpips Whale Week \u00b7 24 Hours Left promo",
+  "code": "WHALE"
+ },
+ "2026-07-26": {
+  "img": "/promo/2026-07-26.png",
+  "imgM": "/promo/2026-07-26-m.png",
+  "alt": "Fewpips Whale Week \u00b7 Last Call promo",
+  "code": "WHALE"
+ },
+ "2026-07-27": {
+  "img": "/promo/2026-07-27.png",
+  "imgM": "/promo/2026-07-27-m.png",
+  "alt": "Fewpips Month-End Close promo",
+  "code": "FINALE50"
+ },
+ "2026-07-28": {
+  "img": "/promo/2026-07-28.png",
+  "imgM": "/promo/2026-07-28-m.png",
+  "alt": "Fewpips Month-End Close promo",
+  "code": "FINALE50"
+ },
+ "2026-07-29": {
+  "img": "/promo/2026-07-29.png",
+  "imgM": "/promo/2026-07-29-m.png",
+  "alt": "Fewpips Month-End \u00b7 Last Full Day promo",
+  "code": "FINALE50"
+ },
+ "2026-07-30": {
+  "img": "/promo/2026-07-30.png",
+  "imgM": "/promo/2026-07-30-m.png",
+  "alt": "Fewpips Day Of Friendship promo",
+  "code": "BRINGAFRIEND60"
+ },
+ "2026-07-31": {
+  "img": "/promo/2026-07-31.png",
+  "imgM": "/promo/2026-07-31-m.png",
+  "alt": "Fewpips Last Call promo",
+  "code": "LASTCALL60"
+ }
+}
