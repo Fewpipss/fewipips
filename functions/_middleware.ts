@@ -3,16 +3,18 @@
  *
  * Injects the promo banner for TODAY below the hero on / and /futures/ only.
  * The schedule below drives the whole July campaign automatically - each banner
- * shows on exactly its own date (US Eastern), gap days show nothing. No ongoing
- * management needed; it rotates itself.
+ * shows on its own date (US Eastern, EDT/UTC-4 in July). Days NOT in SCHEDULE are
+ * true blank fillers (Jul 7, 8, 11, 18). FREESET is the baseline offer shown on
+ * teaser/filler days (Jul 1, 2, 14, 16, 19) + the Free Reset launch. Win-back
+ * (Jul 9) is email-only, so the site shows the FREESET baseline. Zero ongoing
+ * management; it rotates itself.
  *
  * Page body is a React client component (SSR-injected HTML is wiped on hydration),
  * so we inject a small resilient script that inserts the banner after hydration
  * and re-inserts it if React removes it. Reuses the existing .promo-banner-section CSS.
  *
- * TO CHANGE THE CAMPAIGN: edit SCHEDULE (add/remove a date) and drop images in
- * /promo/. To preview any day: append ?_promoDate=YYYY-MM-DD to the URL.
- * All banners link to the signup CTA; the discount code is shown in the image.
+ * TO EDIT: change SCHEDULE (add/remove a date) + drop images in /promo/.
+ * Preview any day: append ?_promoDate=YYYY-MM-DD to the URL.
  */
 
 interface Env {}
@@ -20,18 +22,22 @@ interface Env {}
 const HREF = "https://crm.fewpips.com/auth/signup";
 const TARGET_PATHS = new Set(["/", "/futures", "/futures/"]);
 
-// date (US Eastern, YYYY-MM-DD) -> banner. July is entirely EDT (UTC-4).
 const SCHEDULE: Record<string, { img: string; imgM: string; alt: string }> = {
   "2026-07-01": { img: "/promo/2026-07-01.png", imgM: "/promo/2026-07-01-m.png", alt: "Fewpips Free Reset promo" },
+  "2026-07-02": { img: "/promo/2026-07-01.png", imgM: "/promo/2026-07-01-m.png", alt: "Fewpips Free Reset promo" },
   "2026-07-03": { img: "/promo/2026-07-03.png", imgM: "/promo/2026-07-03-m.png", alt: "Fewpips Independence Sale promo" },
   "2026-07-04": { img: "/promo/2026-07-04.png", imgM: "/promo/2026-07-04-m.png", alt: "Fewpips Independence Day promo" },
   "2026-07-05": { img: "/promo/2026-07-05.png", imgM: "/promo/2026-07-05-m.png", alt: "Fewpips Last Full Day promo" },
   "2026-07-06": { img: "/promo/2026-07-06.png", imgM: "/promo/2026-07-06-m.png", alt: "Fewpips Final Hours promo" },
+  "2026-07-09": { img: "/promo/2026-07-01.png", imgM: "/promo/2026-07-01-m.png", alt: "Fewpips Free Reset promo" },
   "2026-07-10": { img: "/promo/2026-07-10.png", imgM: "/promo/2026-07-10-m.png", alt: "Fewpips Flash Friday promo" },
   "2026-07-12": { img: "/promo/2026-07-12.png", imgM: "/promo/2026-07-12-m.png", alt: "Fewpips Power-Up Weekend promo" },
   "2026-07-13": { img: "/promo/2026-07-13.png", imgM: "/promo/2026-07-13-m.png", alt: "Fewpips Power-Up · Final Day promo" },
+  "2026-07-14": { img: "/promo/2026-07-01.png", imgM: "/promo/2026-07-01-m.png", alt: "Fewpips Free Reset promo" },
   "2026-07-15": { img: "/promo/2026-07-15.png", imgM: "/promo/2026-07-15-m.png", alt: "Fewpips Mid-Year Flash promo" },
+  "2026-07-16": { img: "/promo/2026-07-01.png", imgM: "/promo/2026-07-01-m.png", alt: "Fewpips Free Reset promo" },
   "2026-07-17": { img: "/promo/2026-07-17.png", imgM: "/promo/2026-07-17-m.png", alt: "Fewpips Flash Friday promo" },
+  "2026-07-19": { img: "/promo/2026-07-01.png", imgM: "/promo/2026-07-01-m.png", alt: "Fewpips Free Reset promo" },
   "2026-07-20": { img: "/promo/2026-07-20.png", imgM: "/promo/2026-07-20-m.png", alt: "Fewpips Whale Week promo" },
   "2026-07-21": { img: "/promo/2026-07-21.png", imgM: "/promo/2026-07-21-m.png", alt: "Fewpips Whale Week promo" },
   "2026-07-22": { img: "/promo/2026-07-22.png", imgM: "/promo/2026-07-22-m.png", alt: "Fewpips Whale Week · Halfway promo" },
@@ -48,8 +54,8 @@ const SCHEDULE: Record<string, { img: string; imgM: string; alt: string }> = {
 
 function pickDate(reqUrl: string): string {
   const q = new URL(reqUrl).searchParams.get("_promoDate");
-  if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) return q; // preview override
-  return new Date(Date.now() - 14400000).toISOString().slice(0, 10); // -4h = EDT
+  if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) return q;
+  return new Date(Date.now() - 14400000).toISOString().slice(0, 10);
 }
 
 function bannerScript(b: { img: string; imgM: string; alt: string }): string {
@@ -77,11 +83,9 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
     const path = new URL(ctx.request.url).pathname;
     if (!TARGET_PATHS.has(path)) return res;
     const b = SCHEDULE[pickDate(ctx.request.url)];
-    if (!b) return res; // gap day -> no banner
+    if (!b) return res;
     return new HTMLRewriter()
       .on("body", { element(el) { el.append(bannerScript(b), { html: true }); } })
       .transform(res);
-  } catch (_e) {
-    return res; // never break the page
-  }
+  } catch (_e) { return res; }
 };
