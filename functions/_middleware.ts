@@ -75,13 +75,20 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
   const res = await ctx.next();
   try {
     const ct = res.headers.get("content-type") || "";
-    if (!ct.includes("text/html")) return res;
     const path = new URL(ctx.request.url).pathname;
-    if (!TARGET_PATHS.has(path)) return res;
+    if (!ct.includes("text/html") || !TARGET_PATHS.has(path)) return res;
+
     const b = SCHEDULE[pickDate(ctx.request.url)];
-    if (!b) return res;
-    return new HTMLRewriter()
-      .on("body", { element(el) { el.append(bannerScript(b), { html: true }); } })
-      .transform(res);
+    const transformed = b
+      ? new HTMLRewriter()
+          .on("body", { element(el) { el.append(bannerScript(b), { html: true }); } })
+          .transform(res)
+      : res;
+
+    // The banner changes daily at midnight ET, so the edge must not serve a
+    // stale cached copy across the date boundary. Force these two pages fresh.
+    const out = new Response(transformed.body, transformed);
+    out.headers.set("cache-control", "no-store");
+    return out;
   } catch (_e) { return res; }
 };
