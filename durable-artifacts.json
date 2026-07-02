@@ -47,10 +47,10 @@
     },
     {
       "id": "mll-uncapped",
-      "desc": "Max loss limit trails the highest balance / is uncapped on /legal",
+      "desc": "Max loss limit trails the highest EQUITY (uncapped) on /legal (basis changed balance->equity 2026-07-02)",
       "type": "present_in",
       "path": "legal/index.html",
-      "pattern": "highest balance"
+      "pattern": "highest equity"
     },
     {
       "id": "refund-48h-10fee",

@@ -70,7 +70,7 @@
       </div>
 
       <h4>2. Maximum Loss Limit (MLL)</h4>
-      <p>The MLL is a trailing loss limit referenced to the highest balance your account has reached. It moves up as the account makes profits and never moves down after losses. It is <strong>not capped at the starting balance</strong> - as your account grows, the floor keeps trailing up with it. On all Fewpips accounts the MLL is a trailing Maximum Loss Limit.</p>
+      <p>The MLL is a trailing loss limit referenced to the highest equity (balance + floating/open P&L) your account has reached. It moves up as the account makes profits and never moves down after losses. It is <strong>not capped at the starting balance</strong> - as your account grows, the floor keeps trailing up with it. On all Fewpips accounts the MLL is a trailing Maximum Loss Limit.</p>
       <table class="rules-tbl">
         <thead><tr><th>1-Step Account Size</th><th>MLL</th></tr></thead>
         <tbody>
@@ -85,18 +85,18 @@
       <ul>
         <li>It only increases with profit.</li>
         <li>It never decreases with losses.</li>
-        <li>It is <strong>not</strong> capped at the starting balance - it keeps trailing up as the account's highest balance grows.</li>
+        <li>It is <strong>not</strong> capped at the starting balance - it keeps trailing up as the account's highest equity grows.</li>
         <li>Withdrawals do not reset or reduce the MLL; it stays at the highest level it has ever reached.</li>
       </ul>
       <div class="example-box">
         <strong>Example - $100,000 1-Step account (10% trailing MLL):</strong><br/>
-        Start: balance $100,000 → MLL floor = $100,000 × 90% = $90,000.<br/>
-        Balance rises to $110,000 → floor moves up to $110,000 × 90% = $99,000.<br/>
-        Balance rises to $120,000 → floor moves up to $120,000 × 90% = $108,000 (now $8,000 above the $100,000 starting balance - the floor is not capped).<br/>
-        Balance falls to $115,000 → floor stays at $108,000 (never moves down).<br/>
+        Start: equity $100,000 → MLL floor = $100,000 × 90% = $90,000.<br/>
+        Equity rises to $110,000 (including open/floating profit) → floor moves up to $110,000 × 90% = $99,000.<br/>
+        Equity rises to $120,000 → floor moves up to $120,000 × 90% = $108,000 (now $8,000 above the $100,000 starting balance - the floor is not capped).<br/>
+        Equity falls to $115,000 → floor stays at $108,000 (never moves down).<br/>
         Withdrawals do not reduce the floor; it stays at the highest level it has ever reached.<br/><br/>
-        With the floor now at $108,000: balance $112,000 → above the floor → <span class="ok">OK</span><br/>
-        With the floor now at $108,000: balance $107,500 → at or below the floor → <span class="vio">Violation</span>
+        With the floor now at $108,000: equity $112,000 → above the floor → <span class="ok">OK</span><br/>
+        With the floor now at $108,000: equity $107,500 → at or below the floor → <span class="vio">Violation</span>
       </div>
 
       <h4>3. Minimum Trading Days</h4>
@@ -163,7 +163,7 @@
       </div>
 
       <h4>2. Maximum Loss Limit</h4>
-      <p>Trailing 8% on all account sizes, referenced to the account's highest balance. The MLL only moves up with profit, never down, and keeps trailing up as the balance grows - it is not capped at the starting balance.</p>
+      <p>The MLL is a trailing loss limit referenced to the highest equity (balance + floating/open P&L) your account has reached. It moves up as the account makes profits and never moves down after losses. It is <strong>not capped at the starting balance</strong> - as your account grows, the floor keeps trailing up with it. On all Fewpips accounts the MLL is a trailing Maximum Loss Limit.</p>
       <table class="rules-tbl">
         <thead><tr><th>2-Step Account Size</th><th>MLL</th></tr></thead>
         <tbody>
@@ -194,7 +194,7 @@
       </div>
 
       <h4>2. Maximum Loss Limit</h4>
-      <p>Trailing 8% on all account sizes ($10K, $25K, $50K, $100K, $200K), referenced to the account's highest balance. The MLL only moves up with profit, never down, and keeps trailing up as the balance grows - it is not capped at the starting balance.</p>
+      <p>The MLL is a trailing loss limit referenced to the highest equity (balance + floating/open P&L) your account has reached. It moves up as the account makes profits and never moves down after losses. It is <strong>not capped at the starting balance</strong> - as your account grows, the floor keeps trailing up with it. On all Fewpips accounts the MLL is a trailing Maximum Loss Limit.</p>
 
       <h4>3. Minimum Trading Days</h4>
       <p>5 days for every 3-Step account size. Does not need to be consecutive.</p>
@@ -261,7 +261,7 @@
 
       <h4>2. Maximum Loss Limit</h4>
       <h5>Max Drawdown - Trailing</h5>
-      <p>The Max Drawdown is a trailing limit referenced to the <strong>highest historical balance</strong> reached by the account. The floor only ever moves up; never falls back down. Drawdown is <strong>6% - 10%</strong> of starting balance depending on account size.</p>
+      <p>The MLL is a trailing loss limit referenced to the highest equity (balance + floating/open P&L) your account has reached. It moves up as the account makes profits and never moves down after losses. It is <strong>not capped at the starting balance</strong> - as your account grows, the floor keeps trailing up with it. On all Fewpips accounts the MLL is a trailing Maximum Loss Limit.</p>
       <table class="rules-tbl">
         <thead><tr><th>1-Step Funded Account Size</th><th>MLL</th></tr></thead>
         <tbody>
@@ -453,13 +453,13 @@
       </div>
 
       <h4>3. Max Drawdown - Trailing</h4>
-      <p>The Max Drawdown is a trailing limit referenced to the <strong>highest historical balance</strong> reached by the account. The floor only ever moves up; never falls back down. Drawdown is <strong>8% - 10%</strong> of starting balance depending on account size.</p>
+      <p>The MLL is a trailing loss limit referenced to the highest equity (balance + floating/open P&L) your account has reached. It moves up as the account makes profits and never moves down after losses. It is <strong>not capped at the starting balance</strong> - as your account grows, the floor keeps trailing up with it. On all Fewpips accounts the MLL is a trailing Maximum Loss Limit.</p>
       <div class="example-box">
         <strong>Example - $100,000 account, 10% trailing drawdown:</strong><br/>
         Starting balance $100,000 → floor = $100,000 × 90% = $90,000.<br/>
-        Balance rises to $105,000 → new floor = $105,000 × 90% = $94,500.<br/>
-        Balance drops to $99,000 → floor stays at $94,500 (does not move down).<br/>
-        If balance drops to $94,499 → account violated.
+        Equity rises to $105,000 (including open/floating profit) → new floor = $105,000 × 90% = $94,500.<br/>
+        Equity drops to $99,000 → floor stays at $94,500 (does not move down).<br/>
+        If equity drops to $94,499 → account violated.
       </div>
 
       <h4>4. Minimum Trading Days</h4>
@@ -589,7 +589,7 @@
       </div>
 
       <h4>2. Max Drawdown - Trailing</h4>
-      <p>The Max Drawdown is a trailing limit referenced to the <strong>highest historical balance</strong> reached by the account. The floor only ever moves up; never falls back down.</p>
+      <p>The MLL is a trailing loss limit referenced to the highest equity (balance + floating/open P&L) your account has reached. It moves up as the account makes profits and never moves down after losses. It is <strong>not capped at the starting balance</strong> - as your account grows, the floor keeps trailing up with it. On all Fewpips accounts the MLL is a trailing Maximum Loss Limit.</p>
       <ul>
         <li><strong>1-Step Funded:</strong> 8% - 10% of starting balance, by account size.</li>
         <li><strong>Instant:</strong> 4% - 8% of starting balance, by account size (tighter range since there is no prior evaluation filter).</li>
