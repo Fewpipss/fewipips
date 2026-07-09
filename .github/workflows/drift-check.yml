@@ -1,0 +1,39 @@
+name: Live Drift Check
+# Every 3 hours: verify the LIVE site still matches what main should serve.
+# If someone deployed outside git (wrangler/netlify direct) or main wasn't deployed,
+# this opens (or updates) a GitHub issue so it's caught fast.
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check live vs main
+        id: check
+        run: bash scripts/drift-check.sh https://www.fewpips.com
+        continue-on-error: true
+      - name: Open issue on drift
+        if: steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          existing=$(gh issue list --state open --search "Live site drifted in:title" --json number --jq 'length')
+          if [ "$existing" -gt 0 ]; then
+            echo "Drift issue already open - skipping duplicate."
+            exit 0
+          fi
+          gh issue create \
+            --title "Live site drifted from main" \
+            --body "drift-check.sh failed against https://www.fewpips.com. Likely an out-of-band deploy (wrangler/netlify direct) or main was not deployed. Fix: pull main, run scripts/deploy-gate.sh, then redeploy main. Run log: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      - name: Fail job if drift
+        if: steps.check.outcome == 'failure'
+        run: exit 1
