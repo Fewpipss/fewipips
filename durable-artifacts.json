@@ -69,6 +69,26 @@
       "desc": "Per-instrument leverage matrix present (Indices/Commodities/Metals/Crypto, not just FX)",
       "type": "present",
       "pattern": "1:7.5"
+    },
+    {
+      "id": "proof-peek-injector",
+      "desc": "Leaderboard+certs sneak-peek injector present (built-output add-on; source re-export would drop it)",
+      "type": "file_exists",
+      "path": "proof-peek.js"
+    },
+    {
+      "id": "proof-peek-home",
+      "desc": "proof-peek.js wired on homepage (leaderboard + Proof of Payouts sneak-peek)",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "proof-peek.js"
+    },
+    {
+      "id": "proof-peek-futures",
+      "desc": "proof-peek.js wired on futures page",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "proof-peek.js"
     }
   ]
 }
