@@ -1,11 +1,13 @@
-/* Fewpips - split the bottom Discord sticky bar into two halves:
-   left = Discord, right = Telegram. Also removes the circular Telegram chat FAB.
-   Injected after hydration; replaces the React sticky with an own (non-React) bar so it stays put. */
+/* Fewpips - bottom Discord/Telegram split sticky bar (left Discord, right Telegram).
+   Always shown on EVERY page load, client-side navigation and refresh. Hides the original
+   React Discord bar + Telegram/WhatsApp FABs (those hides also live in the site CSS so the
+   original bar never flashes). Closing with X hides it only for the current view - it comes
+   back on the next navigation or refresh. Own non-React element so it stays put. */
 (function () {
   var BAR_ID = "sd-split-bar";
   var DISCORD_URL = "https://discord.gg/3UTqHFJPAC";
   var TELEGRAM_URL = "https://t.me/FewpipsSupport";
-  var STORE_KEY = "fewpips_sd_split_closed";
+  var closed = false; // per-view close; reset on navigation/refresh
 
   var DISCORD_SVG = '<svg class="sd-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/></svg>';
   var TELEGRAM_SVG = '<svg class="sd-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>';
@@ -16,10 +18,9 @@
     var css = document.createElement("style");
     css.id = BAR_ID + "-css";
     css.textContent = [
-      // hide the original React Discord bar and the circular Telegram FAB
+      // hide the original React Discord bar + Telegram/WhatsApp FABs (also in site CSS = no flash)
       ".sticky-discord{display:none!important}",
       ".chat-fab--telegram{display:none!important}",
-      // remove WhatsApp: from the chat FAB (bottom-right) and the Contact page card
       ".chat-fab--whatsapp{display:none!important}",
       "a.contact-card[href*='wa.me']{display:none!important}",
       // own split bar
@@ -42,7 +43,7 @@
       "#" + BAR_ID + " .sd-x svg{width:18px;height:18px}",
       "@media(max-width:560px){#" + BAR_ID + " .sd-txt small{display:none}#" + BAR_ID + " .sd-half{padding:12px 10px;gap:8px}#" + BAR_ID + " .sd-telegram{padding-right:46px}#" + BAR_ID + " .sd-txt b{font-size:.85rem}}"
     ].join("");
-    document.head.appendChild(css);
+    (document.head || document.documentElement).appendChild(css);
   }
 
   function build() {
@@ -60,31 +61,44 @@
       '</a>' +
       '<button type="button" class="sd-x" aria-label="Close">' + X_SVG + '</button>';
     bar.querySelector(".sd-x").addEventListener("click", function () {
+      closed = true;       // only for this view - comes back on next nav/refresh
       bar.remove();
-      try { localStorage.setItem(STORE_KEY, "1"); } catch (e) {}
     });
     return bar;
   }
 
   function place() {
-    injectStyles(); // always hide original sticky + telegram FAB
-    try { if (localStorage.getItem(STORE_KEY) === "1") return true; } catch (e) {}
-    if (document.getElementById(BAR_ID)) return true;
+    injectStyles();
+    if (closed) return;
+    if (document.getElementById(BAR_ID)) return;
+    if (!document.body) return;
     document.body.appendChild(build());
-    return true;
   }
 
-  function run() {
-    place();
-    // re-assert a few times in case the React sticky mounts late
-    var tries = 0;
-    var t = setInterval(function () {
-      tries++;
-      injectStyles();
-      if (tries > 20) clearInterval(t);
-    }, 300);
-  }
+  // On any client-side navigation the bar must reappear (reset the per-view close).
+  function reset() { closed = false; place(); }
 
-  if (document.readyState === "complete") run();
-  else window.addEventListener("load", run);
+  // Show as early as possible.
+  injectStyles();
+  place();
+
+  // Next.js does client-side routing via the history API - re-show on every route change.
+  ["pushState", "replaceState"].forEach(function (m) {
+    var orig = history[m];
+    if (orig && !orig.__sdPatched) {
+      var patched = function () { var r = orig.apply(this, arguments); setTimeout(reset, 20); return r; };
+      patched.__sdPatched = true;
+      history[m] = patched;
+    }
+  });
+  window.addEventListener("popstate", reset);   // back / forward
+  window.addEventListener("pageshow", reset);   // bfcache restore
+  document.addEventListener("DOMContentLoaded", place);
+  window.addEventListener("load", place);
+
+  // Fallback guard: keep the bar present (and the hides asserted) unless the user closed it.
+  setInterval(function () {
+    injectStyles();
+    if (!closed && !document.getElementById(BAR_ID)) place();
+  }, 400);
 })();
