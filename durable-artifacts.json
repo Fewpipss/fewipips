@@ -89,6 +89,19 @@
       "type": "present_in",
       "path": "futures/index.html",
       "pattern": "proof-peek.js"
+    },
+    {
+      "id": "sticky-split-injector",
+      "desc": "Discord/Telegram split sticky + Telegram FAB removal injector (built-output add-on)",
+      "type": "file_exists",
+      "path": "sticky-split.js"
+    },
+    {
+      "id": "sticky-split-home",
+      "desc": "sticky-split.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "sticky-split.js"
     }
   ]
 }
