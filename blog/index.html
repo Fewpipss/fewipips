@@ -6,17 +6,17 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-67ZBBEE4JC"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-67ZBBEE4JC');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fewpips Blog - Prop Trading Guides, Tips & Industry Insights</title>
-<meta name="description" content="Expert guides on prop firm challenges, funded trading accounts, risk management, and payout strategies. Learn how to get funded and trade with confidence.">
-<meta name="keywords" content="prop firm blog, funded trading, prop firm challenge tips, prop firm drawdown, instant funded account, prop firm payouts, proprietary trading">
+<title>Fewpips Blog - Prop Trading Rules, Payouts &amp; Getting Started</title>
+<meta name="description" content="Clear guides on Fewpips rules, payouts, accounts, billing and platform. Consistency rule, prohibited trading, loss limits, payouts, leverage and more, for CFD and Future Based CFD.">
+<meta name="keywords" content="prop firm blog, fewpips rules, funded trading, consistency rule, prop firm payouts, prop firm loss limits, instant funded account">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://fewpips.com/blog">
-<meta property="og:title" content="Fewpips Blog - Prop Trading Guides & Insights">
-<meta property="og:description" content="Expert guides on prop firm challenges, funded trading, risk management, and payout strategies.">
+<meta property="og:title" content="Fewpips Blog - Rules, Payouts &amp; Getting Started">
+<meta property="og:description" content="Clear guides on Fewpips rules, payouts, accounts, billing and platform, for CFD and Future Based CFD.">
 <meta property="og:url" content="https://fewpips.com/blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Fewpips">
-<meta property="og:image" content="https://fewpips.com/fewpips-brand-visual.png">
+<meta property="og:image" content="https://fewpips.com/blog/mascot-2-victory.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
@@ -29,7 +29,7 @@
   "@context": "https://schema.org",
   "@type": "Blog",
   "name": "Fewpips Blog",
-  "description": "Expert guides on prop firm challenges, funded trading accounts, risk management, and payout strategies.",
+  "description": "Clear guides on Fewpips rules, payouts, accounts, billing and platform for CFD and Future Based CFD accounts.",
   "url": "https://fewpips.com/blog",
   "publisher": {
     "@type": "Organization",
@@ -50,8 +50,6 @@
 }
 body{background:var(--bg);color:var(--text);font-family:'Inter',ui-sans-serif,system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-
-/* === ANIMATED BACKGROUND SYSTEM === */
 .page-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .orb{position:absolute;border-radius:50%;filter:blur(140px);animation:orbDrift 25s ease-in-out infinite}
 .orb-1{width:650px;height:650px;background:rgba(15,205,55,.07);top:-250px;left:-150px;animation-delay:0s}
@@ -59,42 +57,27 @@ a{color:inherit;text-decoration:none}
 .orb-3{width:400px;height:400px;background:rgba(66,255,0,.05);top:35%;left:55%;animation-delay:-16s}
 .orb-4{width:300px;height:300px;background:rgba(15,205,55,.04);top:70%;left:15%;animation-delay:-12s}
 @keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(50px,-60px) scale(1.15)}50%{transform:translate(-40px,50px) scale(.9)}75%{transform:translate(30px,-20px) scale(1.05)}}
-
-/* Grid pattern */
 .grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:linear-gradient(rgba(15,205,55,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(15,205,55,.025) 1px,transparent 1px);
   background-size:80px 80px}
-
-/* Dot field */
 .dot-field{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:radial-gradient(rgba(15,205,55,.08) 1px,transparent 1px);
   background-size:40px 40px;opacity:.25}
-
-/* Noise texture */
 .noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.015;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:128px 128px}
-
-/* Scan lines */
 .scanlines{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(15,205,55,.008) 2px,rgba(15,205,55,.008) 4px);
   animation:scanMove 8s linear infinite}
 @keyframes scanMove{0%{background-position:0 0}100%{background-position:0 100px}}
-
-/* Floating particles */
 .particles-container{position:fixed;inset:0;z-index:0;pointer-events:none}
 .particle{position:absolute;border-radius:50%;opacity:0;animation:floatUp 6s ease-in-out infinite}
 @keyframes floatUp{0%,100%{opacity:0;transform:translateY(0) scale(1)}20%{opacity:.6}50%{opacity:.35;transform:translateY(-40px) scale(1.2)}100%{opacity:0;transform:translateY(-70px) scale(.8)}}
-
-/* Animated gradient border at top */
 .top-gradient-line{position:fixed;top:0;left:0;right:0;height:2px;z-index:200;
   background:linear-gradient(90deg,transparent,#00ffc2 20%,#42ff00 40%,#0fcd37 60%,#00ffc2 80%,transparent);
   background-size:200% 100%;animation:gradientSlide 4s linear infinite}
 @keyframes gradientSlide{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
 .content{position:relative;z-index:1}
-
-/* Nav */
 .blog-nav{position:sticky;top:0;z-index:100;background:rgba(5,7,9,.85);backdrop-filter:blur(24px) saturate(1.2);border-bottom:1px solid var(--border);padding:0 2rem;height:72px;display:flex;align-items:center;justify-content:space-between}
 .blog-nav-logo{display:flex;align-items:center;gap:.75rem}
 .blog-nav-logo img{height:32px}
@@ -104,8 +87,6 @@ a{color:inherit;text-decoration:none}
 .nav-links a:hover{color:var(--white)}
 .nav-cta{display:inline-flex;align-items:center;padding:.55rem 1.4rem;border-radius:10px;background:var(--gradient);color:#000;font-weight:700;font-size:.8rem;letter-spacing:.3px;transition:all .2s;box-shadow:0 0 20px rgba(15,205,55,.2)}
 .nav-cta:hover{box-shadow:0 0 30px rgba(15,205,55,.35);transform:translateY(-1px)}
-
-/* Hero */
 .blog-hero{padding:6rem 2rem 4rem;text-align:center;position:relative}
 .blog-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(15,205,55,.08) 0%,rgba(0,255,194,.04) 30%,transparent 70%);pointer-events:none}
 .blog-hero::after{content:'';position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:400px;height:100px;background:radial-gradient(ellipse,rgba(15,205,55,.12),transparent 70%);filter:blur(30px);pointer-events:none}
@@ -115,54 +96,34 @@ a{color:inherit;text-decoration:none}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(15,205,55,.4)}50%{opacity:.7;box-shadow:0 0 0 8px rgba(15,205,55,0)}}
 .blog-hero h1{font-family:'Poppins',sans-serif;font-size:clamp(2.25rem,5vw,3.75rem);font-weight:800;color:var(--white);margin-bottom:1rem;position:relative;letter-spacing:-.5px}
 .blog-hero h1 span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.blog-hero p{font-size:1.1rem;color:var(--text-muted);max-width:580px;margin:0 auto;position:relative;line-height:1.7}
-
-/* Glow divider */
+.blog-hero p{font-size:1.1rem;color:var(--text-muted);max-width:600px;margin:0 auto;position:relative;line-height:1.7}
 .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(15,205,55,.15) 15%,rgba(15,205,55,.4) 50%,rgba(15,205,55,.15) 85%,transparent);margin:0;position:relative}
 .section-divider::after{content:'';position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:200px;height:7px;background:radial-gradient(ellipse,rgba(15,205,55,.15),transparent);filter:blur(3px)}
-
-/* Blog Grid */
 .blog-container{max-width:1240px;margin:0 auto;padding:3rem 2rem 4rem}
-.section-label{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.cat-section{margin-bottom:3.5rem}
+.section-label{display:flex;align-items:center;gap:.75rem;margin-bottom:1.75rem}
 .section-label .line{flex:1;height:1px;background:linear-gradient(90deg,rgba(15,205,55,.2),transparent)}
-.section-label span{font-family:'Poppins',sans-serif;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green)}
-
-.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(370px,1fr));gap:1.75rem}
-
-/* Blog Card */
-.blog-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .4s cubic-bezier(.25,.46,.45,.94);position:relative}
+.section-label span{font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green);white-space:nowrap}
+.hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.75rem}
+.blog-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .4s cubic-bezier(.25,.46,.45,.94);position:relative;display:flex;flex-direction:column}
 .blog-card::before{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,rgba(15,205,55,.05),transparent 60%);opacity:0;transition:opacity .4s;z-index:1;pointer-events:none}
 .blog-card:hover{border-color:var(--border-hover);background:var(--bg-card-hover);transform:translateY(-6px);box-shadow:0 25px 70px rgba(0,0,0,.5),0 0 40px rgba(15,205,55,.08)}
 .blog-card:hover::before{opacity:1}
-
-.blog-card-img{height:220px;position:relative;overflow:hidden}
+.blog-card-img{height:200px;position:relative;overflow:hidden}
 .blog-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
 .blog-card:hover .blog-card-img img{transform:scale(1.05)}
 .blog-card-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,var(--bg-card));pointer-events:none}
-.blog-card-badge{position:absolute;top:1rem;left:1rem;z-index:2;display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;border-radius:8px;background:rgba(5,7,9,.7);backdrop-filter:blur(10px);border:1px solid rgba(15,205,55,.2);font-size:.65rem;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.5px}
+.blog-card-badge{position:absolute;top:1rem;left:1rem;z-index:2;display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;border-radius:8px;background:rgba(5,7,9,.7);backdrop-filter:blur(10px);border:1px solid rgba(15,205,55,.2);font-size:.62rem;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.5px}
 .blog-card-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
-
-.blog-card-body{padding:1.25rem 1.5rem 1.5rem;position:relative;z-index:2}
+.blog-card-body{padding:1.25rem 1.5rem 1.5rem;position:relative;z-index:2;display:flex;flex-direction:column;flex:1}
 .blog-card-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem;font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px}
-.blog-card h2{font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:700;color:var(--white);line-height:1.4;margin-bottom:.6rem;transition:color .3s}
+.blog-card h2{font-family:'Poppins',sans-serif;font-size:1.05rem;font-weight:700;color:var(--white);line-height:1.4;margin-bottom:.6rem;transition:color .3s}
 .blog-card:hover h2{color:var(--green-light)}
-.blog-card p{font-size:.85rem;color:var(--text-muted);line-height:1.65;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.blog-card p{font-size:.85rem;color:var(--text-muted);line-height:1.65;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex:1}
 .blog-card-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:600;color:var(--green);transition:gap .3s}
 .blog-card:hover .blog-card-link{gap:.65rem}
 .blog-card-link svg{width:14px;height:14px;transition:transform .3s}
 .blog-card:hover .blog-card-link svg{transform:translateX(3px)}
-
-/* Featured (first card spans full width) */
-.blog-grid .blog-card:first-child{grid-column:1 / -1}
-@media(min-width:768px){
-  .blog-grid .blog-card:first-child{display:grid;grid-template-columns:1.1fr 1fr}
-  .blog-grid .blog-card:first-child .blog-card-img{height:100%}
-  .blog-grid .blog-card:first-child .blog-card-body{display:flex;flex-direction:column;justify-content:center;padding:2.5rem}
-  .blog-grid .blog-card:first-child h2{font-size:1.4rem}
-  .blog-grid .blog-card:first-child p{font-size:.9rem;-webkit-line-clamp:4}
-}
-
-/* Mascot section between cards and CTA */
 .mascot-break{position:relative;padding:3rem 2rem;text-align:center;overflow:hidden}
 .mascot-break::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(15,205,55,.015) 30%,rgba(15,205,55,.03) 50%,rgba(15,205,55,.015) 70%,transparent)}
 .mascot-break-inner{display:flex;align-items:center;justify-content:center;gap:3rem;max-width:900px;margin:0 auto;flex-wrap:wrap}
@@ -172,8 +133,6 @@ a{color:inherit;text-decoration:none}
 .mascot-break-text{text-align:left;max-width:400px}
 .mascot-break-text h3{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:.4rem}
 .mascot-break-text p{font-size:.9rem;color:var(--text-muted);line-height:1.6}
-
-/* CTA Section */
 .blog-cta-section{position:relative;padding:4rem 2rem;margin-top:1rem}
 .blog-cta-section::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(15,205,55,.02) 30%,rgba(15,205,55,.04) 50%,rgba(15,205,55,.02) 70%,transparent)}
 .blog-cta{max-width:700px;margin:0 auto;text-align:center;padding:3rem 2.5rem;border-radius:24px;background:rgba(12,14,20,.8);border:1px solid rgba(15,205,55,.12);position:relative;overflow:hidden;backdrop-filter:blur(10px)}
@@ -187,21 +146,17 @@ a{color:inherit;text-decoration:none}
 .blog-cta .stat{text-align:center}
 .blog-cta .stat-value{font-family:'Poppins',sans-serif;font-size:1.25rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .blog-cta .stat-label{font-size:.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;margin-top:.15rem}
-
-/* Footer */
 .blog-footer{border-top:1px solid var(--border);padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;max-width:1240px;margin:0 auto;flex-wrap:wrap;gap:1rem}
 .blog-footer-left{font-size:.78rem;color:var(--text-muted)}
 .blog-footer-links{display:flex;gap:1.5rem}
 .blog-footer-links a{font-size:.78rem;color:var(--text-muted);transition:color .2s}
 .blog-footer-links a:hover{color:var(--green)}
-
-/* Mobile */
 @media(max-width:640px){
-  .blog-grid{grid-template-columns:1fr}
+  .hub-grid{grid-template-columns:1fr}
   .blog-hero{padding:4rem 1.5rem 2.5rem}
   .blog-container{padding:2rem 1rem 3rem}
   .nav-links .desk-only{display:none}
-  .blog-cta .stats{flex-direction:column;gap:1rem}
+  .blog-cta .stats{flex-wrap:wrap;gap:1.25rem}
   .blog-footer{flex-direction:column;text-align:center}
   .mascot-break-inner{flex-direction:column;gap:1.5rem;text-align:center}
   .mascot-break-text{text-align:center}
@@ -209,30 +164,16 @@ a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
-
-<!-- Animated gradient line at top -->
 <div class="top-gradient-line"></div>
-
-<!-- Animated Background Layers -->
-<div class="page-bg">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="orb orb-4"></div>
-</div>
+<div class="page-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div><div class="orb orb-4"></div></div>
 <div class="grid-overlay"></div>
 <div class="dot-field"></div>
 <div class="noise"></div>
 <div class="scanlines"></div>
 <div class="particles-container" id="particles"></div>
-
 <div class="content">
-
 <nav class="blog-nav">
-  <a href="/" class="blog-nav-logo">
-    <img src="/fewpips-logo.png" alt="Fewpips" width="120" height="33">
-    <span>Blog</span>
-  </a>
+  <a href="/" class="blog-nav-logo"><img src="/fewpips-logo.png" alt="Fewpips" width="120" height="33"><span>Blog</span></a>
   <div class="nav-links">
     <a href="/" class="desk-only">Home</a>
     <a href="/futures" class="desk-only">Futures</a>
@@ -240,273 +181,313 @@ a{color:inherit;text-decoration:none}
     <a href="https://crm.fewpips.com/auth/signup" class="nav-cta">Get Funded</a>
   </div>
 </nav>
-
 <section class="blog-hero">
-  <div class="hero-badge"><span class="pulse"></span> Insights for Funded Traders</div>
+  <div class="hero-badge"><span class="pulse"></span> Rules, Payouts &amp; Getting Started</div>
   <h1>The Fewpips <span>Trading Blog</span></h1>
-  <p>Expert guides on prop firm challenges, funded trading, risk management, and building a career as a funded trader.</p>
+  <p>Clear, worked-through guides to how Fewpips actually works: the rules, the payouts, the accounts and the platform, for CFD and Future Based CFD traders.</p>
 </section>
-
 <div class="section-divider"></div>
-
 <main class="blog-container">
-  <div class="section-label">
-    <span>Latest Articles</span>
-    <div class="line"></div>
-  </div>
-
-  <div class="blog-grid">
-
-    <!-- Rules & Compliance: Consistency Rule -->
+  <section class="cat-section">
+    <div class="section-label"><span>Rules &amp; Compliance</span><div class="line"></div></div>
+    <div class="hub-grid">
     <a href="/blog/how-the-consistency-rule-works" class="blog-card">
       <div class="blog-card-img">
         <img src="/blog/mascot-3-zen.png" alt="Fewpips mascot in a calm, balanced pose" loading="lazy">
         <div class="blog-card-badge"><span class="dot"></span> Rules &amp; Compliance</div>
       </div>
       <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>June 22, 2026</span>
-          <span>8 min read</span>
-        </div>
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>8 min read</span></div>
         <h2>How the Fewpips Consistency Rule Works (With Worked Examples)</h2>
-        <p>The consistency rule explained per account type - 40% of total profit on CFD funded accounts, 50% on Futures - with the dollar maths shown so you never lose a payout on a technicality.</p>
+        <p>The Fewpips consistency rule explained per account type: 40% of total profit on CFD accounts, 50% on Future Based CFD, with worked dollar maths so you never lose a payout on a technicality.</p>
         <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
     </a>
-
-    <!-- Rules & Compliance: Prohibited Trading -->
     <a href="/blog/prohibited-trading-explained" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-prohibited.png" alt="Fewpips mascot raising a hand in a stop gesture beside a no-entry symbol" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Rules &amp; Compliance</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>9 min read</span></div>
+        <h2>Prohibited Trading on Fewpips, Precisely Defined</h2>
+        <p>Exactly what counts as prohibited trading on Fewpips: HFT, tick scalping and the 30-second rule, latency arbitrage, copy trading, hedging, grid and martingale, and the red-folder news window, defined not vaguely stated.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="/blog/stop-loss-take-profit-requirements" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-stop-loss.png" alt="Fewpips mascot placing a protective bracket around a candlestick chart" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Rules &amp; Compliance</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>5 min read</span></div>
+        <h2>Fewpips Stop-Loss and Take-Profit Requirements</h2>
+        <p>When stop-loss and take-profit are mandatory on Fewpips: required on every trade on all Instant accounts, and on 1/2/3-Step accounts the moment they pass and become funded.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="/blog/loss-limits-explained" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-loss-limits.png" alt="Fewpips mascot adjusting a green risk gauge with a shield" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Rules &amp; Compliance</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>6 min read</span></div>
+        <h2>Per-Trade and Daily Loss Limits Explained</h2>
+        <p>Fewpips loss limits with worked dollar figures: the 2% per-trade cap by account size, and the daily loss limit by product, including why Instant accounts have no daily loss limit.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="/blog/account-breach-and-recovery" class="blog-card">
       <div class="blog-card-img">
         <img src="/blog/mascot-5-shield.png" alt="Fewpips mascot holding a protective shield" loading="lazy">
         <div class="blog-card-badge"><span class="dot"></span> Rules &amp; Compliance</div>
       </div>
       <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>June 22, 2026</span>
-          <span>9 min read</span>
-        </div>
-        <h2>Prohibited Trading at Fewpips: HFT, Tick Scalping, Latency Arbitrage, Copy Trading &amp; Hedging</h2>
-        <p>Precise, defined explanations of every prohibited practice - including the sub-30-second latency-arbitrage rule - so you know exactly where the line is before a compliance audit.</p>
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>5 min read</span></div>
+        <h2>What Happens When an Account Is Breached</h2>
+        <p>What a breach means on Fewpips and what can be recovered: a breached account is not recoverable, with one exception for a genuine major technical glitch that requires proof from the trader.</p>
         <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
     </a>
+    </div>
+  </section>
 
-    <!-- Rules & Compliance: SL/TP Requirements -->
-    <a href="/blog/stop-loss-take-profit-requirements" class="blog-card">
+  <section class="cat-section">
+    <div class="section-label"><span>Payouts &amp; Withdrawals</span><div class="line"></div></div>
+    <div class="hub-grid">
+    <a href="/blog/how-to-request-a-payout" class="blog-card">
       <div class="blog-card-img">
-        <img src="/blog/mascot-1-teaching.png" alt="Fewpips mascot teaching at a board" loading="lazy">
-        <div class="blog-card-badge"><span class="dot"></span> Rules &amp; Compliance</div>
+        <img src="/blog/mascot-2-victory.png" alt="Fewpips mascot celebrating a funded payout with a trophy" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Payouts &amp; Withdrawals</div>
       </div>
       <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>June 22, 2026</span>
-          <span>7 min read</span>
-        </div>
-        <h2>Stop-Loss and Take-Profit Requirements on Fewpips Funded Accounts</h2>
-        <p>Why every trade on a funded account needs a stop-loss and take-profit, what triggers a compliance flag, and how to stay compliant without changing how you trade.</p>
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>6 min read</span></div>
+        <h2>How to Request a Fewpips Payout (Step by Step)</h2>
+        <p>How to request a Fewpips payout: the eligibility criteria, when KYC is and is not needed, and the exact steps to register a withdrawal method and get paid in 24 hours or less.</p>
         <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
     </a>
-
-    <!-- Rules & Compliance: Loss Limits -->
-    <a href="/blog/loss-limits-explained" class="blog-card">
+    <a href="/blog/how-the-payout-audit-works" class="blog-card">
       <div class="blog-card-img">
-        <img src="/blog/mascot-4-speed.png" alt="Fewpips mascot moving at speed" loading="lazy">
-        <div class="blog-card-badge"><span class="dot"></span> Rules &amp; Compliance</div>
+        <img src="/blog/hero-audit.png" alt="Fewpips mascot inspecting a checklist with a magnifying glass" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Payouts &amp; Withdrawals</div>
       </div>
       <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>June 22, 2026</span>
-          <span>9 min read</span>
-        </div>
-        <h2>Fewpips Loss Limits Explained: Daily and Per-Trade, With Dollar Examples</h2>
-        <p>The daily loss limit and the 2% per-trade rule explained per account size, with worked dollar examples and the exact formula used to calculate a breach.</p>
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>5 min read</span></div>
+        <h2>How the Fewpips Payout Audit Works</h2>
+        <p>What the Fewpips payout audit checks: a human auditor pulls your trade history, cross-examines it against the published rules, and every trader receives a Case Diagnostic Report win or lose.</p>
         <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
     </a>
-
-    <!-- Rules & Compliance: Account Breach & Recovery -->
-    <a href="/blog/account-breach-and-recovery" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/mascot-2-victory.png" alt="Fewpips mascot celebrating a comeback" loading="lazy">
-        <div class="blog-card-badge"><span class="dot"></span> Rules &amp; Compliance</div>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>June 22, 2026</span>
-          <span>8 min read</span>
-        </div>
-        <h2>What Happens When a Fewpips Account Is Breached (and What's Recoverable)</h2>
-        <p>What breaches an account, what happens immediately after, and exactly what is recoverable - resets, refunds, disputes, and inactivity - laid out clearly.</p>
-        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </div>
-    </a>
-
-    <!-- Featured: What Is a Prop Firm -->
-    <a href="/blog/what-is-a-prop-firm" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/mascot-1-teaching.png" alt="Fewpips mascot explaining prop trading at a holographic desk" loading="lazy">
-        <div class="blog-card-badge"><span class="dot"></span> Beginner Guide</div>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>May 20, 2026</span>
-          <span>7 min read</span>
-        </div>
-        <h2>What Is a Prop Firm and How Does It Work in 2026?</h2>
-        <p>A complete beginner's guide to proprietary trading firms - how they work, what funded accounts are, the different challenge types, and how you can start trading with up to $200K in capital without risking your own money.</p>
-        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </div>
-    </a>
-
-    <!-- How to Pass -->
-    <a href="/blog/how-to-pass-prop-firm-challenge" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/mascot-2-victory.png" alt="Fewpips mascot celebrating with trophy" loading="lazy">
-        <div class="blog-card-badge"><span class="dot"></span> Strategy</div>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>May 20, 2026</span>
-          <span>8 min read</span>
-        </div>
-        <h2>How to Pass a Prop Firm Challenge: 10 Proven Tips</h2>
-        <p>Practical, battle-tested strategies to help you pass your prop firm evaluation. From risk management to psychology, these tips address why most traders fail.</p>
-        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </div>
-    </a>
-
-    <!-- No Time Limits -->
-    <a href="/blog/prop-firm-no-time-limits" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/mascot-3-zen.png" alt="Fewpips mascot meditating with infinite hourglass" loading="lazy">
-        <div class="blog-card-badge"><span class="dot"></span> Why Fewpips</div>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>May 20, 2026</span>
-          <span>7 min read</span>
-        </div>
-        <h2>Prop Firm with No Time Limits: Why It Changes Everything</h2>
-        <p>Most prop firms give you 30-60 days. Fewpips gives you unlimited time on every challenge. Here's why removing the clock changes how you trade.</p>
-        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </div>
-    </a>
-
-    <!-- Instant Funded -->
-    <a href="/blog/instant-funded-accounts" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/mascot-4-speed.png" alt="Fewpips mascot running at speed with briefcase" loading="lazy">
-        <div class="blog-card-badge"><span class="dot"></span> Products</div>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>May 20, 2026</span>
-          <span>7 min read</span>
-        </div>
-        <h2>Instant Funded Accounts Explained: Start Trading from Day One</h2>
-        <p>Skip the evaluation entirely. Instant funded accounts let you start trading immediately with accounts from $3K to $50K.</p>
-        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </div>
-    </a>
-
-    <!-- Drawdown Rules -->
-    <a href="/blog/prop-firm-drawdown-rules" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/mascot-5-shield.png" alt="Fewpips mascot with protective shield and risk meters" loading="lazy">
-        <div class="blog-card-badge"><span class="dot"></span> Education</div>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>May 20, 2026</span>
-          <span>8 min read</span>
-        </div>
-        <h2>Understanding Prop Firm Drawdown Rules and Risk Management</h2>
-        <p>Daily loss limits, maximum drawdown, consistency rules - the risk parameters that make or break your funded account.</p>
-        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </div>
-    </a>
-
-    <!-- Payouts -->
     <a href="/blog/how-prop-firm-payouts-work" class="blog-card">
       <div class="blog-card-img">
-        <img src="/blog/mascot-6-crypto.png" alt="Fewpips mascot holding crypto coins and digital wallet" loading="lazy">
-        <div class="blog-card-badge"><span class="dot"></span> Payouts</div>
+        <img src="/blog/mascot-6-crypto.png" alt="Fewpips mascot with crypto payout icons" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Payouts &amp; Withdrawals</div>
       </div>
       <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span>May 20, 2026</span>
-          <span>7 min read</span>
-        </div>
-        <h2>How Prop Firm Payouts Work: Splits, Timing & Crypto Withdrawals</h2>
-        <p>Everything you need to know about getting paid as a funded trader - profit splits, payout schedules, and crypto withdrawal options.</p>
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>5 min read</span></div>
+        <h2>Payout Timelines, Splits and Minimums</h2>
+        <p>How Fewpips payouts work: processed in 24 hours or less, a $50 minimum in USDT, and profit splits that scale to 90% on both Instant and 1/2/3-Step accounts.</p>
         <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
     </a>
+    <a href="/blog/prop-firm-drawdown-rules" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-trailing-floor.png" alt="Fewpips mascot standing on rising steps beside a climbing chart" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Payouts &amp; Withdrawals</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>6 min read</span></div>
+        <h2>How the Trailing Maximum Loss Floor Works</h2>
+        <p>The Fewpips maximum loss limit trails up with profit and never moves down, and it is not capped at your starting balance, so your buffer widens as the account grows. Worked example inside.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    </div>
+  </section>
 
-  </div>
+  <section class="cat-section">
+    <div class="section-label"><span>Accounts &amp; Getting Started</span><div class="line"></div></div>
+    <div class="hub-grid">
+    <a href="/blog/account-types-and-sizes" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-account-types.png" alt="Fewpips mascot presenting a row of tiered account cards" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Accounts &amp; Getting Started</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>5 min read</span></div>
+        <h2>Fewpips Account Types and Sizes Explained</h2>
+        <p>Every Fewpips account type and size in one place: CFD Instant and 1/2/3-Step challenges, plus Future Based CFD Instant and 1-Step, with the exact account sizes for each.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="/blog/instant-funded-accounts" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/mascot-4-speed.png" alt="Fewpips mascot moving at speed" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Accounts &amp; Getting Started</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>6 min read</span></div>
+        <h2>Instant vs Challenge Accounts: The Differences</h2>
+        <p>Instant vs evaluation on Fewpips: Instant accounts fund from purchase with no daily loss limit and a 5% growth rule, while 1/2/3-Step challenges require a profit target first and a daily loss limit.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="/blog/how-leverage-works" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-leverage.png" alt="Fewpips mascot pulling a lever with amplifying arrows" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Accounts &amp; Getting Started</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>5 min read</span></div>
+        <h2>How Leverage Works on Fewpips</h2>
+        <p>The full Fewpips leverage matrix: per-instrument leverage across CFD Instant and 1/2/3-Step accounts, plus the flat 1:20 on all Future Based CFD instruments.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="/blog/platform-access-and-login" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-platform-login.png" alt="Fewpips mascot at a laptop showing trading charts with a login key" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Accounts &amp; Getting Started</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>4 min read</span></div>
+        <h2>Platform Access: Getting Your Login and Getting Started</h2>
+        <p>How platform access works on Fewpips: the moment your purchase completes, an email arrives within milliseconds with your login credentials, server name and a setup guide.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="/blog/what-is-a-prop-firm" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/mascot-1-teaching.png" alt="Fewpips mascot teaching at a board" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Accounts &amp; Getting Started</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>5 min read</span></div>
+        <h2>What Is a Prop Firm?</h2>
+        <p>A plain-English guide to proprietary trading firms: how a prop firm funds skilled traders, how evaluations and profit splits work, and where Fewpips fits with CFD and Future Based CFD accounts.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="/blog/how-to-pass-prop-firm-challenge" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-how-to-pass.png" alt="Fewpips mascot crossing a finish line and planting a flag" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Accounts &amp; Getting Started</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>6 min read</span></div>
+        <h2>How to Pass a Prop Firm Challenge</h2>
+        <p>A practical guide to passing a prop firm challenge: hit the profit target without breaking loss limits, respect the rules that apply, and build the habits that carry into the funded phase.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="/blog/prop-firm-no-time-limits" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-no-time-limits.png" alt="Fewpips mascot relaxed beside an infinity symbol and a clock" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Accounts &amp; Getting Started</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>4 min read</span></div>
+        <h2>Why Fewpips Has No Time Limits</h2>
+        <p>Fewpips challenges have no time limits, so you trade at your own pace with no deadline pressure. Here is what that means for how you approach an evaluation and a funded account.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    </div>
+  </section>
+
+  <section class="cat-section">
+    <div class="section-label"><span>Billing &amp; Products</span><div class="line"></div></div>
+    <div class="hub-grid">
+    <a href="/blog/what-the-challenge-fee-pays-for" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-challenge-fee.png" alt="Fewpips mascot unlocking a glowing portal with a key" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Billing &amp; Products</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>4 min read</span></div>
+        <h2>What the Challenge Fee Actually Pays For</h2>
+        <p>The Fewpips challenge fee is a one-time fee for access to the evaluation service: a simulated environment plus assessment against the published rules. It is not a deposit or investment.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="/blog/refunds-add-ons-resets" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-refunds-resets.png" alt="Fewpips mascot beside a reset arrow and add-on blocks" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Billing &amp; Products</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>5 min read</span></div>
+        <h2>Refunds, Add-ons and Resets After a Breach</h2>
+        <p>Fewpips billing explained: a full refund within 48 hours of registration if no trade is placed (minus a $10 processing fee), how add-ons work, and no reset fees after a breach.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    </div>
+  </section>
+
+  <section class="cat-section">
+    <div class="section-label"><span>Technical / Platform</span><div class="line"></div></div>
+    <div class="hub-grid">
+    <a href="/blog/reading-your-dashboard" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/hero-dashboard.png" alt="Fewpips mascot pointing at a dashboard with a locked withdrawal button" loading="lazy">
+        <div class="blog-card-badge"><span class="dot"></span> Technical / Platform</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta"><span>July 8, 2026</span><span>5 min read</span></div>
+        <h2>Reading Your Dashboard and Why the Withdrawal Button Is Locked</h2>
+        <p>A guide to your Fewpips dashboard metrics and the four reasons a withdrawal button stays locked: the cycle or minimum days, being in profit, the 5% Instant growth threshold, and the consistency rule.</p>
+        <span class="blog-card-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    </div>
+  </section>
 </main>
-
 <div class="section-divider"></div>
-
-<!-- Mascot break section -->
 <section class="mascot-break">
   <div class="mascot-break-inner">
-    <div class="mascot-break-img">
-      <img src="/blog/mascot-1-teaching.png" alt="Fewpips mascot" loading="lazy">
-    </div>
+    <div class="mascot-break-img"><img src="/blog/mascot-1-teaching.png" alt="Fewpips mascot" loading="lazy"></div>
     <div class="mascot-break-text">
       <h3>Learn. Trade. Get Funded.</h3>
-      <p>Our blog is built for traders at every level. From understanding drawdown rules to maximizing your profit splits - we break it all down so you can focus on what matters: trading.</p>
+      <p>Every rule, payout and platform question in one place, explained the way we would explain it to a friend. No jargon, no surprises at payout time.</p>
     </div>
   </div>
 </section>
-
 <div class="section-divider"></div>
-
-<!-- CTA -->
 <section class="blog-cta-section">
   <div class="blog-cta">
     <h2>Ready to Get Funded?</h2>
-    <p>Join thousands of traders worldwide. No time limits. No hidden rules. Your edge, our capital.</p>
+    <p>Challenges from $59. No time limits. Up to 90% profit split. Available on CFD and Future Based CFD accounts.</p>
     <a href="https://crm.fewpips.com/auth/signup" class="cta-btn">Start Your Challenge <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <div class="stats">
       <div class="stat"><div class="stat-value">$59</div><div class="stat-label">Starting From</div></div>
       <div class="stat"><div class="stat-value">90%</div><div class="stat-label">Profit Split</div></div>
       <div class="stat"><div class="stat-value">$200K</div><div class="stat-label">Max Capital</div></div>
-      <div class="stat"><div class="stat-value">140+</div><div class="stat-label">Countries</div></div>
+      <div class="stat"><div class="stat-value">24h</div><div class="stat-label">Payouts</div></div>
     </div>
   </div>
 </section>
-
 <footer class="blog-footer">
   <div class="blog-footer-left">&copy; 2026 Fewpips. All rights reserved.</div>
   <div class="blog-footer-links">
-    <a href="/">Home</a>
-    <a href="/futures">Futures</a>
-    <a href="/blog">Blog</a>
-    <a href="/faq">FAQ</a>
-    <a href="/terms">Terms</a>
-    <a href="/contact">Contact</a>
+    <a href="/">Home</a><a href="/futures">Futures</a><a href="/blog">Blog</a><a href="/faq">FAQ</a><a href="/terms">Terms</a><a href="/contact">Contact</a>
   </div>
 </footer>
-
 </div>
-
 <script>
-// Generate floating particles - 45 particles with varied colors and sizes
 (function(){
   var c=document.getElementById('particles');
   var colors=['#0fcd37','#00ffc2','#42ff00','#0fcd37','#00ffc2'];
   for(var i=0;i<45;i++){
-    var p=document.createElement('div');
-    p.className='particle';
-    var size=1+Math.random()*3;
+    var p=document.createElement('div');p.className='particle';var size=1+Math.random()*3;
     p.style.cssText='left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+size+'px;height:'+size+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-delay:'+Math.random()*6+'s;animation-duration:'+(4+Math.random()*4)+'s';
     c.appendChild(p);
   }
 })();
 </script>
-
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "92c7587e087849c39a8dee8322e4721d"}'></script><!-- Cloudflare Pages Analytics --><script src="/sticky-split.js" defer></script><script src="/social-tiktok.js" defer></script><script src="/livechat-greeting.js" defer></script><script src="/hash-nav-fix.js" defer></script></body>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "92c7587e087849c39a8dee8322e4721d"}'></script>
+<script src="/sticky-split.js" defer></script><script src="/social-tiktok.js" defer></script><script src="/livechat-greeting.js" defer></script><script src="/hash-nav-fix.js" defer></script></body>
 </html>
