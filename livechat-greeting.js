@@ -1,19 +1,15 @@
 /* Fewpips - proactive LiveChat greeting.
-   On entry the LiveChat FAB gets a red "1" badge (as if a message arrived) and a small
-   greeting bubble pops up next to it. Clicking either opens the real LiveChat window
-   (window.LiveChatWidget "maximize"). The bubble has its own X to dismiss.
-
-   Shown once per browser session (survives client-side navigation without re-nagging).
-   The "1" badge stays until the visitor actually opens the chat; once opened, both the
-   badge and the greeting stay gone for the rest of the session. Own non-React DOM so it
-   survives Next.js hydration + client-side route changes. */
+   On EVERY page load / refresh / client-side navigation the LiveChat FAB gets a red "1"
+   badge (as if a message arrived) and a greeting bubble pops up next to it. Clicking either
+   opens the real LiveChat window (window.LiveChatWidget "maximize"). The bubble has its own
+   X to dismiss - that only hides it for the current view; it comes back on the next refresh
+   or navigation. Own non-React DOM so it survives Next.js hydration + client-side routing. */
 (function () {
   var BADGE_ID = "fp-lc-badge";
   var BUBBLE_ID = "fp-lc-greet";
   var FAB_SEL = ".chat-fab--livechat";
-  var GREETED_KEY = "fewpips_lc_greeted"; // greeting bubble already shown this session
-  var OPENED_KEY = "fewpips_lc_opened";   // visitor opened the chat -> stop nudging
-  var GREET_DELAY = 2800;                 // ms after landing before the bubble pops
+  var GREET_DELAY = 2600;          // ms after landing before the bubble pops
+  var dismissed = false;           // per-view close; reset on navigation/refresh
 
   var GREETING =
     "Hey there, welcome to Fewpips! Got a question about our challenges, rules or payouts? " +
@@ -21,13 +17,6 @@
 
   var X_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
   var CHAT_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
-
-  function ss(get, key, val) {
-    try { return get ? sessionStorage.getItem(key) : sessionStorage.setItem(key, val); }
-    catch (e) { return null; }
-  }
-  function isOpened() { return ss(true, OPENED_KEY) === "1"; }
-  function isGreeted() { return ss(true, GREETED_KEY) === "1"; }
 
   function injectStyles() {
     if (document.getElementById(BADGE_ID + "-css")) return;
@@ -73,14 +62,15 @@
     tries = tries || 0;
     if (window.LiveChatWidget && typeof window.LiveChatWidget.call === "function") {
       try { window.LiveChatWidget.call("maximize"); } catch (e) {}
-      markOpened();
+      dismissForView();
       return;
     }
     if (tries < 30) setTimeout(function () { openChat(tries + 1); }, 200);
   }
 
-  function markOpened() {
-    ss(false, OPENED_KEY, "1");
+  // Hide badge + bubble for the CURRENT view only. They return on the next nav / refresh.
+  function dismissForView() {
+    dismissed = true;
     clearBadge();
     hideBubble();
   }
@@ -91,7 +81,7 @@
   }
 
   function ensureBadge() {
-    if (isOpened()) { clearBadge(); return; }
+    if (dismissed) return;
     var fab = document.querySelector(FAB_SEL);
     if (!fab) return;
     if (document.getElementById(BADGE_ID)) return;
@@ -109,7 +99,7 @@
   }
 
   function showBubble() {
-    if (isOpened() || isGreeted()) return;
+    if (dismissed) return;
     if (!document.querySelector(FAB_SEL)) return; // wait for the FAB to mount
     if (document.getElementById(BUBBLE_ID)) return;
     if (!document.body) return;
@@ -129,49 +119,39 @@
     });
     box.querySelector(".fp-x").addEventListener("click", function (e) {
       e.stopPropagation();
-      hideBubble(); // dismiss the bubble; the "1" badge stays until the chat is opened
+      dismissForView(); // only for this view - comes back on next refresh / navigation
     });
     document.body.appendChild(box);
-    ss(false, GREETED_KEY, "1"); // only auto-pop once per session
   }
 
-  // Clear the badge the moment the visitor opens LiveChat any other way (its own FAB, etc).
-  function watchLiveChat(tries) {
-    tries = tries || 0;
-    if (window.LiveChatWidget && typeof window.LiveChatWidget.on === "function") {
-      try {
-        window.LiveChatWidget.on("visibility_changed", function (d) {
-          if (d && d.visibility && d.visibility !== "minimized") markOpened();
-        });
-      } catch (e) {}
-      return;
-    }
-    if (tries < 40) setTimeout(function () { watchLiveChat(tries + 1); }, 250);
-  }
-
-  function boot() {
+  // Show badge now + schedule the bubble. Used on first load and on every navigation.
+  function present() {
     injectStyles();
     ensureBadge();
     setTimeout(showBubble, GREET_DELAY);
   }
 
+  // On any client-side navigation the greeting must reappear (reset the per-view dismiss).
+  function reset() { dismissed = false; present(); }
+
   injectStyles();
   ensureBadge();
-  watchLiveChat();
-  if (document.readyState === "complete") boot();
-  else window.addEventListener("load", boot);
-  document.addEventListener("DOMContentLoaded", ensureBadge);
+  if (document.readyState === "complete") present();
+  else window.addEventListener("load", present);
+  document.addEventListener("DOMContentLoaded", present);
 
-  // Keep the badge asserted across React re-renders and Next.js client-side navigation.
+  // Next.js does client-side routing via the history API - re-show on every route change.
   ["pushState", "replaceState"].forEach(function (m) {
     var orig = history[m];
     if (orig && !orig.__fpLcPatched) {
-      var patched = function () { var r = orig.apply(this, arguments); setTimeout(ensureBadge, 60); return r; };
+      var patched = function () { var r = orig.apply(this, arguments); setTimeout(reset, 40); return r; };
       patched.__fpLcPatched = true;
       history[m] = patched;
     }
   });
-  window.addEventListener("popstate", ensureBadge);
-  window.addEventListener("pageshow", ensureBadge);
+  window.addEventListener("popstate", reset);
+  window.addEventListener("pageshow", reset); // bfcache restore / refresh
+
+  // Fallback guard: keep the badge asserted unless the visitor dismissed it in this view.
   setInterval(ensureBadge, 500);
 })();
