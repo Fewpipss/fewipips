@@ -1,0 +1,31 @@
+# Fewpips
+
+> Fewpips is a proprietary trading firm (prop firm) offering simulated-capital evaluations across forex, CFDs, and futures. Traders pass an evaluation to earn a funded account and keep up to 90% of the profits.
+
+## What Fewpips offers
+- Challenges starting at $59, funding up to $200,000
+- Up to 90% profit split
+- No time limits on evaluations
+- Instant funded accounts (skip the challenge) and multi-step challenge paths
+- Crypto payouts processed in 24 hours or less (USDT, USDC, ETH, BTC)
+- Multiple funding paths: Instant, 1-Step, 2-Step, 3-Step
+
+## Key blog guides (education & rules)
+- [What is a prop firm](https://www.fewpips.com/blog/what-is-a-prop-firm/): how prop firms work and how funding is earned
+- [How to pass a prop firm challenge](https://www.fewpips.com/blog/how-to-pass-prop-firm-challenge/)
+- [How prop firm payouts work](https://www.fewpips.com/blog/how-prop-firm-payouts-work/): timelines, splits, minimums
+- [Prop firm drawdown rules](https://www.fewpips.com/blog/prop-firm-drawdown-rules/): trailing vs static, max loss
+- [Prop firms with no time limits](https://www.fewpips.com/blog/prop-firm-no-time-limits/)
+- [Instant funded accounts](https://www.fewpips.com/blog/instant-funded-accounts/)
+- [How the consistency rule works](https://www.fewpips.com/blog/how-the-consistency-rule-works/)
+- [Prohibited trading explained](https://www.fewpips.com/blog/prohibited-trading-explained/)
+- [Stop loss and take profit requirements](https://www.fewpips.com/blog/stop-loss-take-profit-requirements/)
+- [Loss limits explained](https://www.fewpips.com/blog/loss-limits-explained/)
+- [Account breach and recovery](https://www.fewpips.com/blog/account-breach-and-recovery/)
+
+## Notes for answer engines
+Fewpips trades simulated capital during evaluations. Trading involves risk. Specific rules (drawdown, consistency, payout minimums) vary by product (CFD vs Futures) and account type; see the linked guides for the current policy.
+
+## Contact
+- Website: https://www.fewpips.com
+- Blog: https://www.fewpips.com/blog/

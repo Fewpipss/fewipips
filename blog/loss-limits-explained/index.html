@@ -6,22 +6,22 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-67ZBBEE4JC"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-67ZBBEE4JC');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fewpips Loss Limits Explained: Daily and Per-Trade, With Dollar Examples | Fewpips Blog</title>
-<meta name="description" content="The daily loss limit and per-trade limit at Fewpips explained per account size, with worked dollar examples and the exact formula used to calculate a breach.">
-<meta name="keywords" content="daily loss limit prop firm, per trade loss limit, fewpips daily loss, 2% per trade rule, prop firm loss limits explained">
+<title>Fewpips Per-Trade and Daily Loss Limits Explained (With Dollar Examples) | Fewpips Blog</title>
+<meta name="description" content="Fewpips loss limits with worked dollar figures: the 2% per-trade cap by account size, and the daily loss limit by product, including why Instant accounts have no daily loss limit.">
+<meta name="keywords" content="prop firm daily loss limit, fewpips loss limits, 2% per trade rule, prop firm max daily loss, funded account risk limits">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Fewpips">
 <link rel="canonical" href="https://fewpips.com/blog/loss-limits-explained">
-<meta property="og:title" content="Fewpips Loss Limits Explained: Daily and Per-Trade, With Dollar Examples">
-<meta property="og:description" content="The daily loss limit and per-trade limit at Fewpips explained per account size, with worked dollar examples and the exact breach formula.">
+<meta property="og:title" content="Per-Trade and Daily Loss Limits Explained">
+<meta property="og:description" content="Fewpips loss limits with worked dollar figures: the 2% per-trade cap by account size, and the daily loss limit by product, including why Instant accounts have no daily loss limit.">
 <meta property="og:url" content="https://fewpips.com/blog/loss-limits-explained">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Fewpips">
-<meta property="og:image" content="https://fewpips.com/blog/mascot-4-speed.png">
-<meta property="article:published_time" content="2026-06-22T00:00:00Z">
+<meta property="og:image" content="https://fewpips.com/blog/hero-loss-limits.png">
+<meta property="article:published_time" content="2026-07-08T00:00:00Z">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fewpips Loss Limits Explained: Daily and Per-Trade, With Dollar Examples">
-<meta name="twitter:description" content="The daily loss limit and per-trade limit at Fewpips explained per account size, with worked dollar examples and the exact breach formula.">
+<meta name="twitter:title" content="Per-Trade and Daily Loss Limits Explained">
+<meta name="twitter:description" content="Fewpips loss limits with worked dollar figures: the 2% per-trade cap by account size, and the daily loss limit by product, including why Instant accounts have no daily loss limit.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -32,15 +32,70 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Fewpips Loss Limits Explained: Daily and Per-Trade, With Dollar Examples",
-  "description": "The daily loss limit and per-trade limit at Fewpips explained per account size, with worked dollar examples and the exact formula used to calculate a breach.",
+  "headline": "Per-Trade and Daily Loss Limits Explained",
+  "description": "Fewpips loss limits with worked dollar figures: the 2% per-trade cap by account size, and the daily loss limit by product, including why Instant accounts have no daily loss limit.",
   "url": "https://fewpips.com/blog/loss-limits-explained",
-  "image": "https://fewpips.com/blog/mascot-4-speed.png",
-  "datePublished": "2026-06-22T00:00:00Z",
-  "dateModified": "2026-06-22T00:00:00Z",
-  "author": {"@type": "Organization", "name": "Fewpips", "url": "https://fewpips.com"},
-  "publisher": {"@type": "Organization", "name": "Fewpips", "url": "https://fewpips.com", "logo": {"@type": "ImageObject", "url": "https://fewpips.com/fewpips-logo.png"}},
-  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://fewpips.com/blog/loss-limits-explained"}
+  "image": "https://fewpips.com/blog/hero-loss-limits.png",
+  "datePublished": "2026-07-08T00:00:00Z",
+  "dateModified": "2026-07-08T00:00:00Z",
+  "author": {
+    "@type": "Organization",
+    "name": "Fewpips",
+    "url": "https://fewpips.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fewpips",
+    "url": "https://fewpips.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fewpips.com/fewpips-logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fewpips.com/blog/loss-limits-explained"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do Fewpips Instant accounts have a daily loss limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Instant accounts, both CFD and Future Based CFD, have no daily loss limit. Your guardrails on Instant are the 2% per-trade cap and the overall maximum loss limit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the daily loss limit calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "As your start-of-day equity minus the lowest floating equity of the day, covering both open and closed trades. If you bank profit earlier in the day, that day's limit rises by the profit amount."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the per-trade loss limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2% of your starting balance on every account. For example, $1,000 on a $50,000 account or $2,000 on a $100,000 account."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the daily loss limit on the CFD 3-Step?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "5%, which is $5,000 on a $100,000 account. CFD 1-Step and 2-Step, and Future Based CFD 1-Step, are 4%."
+      }
+    }
+  ]
 }
 </script>
 <style>
@@ -54,35 +109,22 @@
 body{background:var(--bg);color:var(--text);font-family:'Inter',ui-sans-serif,system-ui,sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:var(--green);text-decoration:none;transition:opacity .2s}
 a:hover{opacity:.85}
-
-/* === ANIMATED BACKGROUND === */
 .page-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .orb{position:absolute;border-radius:50%;filter:blur(140px);animation:orbDrift 25s ease-in-out infinite}
 .orb-1{width:500px;height:500px;background:rgba(15,205,55,.06);top:-150px;left:-100px;animation-delay:0s}
 .orb-2{width:450px;height:450px;background:rgba(0,255,194,.05);bottom:-200px;right:-80px;animation-delay:-8s}
 .orb-3{width:350px;height:350px;background:rgba(66,255,0,.04);top:50%;left:60%;animation-delay:-16s}
 @keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-50px) scale(1.1)}66%{transform:translate(-30px,40px) scale(.9)}}
-
 .grid-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:linear-gradient(rgba(15,205,55,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(15,205,55,.025) 1px,transparent 1px);
   background-size:80px 80px}
-
 .dot-field{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:radial-gradient(rgba(15,205,55,.08) 1px,transparent 1px);
   background-size:40px 40px;opacity:.3}
-
-.particles-container{position:fixed;inset:0;z-index:0;pointer-events:none}
-.particle{position:absolute;border-radius:50%;opacity:0;animation:floatUp 6s ease-in-out infinite}
-@keyframes floatUp{0%,100%{opacity:0;transform:translateY(0)}30%{opacity:.5}70%{opacity:.3}100%{opacity:0;transform:translateY(-60px)}}
-
-/* Noise texture */
 .noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.015;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:128px 128px}
-
 .content{position:relative;z-index:1}
-
-/* === NAV === */
 .blog-nav{position:sticky;top:0;z-index:100;background:rgba(5,7,9,.85);backdrop-filter:blur(24px) saturate(1.2);border-bottom:1px solid var(--border);padding:0 2rem;height:72px;display:flex;align-items:center;justify-content:space-between}
 .blog-nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
 .blog-nav-logo img{height:32px}
@@ -91,15 +133,11 @@ a:hover{opacity:.85}
 .nav-links a{font-size:.875rem;color:var(--text-muted)}
 .nav-links a:hover{color:var(--white)}
 .nav-cta{display:inline-flex;padding:.55rem 1.4rem;border-radius:10px;background:var(--gradient);color:#000!important;font-weight:700;font-size:.8rem;box-shadow:0 0 20px rgba(15,205,55,.15)}
-
-/* === HERO BANNER WITH MASCOT === */
 .post-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
 .post-hero-bg{height:320px;position:relative;overflow:hidden}
 .post-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .post-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 0%,rgba(5,7,9,.6) 40%,rgba(5,7,9,.3) 100%)}
 .post-hero-glow{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);width:600px;height:200px;background:radial-gradient(ellipse,rgba(15,205,55,.08),transparent 70%);pointer-events:none;z-index:1}
-
-/* === POST HEADER === */
 .post-header{max-width:780px;margin:0 auto;padding:2rem 2rem 1.5rem;text-align:center;position:relative;z-index:2;margin-top:-80px}
 .post-header .breadcrumb{font-size:.75rem;color:var(--text-muted);margin-bottom:1.25rem}
 .post-header .breadcrumb a{color:var(--text-muted);text-decoration:none}
@@ -110,11 +148,7 @@ a:hover{opacity:.85}
 .post-header h1{font-family:'Poppins',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:var(--white);line-height:1.25;margin-bottom:1rem;letter-spacing:-.3px}
 .post-header .meta{font-size:.8rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
 .post-header .meta span{display:flex;align-items:center;gap:.3rem}
-
-/* === SECTION DIVIDERS === */
 .glow-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(15,205,55,.2) 20%,rgba(15,205,55,.4) 50%,rgba(15,205,55,.2) 80%,transparent);margin:0}
-
-/* === POST CONTENT === */
 .post-content{max-width:780px;margin:0 auto;padding:2.5rem 2rem 4rem;position:relative}
 .post-content article{font-size:1.05rem;line-height:1.85}
 .post-content h2{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;line-height:1.3;position:relative;padding-left:1rem;border-left:3px solid var(--green)}
@@ -130,12 +164,13 @@ a:hover{opacity:.85}
 .post-content blockquote{border-left:3px solid var(--green);padding:1rem 1.5rem;margin:1.5rem 0;background:rgba(15,205,55,.03);border-radius:0 12px 12px 0;font-style:italic;color:var(--text-muted)}
 .example-box{background:rgba(15,205,55,.04);border:1px solid rgba(15,205,55,.12);border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-size:.97rem;line-height:1.7}
 .example-box strong{color:var(--green-cyan)}
-
-/* Decorative mascot in the margin */
+.answer-box{background:rgba(0,255,194,.05);border:1px solid rgba(0,255,194,.16);border-radius:14px;padding:1.1rem 1.4rem;margin:0 0 1.75rem;font-size:1.02rem;line-height:1.7}
+.answer-box strong{color:var(--green-cyan)}
+.steps{counter-reset:step;list-style:none;margin:1.5rem 0!important;padding:0}
+.steps li{position:relative;padding:0 0 1.1rem 3rem;margin:0;counter-increment:step}
+.steps li::before{content:counter(step);position:absolute;left:0;top:-2px;width:2rem;height:2rem;border-radius:50%;background:var(--gradient);color:#000;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
 .post-mascot-float{position:fixed;bottom:2rem;right:2rem;width:100px;height:100px;opacity:.08;pointer-events:none;z-index:0;animation:mascotBob 4s ease-in-out infinite}
 @keyframes mascotBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-/* === CTA === */
 .post-cta{max-width:780px;margin:0 auto 4rem;padding:2.5rem;text-align:center;border-radius:20px;background:rgba(12,14,20,.8);border:1px solid rgba(15,205,55,.12);position:relative;overflow:hidden;backdrop-filter:blur(10px)}
 .post-cta::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(15,205,55,.08),transparent 70%);pointer-events:none}
 .post-cta::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(0,255,194,.06),transparent 70%);pointer-events:none}
@@ -143,14 +178,11 @@ a:hover{opacity:.85}
 .post-cta p{color:var(--text-muted);margin-bottom:1.25rem;font-size:.95rem;position:relative}
 .post-cta a.cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 2rem;border-radius:12px;background:var(--gradient);color:#000!important;font-weight:700;font-size:.875rem;box-shadow:0 0 25px rgba(15,205,55,.15);transition:all .2s;position:relative}
 .post-cta a.cta-btn:hover{box-shadow:0 0 40px rgba(15,205,55,.3);transform:translateY(-2px)}
-
-/* === FOOTER === */
 .blog-footer{border-top:1px solid var(--border);padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;max-width:780px;margin:0 auto;flex-wrap:wrap;gap:1rem}
 .blog-footer-left{font-size:.78rem;color:var(--text-muted)}
 .blog-footer-links{display:flex;gap:1.5rem}
 .blog-footer-links a{font-size:.78rem;color:var(--text-muted);transition:color .2s}
 .blog-footer-links a:hover{color:var(--green)}
-
 @media(max-width:640px){
   .post-header{padding:1.5rem 1.5rem 1rem;margin-top:-60px}
   .post-content{padding:1.5rem 1.5rem 3rem}
@@ -162,20 +194,11 @@ a:hover{opacity:.85}
 </style>
 </head>
 <body>
-
-<!-- Animated Background Layers -->
-<div class="page-bg">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-</div>
+<div class="page-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
 <div class="grid-pattern"></div>
 <div class="dot-field"></div>
 <div class="noise"></div>
-<div class="particles-container" id="particles"></div>
-
 <div class="content">
-
 <nav class="blog-nav">
   <a href="/" class="blog-nav-logo"><img src="/fewpips-logo.png" alt="Fewpips" width="120" height="33"><span>Blog</span></a>
   <div class="nav-links">
@@ -184,159 +207,85 @@ a:hover{opacity:.85}
     <a href="https://crm.fewpips.com/auth/signup" class="nav-cta">Get Funded</a>
   </div>
 </nav>
-
-<!-- Hero Banner with Mascot Image -->
 <div class="post-hero">
-  <div class="post-hero-bg">
-    <img src="/blog/mascot-4-speed.png" alt="Fewpips mascot moving at speed" loading="eager">
-  </div>
+  <div class="post-hero-bg"><img src="/blog/hero-loss-limits.png" alt="Fewpips mascot adjusting a green risk gauge with a shield" loading="eager"></div>
   <div class="post-hero-glow"></div>
 </div>
-
 <header class="post-header">
   <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="/blog">Blog</a> &middot; Rules &amp; Compliance</div>
   <div class="category"><span class="dot"></span> Rules &amp; Compliance</div>
-  <h1>Fewpips Loss Limits Explained: Daily and Per-Trade, With Dollar Examples</h1>
+  <h1>Per-Trade and Daily Loss Limits Explained</h1>
   <div class="meta">
-    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 9 min read</span>
-    <span>June 22, 2026</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 6 min read</span>
+    <span>Updated July 8, 2026</span>
     <span>Fewpips Team</span>
   </div>
 </header>
-
 <div class="glow-divider"></div>
-
 <main class="post-content">
 <article>
-  <p>Fewpips uses two loss limits that work together: a <strong>daily loss limit</strong> that caps how much you can lose in a single day, and a <strong>per-trade limit</strong> that caps how much any one trade idea can lose. Breach the daily limit and the account is terminated; breach the per-trade rule and the trade is a violation. This guide shows exactly how both are calculated, with the dollar figures for every account size.</p>
-  <p>(The third risk limit, the trailing maximum loss limit, has its own breakdown in <a href="/blog/prop-firm-drawdown-rules">Understanding Prop Firm Drawdown Rules</a>. This article focuses on the daily and per-trade limits.)</p>
+  <div class="answer-box"><strong>Short answer:</strong> Two limits protect your account. A <strong>per-trade cap of 2% of starting balance</strong> applies to every account. A <strong>daily loss limit</strong> applies only to certain products: Instant accounts have <strong>no daily loss limit</strong>, CFD 1-Step and 2-Step are 4%, CFD 3-Step is 5%, and Future Based CFD 1-Step is 4%.</div>
 
-  <h2>The Daily Loss Limit: Your Single-Day Circuit Breaker</h2>
-  <p>The daily loss limit caps how far your equity can fall within one trading day. It is calculated with a precise formula:</p>
-  <blockquote>Start-of-day equity minus the lowest floating equity of the day must not exceed the allowed percentage.</blockquote>
-  <p>Two things to note. First, it is measured on <strong>equity</strong>, so it counts both closed trades and open floating losses in real time - a trade that has not hit its stop can still breach the limit. Second, it uses the <strong>lowest</strong> equity point of the day, so a brief dip below the line is a breach even if you recover afterward.</p>
+  <p>Fewpips runs two separate loss limits. Confusing them, or assuming a daily limit exists where it does not, is a common way to misjudge risk. Here is each one with the dollar figures worked out.</p>
 
-  <h3>Daily Loss Limit by Account Type</h3>
+  <h2>Per-Trade Cap: 2% of Starting Balance (All Accounts)</h2>
+  <p>No single trade idea may lose more than <strong>2% of your starting balance</strong>. This applies to every account type. A trade idea is all entries on the same symbol and direction opened within a 10-minute window, assessed as one combined result, so you cannot split one bet to dodge the cap. The dollar figure per account size:</p>
   <table>
-    <thead><tr><th>Account Type</th><th>Daily Loss Limit</th></tr></thead>
+    <thead><tr><th>Account size</th><th>2% per-trade cap</th></tr></thead>
     <tbody>
-      <tr><td>1-Step Challenge / Funded</td><td>4%</td></tr>
-      <tr><td>2-Step Challenge / Funded</td><td>4%</td></tr>
-      <tr><td>3-Step Challenge / Funded</td><td>5%</td></tr>
-      <tr><td>CFD Instant</td><td>None</td></tr>
-      <tr><td>Futures (Challenge &amp; Funded)</td><td>4% of start-of-day balance</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Daily Loss Limit in Dollars (1-Step, 4%)</h3>
-  <table>
-    <thead><tr><th>Account Size</th><th>4% Daily Loss Limit</th></tr></thead>
-    <tbody>
-      <tr><td>$5,000</td><td>$200</td></tr>
-      <tr><td>$10,000</td><td>$400</td></tr>
-      <tr><td>$25,000</td><td>$1,000</td></tr>
-      <tr><td>$50,000</td><td>$2,000</td></tr>
-      <tr><td>$100,000</td><td>$4,000</td></tr>
-    </tbody>
-  </table>
-  <p>On a 3-Step account the same sizes use a 5% daily limit (for example $5,000 on a $100K account). CFD Instant accounts have no daily loss limit - only the trailing maximum loss limit applies.</p>
-
-  <h3>The Limit Grows If You Bank Profit Intraday</h3>
-  <div class="example-box">
-    <strong>Example - $100,000 1-Step account (4% daily limit):</strong><br>
-    You start the day at $100,000, so your daily loss limit is $4,000 - you cannot drop below $96,000 in equity.<br>
-    If you first lock in $2,000 of profit, your daily limit effectively rises to $6,000 ($4,000 + the $2,000 you banked), so the floor for the rest of that day moves to $94,000.<br><br>
-    Start: $100,000 &rarr; Low: $97,200 &rarr; loss $2,800 &rarr; <strong>OK</strong><br>
-    Start: $100,000 &rarr; Low: $95,600 &rarr; loss $4,400 &rarr; <strong>Violation</strong>
-  </div>
-
-  <h2>The Per-Trade Limit: 2% Per "Trade Idea"</h2>
-  <p>Alongside the daily limit, <strong>no single trade idea may lose more than 2% of the account starting balance.</strong> The clever part is the definition of a "trade idea," which stops the rule being dodged by splitting one position into many small entries:</p>
-  <blockquote>A "trade idea" means all entries on the same symbol, in the same direction, opened within a 10-minute window. These are treated as one trade, and their combined profit and loss is assessed against the 2% limit.</blockquote>
-  <p>So three buys on EUR/USD placed within ten minutes of each other count as one trade idea, and their total loss must stay under 2% of your starting balance.</p>
-
-  <h3>Per-Trade Limit in Dollars (2%)</h3>
-  <table>
-    <thead><tr><th>Account Size</th><th>2% Per-Trade Limit</th></tr></thead>
-    <tbody>
+      <tr><td>$3,000</td><td>$60</td></tr>
       <tr><td>$5,000</td><td>$100</td></tr>
       <tr><td>$10,000</td><td>$200</td></tr>
       <tr><td>$25,000</td><td>$500</td></tr>
       <tr><td>$50,000</td><td>$1,000</td></tr>
       <tr><td>$100,000</td><td>$2,000</td></tr>
+      <tr><td>$200,000</td><td>$4,000</td></tr>
     </tbody>
   </table>
-  <div class="example-box">
-    <strong>Example - $50,000 account:</strong> Your per-trade limit is 2% = $1,000. You open one position on US30, then add two more in the same direction within ten minutes. All three are one "trade idea," so their combined loss cannot exceed $1,000. If they collectively lose $1,200, that is a violation - even though no single entry lost that much on its own.
-  </div>
 
-  <h2>How the Two Limits Work Together</h2>
-  <p>The per-trade limit controls the size of any one bet; the daily limit controls how many of those bets can go wrong before you must stop for the day. Sizing each trade at around 1% of the account is the simplest way to respect both at once:</p>
-  <div class="example-box">
-    <strong>$100,000 account, risking ~1% ($1,000) per trade:</strong><br>
-    Each trade is comfortably inside the 2% per-trade cap.<br>
-    You could take four full losing trades ($4,000) before reaching the 4% daily loss limit - which means a sensible trader steps away well before then.
-  </div>
+  <h2>Daily Loss Limit (Depends on Product)</h2>
+  <p>The daily loss limit is where products differ the most. Note especially that Instant accounts do not have one:</p>
+  <table>
+    <thead><tr><th>Account</th><th>Daily loss limit</th></tr></thead>
+    <tbody>
+      <tr><td>Instant (CFD &amp; Future Based CFD)</td><td>None</td></tr>
+      <tr><td>CFD 1-Step</td><td>4% ($4,000 on a $100K account)</td></tr>
+      <tr><td>CFD 2-Step</td><td>4% ($4,000 on a $100K account)</td></tr>
+      <tr><td>CFD 3-Step</td><td>5% ($5,000 on a $100K account)</td></tr>
+      <tr><td>Future Based CFD 1-Step</td><td>4%</td></tr>
+    </tbody>
+  </table>
 
-  <h2>How to Trade Safely Inside the Limits</h2>
-  <ul>
-    <li><strong>Set a personal daily stop tighter than the rule.</strong> If the limit is 4%, call it a day at 2-3%. The buffer keeps emotion out of decisions near the boundary.</li>
-    <li><strong>Watch floating equity, not just closed trades.</strong> Unrealized losses count toward the daily limit in real time.</li>
-    <li><strong>Respect the 10-minute window.</strong> If you scale into a position, remember those entries are assessed together against the 2% cap.</li>
-    <li><strong>Avoid high-impact news.</strong> News trading is prohibited and is the fastest way to blow through both limits in seconds.</li>
-  </ul>
+  <h2>How the Daily Loss Is Measured</h2>
+  <p>The daily loss is calculated as your <strong>start-of-day equity minus the lowest floating equity of the day</strong>. It covers both open and closed trades, so an unrealized drawdown intraday counts, not just closed losses.</p>
+  <div class="example-box"><strong>Banking profit widens your room:</strong> if you lock in profit earlier in the day, that day's loss limit rises by the profit amount. A good morning literally buys you more margin for error in the afternoon.</div>
+  <p>Because Instant accounts have no daily loss limit, your main guardrails there are the 2% per-trade cap and the overall <a href="/blog/prop-firm-drawdown-rules">maximum loss limit and trailing floor</a>. Mandatory <a href="/blog/stop-loss-take-profit-requirements">stop-loss and take-profit</a> keep each trade inside the 2% cap.</p>
 
-  <h2>Frequently Asked Questions About Loss Limits</h2>
-  <h3>Is the daily loss limit based on balance or equity?</h3>
-  <p>Equity. It is the start-of-day equity minus the lowest floating equity of the day, so open (unrealized) losses count in real time, and the lowest point of the day is what is measured.</p>
-  <h3>Does the daily limit reset each day?</h3>
-  <p>Yes - it is measured from your start-of-day equity each trading day. If you bank profit during the day, the effective limit for that day increases by the amount of realized profit.</p>
-  <h3>What is a "trade idea" for the 2% per-trade rule?</h3>
-  <p>All entries on the same symbol, in the same direction, opened within a 10-minute window. They are treated as one trade and their combined profit and loss is measured against the 2% limit on starting balance.</p>
-  <h3>Does the CFD Instant account have a daily loss limit?</h3>
-  <p>No. CFD Instant accounts have no daily loss limit - the trailing maximum loss limit is the governing risk rule. Futures accounts do use a 4% daily limit on start-of-day balance.</p>
-  <h3>What happens if I breach the daily loss limit?</h3>
-  <p>The account is terminated immediately, on both challenge and funded accounts. Because it is calculated on equity at the lowest point of the day, a floating loss that dips past the limit triggers it even if the trade is still open.</p>
-
-  <p>Loss limits are not there to make trading harder - they are the same risk discipline every professional uses, written into the rules. Size each trade modestly, watch your floating equity, and these limits become a safety net you rarely touch.</p>
+  <h2>Frequently Asked Questions</h2>
+  <h3>Do Fewpips Instant accounts have a daily loss limit?</h3>
+  <p>No. Instant accounts, both CFD and Future Based CFD, have no daily loss limit. Your guardrails on Instant are the 2% per-trade cap and the overall maximum loss limit.</p>
+  <h3>How is the daily loss limit calculated?</h3>
+  <p>As your start-of-day equity minus the lowest floating equity of the day, covering both open and closed trades. If you bank profit earlier in the day, that day&#x27;s limit rises by the profit amount.</p>
+  <h3>What is the per-trade loss limit?</h3>
+  <p>2% of your starting balance on every account. For example, $1,000 on a $50,000 account or $2,000 on a $100,000 account.</p>
+  <h3>What is the daily loss limit on the CFD 3-Step?</h3>
+  <p>5%, which is $5,000 on a $100,000 account. CFD 1-Step and 2-Step, and Future Based CFD 1-Step, are 4%.</p>
 </article>
 </main>
-
 <div class="glow-divider"></div>
-
 <div class="post-cta">
-  <h2>Ready to Start Your Trading Journey?</h2>
-  <p>Challenges from $59. No time limits. Up to 90% profit split. Join traders in 140+ countries.</p>
+  <h2>Ready to Get Funded?</h2>
+  <p>Challenges from $59. No time limits. Up to 90% profit split. Available on CFD and Future Based CFD accounts.</p>
   <a href="https://crm.fewpips.com/auth/signup" class="cta-btn">Get Funded Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 </div>
-
-<!-- Decorative floating mascot -->
-<img class="post-mascot-float" src="/blog/mascot-4-speed.png" alt="" aria-hidden="true">
-
+<img class="post-mascot-float" src="/blog/hero-loss-limits.png" alt="" aria-hidden="true">
 <footer class="blog-footer">
   <div class="blog-footer-left">&copy; 2026 Fewpips. All rights reserved.</div>
   <div class="blog-footer-links">
-    <a href="/">Home</a>
-    <a href="/blog">Blog</a>
-    <a href="/faq">FAQ</a>
-    <a href="/terms">Terms</a>
-    <a href="/contact">Contact</a>
+    <a href="/">Home</a><a href="/blog">Blog</a><a href="/faq">FAQ</a><a href="/terms">Terms</a><a href="/contact">Contact</a>
   </div>
 </footer>
-
 </div>
-
-<script>
-(function(){
-  var c=document.getElementById('particles');
-  for(var i=0;i<40;i++){
-    var p=document.createElement('div');
-    p.className='particle';
-    p.style.cssText='position:absolute;border-radius:50%;background:'+(['#0fcd37','#00ffc2','#42ff00'][Math.floor(Math.random()*3)])+';left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+(1+Math.random()*2.5)+'px;height:'+(1+Math.random()*2.5)+'px;animation-delay:'+Math.random()*6+'s;animation-duration:'+(4+Math.random()*4)+'s';
-    c.appendChild(p);
-  }
-})();
-</script>
-
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "92c7587e087849c39a8dee8322e4721d"}'></script><!-- Cloudflare Pages Analytics --><script src="/sticky-split.js" defer></script></body>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "92c7587e087849c39a8dee8322e4721d"}'></script>
+</body>
 </html>
