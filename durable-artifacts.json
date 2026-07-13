@@ -122,6 +122,26 @@
       "type": "present_in",
       "path": "futures/index.html",
       "pattern": "livechat-greeting.js"
+    },
+    {
+      "id": "hash-nav-fix-injector",
+      "desc": "Cross-page hash navigation fix injector (built-output add-on)",
+      "type": "file_exists",
+      "path": "hash-nav-fix.js"
+    },
+    {
+      "id": "hash-nav-fix-home",
+      "desc": "hash-nav-fix.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "hash-nav-fix.js"
+    },
+    {
+      "id": "hash-nav-fix-futures",
+      "desc": "hash-nav-fix.js wired on futures page",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "hash-nav-fix.js"
     }
   ]
 }
