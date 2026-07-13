@@ -131,8 +131,18 @@
     setTimeout(showBubble, GREET_DELAY);
   }
 
-  // On any client-side navigation the greeting must reappear (reset the per-view dismiss).
+  // On a real page change the greeting must reappear (reset the per-view dismiss).
   function reset() { dismissed = false; present(); }
+
+  // Re-show ONLY when the pathname actually changes (a real page like /futures or / (CFD)).
+  // In-page navbar section links (/#about, /#challenges, ...) keep the same pathname and
+  // must NOT re-pop the greeting.
+  var lastPath = location.pathname;
+  function onRouteChange() {
+    if (location.pathname === lastPath) return; // same page (section anchor / hash) - ignore
+    lastPath = location.pathname;
+    reset();
+  }
 
   injectStyles();
   ensureBadge();
@@ -140,17 +150,17 @@
   else window.addEventListener("load", present);
   document.addEventListener("DOMContentLoaded", present);
 
-  // Next.js does client-side routing via the history API - re-show on every route change.
+  // Next.js does client-side routing via the history API - re-show only on real page changes.
   ["pushState", "replaceState"].forEach(function (m) {
     var orig = history[m];
     if (orig && !orig.__fpLcPatched) {
-      var patched = function () { var r = orig.apply(this, arguments); setTimeout(reset, 40); return r; };
+      var patched = function () { var r = orig.apply(this, arguments); setTimeout(onRouteChange, 40); return r; };
       patched.__fpLcPatched = true;
       history[m] = patched;
     }
   });
-  window.addEventListener("popstate", reset);
-  window.addEventListener("pageshow", reset); // bfcache restore / refresh
+  window.addEventListener("popstate", onRouteChange);
+  window.addEventListener("pageshow", function (e) { if (e && e.persisted) reset(); }); // bfcache restore
 
   // Fallback guard: keep the badge asserted unless the visitor dismissed it in this view.
   setInterval(ensureBadge, 500);
