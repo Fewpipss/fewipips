@@ -68,7 +68,7 @@
       "name": "Is the Fewpips trailing floor capped at my starting balance?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. The maximum loss limit is not capped at your starting balance. It trails up as your balance grows and never moves down, so your buffer widens as you profit."
+        "text": "No. The maximum loss limit is not capped at your starting balance. It trails up as your equity climbs to new highs and never moves down, so your buffer widens as you profit."
       }
     },
     {
@@ -216,19 +216,19 @@ a:hover{opacity:.85}
 <div class="glow-divider"></div>
 <main class="post-content">
 <article>
-  <div class="answer-box"><strong>Short answer:</strong> The Fewpips maximum loss limit is a <strong>trailing floor</strong>. It trails up with your profit and never moves down, and it is <strong>not capped at your starting balance</strong>. The more your balance grows, the higher the floor rises, so your buffer widens as you profit.</div>
+  <div class="answer-box"><strong>Short answer:</strong> The Fewpips maximum loss limit is a <strong>trailing floor</strong>. It trails up with your profit and never moves down, and it is <strong>not capped at your starting balance</strong>. The more your equity grows, the higher the floor rises, so your buffer widens as you profit.</div>
 
   <p>The trailing floor is the drawdown question traders find most confusing, especially the behaviour after a payout. The good news is that the Fewpips model works in your favour as the account grows. Here is exactly how it moves.</p>
 
   <h2>The Floor Trails Up, Never Down</h2>
-  <p>Your maximum loss limit sets a floor beneath your balance. As your balance rises, that floor <strong>trails up with it</strong>. When your balance falls, the floor <strong>stays where it is</strong>. It only ever moves in one direction: up. Critically, it is <strong>not capped at your starting balance</strong>. It keeps climbing as your account grows.</p>
+  <p>Your maximum loss limit sets a floor that trails your <strong>highest equity</strong> - your peak account value, including open profit. As your equity rises to a new high, that floor <strong>trails up with it</strong>. When your equity falls, the floor <strong>stays where it is</strong>. It only ever moves in one direction: up. Because it tracks equity and not just closed balance, <strong>floating profit on an open trade lifts the floor too</strong>: if a winning position pushes your equity to a new peak and then price retraces, the floor stays locked at that higher level. Critically, it is <strong>not capped at your starting balance</strong>. It keeps climbing as your account grows.</p>
 
   <h2>Worked Example</h2>
   <div class="example-box">
     <strong>$50,000 account, 10% maximum drawdown:</strong><br>
-    The floor starts at $5,000 below balance, so at $50,000 the floor sits at $45,000.<br>
+    The floor starts at $5,000 below your equity, so at $50,000 the floor sits at $45,000.<br>
     Grow the account to <strong>$70,000</strong>. The maximum drawdown is still 10%, which is now $7,000, so the floor rises to <strong>$63,000</strong>.<br><br>
-    Your buffer grew from $5,000 to $7,000 simply because your balance grew. The floor locked in at $63,000 and will not drop back down.
+    Your buffer grew from $5,000 to $7,000 simply because your equity grew. The floor locked in at $63,000 and will not drop back down.
   </div>
 
   <h2>Why This Matters After a Payout</h2>
@@ -239,7 +239,7 @@ a:hover{opacity:.85}
 
   <h2>Frequently Asked Questions</h2>
   <h3>Is the Fewpips trailing floor capped at my starting balance?</h3>
-  <p>No. The maximum loss limit is not capped at your starting balance. It trails up as your balance grows and never moves down, so your buffer widens as you profit.</p>
+  <p>No. The maximum loss limit is not capped at your starting balance. It trails up as your equity climbs to new highs and never moves down, so your buffer widens as you profit.</p>
   <h3>Does the drawdown floor reset after I take a payout?</h3>
   <p>No. The floor never retreats. Taking a payout does not reset your protection to the starting balance; the gains you locked in continue to hold the floor higher.</p>
   <h3>What happens if I hit the maximum loss floor?</h3>
