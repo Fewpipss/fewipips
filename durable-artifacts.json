@@ -102,6 +102,72 @@
       "type": "present_in",
       "path": "index.html",
       "pattern": "sticky-split.js"
+    },
+    {
+      "id": "livechat-greeting-injector",
+      "desc": "Proactive LiveChat greeting bubble + unread badge injector (built-output add-on)",
+      "type": "file_exists",
+      "path": "livechat-greeting.js"
+    },
+    {
+      "id": "livechat-greeting-home",
+      "desc": "livechat-greeting.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "livechat-greeting.js"
+    },
+    {
+      "id": "livechat-greeting-futures",
+      "desc": "livechat-greeting.js wired on futures page",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "livechat-greeting.js"
+    },
+    {
+      "id": "hash-nav-fix-injector",
+      "desc": "Cross-page hash navigation fix injector (built-output add-on)",
+      "type": "file_exists",
+      "path": "hash-nav-fix.js"
+    },
+    {
+      "id": "hash-nav-fix-home",
+      "desc": "hash-nav-fix.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "hash-nav-fix.js"
+    },
+    {
+      "id": "hash-nav-fix-futures",
+      "desc": "hash-nav-fix.js wired on futures page",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "hash-nav-fix.js"
+    },
+    {
+      "id": "brand-ig-fewpips",
+      "desc": "Brand Instagram points to instagram.com/few.pips (was officialfewpips)",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "instagram.com/few.pips"
+    },
+    {
+      "id": "old-ig-handle-gone",
+      "desc": "Old brand IG handle officialfewpips no longer used",
+      "type": "absent",
+      "pattern": "instagram.com/officialfewpips"
+    },
+    {
+      "id": "social-tiktok-injector",
+      "desc": "Footer/contact TikTok (@few.pips) + Telegram Support label injector (built-output add-on)",
+      "type": "file_exists",
+      "path": "social-tiktok.js"
+    },
+    {
+      "id": "social-tiktok-home",
+      "desc": "social-tiktok.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "social-tiktok.js"
     }
   ]
 }
