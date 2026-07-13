@@ -15,11 +15,15 @@
     var css = document.createElement("style");
     css.id = "fp-social-css";
     css.textContent = [
+      // the brand column is narrow (260px); with the added TikTok icon the row would cram on
+      // the homepage - let it wrap and give the always-on label clear space above the icons.
+      '.ft-brand-soc{flex-wrap:wrap;row-gap:14px;margin-top:32px;overflow:visible}',
+      '.ft-brand{overflow:visible}',
       '.ft-brand-soc a[aria-label="Telegram Support"]{overflow:visible}',
       '.fp-tg-tip{position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%);',
       'background:linear-gradient(135deg,#2aabee,#229ed9);color:#fff;font-size:.62rem;font-weight:700;',
       'line-height:1;white-space:nowrap;padding:5px 8px;border-radius:7px;pointer-events:none;',
-      'box-shadow:0 4px 14px #00000066;letter-spacing:.02em;z-index:3}',
+      'box-shadow:0 4px 14px #00000066;letter-spacing:.02em;z-index:5}',
       '.fp-tg-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);',
       'border:5px solid transparent;border-top-color:#229ed9}'
     ].join("");
