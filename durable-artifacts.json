@@ -102,6 +102,32 @@
       "type": "present_in",
       "path": "index.html",
       "pattern": "sticky-split.js"
+    },
+    {
+      "id": "brand-ig-fewpips",
+      "desc": "Brand Instagram points to instagram.com/few.pips (was officialfewpips)",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "instagram.com/few.pips"
+    },
+    {
+      "id": "old-ig-handle-gone",
+      "desc": "Old brand IG handle officialfewpips no longer used",
+      "type": "absent",
+      "pattern": "instagram.com/officialfewpips"
+    },
+    {
+      "id": "social-tiktok-injector",
+      "desc": "Footer TikTok icon (@few.pips) injector + IG href keeper (built-output add-on)",
+      "type": "file_exists",
+      "path": "social-tiktok.js"
+    },
+    {
+      "id": "social-tiktok-home",
+      "desc": "social-tiktok.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "social-tiktok.js"
     }
   ]
 }
