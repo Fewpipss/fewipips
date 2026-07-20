@@ -163,9 +163,9 @@ footer a:hover{color:var(--green)}
 footer .links{display:flex;gap:26px}
 
 /* wave hover text */
-.wave{cursor:default}
+.wave{cursor:default;letter-spacing:.04em}
 .wave .word{display:inline-block;white-space:nowrap}
-.wave .ch{display:inline-block;will-change:transform;transition:transform .3s cubic-bezier(.34,1.56,.64,1);transition-delay:calc(var(--i) * .03s)}
+.wave .ch{display:inline-block;will-change:transform;transform-origin:center bottom;transition:transform .3s cubic-bezier(.34,1.56,.64,1);transition-delay:calc(var(--i) * .03s)}
 .wave:hover .ch{transform:translateY(-9px) scale(1.18)}
 .wave .ch.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 @media (prefers-reduced-motion: reduce){.wave .ch{transition:none}.wave:hover .ch{transform:none}}
