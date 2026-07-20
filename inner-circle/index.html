@@ -39,7 +39,7 @@ nav img{height:30px;display:block}
 .navcta:hover{box-shadow:0 0 28px rgba(66,255,0,.45);transform:translateY(-1px)}
 
 /* hero */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:130px 24px 90px}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:130px 24px 120px;overflow:hidden;isolation:isolate}
 .ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);width:min(118vmin,1240px);aspect-ratio:1;border-radius:50%;pointer-events:none;
   background:conic-gradient(from 140deg,#00ffc2,#42ff00 30%,rgba(66,255,0,.05) 62%,rgba(0,255,194,.35) 88%,#00ffc2);
   -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));
@@ -50,6 +50,7 @@ nav img{height:30px;display:block}
 @keyframes spin{to{transform:translate(-50%,-52%) rotate(360deg)}}
 .hero .glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(95vmin,1000px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(66,255,0,.10),transparent 65%);pointer-events:none}
 
+.hero .kicker,.hero h1,.hero p.sub,.hero .ctas,.hero .invite-tag{position:relative;z-index:2}
 .kicker{font-family:'Inter',sans-serif;font-weight:600;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--green);margin-bottom:26px;animation:rise .8s .1s both}
 .hero h1{font-weight:900;font-size:clamp(52px,9.5vw,120px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;animation:rise .8s .25s both}
 .hero h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -140,7 +141,7 @@ code.ph{font-family:'Inter',sans-serif;font-weight:600;font-size:.92em;color:var
 
 /* final cta */
 .final{text-align:center;position:relative;padding:150px 0 160px;overflow:hidden}
-.final .ring{width:min(100vmin,940px);top:50%}
+.final .ring{width:min(78vmin,680px);top:50%}
 .final h2{font-size:clamp(40px,6.5vw,76px)}
 .final .lead{margin:0 auto}
 .final .btn{margin-top:40px}
@@ -173,6 +174,7 @@ footer .links{display:flex;gap:26px}
 </nav>
 
 <header class="hero" id="top">
+  <canvas id="starfield" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
   <div class="ring echo"></div>
   <div class="ring"></div>
   <div class="glow"></div>
@@ -300,6 +302,115 @@ footer .links{display:flex;gap:26px}
     <p>&copy; 2026 Fewpips. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+(function(){
+  var hero=document.querySelector('.hero'), canvas=document.getElementById('starfield');
+  if(!hero||!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var COLORS=['#FFFFFF','#FFFFFF','#FFFFAA','#AAFFAA','#AAFFFF'];
+  var DENSITY=0.00006, TWINKLE_P=0.7, MIN_SPD=2, MAX_SPD=4, FPS=16, FRAME=1000/FPS;
+  var REGEN_MS=5000, REGEN_PCT=0.15, STAR=3, SHOOT_PX=2;
+  var reduced=(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)||location.search.indexOf('static')>-1;
+  var stars=[], shooting=[], last=0, raf=null;
+
+  function newStar(){
+    return {
+      x:Math.floor(Math.random()*(canvas.width/STAR))*STAR,
+      y:Math.floor(Math.random()*(canvas.height/STAR))*STAR,
+      color:COLORS[Math.floor(Math.random()*COLORS.length)],
+      baseOpacity:Math.random()*0.5+0.5,
+      currentOpacity:1,
+      twinkle:Math.random()<TWINKLE_P,
+      twinkleSpeed:MIN_SPD+Math.random()*(MAX_SPD-MIN_SPD),
+      twinkleDirection:-1, twinkleTimer:0
+    };
+  }
+  function init(){
+    stars=[];
+    var n=Math.floor(canvas.width*canvas.height*DENSITY);
+    for(var i=0;i<n;i++){var s=newStar(); s.currentOpacity=s.baseOpacity; stars.push(s);}
+  }
+  function regen(){
+    if(!stars.length)return;
+    var n=Math.max(1,Math.floor(stars.length*REGEN_PCT));
+    for(var i=0;i<n;i++){var s=newStar(); s.currentOpacity=s.baseOpacity; stars[Math.floor(Math.random()*stars.length)]=s;}
+  }
+  // sitna 4-kraka zvezdica (plus oblik sa duzim vertikalnim krakom)
+  function drawStar(x,y,color,alpha){
+    ctx.globalAlpha=alpha; ctx.fillStyle=color;
+    ctx.fillRect(x-STAR,y,STAR*2+1,1);      // horizontalni krak
+    ctx.fillRect(x,y-STAR,1,STAR*2+1);      // vertikalni krak
+    ctx.globalAlpha=Math.min(1,alpha+0.2);
+    ctx.fillRect(x,y,1,1);                  // svetlije jezgro
+  }
+  function newShooting(){
+    return {
+      x:Math.random()*canvas.width, y:0,
+      angle:45+Math.random()*90,
+      speed:Math.random()*5+8, distance:0, trail:[]
+    };
+  }
+  function tick(ts){
+    raf=requestAnimationFrame(tick);
+    if(ts-last<FRAME)return;
+    last=ts;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(var i=0;i<stars.length;i++){
+      var s=stars[i];
+      drawStar(s.x,s.y,s.color,s.currentOpacity);
+      if(s.twinkle){
+        s.twinkleTimer+=1/FPS;
+        if(s.twinkleTimer>=s.twinkleSpeed){s.twinkleTimer=0;s.twinkleDirection*=-1;}
+        var p=s.twinkleTimer/s.twinkleSpeed;
+        if(p<0.5){s.currentOpacity=s.twinkleDirection<0?s.baseOpacity:s.baseOpacity*0.3;}
+        else{s.currentOpacity=s.twinkleDirection<0?s.baseOpacity*0.3:s.baseOpacity;}
+      }
+    }
+    var alive=[];
+    for(var j=0;j<shooting.length;j++){
+      var st=shooting[j];
+      var nx=st.x+st.speed*Math.cos(st.angle*Math.PI/180);
+      var ny=st.y+st.speed*Math.sin(st.angle*Math.PI/180);
+      st.distance+=st.speed;
+      if(st.distance%8<st.speed)st.trail.push({x:st.x,y:st.y,opacity:1});
+      st.trail=st.trail.map(function(t){return{x:t.x,y:t.y,opacity:t.opacity-0.1};}).filter(function(t){return t.opacity>0;});
+      st.x=nx; st.y=ny;
+      if(st.x>=-30&&st.x<=canvas.width+30&&st.y>=-30&&st.y<=canvas.height+30)alive.push(st);
+    }
+    shooting=alive;
+    for(var k=0;k<shooting.length;k++){
+      var sh=shooting[k];
+      for(var t=0;t<sh.trail.length;t++){
+        var tp=sh.trail[t];
+        ctx.globalAlpha=tp.opacity; ctx.fillStyle='rgba(180,242,255,1)';
+        ctx.fillRect(tp.x,tp.y,SHOOT_PX,SHOOT_PX);
+      }
+      ctx.globalAlpha=1; ctx.fillStyle='#ffffff';
+      for(var yy=0;yy<2;yy++)for(var xx=0;xx<4;xx++){
+        if((xx===0&&yy===1)||(xx===3&&yy===0))continue;
+        ctx.fillRect(sh.x+xx*SHOOT_PX,sh.y+yy*SHOOT_PX,SHOOT_PX,SHOOT_PX);
+      }
+    }
+    ctx.globalAlpha=1;
+  }
+  function size(){canvas.width=hero.clientWidth;canvas.height=hero.clientHeight;init();}
+  function drawOnce(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(var i=0;i<stars.length;i++)drawStar(stars[i].x,stars[i].y,stars[i].color,stars[i].baseOpacity);
+    ctx.globalAlpha=1;
+  }
+  size();
+  window.addEventListener('resize',function(){size();if(reduced)drawOnce();});
+  if(reduced){drawOnce();return;}
+  raf=requestAnimationFrame(tick);
+  setInterval(regen,REGEN_MS);
+  (function spawnShooting(){
+    shooting.push(newShooting());
+    setTimeout(spawnShooting,Math.random()*4000+2000);
+  })();
+})();
+</script>
 
 </body>
 </html>
