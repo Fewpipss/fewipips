@@ -34,7 +34,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opa
 /* nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,10,10,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
-nav img{height:30px;display:block}
+nav img{height:45px;display:block}
 .navcta{font-family:'Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#0a0a0a;background:var(--grad);padding:11px 22px;border-radius:4px;transition:box-shadow .25s,transform .25s}
 .navcta:hover{box-shadow:0 0 28px rgba(66,255,0,.45);transform:translateY(-1px)}
 
@@ -152,6 +152,9 @@ code.ph{font-family:'Inter',sans-serif;font-weight:600;font-size:.92em;color:var
 /* final cta */
 .final{text-align:center;position:relative;padding:150px 0 160px;overflow:hidden}
 .final .ring{width:min(78vmin,680px);top:50%}
+.final .wrap{animation:floaty 5s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@media (prefers-reduced-motion: reduce){.final .wrap{animation:none}}
 .final h2{font-size:clamp(40px,6.5vw,76px)}
 .final .lead{margin:0 auto}
 .final .btn{margin-top:40px}
