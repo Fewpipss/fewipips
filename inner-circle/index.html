@@ -81,11 +81,15 @@ h2 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:tex
 .lead{max-width:640px;color:var(--muted);font-size:16.5px;line-height:1.8}
 .lead b,.lead strong{color:var(--txt);font-weight:500}
 
-/* mesh-drift shader sections */
-#what,#dashboard,#numbers,#join{position:relative;overflow:hidden}
-.shaderbg{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
-#what::after,#dashboard::after,#numbers::after,#join::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(7,10,8,.7),rgba(7,10,8,.6) 50%,rgba(7,10,8,.7))}
-#what>.wrap,#dashboard>.wrap,#numbers>.wrap,#join>.wrap{position:relative;z-index:2}
+/* mesh-drift shader: ONE continuous canvas behind all content sections (no per-section seam) */
+.mesh{position:relative}
+.mesh>.shaderbg{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.mesh>section{position:relative;z-index:1}
+/* readability scrim over the shader, per section (skips #numbers which is solid) */
+#what::after,#dashboard::after,#join::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(7,10,8,.7),rgba(7,10,8,.6) 50%,rgba(7,10,8,.7))}
+#what>.wrap,#dashboard>.wrap,#join>.wrap{position:relative;z-index:2}
+/* #numbers: solid black background for this section only (covers the shader here) */
+#numbers{background:#0a0a0a}
 /* what section */
 .what{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
 .what-card{border:1px solid var(--line2);background:var(--card);border-radius:10px;padding:38px;position:relative;overflow:hidden}
@@ -209,8 +213,9 @@ footer .links{display:flex;gap:26px}
   </div>
 </div>
 
+<div class="mesh">
+<canvas class="shaderbg" data-shader="meshdrift" aria-hidden="true"></canvas>
 <section id="what">
-  <canvas class="shaderbg" data-shader="meshdrift" aria-hidden="true"></canvas>
   <div class="wrap what">
     <div>
       <div class="snum">01 / What this is</div>
@@ -228,7 +233,6 @@ footer .links{display:flex;gap:26px}
 </section>
 
 <section id="dashboard" style="border-top:1px solid var(--line2)">
-  <canvas class="shaderbg" data-shader="meshdrift" aria-hidden="true"></canvas>
   <div class="wrap dash-grid">
     <div>
       <div class="snum">02 / The upgrade</div>
@@ -252,7 +256,6 @@ footer .links{display:flex;gap:26px}
 </section>
 
 <section id="numbers" style="border-top:1px solid var(--line2)">
-  <canvas class="shaderbg" data-shader="meshdrift" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="snum">03 / The numbers</div>
     <h2>Three tiers. Three levels.<br><span class="grad">Recurring.</span></h2>
@@ -277,7 +280,6 @@ footer .links{display:flex;gap:26px}
 </section>
 
 <section id="join" style="border-top:1px solid var(--line2)">
-  <canvas class="shaderbg" data-shader="meshdrift" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="snum">04 / How to join</div>
     <h2>Three steps and<br>you are <span class="grad">in.</span></h2>
@@ -298,6 +300,7 @@ footer .links{display:flex;gap:26px}
     </div>
   </div>
 </section>
+</div>
 
 <section class="final">
   <div class="ring echo"></div>
@@ -532,8 +535,10 @@ footer .links{display:flex;gap:26px}
     gl.uniform4f(U.u_cursor,0.00,2.0,0.65,0.46);
     var W=0,H=0;
     function resize(){
-      var dpr=Math.min(window.devicePixelRatio||1,2);
+      // one tall continuous canvas -> cap resolution (soft gradient hides the downscale)
+      var dpr=Math.min(window.devicePixelRatio||1,1.25);
       var w=Math.round(canvas.clientWidth*dpr), h=Math.round(canvas.clientHeight*dpr);
+      var MAXH=4096; if(h>MAXH){dpr*=MAXH/h; w=Math.round(canvas.clientWidth*dpr); h=MAXH;}
       if((w===W&&h===H)||!w||!h)return;
       W=w;H=h;canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h);
     }
