@@ -85,11 +85,11 @@ h2 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:tex
 .mesh{position:relative}
 .mesh>.shaderbg{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
 .mesh>section{position:relative;z-index:1}
-/* readability scrim over the shader, per section (skips #numbers which is solid) */
-#what::after,#dashboard::after,#join::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(7,10,8,.7),rgba(7,10,8,.6) 50%,rgba(7,10,8,.7))}
-#what>.wrap,#dashboard>.wrap,#join>.wrap{position:relative;z-index:2}
-/* #numbers: solid black background for this section only (covers the shader here) */
-#numbers{background:#0a0a0a}
+/* readability scrim over the shader, per section (skips solid-black sections) */
+#what::after,#dashboard::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(7,10,8,.7),rgba(7,10,8,.6) 50%,rgba(7,10,8,.7))}
+#what>.wrap,#dashboard>.wrap{position:relative;z-index:2}
+/* solid black sections (cover the shader here) */
+#numbers,#join{background:#0a0a0a}
 /* what section */
 .what{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
 .what-card{border:1px solid var(--line2);background:var(--card);border-radius:10px;padding:38px;position:relative;overflow:hidden}
@@ -232,7 +232,7 @@ footer .links{display:flex;gap:26px}
   </div>
 </section>
 
-<section id="dashboard" style="border-top:1px solid var(--line2)">
+<section id="dashboard">
   <div class="wrap dash-grid">
     <div>
       <div class="snum">02 / The upgrade</div>
@@ -255,7 +255,7 @@ footer .links{display:flex;gap:26px}
   </div>
 </section>
 
-<section id="numbers" style="border-top:1px solid var(--line2)">
+<section id="numbers">
   <div class="wrap">
     <div class="snum">03 / The numbers</div>
     <h2>Three tiers. Three levels.<br><span class="grad">Recurring.</span></h2>
@@ -279,7 +279,7 @@ footer .links{display:flex;gap:26px}
   </div>
 </section>
 
-<section id="join" style="border-top:1px solid var(--line2)">
+<section id="join">
   <div class="wrap">
     <div class="snum">04 / How to join</div>
     <h2>Three steps and<br>you are <span class="grad">in.</span></h2>
