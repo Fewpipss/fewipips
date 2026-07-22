@@ -11,7 +11,3 @@
   Cache-Control: public, max-age=2592000
 /*.svg
   Cache-Control: public, max-age=2592000
-
-# Site injectors
-/*.js
-  Cache-Control: public, max-age=86400
