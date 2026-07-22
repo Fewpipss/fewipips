@@ -8,11 +8,11 @@
 
   // Real payout certificates. To swap/add: drop a PNG in /certs and edit this list.
   var CERTS = [
-    { img: "/certs/sophia-reed.png",   amount: "$13,133.88" },
-    { img: "/certs/maya-goldberg.png", amount: "$6,441.83" },
-    { img: "/certs/adrian-cole.png",   amount: "$3,492.98" },
-    { img: "/certs/elena-petrova.png", amount: "$3,170.20" },
-    { img: "/certs/omar-khalil.png",   amount: "$2,988.17" }
+    { img: "/certs/sophia-reed.webp",   amount: "$13,133.88" },
+    { img: "/certs/maya-goldberg.webp", amount: "$6,441.83" },
+    { img: "/certs/adrian-cole.webp",   amount: "$3,492.98" },
+    { img: "/certs/elena-petrova.webp", amount: "$3,170.20" },
+    { img: "/certs/omar-khalil.webp",   amount: "$2,988.17" }
   ];
 
   // Top 3 performers (June 2026). Full leaderboard lives on the proof page.
