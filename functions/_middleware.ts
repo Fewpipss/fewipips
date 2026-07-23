@@ -60,7 +60,10 @@ function bannerScript(b: { img: string; imgM: string; alt: string }): string {
     "function mk(){var d=document.createElement('div');d.innerHTML='" +
     '<section class="promo-banner-section" aria-label="Promo"><div class="c">' +
     '<a href="' + HREF + '" class="promo-banner" aria-label="' + b.alt + '">' +
-    '<picture><source media="(max-width:640px)" srcset="' + b.imgM + '">' +
+    '<picture>' +
+    '<source media="(max-width:640px)" type="image/webp" srcset="' + b.imgM.replace(".png", ".webp") + '">' +
+    '<source media="(max-width:640px)" srcset="' + b.imgM + '">' +
+    '<source type="image/webp" srcset="' + b.img.replace(".png", ".webp") + '">' +
     '<img src="' + b.img + '" alt="' + b.alt + '" loading="eager" decoding="async"></picture></a></div></section>' +
     "';return d.firstChild}" +
     "function place(){if(document.querySelector(S))return;var h=document.querySelector('.funded-hero');" +
@@ -103,6 +106,24 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
     const b = TARGET_PATHS.has(path) ? SCHEDULE[pickDate(ctx.request.url)] : null;
 
     const transformed = new HTMLRewriter()
+      .on("head", {
+        element(el) {
+          // The promo banner is the mobile LCP element and its markup is injected by
+          // script AFTER hydration - preload today's image so it paints instantly.
+          if (b) {
+            el.append(
+              '<link rel="preload" as="image" href="' + b.imgM.replace(".png", ".webp") +
+                '" media="(max-width:640px)" fetchpriority="high">',
+              { html: true },
+            );
+            el.append(
+              '<link rel="preload" as="image" href="' + b.img.replace(".png", ".webp") +
+                '" media="(min-width:641px)" fetchpriority="high">',
+              { html: true },
+            );
+          }
+        },
+      })
       .on("body", {
         element(el) {
           el.append(footerScript(), { html: true });         // Telegram community link, ALL pages
