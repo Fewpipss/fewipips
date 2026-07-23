@@ -48,11 +48,14 @@ banner), update the matching check in the same PR - the gate is a safety net, no
 - `/terms/` is **client-hydrated** -> every text change must edit BOTH `terms/index.html` AND the
   terms chunk `_next/static/chunks/0he1vgjwt7klm.js`, word-for-word, or hydration reverts it.
 - Homepage Compare/Challenges/Instruments (incl. leverage) render from chunk
-  `_next/static/chunks/0fvh0xh4dp8wq.js` - HTML-only edits get wiped on hydration.
+  `_next/static/chunks/0fvh0xh4dp8wr.js` - HTML-only edits get wiped on hydration.
 - After any chunk edit: `node --check <chunk>` and verify post-hydration with a real browser, not curl.
-- Chunk filenames do NOT change when you edit them. CDN PoPs and browsers cache the old
-  content under the same URL - after editing any `_next/static` chunk, bump the `?v=N`
-  query on its `<script src>` tags in ALL pages, and never set `immutable` on `/_next/static/*`.
+- Chunk filenames do NOT change when you edit them - CDN PoPs and browsers keep serving the
+  old cached content under the same URL. After editing any `_next/static` chunk, RENAME the
+  file (e.g. `..._0.js` -> `..._2.js`) and replace the old name in EVERY served file (HTML,
+  .txt RSC payloads, other chunks). Do NOT use `?v=` queries on chunk script tags - the
+  turbopack runtime matches chunks by exact URL and hydration silently stalls. Never set
+  `immutable` on `/_next/static/*` in `_headers`.
 
 ## 5. Secrets never go in code
 This repo is public-readable. Never hardcode tokens/keys/webhook URLs. Use Cloudflare Pages
