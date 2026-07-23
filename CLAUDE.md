@@ -56,6 +56,9 @@ banner), update the matching check in the same PR - the gate is a safety net, no
   .txt RSC payloads, other chunks). Do NOT use `?v=` queries on chunk script tags - the
   turbopack runtime matches chunks by exact URL and hydration silently stalls. Never set
   `immutable` on `/_next/static/*` in `_headers`.
+- Same trap for IMAGES: optimizing an image in place keeps its URL, and `_headers` gives
+  images a 30-day cache - CDN PoPs keep serving the old heavy file. Rename the image
+  (e.g. `kyle.jpg` -> `kyle-b.jpg`) and update every reference (HTML, RSC .txt, chunks).
 
 ## 5. Secrets never go in code
 This repo is public-readable. Never hardcode tokens/keys/webhook URLs. Use Cloudflare Pages
