@@ -50,6 +50,9 @@ banner), update the matching check in the same PR - the gate is a safety net, no
 - Homepage Compare/Challenges/Instruments (incl. leverage) render from chunk
   `_next/static/chunks/0fvh0xh4dp8wq.js` - HTML-only edits get wiped on hydration.
 - After any chunk edit: `node --check <chunk>` and verify post-hydration with a real browser, not curl.
+- Chunk filenames do NOT change when you edit them. CDN PoPs and browsers cache the old
+  content under the same URL - after editing any `_next/static` chunk, bump the `?v=N`
+  query on its `<script src>` tags in ALL pages, and never set `immutable` on `/_next/static/*`.
 
 ## 5. Secrets never go in code
 This repo is public-readable. Never hardcode tokens/keys/webhook URLs. Use Cloudflare Pages
