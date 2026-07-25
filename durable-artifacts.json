@@ -177,11 +177,11 @@
       "pattern": "aff-tier-pct\">10%"
     },
     {
-      "id": "faq-launch-tier-2026-07",
-      "desc": "FAQ commission answer uses new Launch figures",
+      "id": "faq-tiers-2026-07",
+      "desc": "FAQ commission answer uses 2026-07-25 tier figures (Launch 10/2.5/2.5, Pro 15/2.5/2.5, Titan 20/2.5/2.5)",
       "type": "present_in",
       "path": "faq/index.html",
-      "pattern": "Launch (10%/2.5%/2.5%)"
+      "pattern": "Titan (20%/2.5%/2.5%)"
     },
     {
       "id": "legal-termination-clause",
