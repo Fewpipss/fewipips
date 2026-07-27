@@ -245,10 +245,17 @@
       "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/blog/what-is-a-prop-firm/\""
     },
     {
-      "id": "camilia-onsite-link",
-      "desc": "Homepage Camilia card links on-site /camilia/ (fewpips.co/camilia 404s)",
-      "type": "absent",
+      "id": "camilia-shortlink",
+      "desc": "Homepage Camilia card links fewpips.co/camilia (LP lives on the shortlink domain since 2026-07-27)",
+      "type": "present",
       "pattern": "fewpips.co/camilia"
+    },
+    {
+      "id": "camilia-redirect",
+      "desc": "/camilia/ 301s to fewpips.co/camilia/ - _redirects must survive re-exports (Djordje zips will not have it)",
+      "type": "present_in",
+      "path": "_redirects",
+      "pattern": "/camilia/ https://fewpips.co/camilia/ 301"
     }
   ]
 }
