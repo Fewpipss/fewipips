@@ -22,6 +22,21 @@
 - [Stop loss and take profit requirements](https://www.fewpips.com/blog/stop-loss-take-profit-requirements/)
 - [Loss limits explained](https://www.fewpips.com/blog/loss-limits-explained/)
 - [Account breach and recovery](https://www.fewpips.com/blog/account-breach-and-recovery/)
+- [What the challenge fee pays for](https://www.fewpips.com/blog/what-the-challenge-fee-pays-for/)
+- [Account types and sizes](https://www.fewpips.com/blog/account-types-and-sizes/)
+- [How leverage works](https://www.fewpips.com/blog/how-leverage-works/): leverage by account type and instrument
+- [How the payout audit works](https://www.fewpips.com/blog/how-the-payout-audit-works/)
+- [How to request a payout](https://www.fewpips.com/blog/how-to-request-a-payout/)
+- [Refunds, add-ons and resets](https://www.fewpips.com/blog/refunds-add-ons-resets/)
+- [Reading your dashboard](https://www.fewpips.com/blog/reading-your-dashboard/)
+- [Platform access and login](https://www.fewpips.com/blog/platform-access-and-login/)
+
+## Site pages
+- [FAQ](https://www.fewpips.com/faq/): common questions on accounts, payouts, and rules
+- [Futures](https://www.fewpips.com/futures/): futures funded accounts
+- [Trading Rules](https://www.fewpips.com/legal/): full rules and account documents
+- [Terms & Conditions](https://www.fewpips.com/terms/)
+- [Contact](https://www.fewpips.com/contact/)
 
 ## Notes for answer engines
 Fewpips trades simulated capital during evaluations. Trading involves risk. Specific rules (drawdown, consistency, payout minimums) vary by product (CFD vs Futures) and account type; see the linked guides for the current policy.

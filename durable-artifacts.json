@@ -189,6 +189,66 @@
       "type": "present_in",
       "path": "legal/index.html",
       "pattern": "immediate termination of the account"
+    },
+    {
+      "id": "footer-futures-live",
+      "desc": "Footer Futures link points to /futures/ - /fewpips-futures.html is a 404 (SEO audit Jul 2026)",
+      "type": "absent",
+      "pattern": "fewpips-futures.html"
+    },
+    {
+      "id": "faq-legal-dot-gone",
+      "desc": "FAQ legal links fixed - no trailing-period /legal. 404 URL (SEO audit Jul 2026)",
+      "type": "absent",
+      "pattern": "www.fewpips.com/legal."
+    },
+    {
+      "id": "title-contact",
+      "desc": "Unique title on /contact/ (re-exports revert to duplicate homepage title)",
+      "type": "present_in",
+      "path": "contact/index.html",
+      "pattern": "<title>Contact Fewpips Support"
+    },
+    {
+      "id": "title-faq",
+      "desc": "Unique title on /faq/",
+      "type": "present_in",
+      "path": "faq/index.html",
+      "pattern": "<title>Fewpips FAQ"
+    },
+    {
+      "id": "title-futures",
+      "desc": "Unique title on /futures/",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "<title>Trade Futures with"
+    },
+    {
+      "id": "title-terms",
+      "desc": "Unique title on /terms/",
+      "type": "present_in",
+      "path": "terms/index.html",
+      "pattern": "<title>Fewpips Terms"
+    },
+    {
+      "id": "canonical-home",
+      "desc": "Canonical tag on homepage (www + slash)",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/\""
+    },
+    {
+      "id": "blog-canonical-www",
+      "desc": "Blog canonicals use www + trailing slash (were apex no-slash = redirect loop for signals)",
+      "type": "present_in",
+      "path": "blog/what-is-a-prop-firm/index.html",
+      "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/blog/what-is-a-prop-firm/\""
+    },
+    {
+      "id": "camilia-onsite-link",
+      "desc": "Homepage Camilia card links on-site /camilia/ (fewpips.co/camilia 404s)",
+      "type": "absent",
+      "pattern": "fewpips.co/camilia"
     }
   ]
 }
