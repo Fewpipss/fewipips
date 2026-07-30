@@ -46,3 +46,4 @@ Fewpips trades simulated capital during evaluations. Trading involves risk. Spec
 - Blog: https://www.fewpips.com/blog/
 - [Is News Trading Allowed on a Prop Firm?](https://www.fewpips.com/blog/news-trading-prop-firm-rules/): Yes, news trading is allowed on most prop firms, including Fewpips, but there is usually a
 - [Are Trading Bots and EAs Allowed on Prop Firms?](https://www.fewpips.com/blog/prop-firm-ea-rules/): Yes, Expert Advisors (EAs) and trading bots are allowed on Fewpips, with approval. The lin
+- [Is Copy Trading Allowed on Prop Firms?](https://www.fewpips.com/blog/copy-trading-prop-firm/): It depends on what you mean by copy trading. Copying trades between your own approved acco
