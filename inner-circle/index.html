@@ -86,8 +86,13 @@ h2 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:tex
 .mesh>.shaderbg{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
 .mesh>section{position:relative;z-index:1}
 /* readability scrim over the shader, per section (skips solid-black sections) */
-#what::after,#dashboard::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(7,10,8,.7),rgba(7,10,8,.6) 50%,rgba(7,10,8,.7))}
-#what>.wrap,#dashboard>.wrap{position:relative;z-index:2}
+#what::after,#value::after,#dashboard::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(7,10,8,.7),rgba(7,10,8,.6) 50%,rgba(7,10,8,.7))}
+#what>.wrap,#value>.wrap,#dashboard>.wrap{position:relative;z-index:2}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.perk{border:1px solid var(--line2);background:var(--card);border-radius:10px;padding:28px;position:relative;overflow:hidden}
+.perk .pnum{font-family:'Inter',sans-serif;font-weight:900;font-size:20px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin-bottom:14px}
+.perk h3{font-size:16px;font-weight:700;margin-bottom:10px}
+.perk p{font-size:13.5px;color:var(--muted);line-height:1.7}
 /* solid black sections (cover the shader here) */
 #numbers,#join{background:#0a0a0a}
 /* what section */
@@ -178,7 +183,7 @@ footer .links{display:flex;gap:26px}
 @media (prefers-reduced-motion: reduce){.wave .ch{transition:none}.wave:hover .ch{transform:none}}
 @media(max-width:880px){
   .what,.dash-grid{grid-template-columns:1fr;gap:44px}
-  .paycards{grid-template-columns:1fr}
+  .paycards,.perks{grid-template-columns:1fr}
   .step{grid-template-columns:1fr;gap:10px}
   section{padding:80px 0}
 }
@@ -235,10 +240,35 @@ footer .links{display:flex;gap:26px}
   </div>
 </section>
 
+<section id="value">
+  <div class="wrap">
+    <div class="snum">02 / What you get</div>
+    <h2>Not just a link.<br>A team <span class="grad">behind it.</span></h2>
+    <p class="lead">Anyone can hand you a tracking URL. The Inner Circle is what comes with it: real people, done-for-you assets, and first access to everything Fewpips runs. This is the part that actually moves your numbers.</p>
+    <div class="perks">
+      <div class="perk">
+        <span class="pnum">01</span>
+        <h3>Done-for-you promo assets</h3>
+        <p>Personalized creatives built around your audience and your angle, not a generic banner pack. Campaign-ready posts, stories and reels, made for you on request.</p>
+      </div>
+      <div class="perk">
+        <span class="pnum">02</span>
+        <h3>A direct line to the team</h3>
+        <p>Priority support straight from the people running the campaigns. Ask a question, get a real answer, fast. No ticket queue, no promoting in the dark.</p>
+      </div>
+      <div class="perk">
+        <span class="pnum">03</span>
+        <h3>First access, every time</h3>
+        <p>New promotions, seasonal pushes and offers reach Inner Circle partners first, so you run the strongest hook before anyone else does.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="dashboard">
   <div class="wrap dash-grid">
     <div>
-      <div class="snum">02 / The upgrade</div>
+      <div class="snum">03 / The upgrade</div>
       <h2>See every click.<br>Every signup.<br>Every <span class="grad">commission.</span></h2>
       <p class="lead">The IB dashboard got a full data upgrade. No more promoting into the dark and waiting to find out what happened. You watch your traffic turn into signups and your signups turn into commissions, live, from one screen.</p>
       <div class="feat">
@@ -260,7 +290,7 @@ footer .links{display:flex;gap:26px}
 
 <section id="numbers">
   <div class="wrap">
-    <div class="snum">03 / The numbers</div>
+    <div class="snum">04 / The numbers</div>
     <h2>Three tiers. Three levels.<br><span class="grad">Recurring.</span></h2>
     <p class="lead">Commissions are recurring: every purchase a referred trader makes generates a new commission, not just the first one. Your tier is set by your rolling 30-day referral volume and reviewed monthly.</p>
     <div class="tswrap">
@@ -284,7 +314,7 @@ footer .links{display:flex;gap:26px}
 
 <section id="join">
   <div class="wrap">
-    <div class="snum">04 / How to join</div>
+    <div class="snum">05 / How to join</div>
     <h2>Three steps and<br>you are <span class="grad">in.</span></h2>
     <div class="steps">
       <div class="step">
