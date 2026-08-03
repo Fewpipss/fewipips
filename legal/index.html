@@ -28,7 +28,33 @@
   </div>
 
   <div class="c legal-body">
-    <div class="legal-tabs" role="tablist">
+    <style>
+.acct-pick{background:#0b0f0d;border:1px solid #1d2a24;border-radius:14px;padding:18px 18px 14px;margin:0 0 22px}
+.acct-pick label{display:block;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#22e07c;margin-bottom:9px}
+.acct-pick select{width:100%;max-width:420px;background:#101614;color:#fff;border:1px solid #2a3a32;border-radius:10px;padding:11px 12px;font-size:.95rem;font-family:inherit;outline:none;cursor:pointer}
+.acct-pick select:focus{border-color:#22e07c}
+.acct-note{margin:10px 0 0;font-size:.8rem;color:#8fa39a;line-height:1.5}
+.acct-hide{display:none!important}
+.acct-phase{display:inline-block;background:#123626;color:#22e07c;border:1px solid #1e5c3f;border-radius:999px;padding:5px 14px;font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin:26px 0 6px}
+</style>
+<div class="acct-pick">
+  <label for="acctSel">Find the rules for your account</label>
+  <select id="acctSel" aria-label="Select your account type">
+    <option value="">Browse all documents</option>
+    <optgroup label="CFD accounts">
+      <option value="cfd-instant">Instant Funded Account (CFD)</option>
+      <option value="cfd-1step">1-Step Challenge Account (CFD)</option>
+      <option value="cfd-2step">2-Step Challenge Account (CFD)</option>
+      <option value="cfd-3step">3-Step Challenge Account (CFD)</option>
+    </optgroup>
+    <optgroup label="Future Based CFDs">
+      <option value="fut-challenge">1-Step Challenge Account (Futures)</option>
+      <option value="fut-funded">Funded Account (Futures)</option>
+    </optgroup>
+  </select>
+  <p class="acct-note">Pick your account to see every rule that applies to it, including the funded phase. Where a value depends on account size, the rule lists it by size. All sizes of the same account type follow the same rules.</p>
+</div>
+<div class="legal-tabs" role="tablist">
       <button class="legal-tab on" data-doc="cfd-challenge" role="tab">CFD Challenge</button>
       <button class="legal-tab" data-doc="cfd-funded" role="tab">CFD Funded</button>
       <button class="legal-tab" data-doc="futures-challenge" role="tab">Futures Challenge</button>
@@ -745,6 +771,87 @@
   if (mmBtn) mmBtn.addEventListener('click', function(){ setMm(true); });
   if (mmClose) mmClose.addEventListener('click', function(){ setMm(false); });
   if (mm) mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMm(false); }); });
+</script><script>
+(function(){
+  var CFG={
+    'cfd-instant':[['cfd-funded',['Fewpips Instant Account Rules','For All Funded Accounts','Terms & Policies','Nature of the Fee'],'']],
+    'cfd-1step':[['cfd-challenge',['Fewpips 1-Step Challenge Rules','For All Challenge Accounts','Terms & Policies','Nature of the Fee'],'Challenge phase'],
+                 ['cfd-funded',['Fewpips 1-Step Funded Account Rules','For All Funded Accounts'],'Funded phase']],
+    'cfd-2step':[['cfd-challenge',['Fewpips 2-Step Challenge Rules','For All Challenge Accounts','Terms & Policies','Nature of the Fee'],'Challenge phase'],
+                 ['cfd-funded',['Fewpips 2-Step Funded Account Rules','For All Funded Accounts'],'Funded phase']],
+    'cfd-3step':[['cfd-challenge',['Fewpips 3-Step Challenge Rules','For All Challenge Accounts','Terms & Policies','Nature of the Fee'],'Challenge phase'],
+                 ['cfd-funded',['Fewpips 3-Step Funded Account Rules','For All Funded Accounts'],'Funded phase']],
+    'fut-challenge':[['futures-challenge',null,'']],
+    'fut-funded':[['futures-funded',null,'']]
+  };
+  var sel=document.getElementById('acctSel');
+  var tabsBar=document.querySelector('.legal-tabs');
+  var articles=Array.prototype.slice.call(document.querySelectorAll('.legal-doc'));
+  if(!sel||!tabsBar||!articles.length) return;
+
+  function norm(t){return (t||'').replace(/\s+/g,' ').trim();}
+
+  // Partition an article into: preamble (before first h3) + h3 blocks.
+  function blocks(article){
+    var out=[],cur=null,pre=[];
+    Array.prototype.slice.call(article.children).forEach(function(el){
+      if(el.tagName==='H3'){cur={name:norm(el.textContent),els:[el]};out.push(cur);}
+      else if(cur){cur.els.push(el);}
+      else{pre.push(el);}
+    });
+    return {pre:pre,blocks:out};
+  }
+  var map={};
+  articles.forEach(function(a){map[a.dataset.doc]=blocks(a);});
+
+  function clearMode(){
+    document.querySelectorAll('.acct-phase').forEach(function(b){b.remove();});
+    articles.forEach(function(a){
+      a.querySelectorAll('.acct-hide').forEach(function(el){el.classList.remove('acct-hide');});
+    });
+    tabsBar.style.display='';
+  }
+  function reset(){
+    clearMode();
+    var on=document.querySelector('.legal-tab.on');
+    var key=on?on.dataset.doc:'cfd-challenge';
+    articles.forEach(function(a){a.hidden=a.dataset.doc!==key;});
+  }
+  function apply(val){
+    clearMode();
+    var cfg=CFG[val];
+    if(!cfg){reset();return;}
+    tabsBar.style.display='none';
+    articles.forEach(function(a){a.hidden=true;});
+    cfg.forEach(function(part){
+      var doc=part[0],names=part[1],badge=part[2];
+      var a=articles.filter(function(x){return x.dataset.doc===doc;})[0];
+      if(!a) return;
+      a.hidden=false;
+      if(badge){
+        var b=document.createElement('div');b.className='acct-phase';b.textContent=badge;
+        a.insertBefore(b,a.firstChild);
+      }
+      if(names){
+        var info=map[doc];
+        info.blocks.forEach(function(bl){
+          var keep=names.some(function(n){return bl.name.indexOf(n)===0;});
+          if(!keep) bl.els.forEach(function(el){el.classList.add('acct-hide');});
+        });
+      }
+    });
+    var first=document.querySelector('.legal-doc:not([hidden])');
+    if(first) window.scrollTo({top:sel.closest('.acct-pick').offsetTop-90,behavior:'smooth'});
+  }
+  sel.addEventListener('change',function(){
+    var v=sel.value;
+    if(history.replaceState) history.replaceState(null,'',v?('#acct-'+v):location.pathname);
+    apply(v);
+  });
+  // deep link: /legal/#acct-cfd-instant
+  var h=(location.hash||'').replace('#','');
+  if(h.indexOf('acct-')===0 && CFG[h.slice(5)]){sel.value=h.slice(5);apply(h.slice(5));}
+})();
 </script>
 
 <script src="/sticky-split.js" defer></script><script src="/social-tiktok.js" defer></script><script src="/livechat-greeting.js" defer></script><script src="/hash-nav-fix.js" defer></script></body></html>
