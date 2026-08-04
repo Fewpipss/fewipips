@@ -28,7 +28,54 @@
   </div>
 
   <div class="c legal-body">
-    <div class="legal-tabs" role="tablist">
+    <style>
+.acct-pick{background:#0b0f0d;border:1px solid #1d2a24;border-radius:14px;padding:18px 18px 14px;margin:0 0 22px}
+.acct-pick .acct-label{display:block;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#22e07c;margin-bottom:9px}
+.acct-dd{position:relative;max-width:420px}
+.acct-dd-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#101614;color:#e7ece9;border:1px solid #2a3a32;border-radius:10px;padding:12px 16px;font-size:.95rem;font-family:inherit;cursor:pointer;transition:border-color .2s,background .2s;text-align:left}
+.acct-dd-btn:hover{background:#131b17}
+.acct-dd-btn:focus-visible{outline:none;border-color:#22e07c}
+.acct-dd.open .acct-dd-btn{border-color:#22e07c;background:#131b17}
+.acct-dd-chev{flex:0 0 auto;width:18px;height:18px;margin-right:2px;color:#8fa39a;transition:transform .2s ease,color .2s}
+.acct-dd.open .acct-dd-chev{transform:rotate(180deg);color:#22e07c}
+.acct-dd-panel{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:60;background:#0e1412;border:1px solid #223129;border-radius:12px;box-shadow:0 18px 44px #000000a8;padding:6px;opacity:0;transform:translateY(-6px) scale(.98);transform-origin:top;pointer-events:none;transition:opacity .18s ease,transform .22s cubic-bezier(.2,.9,.3,1.15)}
+.acct-dd.open .acct-dd-panel{opacity:1;transform:none;pointer-events:auto}
+.acct-dd-group{padding:8px 12px 4px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6f837a}
+.acct-dd-item{display:flex;align-items:center;gap:8px;width:100%;background:none;border:none;border-radius:8px;padding:11px 12px;margin:1px 0;font-size:.92rem;font-family:inherit;color:#b9c4bf;cursor:pointer;text-align:left;transition:background .15s,color .15s}
+.acct-dd-item:hover,.acct-dd-item:focus-visible{background:#16211c;color:#fff;outline:none}
+.acct-dd-item.sel{color:#22e07c}
+.acct-dd-item .tick{width:14px;height:14px;flex:0 0 auto;opacity:0}
+.acct-dd-item.sel .tick{opacity:1}
+.acct-dd-sep{border-top:1px solid #1d2a24;margin:6px 10px}
+.acct-note{margin:10px 0 0;font-size:.8rem;color:#8fa39a;line-height:1.5}
+.acct-hide{display:none!important}
+.acct-phase{display:inline-block;background:#123626;color:#22e07c;border:1px solid #1e5c3f;border-radius:999px;padding:5px 14px;font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin:26px 0 6px}
+@media(prefers-reduced-motion:reduce){.acct-dd-panel,.acct-dd-chev{transition:none}}
+</style>
+<div class="acct-pick">
+  <span class="acct-label" id="acctLbl">Find the rules for your account</span>
+  <div class="acct-dd" id="acctDd">
+    <button type="button" class="acct-dd-btn" id="acctBtn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="acctLbl">
+      <span id="acctBtnTxt">Browse all documents</span>
+      <svg class="acct-dd-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="acct-dd-panel" role="listbox" id="acctPanel" aria-labelledby="acctLbl">
+      <button type="button" class="acct-dd-item sel" role="option" data-val="" aria-selected="true"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Browse all documents</button>
+      <div class="acct-dd-sep"></div>
+      <div class="acct-dd-group">CFD accounts</div>
+      <button type="button" class="acct-dd-item" role="option" data-val="cfd-instant" aria-selected="false"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Instant Funded Account (CFD)</button>
+      <button type="button" class="acct-dd-item" role="option" data-val="cfd-1step" aria-selected="false"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1-Step Challenge Account (CFD)</button>
+      <button type="button" class="acct-dd-item" role="option" data-val="cfd-2step" aria-selected="false"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>2-Step Challenge Account (CFD)</button>
+      <button type="button" class="acct-dd-item" role="option" data-val="cfd-3step" aria-selected="false"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>3-Step Challenge Account (CFD)</button>
+      <div class="acct-dd-sep"></div>
+      <div class="acct-dd-group">Future Based CFDs</div>
+      <button type="button" class="acct-dd-item" role="option" data-val="fut-challenge" aria-selected="false"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1-Step Challenge Account (Futures)</button>
+      <button type="button" class="acct-dd-item" role="option" data-val="fut-funded" aria-selected="false"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Funded Account (Futures)</button>
+    </div>
+  </div>
+  <p class="acct-note">Pick your account to see every rule that applies to it, including the funded phase. Where a value depends on account size, the rule lists it by size. All sizes of the same account type follow the same rules.</p>
+</div>
+<div class="legal-tabs" role="tablist">
       <button class="legal-tab on" data-doc="cfd-challenge" role="tab">CFD Challenge</button>
       <button class="legal-tab" data-doc="cfd-funded" role="tab">CFD Funded</button>
       <button class="legal-tab" data-doc="futures-challenge" role="tab">Futures Challenge</button>
@@ -598,9 +645,9 @@
       <h3>Rules</h3>
 
       <h4>1. Daily Loss Rule</h4>
-      <p>Start-of-day balance minus the lowest floating equity of the day must not exceed 4%. Applies to floating and closed trades, on both 1-Step Funded and Instant accounts.</p>
+      <p>Start-of-day balance minus the lowest floating equity of the day must not exceed 4%. Applies to floating and closed trades on 1-Step Funded accounts.</p>
       <div class="example-box">
-        <strong>Example - $30,000 Instant account:</strong> Daily loss limit = 4% = $1,200. Start: $30,000 → Low: $29,000 → Loss: $1,000 → <span class="ok">OK</span>. Start: $30,000 → Low: $28,700 → Loss: $1,300 → <span class="vio">Violation</span>.
+        <strong>Example - $25,000 1-Step Funded account:</strong> Daily loss limit = 4% = $1,000. Start: $25,000 → Low: $24,200 → Loss: $800 → <span class="ok">OK</span>. Start: $25,000 → Low: $23,900 → Loss: $1,100 → <span class="vio">Violation</span>.
       </div>
 
       <h4>2. Max Drawdown - Trailing</h4>
@@ -745,6 +792,110 @@
   if (mmBtn) mmBtn.addEventListener('click', function(){ setMm(true); });
   if (mmClose) mmClose.addEventListener('click', function(){ setMm(false); });
   if (mm) mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMm(false); }); });
+</script><script>
+(function(){
+  var CFG={
+    'cfd-instant':[['cfd-funded',['Fewpips Instant Account Rules','For All Funded Accounts','Terms & Policies','Nature of the Fee'],'']],
+    'cfd-1step':[['cfd-challenge',['Fewpips 1-Step Challenge Rules','For All Challenge Accounts','Terms & Policies','Nature of the Fee'],'Challenge phase'],
+                 ['cfd-funded',['Fewpips 1-Step Funded Account Rules','For All Funded Accounts'],'Funded phase']],
+    'cfd-2step':[['cfd-challenge',['Fewpips 2-Step Challenge Rules','For All Challenge Accounts','Terms & Policies','Nature of the Fee'],'Challenge phase'],
+                 ['cfd-funded',['Fewpips 2-Step Funded Account Rules','For All Funded Accounts'],'Funded phase']],
+    'cfd-3step':[['cfd-challenge',['Fewpips 3-Step Challenge Rules','For All Challenge Accounts','Terms & Policies','Nature of the Fee'],'Challenge phase'],
+                 ['cfd-funded',['Fewpips 3-Step Funded Account Rules','For All Funded Accounts'],'Funded phase']],
+    'fut-challenge':[['futures-challenge',null,'']],
+    'fut-funded':[['futures-funded',null,'']]
+  };
+  var dd=document.getElementById('acctDd');
+  var btn=document.getElementById('acctBtn');
+  var btnTxt=document.getElementById('acctBtnTxt');
+  var panel=document.getElementById('acctPanel');
+  var tabsBar=document.querySelector('.legal-tabs');
+  var articles=Array.prototype.slice.call(document.querySelectorAll('.legal-doc'));
+  if(!dd||!btn||!panel||!tabsBar||!articles.length) return;
+  var items=Array.prototype.slice.call(panel.querySelectorAll('.acct-dd-item'));
+
+  function norm(t){return (t||'').replace(/\s+/g,' ').trim();}
+  function blocks(article){
+    var out=[],cur=null,pre=[];
+    Array.prototype.slice.call(article.children).forEach(function(el){
+      if(el.tagName==='H3'){cur={name:norm(el.textContent),els:[el]};out.push(cur);}
+      else if(cur){cur.els.push(el);}
+      else{pre.push(el);}
+    });
+    return {pre:pre,blocks:out};
+  }
+  var map={};
+  articles.forEach(function(a){map[a.dataset.doc]=blocks(a);});
+
+  function setOpen(o){
+    dd.classList.toggle('open',o);
+    btn.setAttribute('aria-expanded',o?'true':'false');
+  }
+  btn.addEventListener('click',function(){setOpen(!dd.classList.contains('open'));});
+  document.addEventListener('mousedown',function(e){if(!dd.contains(e.target))setOpen(false);});
+  document.addEventListener('touchstart',function(e){if(!dd.contains(e.target))setOpen(false);},{passive:true});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+
+  function clearMode(){
+    document.querySelectorAll('.acct-phase').forEach(function(b){b.remove();});
+    articles.forEach(function(a){
+      a.querySelectorAll('.acct-hide').forEach(function(el){el.classList.remove('acct-hide');});
+    });
+    tabsBar.style.display='';
+  }
+  function reset(){
+    clearMode();
+    var on=document.querySelector('.legal-tab.on');
+    var key=on?on.dataset.doc:'cfd-challenge';
+    articles.forEach(function(a){a.hidden=a.dataset.doc!==key;});
+  }
+  function apply(val){
+    clearMode();
+    var cfg=CFG[val];
+    if(!cfg){reset();return;}
+    tabsBar.style.display='none';
+    articles.forEach(function(a){a.hidden=true;});
+    cfg.forEach(function(part){
+      var doc=part[0],names=part[1],badge=part[2];
+      var a=articles.filter(function(x){return x.dataset.doc===doc;})[0];
+      if(!a) return;
+      a.hidden=false;
+      if(badge){
+        var b=document.createElement('div');b.className='acct-phase';b.textContent=badge;
+        a.insertBefore(b,a.firstChild);
+      }
+      if(names){
+        var info=map[doc];
+        info.blocks.forEach(function(bl){
+          var keep=names.some(function(n){return bl.name.indexOf(n)===0;});
+          if(!keep) bl.els.forEach(function(el){el.classList.add('acct-hide');});
+        });
+      }
+    });
+    window.scrollTo({top:dd.closest('.acct-pick').offsetTop-90,behavior:'smooth'});
+  }
+  function choose(val,label){
+    items.forEach(function(it){
+      var sel=it.dataset.val===val;
+      it.classList.toggle('sel',sel);
+      it.setAttribute('aria-selected',sel?'true':'false');
+    });
+    btnTxt.textContent=label;
+    setOpen(false);
+    if(history.replaceState) history.replaceState(null,'',val?('#acct-'+val):location.pathname);
+    apply(val);
+  }
+  items.forEach(function(it){
+    it.addEventListener('click',function(){choose(it.dataset.val,norm(it.textContent));});
+  });
+  // deep link: /legal/#acct-cfd-instant (also ?_openPicker=1 opens the menu for QA)
+  var h=(location.hash||'').replace('#','');
+  if(h.indexOf('acct-')===0 && CFG[h.slice(5)]){
+    var it=items.filter(function(x){return x.dataset.val===h.slice(5);})[0];
+    if(it) choose(it.dataset.val,norm(it.textContent));
+  }
+  if(location.search.indexOf('_openPicker=1')!==-1) setOpen(true);
+})();
 </script>
 
 <script src="/sticky-split.js" defer></script><script src="/social-tiktok.js" defer></script><script src="/livechat-greeting.js" defer></script><script src="/hash-nav-fix.js" defer></script></body></html>
