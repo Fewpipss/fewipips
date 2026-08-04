@@ -143,6 +143,13 @@ td .cap{display:inline-block;font-family:'Inter',sans-serif;font-weight:800;back
 .paycard h3{font-size:15px;font-weight:700;margin-bottom:8px}
 .paycard p{font-size:13.5px;color:var(--muted);line-height:1.7}
 .paycard .big{font-family:'Inter',sans-serif;font-weight:900;font-size:30px;letter-spacing:-.01em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin-bottom:10px}
+.planbox{margin-top:36px;border:1px solid var(--line2);background:var(--card);border-radius:12px;padding:34px;display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:34px;align-items:center}
+.planrate{text-align:center;border-right:1px solid var(--line2);padding-right:28px}
+.planrate .big{font-family:'Inter',sans-serif;font-weight:900;font-size:46px;letter-spacing:-.02em;display:block;line-height:1}
+.planlabel{display:block;margin-top:12px;font-size:13px;color:var(--muted);line-height:1.5}
+.planpoints{list-style:none;display:grid;gap:18px}
+.planpoints li{display:flex;gap:14px;align-items:flex-start;font-size:15px;color:var(--muted);line-height:1.65}
+@media(max-width:720px){.planbox{grid-template-columns:1fr;gap:24px}.planrate{border-right:0;border-bottom:1px solid var(--line2);padding-right:0;padding-bottom:24px}}
 
 /* join */
 .steps{counter-reset:s;display:grid;gap:0;margin-top:46px;border-top:1px solid var(--line2)}
@@ -194,7 +201,7 @@ footer .links{display:flex;gap:26px}
 <nav>
   <div class="wrap">
     <a href="#top"><img src="/fewpips-logo.png" alt="Fewpips"></a>
-    <a class="navcta" href="[CAMPAIGN_LINK]">Join the campaign</a>
+    <a class="navcta" href="[CAMPAIGN_LINK]">View Your Dashboard</a>
   </div>
 </nav>
 
@@ -217,7 +224,7 @@ footer .links{display:flex;gap:26px}
 
 <div class="ticker" aria-hidden="true">
   <div class="track">
-    <span><i>&#9679;</i>Recurring commissions</span><span><i>&#9679;</i>Up to 20% across 3 levels</span><span><i>&#9679;</i>Crypto payouts in 24-48 hours</span><span><i>&#9679;</i>Live click and signup tracking</span><span><i>&#9679;</i>Recurring commissions</span><span><i>&#9679;</i>Up to 20% across 3 levels</span><span><i>&#9679;</i>Crypto payouts in 24-48 hours</span><span><i>&#9679;</i>Live click and signup tracking</span>
+    <span><i>&#9679;</i>Recurring commissions</span><span><i>&#9679;</i>Customized commission plans</span><span><i>&#9679;</i>Crypto payouts in 24-48 hours</span><span><i>&#9679;</i>Live click and signup tracking</span><span><i>&#9679;</i>Recurring commissions</span><span><i>&#9679;</i>Customized commission plans</span><span><i>&#9679;</i>Crypto payouts in 24-48 hours</span><span><i>&#9679;</i>Live click and signup tracking</span>
   </div>
 </div>
 
@@ -290,22 +297,18 @@ footer .links{display:flex;gap:26px}
 
 <section id="numbers">
   <div class="wrap">
-    <div class="snum">04 / The numbers</div>
-    <h2>Three tiers. Three levels.<br><span class="grad">Recurring.</span></h2>
-    <p class="lead">Commissions are recurring: every purchase a referred trader makes generates a new commission, not just the first one. Your tier is set by your rolling 30-day referral volume and reviewed monthly.</p>
-    <div class="tswrap">
-      <table>
-        <thead><tr><th>Tier</th><th>Monthly volume</th><th>Level 1</th><th>Level 2</th><th>Level 3</th><th>Max payout</th></tr></thead>
-        <tbody>
-          <tr><td>Launch</td><td>$0 - $9,999</td><td>6%</td><td>3%</td><td>1%</td><td><span class="cap">10%</span></td></tr>
-          <tr><td>Pro</td><td>$10,000 - $24,999</td><td>8%</td><td>5%</td><td>2%</td><td><span class="cap">15%</span></td></tr>
-          <tr class="hot"><td>Titan</td><td>$25,000+</td><td>10%</td><td>7%</td><td>3%</td><td><span class="cap">20%</span></td></tr>
-        </tbody>
-      </table>
+    <div class="snum">04 / Your plan</div>
+    <h2>Not a fixed tier.<br>A plan built <span class="grad">around you.</span></h2>
+    <p class="lead">The Inner Circle runs on customized plans. Instead of forcing you into a public tier table, we agree your commission directly, based on what you bring and how you work. Recurring on every purchase your referrals make, not just the first.</p>
+    <div class="planbox">
+      <div class="planrate"><span class="big grad">[YOUR RATE]</span><span class="planlabel">Your customized commission, agreed with the team</span></div>
+      <ul class="planpoints">
+        <li><span class="dot"></span><div>Kept simple as a single rate on your direct referrals, or split across three levels for the network they build under you. Your call.</div></li>
+        <li><span class="dot"></span><div>Recurring for as long as your referrals keep trading with Fewpips. No reset, no clawback.</div></li>
+      </ul>
     </div>
-    <p class="tiers-note">Level 1 = traders you refer directly. Levels 2 and 3 = the network your referrals build under you. All three levels pay you at the same time.</p>
     <div class="paycards">
-      <div class="paycard"><span class="big">24-48h</span><h3>Payout processing</h3><p>Commission withdrawals are processed within 24 to 48 hours, paid in USDT on BEP20, ERC20 or TRC20.</p></div>
+      <div class="paycard"><span class="big">24-48h</span><h3>Payout processing</h3><p>Commission withdrawals are processed within 24 to 48 hours, paid in BTC, ETH, USDT or USDC.</p></div>
       <div class="paycard"><span class="big">$100</span><h3>Minimum withdrawal</h3><p>No withdrawal fees from Fewpips. Standard blockchain network fees apply.</p></div>
       <div class="paycard"><span class="big">&#8734;</span><h3>No cap on earnings</h3><p>Recurring commissions on every purchase your network makes, for as long as they keep trading with Fewpips.</p></div>
     </div>
@@ -314,21 +317,21 @@ footer .links{display:flex;gap:26px}
 
 <section id="join">
   <div class="wrap">
-    <div class="snum">05 / How to join</div>
-    <h2>Three steps and<br>you are <span class="grad">in.</span></h2>
+    <div class="snum">05 / How it works</div>
+    <h2>You are already <span class="grad">in.</span></h2>
+    <p class="lead">No application, no IB request, no waiting on approval. Every Fewpips account is already an IB. The Inner Circle is just where your campaign lives.</p>
     <div class="steps">
       <div class="step">
-        <div><h3>Open the campaign link</h3>
-        <p>Your invite is the campaign link itself: <code class="ph">[CAMPAIGN_LINK]</code>. It takes you straight to The Inner Circle inside the Fewpips CRM.</p></div>
+        <div><h3>Log in to Fewpips</h3>
+        <p>Open your Fewpips dashboard with the account you already have. If a custom plan was set up for you, you are in the Inner Circle.</p></div>
       </div>
       <div class="step">
-        <div><h3>Not an IB yet? Two minutes.</h3>
-        <p>Register on the Fewpips CRM, open the <b>IB tab</b> in the left sidebar, read the intro and hit <b>Send IB request</b>. Accept the IB Partnership Agreement, sign electronically, and compliance approves you.</p>
-        <p class="mini">Already an approved Fewpips IB? Skip this. Your account and links carry straight into the campaign.</p></div>
+        <div><h3>Open the Campaigns tab</h3>
+        <p>Inside your dashboard, head to <b>Campaigns</b>. That is your Inner Circle home, with your links and your live numbers in one place.</p></div>
       </div>
       <div class="step">
         <div><h3>Share your link. Watch it work.</h3>
-        <p>Generate your tracking URL, put it in front of traders, and follow every click, signup and commission live in the upgraded dashboard.</p></div>
+        <p>Grab your tracking URL, put it in front of traders, and follow every click, signup and commission live in the upgraded dashboard.</p></div>
       </div>
     </div>
   </div>
@@ -342,8 +345,8 @@ footer .links{display:flex;gap:26px}
     <div class="snum">The Inner Circle</div>
     <h2>Step <span class="grad">inside.</span></h2>
     <p class="lead" style="max-width:480px">The campaign is live. The dashboard is waiting. The only thing missing is your link in it.</p>
-    <a class="btn primary" href="[CAMPAIGN_LINK]">Join The Inner Circle</a>
-    <p class="small">By joining you accept the <a href="/inner-circle/terms/">campaign terms and conditions</a> and the Fewpips IB Partnership Agreement.</p>
+    <a class="btn primary" href="[CAMPAIGN_LINK]">View Your Dashboard</a>
+    <p class="small">By taking part you accept the <a href="/inner-circle/terms/">campaign terms and conditions</a> and the Fewpips IB Partnership Agreement.</p>
   </div>
 </section>
 
