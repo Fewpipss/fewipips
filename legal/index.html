@@ -645,9 +645,9 @@
       <h3>Rules</h3>
 
       <h4>1. Daily Loss Rule</h4>
-      <p>Start-of-day balance minus the lowest floating equity of the day must not exceed 4%. Applies to floating and closed trades, on both 1-Step Funded and Instant accounts.</p>
+      <p>Start-of-day balance minus the lowest floating equity of the day must not exceed 4%. Applies to floating and closed trades on 1-Step Funded accounts.</p>
       <div class="example-box">
-        <strong>Example - $30,000 Instant account:</strong> Daily loss limit = 4% = $1,200. Start: $30,000 → Low: $29,000 → Loss: $1,000 → <span class="ok">OK</span>. Start: $30,000 → Low: $28,700 → Loss: $1,300 → <span class="vio">Violation</span>.
+        <strong>Example - $25,000 1-Step Funded account:</strong> Daily loss limit = 4% = $1,000. Start: $25,000 → Low: $24,200 → Loss: $800 → <span class="ok">OK</span>. Start: $25,000 → Low: $23,900 → Loss: $1,100 → <span class="vio">Violation</span>.
       </div>
 
       <h4>2. Max Drawdown - Trailing</h4>
