@@ -48,3 +48,4 @@ Fewpips trades simulated capital during evaluations. Trading involves risk. Spec
 - [Are Trading Bots and EAs Allowed on Prop Firms?](https://www.fewpips.com/blog/prop-firm-ea-rules/): Yes, Expert Advisors (EAs) and trading bots are allowed on Fewpips, with approval. The lin
 - [Is Copy Trading Allowed on Prop Firms?](https://www.fewpips.com/blog/copy-trading-prop-firm/): It depends on what you mean by copy trading. Copying trades between your own approved acco
 - [Can You Hold Trades Over the Weekend on a Prop Firm?](https://www.fewpips.com/blog/prop-firm-weekend-holding/): On many prop firms you can hold trades over the weekend, but some firms require all positi
+- [Is Hedging Allowed on Prop Firm Accounts?](https://www.fewpips.com/blog/hedging-prop-firm-rules/): Hedging inside one account is often allowed, but hedging across two or more accounts is al
