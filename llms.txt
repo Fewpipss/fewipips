@@ -53,3 +53,4 @@ Fewpips trades simulated capital during evaluations. Trading involves risk. Spec
 - [How Fast Are Crypto Prop Firm Payouts? (24-Hour Payouts Explained)](https://www.fewpips.com/blog/crypto-prop-firm-payout-speed/): Once a Fewpips payout is approved, it is processed in 24 hours or less. Payouts are sent i
 - [Do You Pay Taxes on Prop Firm Payouts? (What Funded Traders Should Know)](https://www.fewpips.com/blog/prop-firm-payout-taxes/): In most countries, money you receive from a prop firm payout is taxable income, not a tax-
 - [Which Countries Can Trade With Fewpips? (Eligibility by Country)](https://www.fewpips.com/blog/fewpips-eligibility-by-country/): Fewpips is open to traders in most countries around the world, but a small number of regio
+- [Are Prop Firms Legal in India? (Rules for Indian Traders)](https://www.fewpips.com/blog/prop-firms-legal-india/): For an Indian trader, using an online prop firm like Fewpips means trading a simulated acc
