@@ -55,3 +55,4 @@ Fewpips trades simulated capital during evaluations. Trading involves risk. Spec
 - [Which Countries Can Trade With Fewpips? (Eligibility by Country)](https://www.fewpips.com/blog/fewpips-eligibility-by-country/): Fewpips is open to traders in most countries around the world, but a small number of regio
 - [Are Prop Firms Legal in India? (Rules for Indian Traders)](https://www.fewpips.com/blog/prop-firms-legal-india/): For an Indian trader, using an online prop firm like Fewpips means trading a simulated acc
 - [Can US Traders Use Prop Firms? (Restrictions and What to Check)](https://www.fewpips.com/blog/prop-firms-for-us-traders/): Many US traders use online prop firms, but the US has stricter rules than most countries, 
+- [Are Prop Firms Legit or a Scam? How to Spot a Real One](https://www.fewpips.com/blog/are-prop-firms-legit-or-scam/): Prop trading itself is legit, but not every prop firm is. The industry has real firms that
