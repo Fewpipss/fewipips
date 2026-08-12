@@ -160,7 +160,12 @@
   }
 
   function place() {
-    if (document.getElementById(SECTION_ID)) return true;
+    var certs = document.getElementById(SECTION_ID);
+    var lb = document.getElementById(LB_ID);
+    if (certs && lb) return true;
+    // Partial leftovers (React wiped one sibling): clear and re-insert the pair.
+    if (certs) certs.remove();
+    if (lb) lb.remove();
     // CFD / home landing: insert right after the "OUR PROMISE" section.
     var tag = document.querySelector(".about-promise");
     if (tag) {
@@ -174,14 +179,18 @@
     return false;
   }
 
-  // Run after hydration; retry briefly in case the route re-renders, then stop.
+  // React 19 hydration can commit AFTER we insert and wipe the sections (or the
+  // anchor can appear late on slow devices) - insert-once was a race that showed
+  // up as "leaderboard missing" for some visitors. Keep them alive the same way
+  // the promo banner does: try on load, then re-place on every DOM change.
   function run() {
-    if (place()) return;
-    var tries = 0;
-    var t = setInterval(function () {
-      tries++;
-      if (place() || tries > 40) clearInterval(t); // ~10s max
-    }, 250);
+    place();
+    var mo = new MutationObserver(function () {
+      if (!document.getElementById(SECTION_ID) || !document.getElementById(LB_ID)) place();
+    });
+    if (document.body) mo.observe(document.body, { childList: true, subtree: true });
+    setTimeout(place, 1200);
+    setTimeout(place, 4000);
   }
 
   if (document.readyState === "complete") run();
