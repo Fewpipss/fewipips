@@ -6,20 +6,21 @@
   var LB_ID = "proof-lb";
   var PROOF_URL = "https://fewpips-proof.pages.dev";
 
-  // Real payout certificates. To swap/add: drop a PNG in /certs and edit this list.
+  // Real payout certificates. To swap/add: drop a webp in /certs and edit this list.
+  // July - August 2026 batch (Nick, 12 Aug 2026). Retired certs live on the proof page.
   var CERTS = [
-    { img: "/certs/sophia-reed.webp",   amount: "$13,133.88" },
-    { img: "/certs/maya-goldberg.webp", amount: "$6,441.83" },
-    { img: "/certs/adrian-cole.webp",   amount: "$3,492.98" },
-    { img: "/certs/elena-petrova.webp", amount: "$3,170.20" },
-    { img: "/certs/omar-khalil.webp",   amount: "$2,988.17" }
+    { img: "/certs/rhiannon-prosser.webp", amount: "$11,938.20" },
+    { img: "/certs/piers-attwater.webp",   amount: "$11,297.65" },
+    { img: "/certs/leah-cranmer.webp",     amount: "$10,684.00" },
+    { img: "/certs/solomon-wade.webp",     amount: "$10,215.45" },
+    { img: "/certs/ingrid-vasey.webp",     amount: "$9,760.80" }
   ];
 
-  // Top 3 performers (June 2026). Full leaderboard lives on the proof page.
+  // Top 3 performers (July - August 2026). Full leaderboard lives on the proof page.
   var LEADERS = [
-    { rank: 1, name: "David Robinson", amount: "$19,551.08", account: "$100K Futures CFD · 1-Step" },
-    { rank: 2, name: "Isabella Rossi", amount: "$18,445.80", account: "$100K Futures CFD · 1-Step" },
-    { rank: 3, name: "Layla Mahmoud",  amount: "$17,327.93", account: "$100K Futures CFD · 1-Step" }
+    { rank: 1, name: "Rhiannon Prosser", amount: "$11,938.20", account: "Future Based CFD · Instant" },
+    { rank: 2, name: "Piers Attwater",   amount: "$11,297.65", account: "Future Based CFD · 1-Step" },
+    { rank: 3, name: "Leah Cranmer",     amount: "$10,684.00", account: "Future Based CFD · Instant" }
   ];
 
   function injectStyles() {
@@ -107,8 +108,8 @@
       '<div class="c">' +
         '<div class="sec-hd ctr">' +
           '<div class="sec-label">Leaderboard</div>' +
-          '<h2>This month’s top performers</h2>' +
-          '<p>The highest-paid funded Fewpips traders this month - see where you could rank.</p>' +
+          '<h2>Latest top performers</h2>' +
+          '<p>The highest-paid funded Fewpips traders in July and August - see where you could rank.</p>' +
         '</div>' +
         '<div class="plb-row">' + order + '</div>' +
         '<div class="proof-cta">' +
@@ -159,7 +160,12 @@
   }
 
   function place() {
-    if (document.getElementById(SECTION_ID)) return true;
+    var certs = document.getElementById(SECTION_ID);
+    var lb = document.getElementById(LB_ID);
+    if (certs && lb) return true;
+    // Partial leftovers (React wiped one sibling): clear and re-insert the pair.
+    if (certs) certs.remove();
+    if (lb) lb.remove();
     // CFD / home landing: insert right after the "OUR PROMISE" section.
     var tag = document.querySelector(".about-promise");
     if (tag) {
@@ -173,14 +179,18 @@
     return false;
   }
 
-  // Run after hydration; retry briefly in case the route re-renders, then stop.
+  // React 19 hydration can commit AFTER we insert and wipe the sections (or the
+  // anchor can appear late on slow devices) - insert-once was a race that showed
+  // up as "leaderboard missing" for some visitors. Keep them alive the same way
+  // the promo banner does: try on load, then re-place on every DOM change.
   function run() {
-    if (place()) return;
-    var tries = 0;
-    var t = setInterval(function () {
-      tries++;
-      if (place() || tries > 40) clearInterval(t); // ~10s max
-    }, 250);
+    place();
+    var mo = new MutationObserver(function () {
+      if (!document.getElementById(SECTION_ID) || !document.getElementById(LB_ID)) place();
+    });
+    if (document.body) mo.observe(document.body, { childList: true, subtree: true });
+    setTimeout(place, 1200);
+    setTimeout(place, 4000);
   }
 
   if (document.readyState === "complete") run();

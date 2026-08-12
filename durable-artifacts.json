@@ -77,6 +77,19 @@
       "path": "proof-peek.js"
     },
     {
+      "id": "proof-peek-certs-batch",
+      "desc": "Jul-Aug 2026 cert batch live in sneak-peek (top earner Rhiannon Prosser); old June certs retired to proof page",
+      "type": "present_in",
+      "path": "proof-peek.js",
+      "pattern": "rhiannon-prosser.webp"
+    },
+    {
+      "id": "proof-peek-cert-img",
+      "desc": "top cert image file present in /certs",
+      "type": "file_exists",
+      "path": "certs/rhiannon-prosser.webp"
+    },
+    {
       "id": "proof-peek-home",
       "desc": "proof-peek.js wired on homepage (leaderboard + Proof of Payouts sneak-peek)",
       "type": "present_in",
