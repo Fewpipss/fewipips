@@ -65,3 +65,4 @@ Fewpips trades simulated capital during evaluations. Trading involves risk. Spec
 - [What Is a Profit Target on a Prop Firm Challenge? (And How to Hit It Safely)](https://www.fewpips.com/blog/prop-firm-profit-target/): A profit target is the amount you need to grow the account by to pass a challenge phase. I
 - [How Long Does It Take to Pass a Prop Firm Challenge?](https://www.fewpips.com/blog/how-long-to-pass-prop-firm-challenge/): There is no fixed answer, and that is a good thing. Most disciplined traders pass a single
 - [Why Most Traders Fail Prop Firm Challenges (And How to Avoid It)](https://www.fewpips.com/blog/why-traders-fail-prop-firm-challenge/): Most traders fail challenges for reasons that have nothing to do with picking winners. The
+- [Static vs Trailing Drawdown: Which Is Easier to Trade?](https://www.fewpips.com/blog/static-vs-trailing-drawdown/): A static drawdown is a fixed floor set at the start that never moves. A trailing drawdown 
