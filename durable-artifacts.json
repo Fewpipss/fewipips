@@ -90,6 +90,26 @@
       "path": "certs/rhiannon-prosser.webp"
     },
     {
+      "id": "reviews-page",
+      "desc": "/reviews aggregator landing present (standalone static page, client request TG #10596)",
+      "type": "file_exists",
+      "path": "reviews/index.html"
+    },
+    {
+      "id": "reviews-content",
+      "desc": "reviews page carries platform sections (Myfxbook anchor)",
+      "type": "present_in",
+      "path": "reviews/index.html",
+      "pattern": "id=\"myfxbook\""
+    },
+    {
+      "id": "reviews-sitemap",
+      "desc": "/reviews/ listed in sitemap (SEO was the point of the page)",
+      "type": "present_in",
+      "path": "sitemap.xml",
+      "pattern": "https://www.fewpips.com/reviews/"
+    },
+    {
       "id": "proof-peek-home",
       "desc": "proof-peek.js wired on homepage (leaderboard + Proof of Payouts sneak-peek)",
       "type": "present_in",
