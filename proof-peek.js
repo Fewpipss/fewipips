@@ -7,20 +7,20 @@
   var PROOF_URL = "https://fewpips-proof.pages.dev";
 
   // Real payout certificates. To swap/add: drop a webp in /certs and edit this list.
-  // July - August 2026 batch (Nick, 12 Aug 2026). Retired certs live on the proof page.
+  // 4-16 Aug 2026 batch (Nick, 17 Aug 2026). Retired certs live on the proof page.
   var CERTS = [
-    { img: "/certs/rhiannon-prosser.webp", amount: "$11,938.20" },
-    { img: "/certs/piers-attwater.webp",   amount: "$11,297.65" },
-    { img: "/certs/leah-cranmer.webp",     amount: "$10,684.00" },
-    { img: "/certs/solomon-wade.webp",     amount: "$10,215.45" },
-    { img: "/certs/ingrid-vasey.webp",     amount: "$9,760.80" }
+    { img: "/certs/rocio-navarrete.webp",  amount: "$11,938.20" },
+    { img: "/certs/fernanda-salazar.webp", amount: "$11,091.50" },
+    { img: "/certs/paloma-ibarra.webp",    amount: "$10,552.55" },
+    { img: "/certs/aoife-brennan.webp",    amount: "$9,977.25" },
+    { img: "/certs/luana-barbosa.webp",    amount: "$9,586.25" }
   ];
 
-  // Top 3 performers (July - August 2026). Full leaderboard lives on the proof page.
+  // Top 3 performers (August 2026). Full leaderboard lives on the proof page.
   var LEADERS = [
-    { rank: 1, name: "Rhiannon Prosser", amount: "$11,938.20", account: "Future Based CFD · Instant" },
-    { rank: 2, name: "Piers Attwater",   amount: "$11,297.65", account: "Future Based CFD · 1-Step" },
-    { rank: 3, name: "Leah Cranmer",     amount: "$10,684.00", account: "Future Based CFD · Instant" }
+    { rank: 1, name: "Rocío Navarrete",  amount: "$11,938.20", account: "Future Based CFD · Instant" },
+    { rank: 2, name: "Fernanda Salazar", amount: "$11,091.50", account: "Future Based CFD · 1-Step" },
+    { rank: 3, name: "Paloma Ibarra",    amount: "$10,552.55", account: "Future Based CFD · Instant" }
   ];
 
   function injectStyles() {
@@ -109,7 +109,7 @@
         '<div class="sec-hd ctr">' +
           '<div class="sec-label">Leaderboard</div>' +
           '<h2>Latest top performers</h2>' +
-          '<p>The highest-paid funded Fewpips traders in July and August - see where you could rank.</p>' +
+          '<p>The highest-paid funded Fewpips traders in August - see where you could rank.</p>' +
         '</div>' +
         '<div class="plb-row">' + order + '</div>' +
         '<div class="proof-cta">' +

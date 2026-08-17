@@ -78,16 +78,16 @@
     },
     {
       "id": "proof-peek-certs-batch",
-      "desc": "Jul-Aug 2026 cert batch live in sneak-peek (top earner Rhiannon Prosser); old June certs retired to proof page",
+      "desc": "Aug 4-16 2026 cert batch live in sneak-peek (top earner Rocio Navarrete); older batches retired to proof page",
       "type": "present_in",
       "path": "proof-peek.js",
-      "pattern": "rhiannon-prosser.webp"
+      "pattern": "rocio-navarrete.webp"
     },
     {
       "id": "proof-peek-cert-img",
       "desc": "top cert image file present in /certs",
       "type": "file_exists",
-      "path": "certs/rhiannon-prosser.webp"
+      "path": "certs/rocio-navarrete.webp"
     },
     {
       "id": "reviews-page",
@@ -108,6 +108,19 @@
       "type": "present_in",
       "path": "sitemap.xml",
       "pattern": "https://www.fewpips.com/reviews/"
+    },
+    {
+      "id": "reviews-nav-injector",
+      "desc": "Reviews link injector present (nav is React-hydrated; HTML-only link would be wiped)",
+      "type": "file_exists",
+      "path": "reviews-nav.js"
+    },
+    {
+      "id": "reviews-nav-wired",
+      "desc": "reviews-nav.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "reviews-nav.js"
     },
     {
       "id": "proof-peek-home",
