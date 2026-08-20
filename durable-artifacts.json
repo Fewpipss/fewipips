@@ -302,6 +302,20 @@
       "type": "present_in",
       "path": "_redirects",
       "pattern": "/camilia/ https://fewpips.co/camilia/ 301"
+    },
+    {
+      "id": "refund-48h-home",
+      "desc": "pricing card says refundable within 48 hours (Nick, TG #11324) - was 7 days",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "refundable within 48 hours"
+    },
+    {
+      "id": "refund-48h-futures",
+      "desc": "futures pricing card says refundable within 48 hours",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "refundable within 48 hours"
     }
   ]
 }
