@@ -316,6 +316,27 @@
       "type": "present_in",
       "path": "futures/index.html",
       "pattern": "refundable within 48 hours"
+    },
+    {
+      "id": "paidout-600k",
+      "desc": "hero Paid Out counter targets $600K+ (Nick, TG #11384) - was 200K",
+      "type": "present_in",
+      "path": "_next/static/chunks/0fvh0xh4dp8wy.js",
+      "pattern": "count:6e5"
+    },
+    {
+      "id": "tier-volume-thresholds",
+      "desc": "affiliate tier volume thresholds Launch 0-4,999 / Pro 5,000-14,999 / Titan 15,000+ (Nick, TG #11396)",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "$5,000 – $14,999"
+    },
+    {
+      "id": "blog-nav-link",
+      "desc": "Blog link injected in Resources nav bubble (Nick, TG #11403)",
+      "type": "present_in",
+      "path": "reviews-nav.js",
+      "pattern": "/blog/"
     }
   ]
 }
