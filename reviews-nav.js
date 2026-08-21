@@ -24,6 +24,16 @@
     }
   }
 
+  // Footer: Nick wants "Blogs" spelled out in the footer link (TG #11386).
+  function footerLabel() {
+    var links = document.querySelectorAll('.ft-col a[href="/blog/"]');
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].textContent !== "Blogs") links[i].textContent = "Blogs";
+    }
+  }
+  var _add = add;
+  add = function () { _add(); footerLabel(); };
+
   add();
   document.addEventListener("DOMContentLoaded", add);
   window.addEventListener("load", add);

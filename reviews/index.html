@@ -138,9 +138,35 @@ h1 .wl{display:inline-block;white-space:pre}h1 .wg{background:var(--grad);-webki
 document.querySelectorAll('.parr').forEach(function(b){
   b.addEventListener('click',function(){
     var s=document.getElementById('strip-'+b.dataset.t);
+    s.__hold=Date.now()+4000;
     s.scrollBy({left:(+b.dataset.d)*Math.min(560,s.clientWidth*.8),behavior:'smooth'});
   });
 });
+/* Auto-sliding carousel: infinite marquee, pauses while the cursor is over a review
+   (Nick, TG #11383). One direction only - two directions felt too jumpy. */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var strips=[].slice.call(document.querySelectorAll('.strip'));
+  strips.forEach(function(s){
+    s.innerHTML+=s.innerHTML;               // duplicate set -> seamless wrap
+    s.__half=s.scrollWidth/2;
+    s.__paused=false; s.__hold=0;
+    s.addEventListener('mouseenter',function(){s.__paused=true});
+    s.addEventListener('mouseleave',function(){s.__paused=false});
+    s.addEventListener('touchstart',function(){s.__hold=Date.now()+5000},{passive:true});
+  });
+  var last=0;
+  function tick(t){
+    requestAnimationFrame(tick);
+    if(document.hidden||t-last<25)return; last=t;
+    strips.forEach(function(s){
+      if(s.__paused||Date.now()<s.__hold)return;
+      s.scrollLeft+=0.8;
+      if(s.scrollLeft>=s.__half)s.scrollLeft-=s.__half;
+    });
+  }
+  requestAnimationFrame(tick);
+})();
 </script>
 
 <script>
