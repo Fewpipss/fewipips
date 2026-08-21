@@ -337,6 +337,20 @@
       "type": "present_in",
       "path": "reviews-nav.js",
       "pattern": "/blog/"
+    },
+    {
+      "id": "reviews-carousel",
+      "desc": "reviews page auto-slide carousel with hover pause (Nick, TG #11383)",
+      "type": "present_in",
+      "path": "reviews/index.html",
+      "pattern": "Auto-sliding carousel"
+    },
+    {
+      "id": "footer-blogs-label",
+      "desc": "footer link reads Blogs (Nick, TG #11386) - applied via reviews-nav.js",
+      "type": "present_in",
+      "path": "reviews-nav.js",
+      "pattern": "footerLabel"
     }
   ]
 }
