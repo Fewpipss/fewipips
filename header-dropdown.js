@@ -42,6 +42,8 @@
       // layout (Dj): product toggle hugs the logo, Explore stays centered,
       // Resources bubble slides toward the CTA; nav labels +10%
       "@media(min-width:769px){ul.nav-c{flex:1;justify-content:space-between;margin:0 18px 0 26px}}",
+      // pull both bubbles ~20% of the gap toward the Explore dropdown
+      "@media(min-width:1100px){ul.nav-c>li:first-child{margin-left:3%}ul.nav-c>li:last-child{margin-right:3%}}",
       "ul.nav-c a{font-size:.86rem}",
       "ul.nav-c .nav-toggle a{font-size:.86rem}",
       "#" + ID + "{position:relative}",
