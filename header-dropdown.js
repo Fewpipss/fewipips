@@ -48,9 +48,9 @@
       "ul.nav-c .nav-toggle a{font-size:.86rem}",
       "#" + ID + "{position:relative}",
       "#" + ID + " .hd-btn{cursor:pointer;background:0 0;border:none;display:inline-flex;align-items:center;gap:4px;",
-      "color:var(--t3,#fff9);font:600 .86rem var(--font-b,Inter,sans-serif);padding:6px 11px;border-radius:99px;",
+      "color:#fff;font:700 .95rem var(--font-b,Inter,sans-serif);padding:6px 11px;border-radius:99px;",
       "transition:all .3s var(--ease,ease);white-space:nowrap}",
-      "#" + ID + " .hd-btn:hover,#" + ID + ".hd-open .hd-btn{color:var(--t1,#fff);background:#ffffff0a}",
+      "#" + ID + " .hd-btn:hover,#" + ID + ".hd-open .hd-btn{color:#fff;background:#ffffff0a}",
       "#" + ID + " .hd-chev{width:13px;height:13px;transition:transform .3s var(--ease,ease)}",
       "#" + ID + ".hd-open .hd-chev{transform:rotate(180deg)}",
       // hoverable bridge between button and panel
