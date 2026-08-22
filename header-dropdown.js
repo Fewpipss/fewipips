@@ -46,6 +46,7 @@
       "@media(min-width:1100px){ul.nav-c>li:first-child{margin-left:3%}ul.nav-c>li:last-child{margin-right:3%}}",
       "ul.nav-c a{font-size:.86rem}",
       "ul.nav-c .nav-toggle a{font-size:.86rem}",
+      ".nav-r .nav-login,.nav-r .nav-cta{font-size:.86rem}",
       "#" + ID + "{position:relative}",
       "#" + ID + " .hd-btn{cursor:pointer;background:0 0;border:none;display:inline-flex;align-items:center;gap:4px;",
       "color:#fff;font:700 .95rem var(--font-b,Inter,sans-serif);padding:6px 11px;border-radius:99px;",
