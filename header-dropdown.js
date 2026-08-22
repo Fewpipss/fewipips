@@ -60,9 +60,9 @@
       "#" + ID + " .hd-item:hover .hd-ic{color:#00ffc2;border-color:#00ffc23d;background:#00ffc214}",
       "#" + ID + " .hd-ic svg{width:17px;height:17px}",
       "#" + ID + " .hd-item b{display:block;font:600 .82rem var(--font-b,Inter,sans-serif);color:var(--t1,#fff);line-height:1.3}",
-      "#" + ID + " .hd-item span{display:block;font:400 .72rem var(--font-b,Inter,sans-serif);color:var(--t3,#fff9);",
+      "#" + ID + " .hd-d{display:block;font:400 .72rem var(--font-b,Inter,sans-serif);color:var(--t3,#fff9);",
       "margin-top:2px;transition:color .3s}",
-      "#" + ID + " .hd-item:hover span{color:var(--t2,#fffc)}"
+      "#" + ID + " .hd-item:hover .hd-d{color:var(--t2,#fffc)}"
     ].join("");
     document.head.appendChild(css);
   }
@@ -86,7 +86,7 @@
       var m = META[x.label];
       return '<a class="hd-item" href="' + x.href + '">' +
         '<span class="hd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + ICONS[m.icon] + "</svg></span>" +
-        "<span><b>" + x.label + "</b><span>" + m.d + "</span></span></a>";
+        '<span class="hd-tx"><b>' + x.label + '</b><span class="hd-d">' + m.d + "</span></span></a>";
     }).join("");
     li.innerHTML =
       '<button class="hd-btn" type="button" aria-haspopup="true" aria-expanded="false">Explore' +
