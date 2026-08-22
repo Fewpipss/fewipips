@@ -55,6 +55,7 @@ h1 .wl{display:inline-block;white-space:pre}h1 .wg{background:var(--grad);-webki
 .pfrom{font:700 11px Inter;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:7px;white-space:nowrap}
 .tclamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
 #toprated{padding-top:40px}
+#strip-toprated{scroll-snap-type:none}
 .fcta{text-align:center;padding:70px 24px 84px}
 .fcta h2{font-size:clamp(26px,4vw,40px);margin:0 0 12px}
 .fcta p{color:var(--t2);margin:0 0 28px}
@@ -163,19 +164,22 @@ document.querySelectorAll('.parr').forEach(function(b){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var s=document.getElementById('strip-toprated'); if(!s) return;
   s.innerHTML+=s.innerHTML;                 // duplicate set -> seamless wrap
-  s.__half=s.scrollWidth/2;
-  s.scrollLeft=s.__half;                    // start mid so we can travel right
-  s.__paused=false; s.__hold=0;
-  s.addEventListener('mouseenter',function(){s.__paused=true});
-  s.addEventListener('mouseleave',function(){s.__paused=false});
-  s.addEventListener('touchstart',function(){s.__hold=Date.now()+5000},{passive:true});
+  var half=s.scrollWidth/2;
+  var x=half;                               // float accumulator - scrollLeft rounds
+  s.scrollLeft=x;                           // start mid so we can travel right
+  var paused=false, hold=0;
+  s.addEventListener('mouseenter',function(){paused=true});
+  s.addEventListener('mouseleave',function(){paused=false});
+  s.addEventListener('touchstart',function(){hold=Date.now()+5000},{passive:true});
   var last=0;
   function tick(t){
     requestAnimationFrame(tick);
     if(document.hidden||t-last<25)return; last=t;
-    if(s.__paused||Date.now()<s.__hold)return;
-    s.scrollLeft-=0.8;                      // cards drift rightwards
-    if(s.scrollLeft<=0)s.scrollLeft+=s.__half;
+    if(paused||Date.now()<hold)return;
+    if(Math.abs(s.scrollLeft-x)>2)x=s.scrollLeft; // user dragged - resync
+    x-=0.8;                                 // cards drift rightwards
+    if(x<=0)x+=half;
+    s.scrollLeft=x;
   }
   requestAnimationFrame(tick);
 })();
