@@ -351,6 +351,26 @@
       "type": "present_in",
       "path": "reviews-nav.js",
       "pattern": "footerLabel"
+    },
+    {
+      "id": "reviews-strip-injector",
+      "desc": "homepage reviews auto-slider injector present (Nick approved TG #11436)",
+      "type": "file_exists",
+      "path": "reviews-strip.js"
+    },
+    {
+      "id": "reviews-strip-home",
+      "desc": "reviews-strip.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "reviews-strip.js"
+    },
+    {
+      "id": "reviews-strip-futures",
+      "desc": "reviews-strip.js wired on futures page",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "reviews-strip.js"
     }
   ]
 }
