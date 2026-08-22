@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script>(function(){var l=function(){if(window.__gtagLoaded)return;window.__gtagLoaded=1;var s=document.createElement("script");s.async=1;s.src="https://www.googletagmanager.com/gtag/js?id=G-67ZBBEE4JC";document.head.appendChild(s)};window.addEventListener("load",function(){("requestIdleCallback"in window?requestIdleCallback:function(f){setTimeout(f,1500)})(l)});setTimeout(l,6e3)})();</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-67ZBBEE4JC');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Weekend Gap Protection Guide: Managing Open Risk Before the Friday Close | Fewpips Blog</title>
+<meta name="description" content="Weekend gap risk can blow past a stop loss and end an otherwise healthy challenge. A practical Friday risk audit, the real cost of forced closes, and when holding is the disciplined choice.">
+<meta name="keywords" content="weekend gap risk, prop firm weekend holding, friday close, fewpips">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Fewpips">
+<link rel="canonical" href="https://www.fewpips.com/blog/weekend-gap-protection-guide/">
+<meta property="og:title" content="The Weekend Gap Protection Guide: Managing Open Risk Before the Friday Close">
+<meta property="og:description" content="Weekend gap risk can blow past a stop loss and end an otherwise healthy challenge. A practical Friday risk audit, the real cost of forced closes, and when holding is the disciplined choice.">
+<meta property="og:url" content="https://www.fewpips.com/blog/weekend-gap-protection-guide/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fewpips">
+<meta property="og:image" content="https://www.fewpips.com/blog/hero-no-time-limits.webp">
+<meta property="article:published_time" content="2026-08-01T21:00:00Z">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Weekend Gap Protection Guide: Managing Open Risk Before the Friday Close">
+<meta name="twitter:description" content="Weekend gap risk can blow past a stop loss and end an otherwise healthy challenge. A practical Friday risk audit, the real cost of forced closes, and when holding is the disciplined choice.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"></noscript>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "BlogPosting",
+ "headline": "The Weekend Gap Protection Guide: Managing Open Risk Before the Friday Close",
+ "description": "Weekend gap risk can blow past a stop loss and end an otherwise healthy challenge. A practical Friday risk audit, the real cost of forced closes, and when holding is the disciplined choice.",
+ "author": {
+  "@type": "Organization",
+  "name": "Fewpips"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Fewpips",
+  "url": "https://www.fewpips.com"
+ },
+ "datePublished": "2026-08-22",
+ "dateModified": "2026-08-22",
+ "mainEntityOfPage": "https://www.fewpips.com/blog/weekend-gap-protection-guide/"
+}</script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is weekend gap risk in trading?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It is the possibility that a market reopens at a meaningfully different price than where it closed, because news during the closed period is not reflected until trading resumes. Stop losses can fill far from their set level as a result."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why do prop firms restrict holding trades over the weekend?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Mostly to control their own aggregate drawdown exposure across all funded accounts at once, since a single volatile weekend event could otherwise trigger large, correlated losses across the firm's book."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Do all prop firms require a Friday close?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Requirements vary by firm and by account type. Fewpips allows weekend holding on every CFD challenge type, while Future Based CFD accounts close before the weekend."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How can I protect an open position before the weekend if I have to close it?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Scale out gradually through the week instead of all at once on Friday, bank partial profits on anything already in your favor, and avoid opening new trades late Friday in thin, wide-spread conditions."
+   }
+  }
+ ]
+}</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050709;--bg2:#080a0e;--bg-card:#0c0e14;
+  --border:rgba(255,255,255,.06);--text:#e8f5ea;--text-muted:#7a8a80;--white:#fff;
+  --green:#0fcd37;--green-light:#42ff00;--green-cyan:#00ffc2;
+  --gradient:linear-gradient(135deg,#00ffc2,#42ff00);
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',ui-sans-serif,system-ui,sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--green);text-decoration:none;transition:opacity .2s}
+a:hover{opacity:.85}
+.page-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(140px);animation:orbDrift 25s ease-in-out infinite}
+.orb-1{width:500px;height:500px;background:rgba(15,205,55,.06);top:-150px;left:-100px;animation-delay:0s}
+.orb-2{width:450px;height:450px;background:rgba(0,255,194,.05);bottom:-200px;right:-80px;animation-delay:-8s}
+.orb-3{width:350px;height:350px;background:rgba(66,255,0,.04);top:50%;left:60%;animation-delay:-16s}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-50px) scale(1.1)}66%{transform:translate(-30px,40px) scale(.9)}}
+.grid-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(15,205,55,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(15,205,55,.025) 1px,transparent 1px);
+  background-size:80px 80px}
+.dot-field{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(15,205,55,.08) 1px,transparent 1px);
+  background-size:40px 40px;opacity:.3}
+.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.015;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:128px 128px}
+.content{position:relative;z-index:1}
+.blog-nav{position:sticky;top:0;z-index:100;background:rgba(5,7,9,.85);backdrop-filter:blur(24px) saturate(1.2);border-bottom:1px solid var(--border);padding:0 2rem;height:72px;display:flex;align-items:center;justify-content:space-between}
+.blog-nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.blog-nav-logo img{height:32px}
+.blog-nav-logo span{font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:1px;text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.875rem;color:var(--text-muted)}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{display:inline-flex;padding:.55rem 1.4rem;border-radius:10px;background:var(--gradient);color:#000!important;font-weight:700;font-size:.8rem;box-shadow:0 0 20px rgba(15,205,55,.15)}
+.post-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.post-hero-bg{height:320px;position:relative;overflow:hidden}
+.post-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.post-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 0%,rgba(5,7,9,.6) 40%,rgba(5,7,9,.3) 100%)}
+.post-hero-glow{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);width:600px;height:200px;background:radial-gradient(ellipse,rgba(15,205,55,.08),transparent 70%);pointer-events:none;z-index:1}
+.post-header{max-width:780px;margin:0 auto;padding:2rem 2rem 1.5rem;text-align:center;position:relative;z-index:2;margin-top:-80px}
+.post-header .breadcrumb{font-size:.75rem;color:var(--text-muted);margin-bottom:1.25rem}
+.post-header .breadcrumb a{color:var(--text-muted);text-decoration:none}
+.post-header .breadcrumb a:hover{color:var(--green)}
+.post-header .category{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;border-radius:8px;background:rgba(5,7,9,.7);backdrop-filter:blur(10px);border:1px solid rgba(15,205,55,.2);font-size:.65rem;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.post-header .category .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:catPulse 2s ease-in-out infinite}
+@keyframes catPulse{0%,100%{opacity:1}50%{opacity:.4}}
+.post-header h1{font-family:'Poppins',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:var(--white);line-height:1.25;margin-bottom:1rem;letter-spacing:-.3px}
+.post-header .meta{font-size:.8rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.post-header .meta span{display:flex;align-items:center;gap:.3rem}
+.glow-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(15,205,55,.2) 20%,rgba(15,205,55,.4) 50%,rgba(15,205,55,.2) 80%,transparent);margin:0}
+.post-content{max-width:780px;margin:0 auto;padding:2.5rem 2rem 4rem;position:relative}
+.post-content article{font-size:1.05rem;line-height:1.85}
+.post-content h2{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;line-height:1.3;position:relative;padding-left:1rem;border-left:3px solid var(--green)}
+.post-content h3{font-family:'Poppins',sans-serif;font-size:1.15rem;font-weight:600;color:var(--white);margin:2rem 0 .75rem}
+.post-content p{margin-bottom:1.25rem;color:var(--text)}
+.post-content ul,.post-content ol{margin:1rem 0 1.5rem 1.5rem;color:var(--text)}
+.post-content li{margin-bottom:.5rem}
+.post-content strong{color:var(--white);font-weight:600}
+.post-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.9rem;border-radius:12px;overflow:hidden}
+.post-content th{text-align:left;padding:.75rem 1rem;background:rgba(15,205,55,.08);border:1px solid rgba(15,205,55,.12);color:var(--green);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.5px}
+.post-content td{padding:.75rem 1rem;border:1px solid var(--border);color:var(--text)}
+.post-content tr:hover td{background:rgba(15,205,55,.03)}
+.post-content blockquote{border-left:3px solid var(--green);padding:1rem 1.5rem;margin:1.5rem 0;background:rgba(15,205,55,.03);border-radius:0 12px 12px 0;font-style:italic;color:var(--text-muted)}
+.example-box{background:rgba(15,205,55,.04);border:1px solid rgba(15,205,55,.12);border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-size:.97rem;line-height:1.7}
+.example-box strong{color:var(--green-cyan)}
+.answer-box{background:rgba(0,255,194,.05);border:1px solid rgba(0,255,194,.16);border-radius:14px;padding:1.1rem 1.4rem;margin:0 0 1.75rem;font-size:1.02rem;line-height:1.7}
+.answer-box strong{color:var(--green-cyan)}
+.steps{counter-reset:step;list-style:none;margin:1.5rem 0!important;padding:0}
+.steps li{position:relative;padding:0 0 1.1rem 3rem;margin:0;counter-increment:step}
+.steps li::before{content:counter(step);position:absolute;left:0;top:-2px;width:2rem;height:2rem;border-radius:50%;background:var(--gradient);color:#000;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.post-mascot-float{position:fixed;bottom:2rem;right:2rem;width:100px;height:100px;opacity:.08;pointer-events:none;z-index:0;animation:mascotBob 4s ease-in-out infinite}
+@keyframes mascotBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.post-cta{max-width:780px;margin:0 auto 4rem;padding:2.5rem;text-align:center;border-radius:20px;background:rgba(12,14,20,.8);border:1px solid rgba(15,205,55,.12);position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+.post-cta::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(15,205,55,.08),transparent 70%);pointer-events:none}
+.post-cta::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(0,255,194,.06),transparent 70%);pointer-events:none}
+.post-cta h2{font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:700;color:var(--white);margin:0 0 .5rem!important;border:none;padding:0;position:relative}
+.post-cta p{color:var(--text-muted);margin-bottom:1.25rem;font-size:.95rem;position:relative}
+.post-cta a.cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 2rem;border-radius:12px;background:var(--gradient);color:#000!important;font-weight:700;font-size:.875rem;box-shadow:0 0 25px rgba(15,205,55,.15);transition:all .2s;position:relative}
+.post-cta a.cta-btn:hover{box-shadow:0 0 40px rgba(15,205,55,.3);transform:translateY(-2px)}
+.blog-footer{border-top:1px solid var(--border);padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;max-width:780px;margin:0 auto;flex-wrap:wrap;gap:1rem}
+.blog-footer-left{font-size:.78rem;color:var(--text-muted)}
+.blog-footer-links{display:flex;gap:1.5rem}
+.blog-footer-links a{font-size:.78rem;color:var(--text-muted);transition:color .2s}
+.blog-footer-links a:hover{color:var(--green)}
+@media(max-width:640px){
+  .post-header{padding:1.5rem 1.5rem 1rem;margin-top:-60px}
+  .post-content{padding:1.5rem 1.5rem 3rem}
+  .nav-links .desk-only{display:none}
+  .post-hero-bg{height:220px}
+  .post-mascot-float{display:none}
+  .blog-footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="page-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="grid-pattern"></div>
+<div class="dot-field"></div>
+<div class="noise"></div>
+<div class="content">
+<nav class="blog-nav">
+  <a href="/" class="blog-nav-logo"><img src="/fewpips-logo.png" alt="Fewpips" width="120" height="33"><span>Blog</span></a>
+  <div class="nav-links">
+    <a href="/blog/" class="desk-only">All Posts</a>
+    <a href="/faq/" class="desk-only">FAQ</a>
+    <a href="https://crm.fewpips.com/auth/signup" class="nav-cta">Get Funded</a>
+  </div>
+</nav>
+<div class="post-hero">
+  <div class="post-hero-bg"><img src="/blog/hero-no-time-limits.webp" alt="Fewpips mascot beside a paused weekend chart" loading="eager"></div>
+  <div class="post-hero-glow"></div>
+</div>
+<header class="post-header">
+  <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; Rules &amp; Compliance</div>
+  <div class="category"><span class="dot"></span> Rules &amp; Compliance</div>
+  <h1>The Weekend Gap Protection Guide: Managing Open Risk Before the Friday Close</h1>
+  <div class="meta"> <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 7 min read</span> <span>Updated August 22, 2026</span> <span>Fewpips Team</span> </div>
+</header>
+<div class="glow-divider"></div>
+<main class="post-content">
+<article><p><strong>Short answer:</strong> Weekend gap risk is the chance that a market reopens Monday at a price far from where it closed Friday, because news during the closed period never gets reflected until trading resumes. That gap can blow past a stop loss and disqualify an otherwise good trade. The fix is not to panic on Friday afternoon. It is to run the same pre-weekend risk check every single week, so the decision is already made before the deadline shows up.</p>
+<p>This is one of the first rules serious traders check before they ever fund a challenge, because it decides whether a strategy can actually be traded the way it was built, or whether it has to be squeezed into a five-day box. We built this guide around exactly that question.</p>
+<h2>Why Weekend Gap Risk Is a Bigger Deal Than Most Traders Admit</h2>
+<p>Most traders think about risk in terms of the trade itself. Entry, stop, target, done. Weekend gap risk sits outside that whole framework, and that is exactly why it catches people off guard.</p>
+<p>Here is the mechanic. Forex and CFD markets do not run 24/7. They run 24/5. Once the New York session winds down Friday evening, liquidity dries up and most venues stay closed until Sydney opens Sunday night. The world does not pause during that stretch. Central banks make surprise statements. Elections happen. Headlines break. None of it shows up on your chart until the market reopens.</p>
+<p>When it reopens, price does not ease back in from wherever it left off. It can open sharply higher or lower than Friday's close, skipping straight over every level in between. That jump is the gap. If you were holding through it, your stop loss does not protect you the way it normally would, because stops fill at the next available price once trading resumes, not at the exact level you set. In a violent gap, you can exit well beyond where you planned.</p>
+<p>The Swiss National Bank's 2015 decision to drop the franc's currency peg is still the go-to example in trading education. It was not technically a weekend gap, but it shows the same principle in fast motion. One unexpected announcement moved EUR/CHF thousands of pips in minutes, and traders holding positions had no real way to react. Weekend gaps run on that same logic, just with two extra days of silence built in before the move actually hits your account.</p>
+<h2>Why So Many Prop Firms Force a Friday Close</h2>
+<p>If gap risk is a market-wide problem, why do so many funded programs build a hard rule around it? The honest answer is liability management. A firm is not just watching your single position. It is watching every funded trader's position gapping against them at the same time during one bad weekend. Forcing everyone to flatten by Friday afternoon is the simplest way for a firm to reset its own drawdown exposure to zero every week, no matter what happens between sessions.</p>
+<p>For the trader, that rule has a real cost. If your edge depends on multi-day price action, a forced Friday close cuts the legs out from under it before the setup has time to work. You end up closing winners early because a clock told you to, not because your analysis did, and you usually do it during the most illiquid, spread-widened hour of the week. That is a quiet tax on your edge that never shows up as a single obvious loss, just a slow bleed of missed profit and bad fills.</p>
+<p>This is worth checking before you ever pay for a challenge. Some firms flag any weekend exposure as an automatic breach. Others sell it back to you as a paid upgrade, buried under a name like &quot;swing trading mode.&quot; Fewpips does neither on its CFD side: weekend holding is standard across the CFD Instant, 1-Step, 2-Step and 3-Step challenges, built into the base rules rather than sold as an add-on, with normal swap fees applying. One clear exception to know upfront: Future Based CFD accounts close positions before the weekend, in line with how the underlying futures sessions work. If your strategy leans on multi-day setups, that single rule can matter more than almost anything else on a firm's terms page.</p>
+<h2>What a Forced Friday Close Actually Costs You</h2>
+<p>Traders tend to underestimate how expensive a rushed close really is. It is not just missing a bit of extra profit if the trade kept running. Run the math on a simple example.</p>
+<p>Say you are holding a $50,000 account position with an open profit of $600 late Friday afternoon, and your target is another 15 pips away. Spreads on your pair widen from 1 pip to 4 pips as liquidity pulls back into the close. On a standard lot, that difference alone can cost $30 to $40 just to exit, on top of whatever profit you leave on the table by closing before your target hits. Multiply that across a month of Fridays and it adds up to real, avoidable drag on your account.</p>
+<p>Three costs stack up every time this happens:</p>
+<ul>
+<li><strong>Spread and slippage.</strong> Liquidity thins right as a wave of other traders flatten positions for the same rule-based reasons you are, so you pay more to exit at the worst possible moment for execution quality.</li>
+<li><strong>Premature exits on winners.</strong> A position that is up but has not hit target yet still has to close, locking in less profit than your plan called for, purely because of the calendar.</li>
+<li><strong>Deadline-driven decisions.</strong> Rushed decisions are rarely good ones. Traders who normally manage risk calmly start overriding their own plans once a clock, not their analysis, is forcing the exit.</li>
+</ul>
+<p>None of this means weekend rules are unreasonable. They exist for real structural reasons. It means you need a repeatable process for managing them instead of scrambling every Friday afternoon.</p>
+<h2>A Practical Friday Risk Audit</h2>
+<p>Whether your program requires a full flat close or lets you decide for yourself, running the same checklist every Friday takes the emotion out of it. Treat it as a routine, not a one-off decision you make under pressure.</p>
+<ul>
+<li><strong>Check the calendar first, not the chart.</strong> Look at what is scheduled for Sunday evening and the week ahead: central bank meetings, elections, major data releases. A known catalyst changes your weekend risk profile more than anything else on your screen. It is also why Fewpips restricts new trades during high-impact news windows in the first place. The rule is not there to slow you down. It is there because that is exactly when spreads blow out and gaps get violent.</li>
+<li><strong>Scale down before you shut down.</strong> If you are allowed to hold but you are uneasy about size, trimming a position to a smaller lot is usually smarter than closing it outright or leaving it at full risk.</li>
+<li><strong>Move your stop to protect the trade, not just cap the loss.</strong> Tightening a stop toward breakeven or into profit before the weekend turns an open risk into a much smaller decision.</li>
+<li><strong>Take partial profits on anything already working.</strong> Banking a portion of a winning trade takes pressure off whatever is left open, whichever way the market gaps.</li>
+<li><strong>Know your firm's actual rule, in writing, not from memory.</strong> &quot;I think we're allowed to hold&quot; is not a risk plan. Read the current terms before every Friday, because rules change between programs and sometimes between account types at the same firm.</li>
+</ul>
+<h2>When It Actually Makes Sense To Hold Through The Weekend</h2>
+<p>Not every open position deserves a weekend pass, even when your program allows it. A good rule of thumb: if the trade's thesis is still intact, the size is something you would be comfortable holding through a surprise headline, and no major scheduled catalyst specifically threatens the instrument you are in, holding can be the more disciplined choice, not the riskier one. Closing a perfectly good trade purely out of nervousness is not risk management either. It is just a different kind of undisciplined trading.</p>
+<p>This is where a genuinely flexible funded program matters. On Fewpips CFD challenge and funded accounts, weekend holding sits alongside EA support and no time limits as a baseline feature, not something you upgrade into. There is no requalification, no separate weekend fee, and no fine print that quietly excludes it once you pass. That means the decision to hold or close a position stays where it belongs, with your analysis, not with a deadline the firm imposed on you. Pair that with daily loss and drawdown limits you can actually plan around, and traders running swing or position-style strategies get to trade the strategy they actually backtested, instead of a Friday-compressed version of it.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>What Is Weekend Gap Risk in Trading?</h3>
+<p>It is the possibility that a market reopens at a meaningfully different price than where it closed, because news during the closed period is not reflected until trading resumes. Stop losses can fill far from their set level as a result.</p>
+<h3>Why Do Prop Firms Restrict Holding Trades Over the Weekend?</h3>
+<p>Mostly to control their own aggregate drawdown exposure across all funded accounts at once, since a single volatile weekend event could otherwise trigger large, correlated losses across the firm's book.</p>
+<h3>Do All Prop Firms Require a Friday Close?</h3>
+<p>No. Requirements vary by firm and sometimes by account type within the same firm. Fewpips allows weekend holding on every CFD challenge type, from Instant accounts through the 3-Step program, while Future Based CFD accounts close before the weekend.</p>
+<h3>How Can I Protect an Open Position Before the Weekend If I Have to Close It?</h3>
+<p>Scale out gradually through the week instead of all at once on Friday, bank partial profits on anything already in your favor, and avoid opening new trades late Friday that you would be forced to exit in thin, wide-spread conditions.</p>
+<h2>The Fewpips Take</h2>
+<p>Weekend gap risk is not something you eliminate. It is something you manage on purpose, the same way every week, with a checklist instead of a fresh panic each time. Know your firm's actual rule, run your Friday audit before the deadline sneaks up on you, and pick a program whose weekend policy actually fits how you trade instead of fighting it.</p>
+<p>Fewpips challenges start at $59, fund up to $200K, and allow weekend holding on every CFD plan with no add-on required and no fine print to trip over later. Pair that with up to a 90% profit split and 24-hour crypto payouts, and the market stays the thing making your risk decisions, not the calendar.</p></article>
+</main>
+<div class="glow-divider"></div>
+<div class="post-cta">
+  <h2>Ready to Get Funded?</h2>
+  <p>Challenges from $59. No time limits. Up to 90% profit split. Available on CFD and Future Based CFD accounts.</p>
+  <a href="https://crm.fewpips.com/auth/signup" class="cta-btn">Get Funded Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+<img class="post-mascot-float" src="/blog/hero-account-types.webp" alt="" aria-hidden="true">
+<footer class="blog-footer">
+  <div class="blog-footer-left">&copy; 2026 Fewpips. All rights reserved.</div>
+  <div class="blog-footer-links">
+    <a href="/">Home</a><a href="/blog/">Blog</a><a href="/faq/">FAQ</a><a href="/terms/">Terms</a><a href="/contact/">Contact</a>
+  </div>
+</footer>
+</div>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "92c7587e087849c39a8dee8322e4721d"}'></script>
+<script src="/sticky-split.js" defer></script><script src="/social-tiktok.js" defer></script><script src="/reviews-nav.js" defer></script><script src="/livechat-greeting.js" defer></script><script src="/hash-nav-fix.js" defer></script></body>
+</html>

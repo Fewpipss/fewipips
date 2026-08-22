@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script>(function(){var l=function(){if(window.__gtagLoaded)return;window.__gtagLoaded=1;var s=document.createElement("script");s.async=1;s.src="https://www.googletagmanager.com/gtag/js?id=G-67ZBBEE4JC";document.head.appendChild(s)};window.addEventListener("load",function(){("requestIdleCallback"in window?requestIdleCallback:function(f){setTimeout(f,1500)})(l)});setTimeout(l,6e3)})();</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-67ZBBEE4JC');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CPI Liquidity Trap: Why Spread Expansion Can Stop You Out Even When You Are Right | Fewpips Blog</title>
+<meta name="description" content="During CPI and other red-folder releases, spreads can widen from 2 pips to 45+ in a single tick. How the liquidity window works, the real math of a spread-driven stop-out, and the exposure rule that protects your challenge.">
+<meta name="keywords" content="cpi trading, spread widening, news trading prop firm, fewpips">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Fewpips">
+<link rel="canonical" href="https://www.fewpips.com/blog/cpi-liquidity-trap/">
+<meta property="og:title" content="The CPI Liquidity Trap: Why Spread Expansion Can Stop You Out Even When You Are Right">
+<meta property="og:description" content="During CPI and other red-folder releases, spreads can widen from 2 pips to 45+ in a single tick. How the liquidity window works, the real math of a spread-driven stop-out, and the exposure rule that protects your challenge.">
+<meta property="og:url" content="https://www.fewpips.com/blog/cpi-liquidity-trap/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fewpips">
+<meta property="og:image" content="https://www.fewpips.com/blog/hero-no-time-limits.webp">
+<meta property="article:published_time" content="2026-08-01T21:00:00Z">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The CPI Liquidity Trap: Why Spread Expansion Can Stop You Out Even When You Are Right">
+<meta name="twitter:description" content="During CPI and other red-folder releases, spreads can widen from 2 pips to 45+ in a single tick. How the liquidity window works, the real math of a spread-driven stop-out, and the exposure rule that protects your challenge.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"></noscript>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "BlogPosting",
+ "headline": "The CPI Liquidity Trap: Why Spread Expansion Can Stop You Out Even When You Are Right",
+ "description": "During CPI and other red-folder releases, spreads can widen from 2 pips to 45+ in a single tick. How the liquidity window works, the real math of a spread-driven stop-out, and the exposure rule that protects your challenge.",
+ "author": {
+  "@type": "Organization",
+  "name": "Fewpips"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Fewpips",
+  "url": "https://www.fewpips.com"
+ },
+ "datePublished": "2026-08-22",
+ "dateModified": "2026-08-22",
+ "mainEntityOfPage": "https://www.fewpips.com/blog/cpi-liquidity-trap/"
+}</script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Why did I get stopped out on CPI even though my analysis was correct?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Your stop loss almost certainly triggered on a briefly widened spread quote, not on real traded price. The market had not actually moved against your thesis yet; the spread temporarily made it look that way."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How long do spreads stay widened after a CPI release?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Typically a few seconds to a couple of minutes, though it varies by pair and venue. Watching the spread return to its normal range before re-entering is safer than watching the clock."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Should I widen my stop loss to survive CPI spikes?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Not usually. A wider stop just increases your dollar risk if price genuinely moves against you; it does not fix the underlying problem of trading through a liquidity gap."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does closing trades before news count against the 3-minute rule?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. The 3-minute rule requires trades to stay open a minimum duration once placed; it does not require you to place a trade during news. Staying flat before a release does not violate it."
+   }
+  }
+ ]
+}</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050709;--bg2:#080a0e;--bg-card:#0c0e14;
+  --border:rgba(255,255,255,.06);--text:#e8f5ea;--text-muted:#7a8a80;--white:#fff;
+  --green:#0fcd37;--green-light:#42ff00;--green-cyan:#00ffc2;
+  --gradient:linear-gradient(135deg,#00ffc2,#42ff00);
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',ui-sans-serif,system-ui,sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--green);text-decoration:none;transition:opacity .2s}
+a:hover{opacity:.85}
+.page-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(140px);animation:orbDrift 25s ease-in-out infinite}
+.orb-1{width:500px;height:500px;background:rgba(15,205,55,.06);top:-150px;left:-100px;animation-delay:0s}
+.orb-2{width:450px;height:450px;background:rgba(0,255,194,.05);bottom:-200px;right:-80px;animation-delay:-8s}
+.orb-3{width:350px;height:350px;background:rgba(66,255,0,.04);top:50%;left:60%;animation-delay:-16s}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-50px) scale(1.1)}66%{transform:translate(-30px,40px) scale(.9)}}
+.grid-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(15,205,55,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(15,205,55,.025) 1px,transparent 1px);
+  background-size:80px 80px}
+.dot-field{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(15,205,55,.08) 1px,transparent 1px);
+  background-size:40px 40px;opacity:.3}
+.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.015;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:128px 128px}
+.content{position:relative;z-index:1}
+.blog-nav{position:sticky;top:0;z-index:100;background:rgba(5,7,9,.85);backdrop-filter:blur(24px) saturate(1.2);border-bottom:1px solid var(--border);padding:0 2rem;height:72px;display:flex;align-items:center;justify-content:space-between}
+.blog-nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.blog-nav-logo img{height:32px}
+.blog-nav-logo span{font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:1px;text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.875rem;color:var(--text-muted)}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{display:inline-flex;padding:.55rem 1.4rem;border-radius:10px;background:var(--gradient);color:#000!important;font-weight:700;font-size:.8rem;box-shadow:0 0 20px rgba(15,205,55,.15)}
+.post-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.post-hero-bg{height:320px;position:relative;overflow:hidden}
+.post-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.post-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 0%,rgba(5,7,9,.6) 40%,rgba(5,7,9,.3) 100%)}
+.post-hero-glow{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);width:600px;height:200px;background:radial-gradient(ellipse,rgba(15,205,55,.08),transparent 70%);pointer-events:none;z-index:1}
+.post-header{max-width:780px;margin:0 auto;padding:2rem 2rem 1.5rem;text-align:center;position:relative;z-index:2;margin-top:-80px}
+.post-header .breadcrumb{font-size:.75rem;color:var(--text-muted);margin-bottom:1.25rem}
+.post-header .breadcrumb a{color:var(--text-muted);text-decoration:none}
+.post-header .breadcrumb a:hover{color:var(--green)}
+.post-header .category{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;border-radius:8px;background:rgba(5,7,9,.7);backdrop-filter:blur(10px);border:1px solid rgba(15,205,55,.2);font-size:.65rem;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.post-header .category .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:catPulse 2s ease-in-out infinite}
+@keyframes catPulse{0%,100%{opacity:1}50%{opacity:.4}}
+.post-header h1{font-family:'Poppins',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:var(--white);line-height:1.25;margin-bottom:1rem;letter-spacing:-.3px}
+.post-header .meta{font-size:.8rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.post-header .meta span{display:flex;align-items:center;gap:.3rem}
+.glow-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(15,205,55,.2) 20%,rgba(15,205,55,.4) 50%,rgba(15,205,55,.2) 80%,transparent);margin:0}
+.post-content{max-width:780px;margin:0 auto;padding:2.5rem 2rem 4rem;position:relative}
+.post-content article{font-size:1.05rem;line-height:1.85}
+.post-content h2{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;line-height:1.3;position:relative;padding-left:1rem;border-left:3px solid var(--green)}
+.post-content h3{font-family:'Poppins',sans-serif;font-size:1.15rem;font-weight:600;color:var(--white);margin:2rem 0 .75rem}
+.post-content p{margin-bottom:1.25rem;color:var(--text)}
+.post-content ul,.post-content ol{margin:1rem 0 1.5rem 1.5rem;color:var(--text)}
+.post-content li{margin-bottom:.5rem}
+.post-content strong{color:var(--white);font-weight:600}
+.post-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.9rem;border-radius:12px;overflow:hidden}
+.post-content th{text-align:left;padding:.75rem 1rem;background:rgba(15,205,55,.08);border:1px solid rgba(15,205,55,.12);color:var(--green);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.5px}
+.post-content td{padding:.75rem 1rem;border:1px solid var(--border);color:var(--text)}
+.post-content tr:hover td{background:rgba(15,205,55,.03)}
+.post-content blockquote{border-left:3px solid var(--green);padding:1rem 1.5rem;margin:1.5rem 0;background:rgba(15,205,55,.03);border-radius:0 12px 12px 0;font-style:italic;color:var(--text-muted)}
+.example-box{background:rgba(15,205,55,.04);border:1px solid rgba(15,205,55,.12);border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-size:.97rem;line-height:1.7}
+.example-box strong{color:var(--green-cyan)}
+.answer-box{background:rgba(0,255,194,.05);border:1px solid rgba(0,255,194,.16);border-radius:14px;padding:1.1rem 1.4rem;margin:0 0 1.75rem;font-size:1.02rem;line-height:1.7}
+.answer-box strong{color:var(--green-cyan)}
+.steps{counter-reset:step;list-style:none;margin:1.5rem 0!important;padding:0}
+.steps li{position:relative;padding:0 0 1.1rem 3rem;margin:0;counter-increment:step}
+.steps li::before{content:counter(step);position:absolute;left:0;top:-2px;width:2rem;height:2rem;border-radius:50%;background:var(--gradient);color:#000;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.post-mascot-float{position:fixed;bottom:2rem;right:2rem;width:100px;height:100px;opacity:.08;pointer-events:none;z-index:0;animation:mascotBob 4s ease-in-out infinite}
+@keyframes mascotBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.post-cta{max-width:780px;margin:0 auto 4rem;padding:2.5rem;text-align:center;border-radius:20px;background:rgba(12,14,20,.8);border:1px solid rgba(15,205,55,.12);position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+.post-cta::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(15,205,55,.08),transparent 70%);pointer-events:none}
+.post-cta::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(0,255,194,.06),transparent 70%);pointer-events:none}
+.post-cta h2{font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:700;color:var(--white);margin:0 0 .5rem!important;border:none;padding:0;position:relative}
+.post-cta p{color:var(--text-muted);margin-bottom:1.25rem;font-size:.95rem;position:relative}
+.post-cta a.cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 2rem;border-radius:12px;background:var(--gradient);color:#000!important;font-weight:700;font-size:.875rem;box-shadow:0 0 25px rgba(15,205,55,.15);transition:all .2s;position:relative}
+.post-cta a.cta-btn:hover{box-shadow:0 0 40px rgba(15,205,55,.3);transform:translateY(-2px)}
+.blog-footer{border-top:1px solid var(--border);padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;max-width:780px;margin:0 auto;flex-wrap:wrap;gap:1rem}
+.blog-footer-left{font-size:.78rem;color:var(--text-muted)}
+.blog-footer-links{display:flex;gap:1.5rem}
+.blog-footer-links a{font-size:.78rem;color:var(--text-muted);transition:color .2s}
+.blog-footer-links a:hover{color:var(--green)}
+@media(max-width:640px){
+  .post-header{padding:1.5rem 1.5rem 1rem;margin-top:-60px}
+  .post-content{padding:1.5rem 1.5rem 3rem}
+  .nav-links .desk-only{display:none}
+  .post-hero-bg{height:220px}
+  .post-mascot-float{display:none}
+  .blog-footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="page-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="grid-pattern"></div>
+<div class="dot-field"></div>
+<div class="noise"></div>
+<div class="content">
+<nav class="blog-nav">
+  <a href="/" class="blog-nav-logo"><img src="/fewpips-logo.png" alt="Fewpips" width="120" height="33"><span>Blog</span></a>
+  <div class="nav-links">
+    <a href="/blog/" class="desk-only">All Posts</a>
+    <a href="/faq/" class="desk-only">FAQ</a>
+    <a href="https://crm.fewpips.com/auth/signup" class="nav-cta">Get Funded</a>
+  </div>
+</nav>
+<div class="post-hero">
+  <div class="post-hero-bg"><img src="/blog/hero-stop-loss.webp" alt="Fewpips mascot shielding a chart during a news spike" loading="eager"></div>
+  <div class="post-hero-glow"></div>
+</div>
+<header class="post-header">
+  <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; Rules &amp; Compliance</div>
+  <div class="category"><span class="dot"></span> Rules &amp; Compliance</div>
+  <h1>The CPI Liquidity Trap: Why Spread Expansion Can Stop You Out Even When You Are Right</h1>
+  <div class="meta"> <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 6 min read</span> <span>Updated August 22, 2026</span> <span>Fewpips Team</span> </div>
+</header>
+<div class="glow-divider"></div>
+<main class="post-content">
+<article><p><strong>Short answer:</strong> During CPI and other high-impact releases, liquidity providers pull their quotes for a few seconds and spreads across the market can widen from a normal 1-2 pips to 20, 40, even 100+ pips. That widened spread can hit your stop loss and margin instantly, even if price never actually traded there and even if your directional call was correct. The fix is not a better entry. It is refusing to have a position open when the liquidity window slams shut.</p>
+<h2>Why the CPI Liquidity Trap Matters</h2>
+<p>Most traders think a losing CPI trade means they read the number wrong. That is not usually what happened.</p>
+<p>Here is the logic. When CPI drops, real liquidity vanishes for a window of one to five seconds. Market makers across the industry widen their quoted spreads because nobody knows where price is really trading yet. If your stop loss sits inside that temporarily widened spread, it gets triggered on a quote that existed for a heartbeat, not a price the market ever settled at. You can be right on direction and still get stopped out, because the spread itself became the loss, not your trade thesis.</p>
+<p>This is why traders who nail the CPI direction still watch their equity curve dip. It was never their read. It was their exposure during the seconds when price had no honest quote. This is a market-structure problem that exists on every venue, every broker and every funded program, and the only reliable protection is the same everywhere: be flat when it happens.</p>
+<h2>The One Decision to Make First: Are You In or Out Before the Release</h2>
+<p>Before you think about entries, targets, or CPI forecasts, decide your exposure rule for the release window. Traders tend to land in one of three habits:</p>
+<ul>
+<li><strong>Conservative:</strong> Flat 5 minutes before, flat until spreads normalize after. No exceptions.</li>
+<li><strong>Balanced:</strong> Flat going into the print, re-enter only once the spread returns to its normal range (roughly 60-90 seconds after).</li>
+<li><strong>Aggressive:</strong> Stay in the trade through the release and rely on a wide stop to &quot;absorb&quot; the spike.</li>
+</ul>
+<p>The aggressive approach is the one that quietly ends challenges. A $100K account with a 4% daily loss limit has a $4,000 cushion for the day. A spread spike alone can eat a meaningful chunk of that on a single stop-out, before the market has even chosen a real direction.</p>
+<h2>A Worked Example</h2>
+<p>Say you are trading a 2-Step account sized at $100K, risking 1% per trade with a normal 20-pip stop.</p>
+<ul>
+<li>Risk budget: 1% of $100,000 is $1,000</li>
+<li>Normal pip value: roughly $10 per pip on a standard lot, so $200 of risk per lot and 5 standard lots total</li>
+<li>CPI spread spike: the spread widens from 2 pips to 45 pips in the first tick</li>
+<li>Effective stop cost during the spike: 45 pips &times; $10 &times; 5 lots = $2,250, more than double your intended risk, in a single fill</li>
+</ul>
+<p>Plain-English formula: your real risk during a news spike is not stop distance times pip value. It is (stop distance + spread expansion) times pip value times lot size. The spread you did not account for becomes part of your loss.</p>
+<h2>Watch Out for This</h2>
+<p>The single biggest mistake is assuming your stop loss protects you the same way in every market condition. A stop is only as reliable as the liquidity behind it. Treating a 20-pip stop as a fixed $200 risk during CPI, NFP, or any red-folder event is how disciplined traders still blow the daily limit on a trade where they called the direction correctly.</p>
+<p>Fewpips also enforces a 3-minute minimum hold rule on every trade, which naturally discourages the reflex of jumping in and out around news spikes without a real plan for the release.</p>
+<h2>How This Connects to the Broader Loss Rules</h2>
+<p>Spread expansion does not exist in isolation. It stacks directly against your daily loss limit (4-5% depending on program) and your maximum loss floor (6-10% depending on program and account size). A single spread-driven stop-out can burn a disproportionate slice of your daily allowance before you have made a single &quot;real&quot; trading decision that day. Our note on <a href="/blog/loss-limits-explained/">daily loss limits</a> and <a href="/blog/how-the-consistency-rule-works/">the 40% consistency rule</a> shows why one oversized loss, spread-driven or not, can also distort your profit distribution across the challenge.</p>
+<h2>Adjust This as Your Account and Experience Grow</h2>
+<p>Your CPI exposure rule is not permanent. Early in an evaluation, staying flat through every major release is the safest default, full stop. As your balance grows and you build a track record of how your specific pairs behave around specific releases, you can selectively re-enter closer to the print, because you have real data on the typical spread-widening window instead of a guess.</p>
+<p>If you take a loss and your cushion under the daily limit shrinks, tighten back up to fully flat until you rebuild room. This is the same self-correcting logic as percentage-based position sizing: your rules get stricter exactly when your margin for error is thinnest, and loosen only once you have earned the room again.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Why Did I Get Stopped Out on CPI Even Though My Analysis Was Correct?</h3>
+<p>Your stop loss almost certainly triggered on a briefly widened spread quote, not on real traded price. The market had not actually moved against your thesis yet; the spread temporarily made it look that way.</p>
+<h3>How Long Do Spreads Stay Widened After a CPI Release?</h3>
+<p>Typically a few seconds to a couple of minutes, though it varies by pair and venue. Watching the spread return to its normal range before re-entering is safer than watching the clock.</p>
+<h3>Should I Widen My Stop Loss to Survive CPI Spikes?</h3>
+<p>Not usually. A wider stop just increases your dollar risk if price genuinely moves against you; it does not fix the underlying problem of trading through a liquidity gap.</p>
+<h3>Does Closing Trades Before News Count Against the 3-Minute Rule?</h3>
+<p>No. The 3-minute rule requires trades to stay open a minimum duration once placed; it does not require you to place a trade during news. Staying flat before a release does not violate it.</p>
+<h2>The Fewpips Take</h2>
+<p>Being right about CPI and still losing money is one of the most demoralizing things that can happen in a challenge, and it is almost never about your read on the data. It is about being exposed during the seconds when the spread, not the market, decides your fill. Go flat before high-impact releases, wait for spreads to normalize, and let your directional edge actually matter again.</p>
+<p>Fewpips challenges start at $59, offer up to 90% profit splits, and come with no time limit to pass. Trade the market, not the spread trap.</p></article>
+</main>
+<div class="glow-divider"></div>
+<div class="post-cta">
+  <h2>Ready to Get Funded?</h2>
+  <p>Challenges from $59. No time limits. Up to 90% profit split. Available on CFD and Future Based CFD accounts.</p>
+  <a href="https://crm.fewpips.com/auth/signup" class="cta-btn">Get Funded Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+<img class="post-mascot-float" src="/blog/hero-account-types.webp" alt="" aria-hidden="true">
+<footer class="blog-footer">
+  <div class="blog-footer-left">&copy; 2026 Fewpips. All rights reserved.</div>
+  <div class="blog-footer-links">
+    <a href="/">Home</a><a href="/blog/">Blog</a><a href="/faq/">FAQ</a><a href="/terms/">Terms</a><a href="/contact/">Contact</a>
+  </div>
+</footer>
+</div>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "92c7587e087849c39a8dee8322e4721d"}'></script>
+<script src="/sticky-split.js" defer></script><script src="/social-tiktok.js" defer></script><script src="/reviews-nav.js" defer></script><script src="/livechat-greeting.js" defer></script><script src="/hash-nav-fix.js" defer></script></body>
+</html>
