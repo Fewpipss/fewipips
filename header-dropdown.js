@@ -48,10 +48,14 @@
       "ul.nav-c .nav-toggle a{font-size:.86rem}",
       ".nav-r .nav-login,.nav-r .nav-cta{font-size:.86rem}",
       "#" + ID + "{position:relative}",
-      "#" + ID + " .hd-btn{cursor:pointer;background:0 0;border:none;display:inline-flex;align-items:center;gap:4px;",
-      "color:#fff;font:700 .95rem var(--font-b,Inter,sans-serif);padding:6px 11px;border-radius:99px;",
+      // green bubble trigger, black text (Nick's feedback via Dj)
+      "#" + ID + " .hd-btn{cursor:pointer;border:none;display:inline-flex;align-items:center;gap:5px;",
+      "background:linear-gradient(135deg,#00ffc2 0%,#42ff00 100%);color:#001a0d;",
+      "font:800 .95rem var(--font-b,Inter,sans-serif);padding:7px 14px;border-radius:99px;",
+      "box-shadow:0 2px 12px #00ffc24d,inset 0 1px #ffffff80;",
       "transition:all .3s var(--ease,ease);white-space:nowrap}",
-      "#" + ID + " .hd-btn:hover,#" + ID + ".hd-open .hd-btn{color:#fff;background:#ffffff0a}",
+      "#" + ID + " .hd-btn:hover,#" + ID + ".hd-open .hd-btn{color:#001a0d;",
+      "box-shadow:0 0 22px #00ffc27a,0 2px 12px #00ffc24d,inset 0 1px #ffffff80}",
       "#" + ID + " .hd-chev{width:13px;height:13px;transition:transform .3s var(--ease,ease)}",
       "#" + ID + ".hd-open .hd-chev{transform:rotate(180deg)}",
       // hoverable bridge between button and panel
