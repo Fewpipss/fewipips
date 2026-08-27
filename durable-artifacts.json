@@ -378,6 +378,26 @@
    "type": "present_in",
    "path": "reviews/index.html",
    "pattern": "id=\"strip-toprated\""
+  },
+  {
+   "id": "header-dropdown-injector",
+   "desc": "header Explore dropdown injector present (Veljko TG #11404)",
+   "type": "file_exists",
+   "path": "header-dropdown.js"
+  },
+  {
+   "id": "header-dropdown-home",
+   "desc": "header-dropdown.js wired on homepage",
+   "type": "present_in",
+   "path": "index.html",
+   "pattern": "header-dropdown.js"
+  },
+  {
+   "id": "header-dropdown-futures",
+   "desc": "header-dropdown.js wired on futures page",
+   "type": "present_in",
+   "path": "futures/index.html",
+   "pattern": "header-dropdown.js"
   }
  ]
 }
