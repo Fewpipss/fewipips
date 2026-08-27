@@ -373,6 +373,13 @@
    "pattern": "reviews-strip.js"
   },
   {
+   "id": "reviews-toprated-strip",
+   "desc": "featured Top rated auto-strip on /reviews (Dj request, rightward marquee)",
+   "type": "present_in",
+   "path": "reviews/index.html",
+   "pattern": "id=\"strip-toprated\""
+  },
+  {
    "id": "header-dropdown-injector",
    "desc": "header Explore dropdown injector present (Veljko TG #11404)",
    "type": "file_exists",
