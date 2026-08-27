@@ -78,16 +78,16 @@
   },
   {
    "id": "proof-peek-certs-batch",
-   "desc": "Aug 4-16 2026 cert batch live in sneak-peek (top earner Rocio Navarrete); older batches retired to proof page",
+   "desc": "proof-peek shows the 17-24 Aug 2026 cert batch (Nick TG #11810)",
    "type": "present_in",
    "path": "proof-peek.js",
-   "pattern": "rocio-navarrete.webp"
+   "pattern": "catalina-fuentes.webp"
   },
   {
    "id": "proof-peek-cert-img",
-   "desc": "top cert image file present in /certs",
+   "desc": "top cert webp of the 17-24 Aug batch present",
    "type": "file_exists",
-   "path": "certs/rocio-navarrete.webp"
+   "path": "certs/catalina-fuentes.webp"
   },
   {
    "id": "reviews-page",
