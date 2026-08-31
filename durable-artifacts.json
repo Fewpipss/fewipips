@@ -398,6 +398,53 @@
    "type": "present_in",
    "path": "futures/index.html",
    "pattern": "header-dropdown.js"
+  },
+  {
+   "id": "proof-page",
+   "desc": "/proof Proof of Payouts page on main domain (Veljko 31.8, SEO/AEO)",
+   "type": "file_exists",
+   "path": "proof/index.html"
+  },
+  {
+   "id": "proof-sitemap",
+   "desc": "/proof listed in sitemap.xml",
+   "type": "present_in",
+   "path": "sitemap.xml",
+   "pattern": "https://www.fewpips.com/proof/"
+  },
+  {
+   "id": "proof-canonical",
+   "desc": "/proof canonical points to main domain",
+   "type": "present_in",
+   "path": "proof/index.html",
+   "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/proof/\""
+  },
+  {
+   "id": "proof-jsonld",
+   "desc": "/proof carries ItemList JSON-LD for AI crawlers",
+   "type": "present_in",
+   "path": "proof/index.html",
+   "pattern": "\"@type\":\"ItemList\""
+  },
+  {
+   "id": "proof-assets",
+   "desc": "cert full-size images live at /certs/full (same paths as old proof site)",
+   "type": "file_exists",
+   "path": "certs/full/august-Catalina_Fuentes.jpg"
+  },
+  {
+   "id": "proof-peek-url",
+   "desc": "homepage peek links to /proof/ on the main domain, not pages.dev",
+   "type": "present_in",
+   "path": "proof-peek.js",
+   "pattern": "var PROOF_URL = \"/proof/\""
+  },
+  {
+   "id": "proof-footer-link",
+   "desc": "footer internal link to /proof/ via reviews-nav.js injector",
+   "type": "present_in",
+   "path": "reviews-nav.js",
+   "pattern": "Proof of Payouts"
   }
  ]
 }

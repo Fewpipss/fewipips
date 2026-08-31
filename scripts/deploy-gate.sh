@@ -34,6 +34,9 @@ if ! command -v python3 >/dev/null 2>&1; then echo "python3 required"; exit 2; f
 [ -f "$MANIFEST" ] || { echo "manifest not found: $MANIFEST"; exit 2; }
 [ -d "$BUILD_DIR" ] || { echo "build dir not found: $BUILD_DIR"; exit 2; }
 
+# keep the /proof sitemap entry fresh automatically (no-op on a clean tree)
+[ -x "$SCRIPT_DIR/proof-sitemap.sh" ] && "$SCRIPT_DIR/proof-sitemap.sh" || true
+
 BUILD_DIR="$BUILD_DIR" MANIFEST="$MANIFEST" python3 - <<'PY'
 import json, os, re, sys
 
