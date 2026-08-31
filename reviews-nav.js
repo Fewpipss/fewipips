@@ -5,7 +5,8 @@
 (function () {
   var LINKS = [
     { href: "/blog/", label: "Blog" },
-    { href: "/reviews/", label: "Reviews" }
+    { href: "/reviews/", label: "Reviews" },
+    { href: "/proof/", label: "Proof" }
   ];
 
   function add() {
@@ -24,11 +25,19 @@
     }
   }
 
-  // Footer: Nick wants "Blogs" spelled out in the footer link (TG #11386).
+  // Footer: Nick wants "Blogs" spelled out in the footer link (TG #11386),
+  // and the Proof of Payouts page gets an internal link for SEO (Veljko 31.8).
   function footerLabel() {
     var links = document.querySelectorAll('.ft-col a[href="/blog/"]');
     for (var i = 0; i < links.length; i++) {
       if (links[i].textContent !== "Blogs") links[i].textContent = "Blogs";
+      var col = links[i].parentElement;
+      if (col && !col.querySelector('a[href="/proof/"]')) {
+        var a = document.createElement("a");
+        a.href = "/proof/";
+        a.textContent = "Proof of Payouts";
+        col.appendChild(a);
+      }
     }
   }
   var _add = add;
