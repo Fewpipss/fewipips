@@ -26,7 +26,7 @@ import json, os, re, sys, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDEX = os.path.join(ROOT, "proof", "index.html")
 SITEMAP = os.path.join(ROOT, "sitemap.xml")
-PROOF_URL = "https://www.fewpips.com/proof"
+PROOF_URL = "https://www.fewpips.com/proof/"
 CHECK = "--check" in sys.argv
 
 MONTHS = {

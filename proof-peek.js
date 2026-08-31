@@ -4,7 +4,7 @@
 (function () {
   var SECTION_ID = "proof-peek";
   var LB_ID = "proof-lb";
-  var PROOF_URL = "https://www.fewpips.com/proof";
+  var PROOF_URL = "https://www.fewpips.com/proof/";
 
   // Real payout certificates. To swap/add: drop a webp in /certs and edit this list.
   // 17-24 Aug 2026 batch (Nick, 25 Aug 2026). Retired certs live on the proof page.

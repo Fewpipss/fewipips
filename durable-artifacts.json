@@ -410,14 +410,14 @@
       "desc": "/proof listed in sitemap.xml (whole point of moving off pages.dev)",
       "type": "present_in",
       "path": "sitemap.xml",
-      "pattern": "https://www.fewpips.com/proof</loc>"
+      "pattern": "https://www.fewpips.com/proof/</loc>"
     },
     {
       "id": "proof-canonical",
       "desc": "/proof has canonical to www.fewpips.com/proof (no dup-content vs pages.dev)",
       "type": "present_in",
       "path": "proof/index.html",
-      "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/proof\""
+      "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/proof/\""
     },
     {
       "id": "proof-jsonld",
