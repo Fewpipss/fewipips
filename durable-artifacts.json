@@ -1,403 +1,436 @@
 {
- "site": "fewpips.com",
- "live_url": "https://www.fewpips.com",
- "notes": [
-  "Durable artifacts that MUST survive every deploy of this site.",
-  "The deploy gate (scripts/deploy-gate.sh) checks every item here against the build BEFORE it can deploy.",
-  "SELF-ANNEALING: whenever a deploy silently wipes something, add a check here so it can never happen again.",
-  "If you INTENTIONALLY change site behaviour (e.g. add a new promo banner), update the matching check in the same PR - the gate is a safety net, not a cage."
- ],
- "checks": [
-  {
-   "id": "ga4-every-page",
-   "desc": "GA4 tag G-67ZBBEE4JC on every route page (re-exports silently drop it)",
-   "type": "in_all_pages",
-   "pattern": "G-67ZBBEE4JC"
-  },
-  {
-   "id": "popup-function-present",
-   "desc": "Popup signup Cloudflare Pages Function exists (missing = popup POST 405s, all signups dropped)",
-   "type": "file_exists",
-   "path": "functions/api/popup-signup.ts"
-  },
-  {
-   "id": "popup-frontend-wired",
-   "desc": "Frontend still POSTs to /api/popup-signup",
-   "type": "present",
-   "pattern": "api/popup-signup"
-  },
-  {
-   "id": "sitemap-min-urls",
-   "desc": "sitemap.xml exists with >= 15 URLs (GSC discovery; re-exports drop it -> 404)",
-   "type": "sitemap_min_urls",
-   "path": "sitemap.xml",
-   "min": 15
-  },
-  {
-   "id": "brand-casing",
-   "desc": "No wrong-cased 'FewPips' anywhere in text/markup (brand is 'Fewpips')",
-   "type": "absent",
-   "pattern": "FewPips"
-  },
-  {
-   "id": "wc48-banner-removed",
-   "desc": "WC48 World Cup promo banner stays removed (came back on Djordje's revert 2026-06-24)",
-   "type": "absent",
-   "pattern": "wc48-banner"
-  },
-  {
-   "id": "mll-uncapped",
-   "desc": "Max loss limit trails the highest EQUITY (uncapped) on /legal (basis changed balance->equity 2026-07-02)",
-   "type": "present_in",
-   "path": "legal/index.html",
-   "pattern": "highest equity"
-  },
-  {
-   "id": "refund-48h-10fee",
-   "desc": "Refund window = 48h with $10 administration charge (terms)",
-   "type": "present",
-   "pattern": "10 administration charge"
-  },
-  {
-   "id": "min-payout-per-product",
-   "desc": "Per-product minimum payout text present (CFD $50 / Futures $100)",
-   "type": "present",
-   "pattern": "Minimum payout is"
-  },
-  {
-   "id": "leverage-per-instrument",
-   "desc": "Per-instrument leverage matrix present (Indices/Commodities/Metals/Crypto, not just FX)",
-   "type": "present",
-   "pattern": "1:7.5"
-  },
-  {
-   "id": "proof-peek-injector",
-   "desc": "Leaderboard+certs sneak-peek injector present (built-output add-on; source re-export would drop it)",
-   "type": "file_exists",
-   "path": "proof-peek.js"
-  },
-  {
-   "id": "proof-peek-certs-batch",
-   "desc": "proof-peek shows the 17-24 Aug 2026 cert batch (Nick TG #11810)",
-   "type": "present_in",
-   "path": "proof-peek.js",
-   "pattern": "catalina-fuentes.webp"
-  },
-  {
-   "id": "proof-peek-cert-img",
-   "desc": "top cert webp of the 17-24 Aug batch present",
-   "type": "file_exists",
-   "path": "certs/catalina-fuentes.webp"
-  },
-  {
-   "id": "reviews-page",
-   "desc": "/reviews aggregator landing present (standalone static page, client request TG #10596)",
-   "type": "file_exists",
-   "path": "reviews/index.html"
-  },
-  {
-   "id": "reviews-content",
-   "desc": "reviews page carries platform sections (Myfxbook anchor)",
-   "type": "present_in",
-   "path": "reviews/index.html",
-   "pattern": "id=\"myfxbook\""
-  },
-  {
-   "id": "reviews-sitemap",
-   "desc": "/reviews/ listed in sitemap (SEO was the point of the page)",
-   "type": "present_in",
-   "path": "sitemap.xml",
-   "pattern": "https://www.fewpips.com/reviews/"
-  },
-  {
-   "id": "reviews-nav-injector",
-   "desc": "Reviews link injector present (nav is React-hydrated; HTML-only link would be wiped)",
-   "type": "file_exists",
-   "path": "reviews-nav.js"
-  },
-  {
-   "id": "reviews-nav-wired",
-   "desc": "reviews-nav.js wired on homepage",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "reviews-nav.js"
-  },
-  {
-   "id": "proof-peek-home",
-   "desc": "proof-peek.js wired on homepage (leaderboard + Proof of Payouts sneak-peek)",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "proof-peek.js"
-  },
-  {
-   "id": "proof-peek-futures",
-   "desc": "proof-peek.js wired on futures page",
-   "type": "present_in",
-   "path": "futures/index.html",
-   "pattern": "proof-peek.js"
-  },
-  {
-   "id": "sticky-split-injector",
-   "desc": "Discord/Telegram split sticky + Telegram FAB removal injector (built-output add-on)",
-   "type": "file_exists",
-   "path": "sticky-split.js"
-  },
-  {
-   "id": "sticky-split-home",
-   "desc": "sticky-split.js wired on homepage",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "sticky-split.js"
-  },
-  {
-   "id": "livechat-greeting-injector",
-   "desc": "Proactive LiveChat greeting bubble + unread badge injector (built-output add-on)",
-   "type": "file_exists",
-   "path": "livechat-greeting.js"
-  },
-  {
-   "id": "livechat-greeting-home",
-   "desc": "livechat-greeting.js wired on homepage",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "livechat-greeting.js"
-  },
-  {
-   "id": "livechat-greeting-futures",
-   "desc": "livechat-greeting.js wired on futures page",
-   "type": "present_in",
-   "path": "futures/index.html",
-   "pattern": "livechat-greeting.js"
-  },
-  {
-   "id": "hash-nav-fix-injector",
-   "desc": "Cross-page hash navigation fix injector (built-output add-on)",
-   "type": "file_exists",
-   "path": "hash-nav-fix.js"
-  },
-  {
-   "id": "hash-nav-fix-home",
-   "desc": "hash-nav-fix.js wired on homepage",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "hash-nav-fix.js"
-  },
-  {
-   "id": "hash-nav-fix-futures",
-   "desc": "hash-nav-fix.js wired on futures page",
-   "type": "present_in",
-   "path": "futures/index.html",
-   "pattern": "hash-nav-fix.js"
-  },
-  {
-   "id": "brand-ig-fewpips",
-   "desc": "Brand Instagram points to instagram.com/few.pips (was officialfewpips)",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "instagram.com/few.pips"
-  },
-  {
-   "id": "old-ig-handle-gone",
-   "desc": "Old brand IG handle officialfewpips no longer used",
-   "type": "absent",
-   "pattern": "instagram.com/officialfewpips"
-  },
-  {
-   "id": "social-tiktok-injector",
-   "desc": "Footer/contact TikTok (@few.pips) + Telegram Support label injector (built-output add-on)",
-   "type": "file_exists",
-   "path": "social-tiktok.js"
-  },
-  {
-   "id": "social-tiktok-home",
-   "desc": "social-tiktok.js wired on homepage",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "social-tiktok.js"
-  },
-  {
-   "id": "aff-launch-tier-2026-07",
-   "desc": "Launch tier figures L1 10% / L2+L3 2.5% / cap 15% (changed 2026-07-25 per Nick)",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "aff-tier-pct\">10%"
-  },
-  {
-   "id": "faq-tiers-2026-07",
-   "desc": "FAQ commission answer uses 2026-07-25 tier figures (Launch 10/2.5/2.5, Pro 15/2.5/2.5, Titan 20/2.5/2.5)",
-   "type": "present_in",
-   "path": "faq/index.html",
-   "pattern": "Titan (20%/2.5%/2.5%)"
-  },
-  {
-   "id": "legal-termination-clause",
-   "desc": "Prohibited Activities termination sentence on /legal (added 2026-07-25 per Nick)",
-   "type": "present_in",
-   "path": "legal/index.html",
-   "pattern": "immediate termination of the account"
-  },
-  {
-   "id": "footer-futures-live",
-   "desc": "Footer Futures link points to /futures/ - /fewpips-futures.html is a 404 (SEO audit Jul 2026)",
-   "type": "absent",
-   "pattern": "fewpips-futures.html"
-  },
-  {
-   "id": "faq-legal-dot-gone",
-   "desc": "FAQ legal links fixed - no trailing-period /legal. 404 URL (SEO audit Jul 2026)",
-   "type": "absent",
-   "pattern": "www.fewpips.com/legal."
-  },
-  {
-   "id": "title-contact",
-   "desc": "Unique title on /contact/ (re-exports revert to duplicate homepage title)",
-   "type": "present_in",
-   "path": "contact/index.html",
-   "pattern": "<title>Contact Fewpips Support"
-  },
-  {
-   "id": "title-faq",
-   "desc": "Unique title on /faq/",
-   "type": "present_in",
-   "path": "faq/index.html",
-   "pattern": "<title>Fewpips FAQ"
-  },
-  {
-   "id": "title-futures",
-   "desc": "Unique title on /futures/",
-   "type": "present_in",
-   "path": "futures/index.html",
-   "pattern": "<title>Trade Futures with"
-  },
-  {
-   "id": "title-terms",
-   "desc": "Unique title on /terms/",
-   "type": "present_in",
-   "path": "terms/index.html",
-   "pattern": "<title>Fewpips Terms"
-  },
-  {
-   "id": "canonical-home",
-   "desc": "Canonical tag on homepage (www + slash)",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/\""
-  },
-  {
-   "id": "blog-canonical-www",
-   "desc": "Blog canonicals use www + trailing slash (were apex no-slash = redirect loop for signals)",
-   "type": "present_in",
-   "path": "blog/what-is-a-prop-firm/index.html",
-   "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/blog/what-is-a-prop-firm/\""
-  },
-  {
-   "id": "camilia-shortlink",
-   "desc": "Homepage Camilia card links fewpips.co/camilia (LP lives on the shortlink domain since 2026-07-27)",
-   "type": "present",
-   "pattern": "fewpips.co/camilia"
-  },
-  {
-   "id": "camilia-redirect",
-   "desc": "/camilia/ 301s to fewpips.co/camilia/ - _redirects must survive re-exports (Djordje zips will not have it)",
-   "type": "present_in",
-   "path": "_redirects",
-   "pattern": "/camilia/ https://fewpips.co/camilia/ 301"
-  },
-  {
-   "id": "refund-48h-home",
-   "desc": "pricing card says refundable within 48 hours (Nick, TG #11324) - was 7 days",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "refundable within 48 hours"
-  },
-  {
-   "id": "refund-48h-futures",
-   "desc": "futures pricing card says refundable within 48 hours",
-   "type": "present_in",
-   "path": "futures/index.html",
-   "pattern": "refundable within 48 hours"
-  },
-  {
-   "id": "paidout-600k",
-   "desc": "hero Paid Out counter targets $600K+ (Nick, TG #11384) - was 200K",
-   "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8wz.js",
-   "pattern": "count:6e5"
-  },
-  {
-   "id": "tier-volume-thresholds",
-   "desc": "affiliate tier volume thresholds Launch 0-4,999 / Pro 5,000-14,999 / Titan 15,000+ (Nick, TG #11396)",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "$5,000 \u2013 $14,999"
-  },
-  {
-   "id": "blog-nav-link",
-   "desc": "Blog link injected in Resources nav bubble (Nick, TG #11403)",
-   "type": "present_in",
-   "path": "reviews-nav.js",
-   "pattern": "/blog/"
-  },
-  {
-   "id": "reviews-carousel",
-   "desc": "reviews page auto-slide carousel with hover pause (Nick, TG #11383)",
-   "type": "present_in",
-   "path": "reviews/index.html",
-   "pattern": "Auto-sliding carousel"
-  },
-  {
-   "id": "footer-blogs-label",
-   "desc": "footer link reads Blogs (Nick, TG #11386) - applied via reviews-nav.js",
-   "type": "present_in",
-   "path": "reviews-nav.js",
-   "pattern": "footerLabel"
-  },
-  {
-   "id": "reviews-strip-injector",
-   "desc": "homepage reviews auto-slider injector present (Nick approved TG #11436)",
-   "type": "file_exists",
-   "path": "reviews-strip.js"
-  },
-  {
-   "id": "reviews-strip-home",
-   "desc": "reviews-strip.js wired on homepage",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "reviews-strip.js"
-  },
-  {
-   "id": "reviews-strip-futures",
-   "desc": "reviews-strip.js wired on futures page",
-   "type": "present_in",
-   "path": "futures/index.html",
-   "pattern": "reviews-strip.js"
-  },
-  {
-   "id": "reviews-toprated-strip",
-   "desc": "featured Top rated auto-strip on /reviews (Dj request, rightward marquee)",
-   "type": "present_in",
-   "path": "reviews/index.html",
-   "pattern": "id=\"strip-toprated\""
-  },
-  {
-   "id": "header-dropdown-injector",
-   "desc": "header Explore dropdown injector present (Veljko TG #11404)",
-   "type": "file_exists",
-   "path": "header-dropdown.js"
-  },
-  {
-   "id": "header-dropdown-home",
-   "desc": "header-dropdown.js wired on homepage",
-   "type": "present_in",
-   "path": "index.html",
-   "pattern": "header-dropdown.js"
-  },
-  {
-   "id": "header-dropdown-futures",
-   "desc": "header-dropdown.js wired on futures page",
-   "type": "present_in",
-   "path": "futures/index.html",
-   "pattern": "header-dropdown.js"
-  }
- ]
+  "site": "fewpips.com",
+  "live_url": "https://www.fewpips.com",
+  "notes": [
+    "Durable artifacts that MUST survive every deploy of this site.",
+    "The deploy gate (scripts/deploy-gate.sh) checks every item here against the build BEFORE it can deploy.",
+    "SELF-ANNEALING: whenever a deploy silently wipes something, add a check here so it can never happen again.",
+    "If you INTENTIONALLY change site behaviour (e.g. add a new promo banner), update the matching check in the same PR - the gate is a safety net, not a cage."
+  ],
+  "checks": [
+    {
+      "id": "ga4-every-page",
+      "desc": "GA4 tag G-67ZBBEE4JC on every route page (re-exports silently drop it)",
+      "type": "in_all_pages",
+      "pattern": "G-67ZBBEE4JC"
+    },
+    {
+      "id": "popup-function-present",
+      "desc": "Popup signup Cloudflare Pages Function exists (missing = popup POST 405s, all signups dropped)",
+      "type": "file_exists",
+      "path": "functions/api/popup-signup.ts"
+    },
+    {
+      "id": "popup-frontend-wired",
+      "desc": "Frontend still POSTs to /api/popup-signup",
+      "type": "present",
+      "pattern": "api/popup-signup"
+    },
+    {
+      "id": "sitemap-min-urls",
+      "desc": "sitemap.xml exists with >= 15 URLs (GSC discovery; re-exports drop it -> 404)",
+      "type": "sitemap_min_urls",
+      "path": "sitemap.xml",
+      "min": 15
+    },
+    {
+      "id": "brand-casing",
+      "desc": "No wrong-cased 'FewPips' anywhere in text/markup (brand is 'Fewpips')",
+      "type": "absent",
+      "pattern": "FewPips"
+    },
+    {
+      "id": "wc48-banner-removed",
+      "desc": "WC48 World Cup promo banner stays removed (came back on Djordje's revert 2026-06-24)",
+      "type": "absent",
+      "pattern": "wc48-banner"
+    },
+    {
+      "id": "mll-uncapped",
+      "desc": "Max loss limit trails the highest EQUITY (uncapped) on /legal (basis changed balance->equity 2026-07-02)",
+      "type": "present_in",
+      "path": "legal/index.html",
+      "pattern": "highest equity"
+    },
+    {
+      "id": "refund-48h-10fee",
+      "desc": "Refund window = 48h with $10 administration charge (terms)",
+      "type": "present",
+      "pattern": "10 administration charge"
+    },
+    {
+      "id": "min-payout-per-product",
+      "desc": "Per-product minimum payout text present (CFD $50 / Futures $100)",
+      "type": "present",
+      "pattern": "Minimum payout is"
+    },
+    {
+      "id": "leverage-per-instrument",
+      "desc": "Per-instrument leverage matrix present (Indices/Commodities/Metals/Crypto, not just FX)",
+      "type": "present",
+      "pattern": "1:7.5"
+    },
+    {
+      "id": "proof-peek-injector",
+      "desc": "Leaderboard+certs sneak-peek injector present (built-output add-on; source re-export would drop it)",
+      "type": "file_exists",
+      "path": "proof-peek.js"
+    },
+    {
+      "id": "proof-peek-certs-batch",
+      "desc": "proof-peek shows the 17-24 Aug 2026 cert batch (Nick TG #11810)",
+      "type": "present_in",
+      "path": "proof-peek.js",
+      "pattern": "catalina-fuentes.webp"
+    },
+    {
+      "id": "proof-peek-cert-img",
+      "desc": "top cert webp of the 17-24 Aug batch present",
+      "type": "file_exists",
+      "path": "certs/catalina-fuentes.webp"
+    },
+    {
+      "id": "reviews-page",
+      "desc": "/reviews aggregator landing present (standalone static page, client request TG #10596)",
+      "type": "file_exists",
+      "path": "reviews/index.html"
+    },
+    {
+      "id": "reviews-content",
+      "desc": "reviews page carries platform sections (Myfxbook anchor)",
+      "type": "present_in",
+      "path": "reviews/index.html",
+      "pattern": "id=\"myfxbook\""
+    },
+    {
+      "id": "reviews-sitemap",
+      "desc": "/reviews/ listed in sitemap (SEO was the point of the page)",
+      "type": "present_in",
+      "path": "sitemap.xml",
+      "pattern": "https://www.fewpips.com/reviews/"
+    },
+    {
+      "id": "reviews-nav-injector",
+      "desc": "Reviews link injector present (nav is React-hydrated; HTML-only link would be wiped)",
+      "type": "file_exists",
+      "path": "reviews-nav.js"
+    },
+    {
+      "id": "reviews-nav-wired",
+      "desc": "reviews-nav.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "reviews-nav.js"
+    },
+    {
+      "id": "proof-peek-home",
+      "desc": "proof-peek.js wired on homepage (leaderboard + Proof of Payouts sneak-peek)",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "proof-peek.js"
+    },
+    {
+      "id": "proof-peek-futures",
+      "desc": "proof-peek.js wired on futures page",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "proof-peek.js"
+    },
+    {
+      "id": "sticky-split-injector",
+      "desc": "Discord/Telegram split sticky + Telegram FAB removal injector (built-output add-on)",
+      "type": "file_exists",
+      "path": "sticky-split.js"
+    },
+    {
+      "id": "sticky-split-home",
+      "desc": "sticky-split.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "sticky-split.js"
+    },
+    {
+      "id": "livechat-greeting-injector",
+      "desc": "Proactive LiveChat greeting bubble + unread badge injector (built-output add-on)",
+      "type": "file_exists",
+      "path": "livechat-greeting.js"
+    },
+    {
+      "id": "livechat-greeting-home",
+      "desc": "livechat-greeting.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "livechat-greeting.js"
+    },
+    {
+      "id": "livechat-greeting-futures",
+      "desc": "livechat-greeting.js wired on futures page",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "livechat-greeting.js"
+    },
+    {
+      "id": "hash-nav-fix-injector",
+      "desc": "Cross-page hash navigation fix injector (built-output add-on)",
+      "type": "file_exists",
+      "path": "hash-nav-fix.js"
+    },
+    {
+      "id": "hash-nav-fix-home",
+      "desc": "hash-nav-fix.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "hash-nav-fix.js"
+    },
+    {
+      "id": "hash-nav-fix-futures",
+      "desc": "hash-nav-fix.js wired on futures page",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "hash-nav-fix.js"
+    },
+    {
+      "id": "brand-ig-fewpips",
+      "desc": "Brand Instagram points to instagram.com/few.pips (was officialfewpips)",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "instagram.com/few.pips"
+    },
+    {
+      "id": "old-ig-handle-gone",
+      "desc": "Old brand IG handle officialfewpips no longer used",
+      "type": "absent",
+      "pattern": "instagram.com/officialfewpips"
+    },
+    {
+      "id": "social-tiktok-injector",
+      "desc": "Footer/contact TikTok (@few.pips) + Telegram Support label injector (built-output add-on)",
+      "type": "file_exists",
+      "path": "social-tiktok.js"
+    },
+    {
+      "id": "social-tiktok-home",
+      "desc": "social-tiktok.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "social-tiktok.js"
+    },
+    {
+      "id": "aff-launch-tier-2026-07",
+      "desc": "Launch tier figures L1 10% / L2+L3 2.5% / cap 15% (changed 2026-07-25 per Nick)",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "aff-tier-pct\">10%"
+    },
+    {
+      "id": "faq-tiers-2026-07",
+      "desc": "FAQ commission answer uses 2026-07-25 tier figures (Launch 10/2.5/2.5, Pro 15/2.5/2.5, Titan 20/2.5/2.5)",
+      "type": "present_in",
+      "path": "faq/index.html",
+      "pattern": "Titan (20%/2.5%/2.5%)"
+    },
+    {
+      "id": "legal-termination-clause",
+      "desc": "Prohibited Activities termination sentence on /legal (added 2026-07-25 per Nick)",
+      "type": "present_in",
+      "path": "legal/index.html",
+      "pattern": "immediate termination of the account"
+    },
+    {
+      "id": "footer-futures-live",
+      "desc": "Footer Futures link points to /futures/ - /fewpips-futures.html is a 404 (SEO audit Jul 2026)",
+      "type": "absent",
+      "pattern": "fewpips-futures.html"
+    },
+    {
+      "id": "faq-legal-dot-gone",
+      "desc": "FAQ legal links fixed - no trailing-period /legal. 404 URL (SEO audit Jul 2026)",
+      "type": "absent",
+      "pattern": "www.fewpips.com/legal."
+    },
+    {
+      "id": "title-contact",
+      "desc": "Unique title on /contact/ (re-exports revert to duplicate homepage title)",
+      "type": "present_in",
+      "path": "contact/index.html",
+      "pattern": "<title>Contact Fewpips Support"
+    },
+    {
+      "id": "title-faq",
+      "desc": "Unique title on /faq/",
+      "type": "present_in",
+      "path": "faq/index.html",
+      "pattern": "<title>Fewpips FAQ"
+    },
+    {
+      "id": "title-futures",
+      "desc": "Unique title on /futures/",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "<title>Trade Futures with"
+    },
+    {
+      "id": "title-terms",
+      "desc": "Unique title on /terms/",
+      "type": "present_in",
+      "path": "terms/index.html",
+      "pattern": "<title>Fewpips Terms"
+    },
+    {
+      "id": "canonical-home",
+      "desc": "Canonical tag on homepage (www + slash)",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/\""
+    },
+    {
+      "id": "blog-canonical-www",
+      "desc": "Blog canonicals use www + trailing slash (were apex no-slash = redirect loop for signals)",
+      "type": "present_in",
+      "path": "blog/what-is-a-prop-firm/index.html",
+      "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/blog/what-is-a-prop-firm/\""
+    },
+    {
+      "id": "camilia-shortlink",
+      "desc": "Homepage Camilia card links fewpips.co/camilia (LP lives on the shortlink domain since 2026-07-27)",
+      "type": "present",
+      "pattern": "fewpips.co/camilia"
+    },
+    {
+      "id": "camilia-redirect",
+      "desc": "/camilia/ 301s to fewpips.co/camilia/ - _redirects must survive re-exports (Djordje zips will not have it)",
+      "type": "present_in",
+      "path": "_redirects",
+      "pattern": "/camilia/ https://fewpips.co/camilia/ 301"
+    },
+    {
+      "id": "refund-48h-home",
+      "desc": "pricing card says refundable within 48 hours (Nick, TG #11324) - was 7 days",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "refundable within 48 hours"
+    },
+    {
+      "id": "refund-48h-futures",
+      "desc": "futures pricing card says refundable within 48 hours",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "refundable within 48 hours"
+    },
+    {
+      "id": "paidout-600k",
+      "desc": "hero Paid Out counter targets $600K+ (Nick, TG #11384) - was 200K",
+      "type": "present_in",
+      "path": "_next/static/chunks/0fvh0xh4dp8wz.js",
+      "pattern": "count:6e5"
+    },
+    {
+      "id": "tier-volume-thresholds",
+      "desc": "affiliate tier volume thresholds Launch 0-4,999 / Pro 5,000-14,999 / Titan 15,000+ (Nick, TG #11396)",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "$5,000 – $14,999"
+    },
+    {
+      "id": "blog-nav-link",
+      "desc": "Blog link injected in Resources nav bubble (Nick, TG #11403)",
+      "type": "present_in",
+      "path": "reviews-nav.js",
+      "pattern": "/blog/"
+    },
+    {
+      "id": "reviews-carousel",
+      "desc": "reviews page auto-slide carousel with hover pause (Nick, TG #11383)",
+      "type": "present_in",
+      "path": "reviews/index.html",
+      "pattern": "Auto-sliding carousel"
+    },
+    {
+      "id": "footer-blogs-label",
+      "desc": "footer link reads Blogs (Nick, TG #11386) - applied via reviews-nav.js",
+      "type": "present_in",
+      "path": "reviews-nav.js",
+      "pattern": "footerLabel"
+    },
+    {
+      "id": "reviews-strip-injector",
+      "desc": "homepage reviews auto-slider injector present (Nick approved TG #11436)",
+      "type": "file_exists",
+      "path": "reviews-strip.js"
+    },
+    {
+      "id": "reviews-strip-home",
+      "desc": "reviews-strip.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "reviews-strip.js"
+    },
+    {
+      "id": "reviews-strip-futures",
+      "desc": "reviews-strip.js wired on futures page",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "reviews-strip.js"
+    },
+    {
+      "id": "reviews-toprated-strip",
+      "desc": "featured Top rated auto-strip on /reviews (Dj request, rightward marquee)",
+      "type": "present_in",
+      "path": "reviews/index.html",
+      "pattern": "id=\"strip-toprated\""
+    },
+    {
+      "id": "header-dropdown-injector",
+      "desc": "header Explore dropdown injector present (Veljko TG #11404)",
+      "type": "file_exists",
+      "path": "header-dropdown.js"
+    },
+    {
+      "id": "header-dropdown-home",
+      "desc": "header-dropdown.js wired on homepage",
+      "type": "present_in",
+      "path": "index.html",
+      "pattern": "header-dropdown.js"
+    },
+    {
+      "id": "header-dropdown-futures",
+      "desc": "header-dropdown.js wired on futures page",
+      "type": "present_in",
+      "path": "futures/index.html",
+      "pattern": "header-dropdown.js"
+    },
+    {
+      "id": "proof-page",
+      "desc": "/proof Proof-of-Payouts page exists (main-domain SEO/AEO authority - see aim/proof-migration)",
+      "type": "file_exists",
+      "path": "proof/index.html"
+    },
+    {
+      "id": "proof-sitemap",
+      "desc": "/proof listed in sitemap.xml (whole point of moving off pages.dev)",
+      "type": "present_in",
+      "path": "sitemap.xml",
+      "pattern": "https://www.fewpips.com/proof</loc>"
+    },
+    {
+      "id": "proof-canonical",
+      "desc": "/proof has canonical to www.fewpips.com/proof (no dup-content vs pages.dev)",
+      "type": "present_in",
+      "path": "proof/index.html",
+      "pattern": "rel=\"canonical\" href=\"https://www.fewpips.com/proof\""
+    },
+    {
+      "id": "proof-jsonld",
+      "desc": "/proof ships JSON-LD ItemList so AI/LLM crawlers parse payout amounts/dates",
+      "type": "present_in",
+      "path": "proof/index.html",
+      "pattern": "\"@type\":\"ItemList\""
+    },
+    {
+      "id": "proof-no-pagesdev",
+      "desc": "/proof must not reference the old pages.dev host (would leak/duplicate)",
+      "type": "absent",
+      "pattern": "fewpips-proof.pages.dev"
+    }
+  ]
 }
