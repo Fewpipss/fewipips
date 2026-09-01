@@ -445,6 +445,26 @@
    "type": "present_in",
    "path": "reviews-nav.js",
    "pattern": "Proof of Payouts"
+  },
+  {
+   "id": "claim-week-banner",
+   "desc": "Claim Week promo banner injector (Sept 1-4, Nick approved; REMOVE together with promo-space styles after Sept 4)",
+   "type": "file_exists",
+   "path": "promo-banner.js"
+  },
+  {
+   "id": "claim-week-home",
+   "desc": "Claim Week banner wired on homepage",
+   "type": "present_in",
+   "path": "index.html",
+   "pattern": "promo-banner.js"
+  },
+  {
+   "id": "claim-week-futures",
+   "desc": "Claim Week banner wired on futures page",
+   "type": "present_in",
+   "path": "futures/index.html",
+   "pattern": "promo-banner.js"
   }
  ]
 }
