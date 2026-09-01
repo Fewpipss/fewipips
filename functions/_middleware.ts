@@ -46,6 +46,12 @@ const SCHEDULE: Record<string, { img: string; imgM: string; alt: string }> = {
   "2026-07-29": { img: "/promo/2026-07-29.png", imgM: "/promo/2026-07-29-m.png", alt: "Fewpips Month-End · Last Full Day promo" },
   "2026-07-30": { img: "/promo/2026-07-30.png", imgM: "/promo/2026-07-30-m.png", alt: "Fewpips Day Of Friendship promo" },
   "2026-07-31": { img: "/promo/2026-07-31.png", imgM: "/promo/2026-07-31-m.png", alt: "Fewpips Last Call promo" },
+  // Claim Week (Nick's creative, approved TG #12290): one $200+ order = a free
+  // account, code CLAIM200, closes Fri Sep 4 23:59 ET. Self-expires after the 4th.
+  "2026-09-01": { img: "/promo/2026-09-01.png", imgM: "/promo/2026-09-01-m.png", alt: "Fewpips Claim Week promo - code CLAIM200" },
+  "2026-09-02": { img: "/promo/2026-09-01.png", imgM: "/promo/2026-09-01-m.png", alt: "Fewpips Claim Week promo - code CLAIM200" },
+  "2026-09-03": { img: "/promo/2026-09-01.png", imgM: "/promo/2026-09-01-m.png", alt: "Fewpips Claim Week promo - code CLAIM200" },
+  "2026-09-04": { img: "/promo/2026-09-01.png", imgM: "/promo/2026-09-01-m.png", alt: "Fewpips Claim Week promo - code CLAIM200" },
 };
 
 function pickDate(reqUrl: string): string {

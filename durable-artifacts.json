@@ -445,6 +445,19 @@
    "type": "present_in",
    "path": "reviews-nav.js",
    "pattern": "Proof of Payouts"
+  },
+  {
+   "id": "claim-week-schedule",
+   "desc": "Claim Week Sept 1-4 in promo middleware SCHEDULE (Nick approved TG #12290; self-expires after Sept 4)",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "2026-09-01"
+  },
+  {
+   "id": "claim-week-image",
+   "desc": "Claim Week banner image present",
+   "type": "file_exists",
+   "path": "promo/2026-09-01.webp"
   }
  ]
 }
