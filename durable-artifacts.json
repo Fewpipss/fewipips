@@ -321,7 +321,7 @@
    "id": "paidout-600k",
    "desc": "hero Paid Out counter targets $600K+ (Nick, TG #11384) - was 200K",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8wz.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
    "pattern": "count:6e5"
   },
   {
@@ -329,7 +329,7 @@
    "desc": "affiliate tier volume thresholds Launch 0-4,999 / Pro 5,000-14,999 / Titan 15,000+ (Nick, TG #11396)",
    "type": "present_in",
    "path": "index.html",
-   "pattern": "$5,000 \u2013 $14,999"
+   "pattern": "$5,000 – $14,999"
   },
   {
    "id": "blog-nav-link",
@@ -458,6 +458,162 @@
    "desc": "Claim Week banner image present",
    "type": "file_exists",
    "path": "promo/2026-09-01.webp"
+  },
+  {
+   "id": "instant-100k-compare-col",
+   "desc": "Instant $100K column present in the homepage Compare table data, max loss shows 10% only (Nick: no dollar figure, it is a trailing drawdown)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "pattern": "size:\"$100K\",drawdown:\"10%\",minDays:\"3\""
+  },
+  {
+   "id": "instant-100k-price",
+   "desc": "Instant $100K price $1,699 on the pricing data (Compare + configurator)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "pattern": "price:\"1,699\""
+  },
+  {
+   "id": "instant-100k-configurator",
+   "desc": "Instant $100K size + price wired into the Challenges configurator",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "pattern": "1e5:\"1,699\""
+  },
+  {
+   "id": "instant-100k-new-badge",
+   "desc": "NEW badge date gate on the Instant $100K tier (hides after 2026-09-10 23:59 ET)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "pattern": "Date.UTC(2026,8,11,4)"
+  },
+  {
+   "id": "instant-100k-faq-price",
+   "desc": "Instant $100K listed with its price in the /faq/ cost answer",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "$100K = $1,699"
+  },
+  {
+   "id": "instant-100k-faq-sizes",
+   "desc": "/faq/ account-sizes answer covers Instant up to $100K",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "Instant Accounts: $3K–$100K"
+  },
+  {
+   "id": "instant-100k-legal",
+   "desc": "Instant $100K tier exception (no consistency rule, no withdrawal cap, Copy Trading/EAs as add-ons) on /legal/",
+   "type": "present_in",
+   "path": "legal/index.html",
+   "pattern": "Instant $100K Account - Tier Exception"
+  },
+  {
+   "id": "instant-100k-terms",
+   "desc": "Instant $100K tier exception paragraph on /terms/ (SSR)",
+   "type": "present_in",
+   "path": "terms/index.html",
+   "pattern": "Instant $100K exception"
+  },
+  {
+   "id": "instant-100k-terms-chunk",
+   "desc": "/terms/ tier exception mirrored in the terms chunk or hydration reverts it",
+   "type": "present_in",
+   "path": "_next/static/chunks/0he1vgjwt7klp.js",
+   "pattern": "Instant $100K exception"
+  },
+  {
+   "id": "instant-100k-announcement",
+   "desc": "Instant $100K launch announcement banner (v2 art) wired in the promo middleware",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "instant100k-banner-v2"
+  },
+  {
+   "id": "instant-100k-banner-image",
+   "desc": "Instant $100K launch banner desktop image present, v2 3-phrase art (webp is what the picture element serves)",
+   "type": "file_exists",
+   "path": "promo/instant100k-banner-v2.webp"
+  },
+  {
+   "id": "instant-100k-banner-image-m",
+   "desc": "Instant $100K launch banner mobile image present, v2 3-phrase art",
+   "type": "file_exists",
+   "path": "promo/instant100k-banner-v2-m.webp"
+  },
+  {
+   "id": "instant-100k-maxloss-pct-only",
+   "desc": "Instant $100K max loss renders as 10% with no dollar figure in the Challenges configurator (Nick, Sep 3) - trailing drawdown, the dollar number moves",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "pattern": "{name:\"Maximum Loss Limit\",value:{3e3:\"$150 (5%)\",5e3:\"$300 (6%)\",1e4:\"$700 (7%)\",25e3:\"$2,250 (9%)\",5e4:\"$5,000 (10%)\",1e5:\"10%\"}}"
+  },
+  {
+   "id": "instant-100k-no-dollar-maxloss",
+   "desc": "the retired \"$10,000 (10%)\" Instant $100K max loss string never comes back anywhere on the site (Nick, Sep 3: percentage only, it is a trailing drawdown)",
+   "type": "absent",
+   "pattern": "$10,000 (10%)"
+  },
+  {
+   "id": "instant-ea-approval-configurator",
+   "desc": "Instant configurator EAs row carries the Fewpips approval bracket (Nick, Sep 3)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "pattern": "{name:\"EAs\",value:\"Allowed (must seek approval from Fewpips)\""
+  },
+  {
+   "id": "instant-ea-approval-compare-note",
+   "desc": "Compare table Instant-tab note carries the EA approval bracket (Nick, Sep 3)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "pattern": "EAs allowed (must seek approval from Fewpips)."
+  },
+  {
+   "id": "instant-ea-approval-faq-chunk",
+   "desc": "/faq/ Instant rules answer carries the EA approval bracket (chunk = what hydration renders)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0tg_rdy2h4ey6.js",
+   "pattern": "add-ons for that account (must seek approval from Fewpips)."
+  },
+  {
+   "id": "instant-ea-approval-faq-ssr",
+   "desc": "/faq/ Instant rules answer EA approval bracket mirrored in SSR HTML",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "add-ons for that account (must seek approval from Fewpips)."
+  },
+  {
+   "id": "instant-100k-ea-addon-legal",
+   "desc": "/legal/ Instant $100K Tier Exception: EAs are a paid add-on subject to Fewpips approval (Nick, Sep 3)",
+   "type": "present_in",
+   "path": "legal/index.html",
+   "pattern": "purchased as paid add-ons for it, and Expert Advisors are subject to Fewpips approval"
+  },
+  {
+   "id": "instant-100k-ea-addon-terms",
+   "desc": "/terms/ Instant $100K exception: EAs are a paid add-on subject to Fewpips approval (SSR)",
+   "type": "present_in",
+   "path": "terms/index.html",
+   "pattern": "paid add-ons for that account, with Expert Advisors subject to Fewpips approval"
+  },
+  {
+   "id": "instant-100k-ea-addon-terms-chunk",
+   "desc": "/terms/ EA add-on approval mirrored in the terms chunk word-for-word or hydration reverts it",
+   "type": "present_in",
+   "path": "_next/static/chunks/0he1vgjwt7klp.js",
+   "pattern": "paid add-ons for that account, with Expert Advisors subject to Fewpips approval"
+  },
+  {
+   "id": "instant-100k-banner-v2-png",
+   "desc": "v2 banner PNG fallbacks present - the picture element needs the .png sibling of every .webp",
+   "type": "file_exists",
+   "path": "promo/instant100k-banner-v2.png"
+  },
+  {
+   "id": "instant-100k-banner-v2-png-m",
+   "desc": "v2 mobile banner PNG fallback present",
+   "type": "file_exists",
+   "path": "promo/instant100k-banner-v2-m.png"
   }
  ]
 }
