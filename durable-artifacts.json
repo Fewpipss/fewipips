@@ -321,7 +321,7 @@
    "id": "paidout-600k",
    "desc": "hero Paid Out counter targets $600K+ (Nick, TG #11384) - was 200K",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8wz.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x0.js",
    "pattern": "count:6e5"
   },
   {
@@ -458,6 +458,88 @@
    "desc": "Claim Week banner image present",
    "type": "file_exists",
    "path": "promo/2026-09-01.webp"
+  },
+  {
+   "id": "instant-100k-compare-col",
+   "desc": "Instant $100K column present in the homepage Compare table data",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x0.js",
+   "pattern": "size:\"$100K\",drawdown:\"$10,000 (10%)\""
+  },
+  {
+   "id": "instant-100k-price",
+   "desc": "Instant $100K price $1,699 on the pricing data (Compare + configurator)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x0.js",
+   "pattern": "price:\"1,699\""
+  },
+  {
+   "id": "instant-100k-configurator",
+   "desc": "Instant $100K size + price wired into the Challenges configurator",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x0.js",
+   "pattern": "1e5:\"1,699\""
+  },
+  {
+   "id": "instant-100k-new-badge",
+   "desc": "NEW badge date gate on the Instant $100K tier (hides after 2026-09-10 23:59 ET)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x0.js",
+   "pattern": "Date.UTC(2026,8,11,4)"
+  },
+  {
+   "id": "instant-100k-faq-price",
+   "desc": "Instant $100K listed with its price in the /faq/ cost answer",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "$100K = $1,699"
+  },
+  {
+   "id": "instant-100k-faq-sizes",
+   "desc": "/faq/ account-sizes answer covers Instant up to $100K",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "Instant Accounts: $3K\u2013$100K"
+  },
+  {
+   "id": "instant-100k-legal",
+   "desc": "Instant $100K tier exception (no consistency rule, no withdrawal cap, Copy Trading/EAs as add-ons) on /legal/",
+   "type": "present_in",
+   "path": "legal/index.html",
+   "pattern": "Instant $100K Account - Tier Exception"
+  },
+  {
+   "id": "instant-100k-terms",
+   "desc": "Instant $100K tier exception paragraph on /terms/ (SSR)",
+   "type": "present_in",
+   "path": "terms/index.html",
+   "pattern": "Instant $100K exception"
+  },
+  {
+   "id": "instant-100k-terms-chunk",
+   "desc": "/terms/ tier exception mirrored in the terms chunk or hydration reverts it",
+   "type": "present_in",
+   "path": "_next/static/chunks/0he1vgjwt7klo.js",
+   "pattern": "Instant $100K exception"
+  },
+  {
+   "id": "instant-100k-announcement",
+   "desc": "Instant $100K launch announcement banner wired in the promo middleware",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "instant100k-banner"
+  },
+  {
+   "id": "instant-100k-banner-image",
+   "desc": "Instant $100K launch banner desktop image present (webp is what the picture element serves)",
+   "type": "file_exists",
+   "path": "promo/instant100k-banner.webp"
+  },
+  {
+   "id": "instant-100k-banner-image-m",
+   "desc": "Instant $100K launch banner mobile image present",
+   "type": "file_exists",
+   "path": "promo/instant100k-banner-m.webp"
   }
  ]
 }

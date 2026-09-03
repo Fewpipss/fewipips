@@ -13,8 +13,10 @@
  * so we inject a small resilient script that inserts the banner after hydration
  * and re-inserts it if React removes it. Reuses the existing .promo-banner-section CSS.
  *
- * TO EDIT: change SCHEDULE (add/remove a date) + drop images in /promo/.
- * Preview any day: append ?_promoDate=YYYY-MM-DD to the URL.
+ * TO EDIT: change SCHEDULE (add/remove a date) + drop images in /promo/. For a banner
+ * that must start or end at a specific TIME rather than a whole day, add an entry to
+ * ANNOUNCEMENTS instead - it wins over SCHEDULE while its window is open.
+ * Preview any day: append ?_promoDate=YYYY-MM-DD to the URL (it drives both maps).
  */
 
 interface Env {}
@@ -54,10 +56,45 @@ const SCHEDULE: Record<string, { img: string; imgM: string; alt: string }> = {
   "2026-09-04": { img: "/promo/2026-09-01.png", imgM: "/promo/2026-09-01-m.png", alt: "Fewpips Claim Week promo - code CLAIM200" },
 };
 
+/**
+ * ANNOUNCEMENTS - short campaign banners with an exact start/end TIMESTAMP.
+ * SCHEDULE above is whole-day only (US Eastern), which cannot express "ends Friday
+ * 18:00". An announcement whose window covers "now" WINS over SCHEDULE for that day;
+ * outside its window the daily SCHEDULE takes over again with nothing else to change.
+ * Timestamps carry their own offset (-04:00 = EDT), so no timezone maths here.
+ */
+const ANNOUNCEMENTS: { start: string; end: string; img: string; imgM: string; alt: string }[] = [
+  {
+    // Instant $100K launch. Live from deploy, auto-hides Fri 5 Sep 2026 18:00 US Eastern.
+    // While it runs it supersedes the Claim Week banner on 3 and 4 Sep.
+    start: "2026-09-03T00:00:00-04:00",
+    end: "2026-09-05T18:00:00-04:00",
+    img: "/promo/instant100k-banner.png",
+    imgM: "/promo/instant100k-banner-m.png",
+    alt: "Fewpips Instant $100K is live - funded from day one",
+  },
+];
+
 function pickDate(reqUrl: string): string {
   const q = new URL(reqUrl).searchParams.get("_promoDate");
   if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) return q;
   return new Date(Date.now() - 14400000).toISOString().slice(0, 10);
+}
+
+// ?_promoDate=YYYY-MM-DD also drives the announcement windows (evaluated at noon ET
+// of that day) so a scheduled banner can be previewed before and after it expires.
+function pickNow(reqUrl: string): number {
+  const q = new URL(reqUrl).searchParams.get("_promoDate");
+  if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) return Date.parse(q + "T12:00:00-04:00");
+  return Date.now();
+}
+
+function pickBanner(reqUrl: string): { img: string; imgM: string; alt: string } | null {
+  const now = pickNow(reqUrl);
+  for (const a of ANNOUNCEMENTS) {
+    if (now >= Date.parse(a.start) && now < Date.parse(a.end)) return a;
+  }
+  return SCHEDULE[pickDate(reqUrl)] || null;
 }
 
 function bannerScript(b: { img: string; imgM: string; alt: string }): string {
@@ -109,7 +146,7 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
     const ct = res.headers.get("content-type") || "";
     if (!ct.includes("text/html")) return res;
     const path = new URL(ctx.request.url).pathname;
-    const b = TARGET_PATHS.has(path) ? SCHEDULE[pickDate(ctx.request.url)] : null;
+    const b = TARGET_PATHS.has(path) ? pickBanner(ctx.request.url) : null;
 
     const transformed = new HTMLRewriter()
       .on("head", {
