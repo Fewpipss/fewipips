@@ -69,8 +69,8 @@ const ANNOUNCEMENTS: { start: string; end: string; img: string; imgM: string; al
     // While it runs it supersedes the Claim Week banner on 3 and 4 Sep.
     start: "2026-09-03T00:00:00-04:00",
     end: "2026-09-05T18:00:00-04:00",
-    img: "/promo/instant100k-banner.png",
-    imgM: "/promo/instant100k-banner-m.png",
+    img: "/promo/instant100k-banner-v2.png",
+    imgM: "/promo/instant100k-banner-v2-m.png",
     alt: "Fewpips Instant $100K is live - funded from day one",
   },
 ];
