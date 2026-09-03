@@ -458,6 +458,13 @@
    "desc": "Claim Week banner image present",
    "type": "file_exists",
    "path": "promo/2026-09-01.webp"
+  },
+  {
+   "id": "reviews-more-platforms",
+   "desc": "Also-reviewed-on grid with 9 external platform profiles (Nick EOD Sep 3; counts pulled live, no fabrication)",
+   "type": "present_in",
+   "path": "reviews/index.html",
+   "pattern": "id=\"more-platforms\""
   }
  ]
 }
