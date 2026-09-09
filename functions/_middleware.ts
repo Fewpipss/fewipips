@@ -73,6 +73,15 @@ const ANNOUNCEMENTS: { start: string; end: string; img: string; imgM: string; al
     imgM: "/promo/instant100k-banner-v2-m.png",
     alt: "Fewpips Instant $100K is live - funded from day one",
   },
+  {
+    // STRIKE Week extension (Nick, Sep 9 call): originally sealed Fri Sep 11 23:59 ET,
+    // extended to Fri Sep 18 23:59 ET. Self-expires at the new seal.
+    start: "2026-09-09T00:00:00-04:00",
+    end: "2026-09-18T23:59:59-04:00",
+    img: "/promo/strike-ext-2026.jpg",
+    imgM: "/promo/strike-ext-2026-m.jpg",
+    alt: "Fewpips STRIKE promo extended - buy one get one free, code STRIKE, ends Sep 18 23:59 ET",
+  },
 ];
 
 function pickDate(reqUrl: string): string {
@@ -104,9 +113,9 @@ function bannerScript(b: { img: string; imgM: string; alt: string }): string {
     '<section class="promo-banner-section" aria-label="Promo"><div class="c">' +
     '<a href="' + HREF + '" class="promo-banner" aria-label="' + b.alt + '">' +
     '<picture>' +
-    '<source media="(max-width:640px)" type="image/webp" srcset="' + b.imgM.replace(".png", ".webp") + '">' +
+    '<source media="(max-width:640px)" type="image/webp" srcset="' + b.imgM.replace(/\.(png|jpg)$/, ".webp") + '">' +
     '<source media="(max-width:640px)" srcset="' + b.imgM + '">' +
-    '<source type="image/webp" srcset="' + b.img.replace(".png", ".webp") + '">' +
+    '<source type="image/webp" srcset="' + b.img.replace(/\.(png|jpg)$/, ".webp") + '">' +
     '<img src="' + b.img + '" alt="' + b.alt + '" loading="eager" decoding="async"></picture></a></div></section>' +
     "';return d.firstChild}" +
     "function place(){if(document.querySelector(S))return;var h=document.querySelector('.funded-hero');" +
@@ -138,9 +147,11 @@ function bannerScript(b: { img: string; imgM: string; alt: string }): string {
  * Preview any date with ?_promoDate=YYYY-MM-DD (drives the same clock as the banners).
  */
 const STRIKE_BAR = {
-  // Extended: STRIKE WEEK originally closed Sep 11 23:59 ET, now runs to Sep 18 23:59 ET.
+  // RETIRED Sep 9 (Veljko): replaced by the STRIKE hero-slot graphic banner in
+  // ANNOUNCEMENTS above. Window closed so the bar never renders; code kept as the
+  // reusable zero-CLS top-bar pattern.
   start: "2026-09-07T09:00:00-04:00",
-  end: "2026-09-18T23:59:59-04:00",
+  end: "2026-09-07T09:00:00-04:00",
   href: HREF,
   h: 44, // desktop bar height (px) - must match the CSS below
   hM: 48, // mobile bar height (px)
@@ -311,12 +322,12 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
           // script AFTER hydration - preload today's image so it paints instantly.
           if (b) {
             el.append(
-              '<link rel="preload" as="image" href="' + b.imgM.replace(".png", ".webp") +
+              '<link rel="preload" as="image" href="' + b.imgM.replace(/\.(png|jpg)$/, ".webp") +
                 '" media="(max-width:640px)" fetchpriority="high">',
               { html: true },
             );
             el.append(
-              '<link rel="preload" as="image" href="' + b.img.replace(".png", ".webp") +
+              '<link rel="preload" as="image" href="' + b.img.replace(/\.(png|jpg)$/, ".webp") +
                 '" media="(min-width:641px)" fetchpriority="high">',
               { html: true },
             );
