@@ -614,6 +614,27 @@
    "desc": "v2 mobile banner PNG fallback present",
    "type": "file_exists",
    "path": "promo/instant100k-banner-v2-m.png"
+  },
+  {
+   "id": "strike-bar-window",
+   "desc": "STRIKE Week top bar runs to the EXTENDED deadline Sep 18 23:59 ET (was Sep 11). Self-expires after that - safe to leave in place.",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "2026-09-18T23:59:59-04:00"
+  },
+  {
+   "id": "strike-bar-reserved-space",
+   "desc": "The top bar's space is reserved by head CSS so CLS stays 0. If this rule is dropped the bar starts pushing the page down on every load.",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "html:not(.fp-sb-off) body{padding-top:"
+  },
+  {
+   "id": "strike-bar-nav-offset",
+   "desc": "The fixed .nav must be pushed down by the bar height or the bar covers the site header.",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "html:not(.fp-sb-off) .nav{top:"
   }
  ]
 }
