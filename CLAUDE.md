@@ -46,9 +46,9 @@ banner), update the matching check in the same PR - the gate is a safety net, no
 - No build step runs in CI - Cloudflare uploads the repo as-is. Edits go to the built files here.
 - `/legal/` is **server-rendered** -> edit `legal/index.html` only.
 - `/terms/` is **client-hydrated** -> every text change must edit BOTH `terms/index.html` AND the
-  terms chunk `_next/static/chunks/0he1vgjwt7kln.js`, word-for-word, or hydration reverts it.
+  terms chunk `_next/static/chunks/0he1vgjwt7klp.js`, word-for-word, or hydration reverts it.
 - Homepage Compare/Challenges/Instruments (incl. leverage) render from chunk
-  `_next/static/chunks/0fvh0xh4dp8wv.js` - HTML-only edits get wiped on hydration.
+  `_next/static/chunks/0fvh0xh4dp8x1.js` - HTML-only edits get wiped on hydration.
 - After any chunk edit: `node --check <chunk>` and verify post-hydration with a real browser, not curl.
 - Chunk filenames do NOT change when you edit them - CDN PoPs and browsers keep serving the
   old cached content under the same URL. After editing any `_next/static` chunk, RENAME the
