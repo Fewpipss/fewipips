@@ -638,10 +638,17 @@
   },
   {
    "id": "reviews-more-platforms",
-   "desc": "Also-reviewed-on grid with Nick's 11 external platform profiles (Sep 3 list, re-sent Sep 11; counts pulled live, no fabrication)",
+   "desc": "Also-reviewed-on block: F6S + ReviewFoxy link cards (bot-walled from every automated reader, so no review text or counts)",
    "type": "present_in",
    "path": "reviews/index.html",
    "pattern": "id=\"more-platforms\""
+  },
+  {
+   "id": "reviews-platform-sliders",
+   "desc": "Nick's external platforms as manual sliders like Myfxbook/ProvenExpert/Cryptwerk (TrustProfile through Allare): real 4-5 star review text, de-duplicated against the page (Dj 2026-09-11)",
+   "type": "present_in",
+   "path": "reviews/index.html",
+   "pattern": "id=\"strip-trustprofile\""
   }
  ]
 }
