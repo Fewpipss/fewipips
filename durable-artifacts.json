@@ -572,7 +572,7 @@
    "id": "instant-ea-approval-faq-chunk",
    "desc": "/faq/ Instant rules answer carries the EA approval bracket (chunk = what hydration renders)",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4ey8.js",
+   "path": "_next/static/chunks/0tg_rdy2h4ey9.js",
    "pattern": "add-ons for that account (must seek approval from Fewpips)."
   },
   {
@@ -661,7 +661,7 @@
    "id": "faq-sept-questions-chunk",
    "desc": "September top questions in the hydrating FAQ chunk, or hydration wipes them",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4ey8.js",
+   "path": "_next/static/chunks/0tg_rdy2h4ey9.js",
    "pattern": "Can I reset my account?"
   },
   {
@@ -729,7 +729,7 @@
    "id": "faq-partial-withdrawal-chunk",
    "desc": "Partial payout answer in the hydrating FAQ chunk, or hydration wipes it",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4ey8.js",
+   "path": "_next/static/chunks/0tg_rdy2h4ey9.js",
    "pattern": "Can I withdraw part of my balance?"
   },
   {
@@ -743,7 +743,7 @@
    "id": "faq-increase-consistency-price-chunk",
    "desc": "Increase Consistency Rule add-on price in the hydrating FAQ chunk",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4ey8.js",
+   "path": "_next/static/chunks/0tg_rdy2h4ey9.js",
    "pattern": "Cost: +12.5% of the challenge fee."
   },
   {
