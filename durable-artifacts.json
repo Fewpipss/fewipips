@@ -519,7 +519,7 @@
    "id": "instant-100k-terms-chunk",
    "desc": "/terms/ tier exception mirrored in the terms chunk or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klp.js",
+   "path": "_next/static/chunks/0he1vgjwt7klq.js",
    "pattern": "Instant $100K exception"
   },
   {
@@ -600,7 +600,7 @@
    "id": "instant-100k-ea-addon-terms-chunk",
    "desc": "/terms/ EA add-on approval mirrored in the terms chunk word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klp.js",
+   "path": "_next/static/chunks/0he1vgjwt7klq.js",
    "pattern": "paid add-ons for that account, with Expert Advisors subject to Fewpips approval"
   },
   {
@@ -752,6 +752,32 @@
    "type": "present_in",
    "path": "index.html",
    "pattern": "Raises your consistency threshold by 10%"
+  },
+  {
+   "id": "terms-min-payout-100",
+   "desc": "/terms/ payout clause: $100 USD minimum on CFD and Futures (Nick TG #13305) - HTML copy",
+   "type": "present_in",
+   "path": "terms/index.html",
+   "pattern": "Minimum payout is $100 USD on CFD and Futures accounts."
+  },
+  {
+   "id": "terms-min-payout-100-chunk",
+   "desc": "/terms/ payout clause in the hydrating terms chunk, word-for-word or hydration reverts it",
+   "type": "present_in",
+   "path": "_next/static/chunks/0he1vgjwt7klq.js",
+   "pattern": "Minimum payout is $100 USD on CFD and Futures accounts."
+  },
+  {
+   "id": "no-50-minimum-prose",
+   "desc": "No '$50 minimum' payout copy left anywhere (blog posts, cards, meta descriptions) - the minimum is $100 (Nick TG #13305)",
+   "type": "absent",
+   "pattern": "$50 minimum"
+  },
+  {
+   "id": "no-50-withdrawal-prose",
+   "desc": "No 'withdrawal is $50' copy left anywhere - the minimum is $100 (Nick TG #13305)",
+   "type": "absent",
+   "pattern": "withdrawal is $50"
   }
  ]
 }
