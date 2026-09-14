@@ -684,6 +684,20 @@
    "type": "present_in",
    "path": "sitemap.xml",
    "pattern": "blog/top-trader-questions-september-2026/"
+  },
+  {
+   "id": "faq-increase-consistency-addon",
+   "desc": "Increase Consistency Rule add-on listed in /faq/ add-ons (Nick confirmed live TG #13289)",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "Increase Consistency Rule Add-On"
+  },
+  {
+   "id": "legal-futures-partial-withdrawals",
+   "desc": "Futures payouts documented as partial or full, the old full-balance-only wording stays out (Nick TG #13289)",
+   "type": "present_in",
+   "path": "legal/index.html",
+   "pattern": "Withdrawals can be partial or full"
   }
  ]
 }
