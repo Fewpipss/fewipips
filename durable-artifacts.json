@@ -321,7 +321,7 @@
    "id": "paidout-600k",
    "desc": "hero Paid Out counter targets $600K+ (Nick, TG #11384) - was 200K",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
    "pattern": "count:6e5"
   },
   {
@@ -463,28 +463,28 @@
    "id": "instant-100k-compare-col",
    "desc": "Instant $100K column present in the homepage Compare table data, max loss shows 10% only (Nick: no dollar figure, it is a trailing drawdown)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
    "pattern": "size:\"$100K\",drawdown:\"10%\",minDays:\"3\""
   },
   {
    "id": "instant-100k-price",
    "desc": "Instant $100K price $1,699 on the pricing data (Compare + configurator)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
    "pattern": "price:\"1,699\""
   },
   {
    "id": "instant-100k-configurator",
    "desc": "Instant $100K size + price wired into the Challenges configurator",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
    "pattern": "1e5:\"1,699\""
   },
   {
    "id": "instant-100k-new-badge",
    "desc": "NEW badge date gate on the Instant $100K tier (hides after 2026-09-10 23:59 ET)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
    "pattern": "Date.UTC(2026,8,11,4)"
   },
   {
@@ -545,7 +545,7 @@
    "id": "instant-100k-maxloss-pct-only",
    "desc": "Instant $100K max loss renders as 10% with no dollar figure in the Challenges configurator (Nick, Sep 3) - trailing drawdown, the dollar number moves",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
    "pattern": "{name:\"Maximum Loss Limit\",value:{3e3:\"$150 (5%)\",5e3:\"$300 (6%)\",1e4:\"$700 (7%)\",25e3:\"$2,250 (9%)\",5e4:\"$5,000 (10%)\",1e5:\"10%\"}}"
   },
   {
@@ -558,21 +558,21 @@
    "id": "instant-ea-approval-configurator",
    "desc": "Instant configurator EAs row carries the Fewpips approval bracket (Nick, Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
    "pattern": "{name:\"EAs\",value:\"Allowed (must seek approval from Fewpips)\""
   },
   {
    "id": "instant-ea-approval-compare-note",
    "desc": "Compare table Instant-tab note carries the EA approval bracket (Nick, Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x1.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
    "pattern": "EAs allowed (must seek approval from Fewpips)."
   },
   {
    "id": "instant-ea-approval-faq-chunk",
    "desc": "/faq/ Instant rules answer carries the EA approval bracket (chunk = what hydration renders)",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4ey7.js",
+   "path": "_next/static/chunks/0tg_rdy2h4ey8.js",
    "pattern": "add-ons for that account (must seek approval from Fewpips)."
   },
   {
@@ -661,7 +661,7 @@
    "id": "faq-sept-questions-chunk",
    "desc": "September top questions in the hydrating FAQ chunk, or hydration wipes them",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4ey7.js",
+   "path": "_next/static/chunks/0tg_rdy2h4ey8.js",
    "pattern": "Can I reset my account?"
   },
   {
@@ -698,6 +698,60 @@
    "type": "present_in",
    "path": "legal/index.html",
    "pattern": "Withdrawals can be partial or full"
+  },
+  {
+   "id": "legal-cfd-partial-withdrawals",
+   "desc": "CFD payouts documented as partial or full with the $100 minimum, CFD challenge + funded T&Cs (Nick TG #13305)",
+   "type": "present_in",
+   "path": "legal/index.html",
+   "pattern": "subject to the $100 USD minimum"
+  },
+  {
+   "id": "no-full-withdrawals-only",
+   "desc": "The old 'Full withdrawals only - no partial withdrawals' wording must stay off the site, CFD and Futures (Nick TG #13289, #13305)",
+   "type": "absent",
+   "pattern": "Full withdrawals only"
+  },
+  {
+   "id": "no-50-minimum-withdrawal",
+   "desc": "Minimum withdrawal is $100 USD everywhere - the old $50 figure must stay off the site (Nick TG #13305)",
+   "type": "absent",
+   "pattern": "Minimum withdrawal $50"
+  },
+  {
+   "id": "faq-partial-withdrawal-html",
+   "desc": "Partial payout answer on the /faq/ CFD tab (Nick TG #13305)",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "Can I withdraw part of my balance?"
+  },
+  {
+   "id": "faq-partial-withdrawal-chunk",
+   "desc": "Partial payout answer in the hydrating FAQ chunk, or hydration wipes it",
+   "type": "present_in",
+   "path": "_next/static/chunks/0tg_rdy2h4ey8.js",
+   "pattern": "Can I withdraw part of my balance?"
+  },
+  {
+   "id": "faq-increase-consistency-price",
+   "desc": "Increase Consistency Rule add-on price on /faq/ - +12.5% of the challenge fee (Nick TG #13305)",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "Cost: +12.5% of the challenge fee."
+  },
+  {
+   "id": "faq-increase-consistency-price-chunk",
+   "desc": "Increase Consistency Rule add-on price in the hydrating FAQ chunk",
+   "type": "present_in",
+   "path": "_next/static/chunks/0tg_rdy2h4ey8.js",
+   "pattern": "Cost: +12.5% of the challenge fee."
+  },
+  {
+   "id": "home-addon-consistency-effect",
+   "desc": "Homepage add-ons card describes the Increase Consistency Rule correctly (raises the threshold, 50% instead of 40%) - it is a perk, not a stricter target (Nick TG #13161)",
+   "type": "present_in",
+   "path": "index.html",
+   "pattern": "Raises your consistency threshold by 10%"
   }
  ]
 }
