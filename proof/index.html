@@ -871,7 +871,7 @@ h1 .grad{
     function step(t){
       if(!start)start=t;
       var p = Math.min(1,(t-start)/dur);
-      var v = Math.floor(600*(1-Math.pow(1-p,3)));
+      var v = Math.floor(800*(1-Math.pow(1-p,3)));
       el.textContent = v + "K+";
       if(p<1)requestAnimationFrame(step);
     }

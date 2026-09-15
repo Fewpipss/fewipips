@@ -318,11 +318,11 @@
    "pattern": "refundable within 48 hours"
   },
   {
-   "id": "paidout-600k",
-   "desc": "hero Paid Out counter targets $600K+ (Nick, TG #11384) - was 200K",
+   "id": "paidout-800k",
+   "desc": "hero Paid Out + Paid to Traders counters target $800K+ (Nick TG #13400, certificates total $814K) - was 600K",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
-   "pattern": "count:6e5"
+   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
+   "pattern": "count:8e5"
   },
   {
    "id": "tier-volume-thresholds",
@@ -463,28 +463,28 @@
    "id": "instant-100k-compare-col",
    "desc": "Instant $100K column present in the homepage Compare table data, max loss shows 10% only (Nick: no dollar figure, it is a trailing drawdown)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
    "pattern": "size:\"$100K\",drawdown:\"10%\",minDays:\"3\""
   },
   {
    "id": "instant-100k-price",
    "desc": "Instant $100K price $1,699 on the pricing data (Compare + configurator)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
    "pattern": "price:\"1,699\""
   },
   {
    "id": "instant-100k-configurator",
    "desc": "Instant $100K size + price wired into the Challenges configurator",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
    "pattern": "1e5:\"1,699\""
   },
   {
    "id": "instant-100k-new-badge",
    "desc": "NEW badge date gate on the Instant $100K tier (hides after 2026-09-10 23:59 ET)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
    "pattern": "Date.UTC(2026,8,11,4)"
   },
   {
@@ -545,7 +545,7 @@
    "id": "instant-100k-maxloss-pct-only",
    "desc": "Instant $100K max loss renders as 10% with no dollar figure in the Challenges configurator (Nick, Sep 3) - trailing drawdown, the dollar number moves",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
    "pattern": "{name:\"Maximum Loss Limit\",value:{3e3:\"$150 (5%)\",5e3:\"$300 (6%)\",1e4:\"$700 (7%)\",25e3:\"$2,250 (9%)\",5e4:\"$5,000 (10%)\",1e5:\"10%\"}}"
   },
   {
@@ -558,14 +558,14 @@
    "id": "instant-ea-approval-configurator",
    "desc": "Instant configurator EAs row carries the Fewpips approval bracket (Nick, Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
    "pattern": "{name:\"EAs\",value:\"Allowed (must seek approval from Fewpips)\""
   },
   {
    "id": "instant-ea-approval-compare-note",
    "desc": "Compare table Instant-tab note carries the EA approval bracket (Nick, Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x2.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
    "pattern": "EAs allowed (must seek approval from Fewpips)."
   },
   {
@@ -797,6 +797,13 @@
    "desc": "September 2026 archive PDF present for the download button",
    "type": "file_exists",
    "path": "downloads/fewpips-september-2026.pdf"
+  },
+  {
+   "id": "proof-paidout-800k",
+   "desc": "/proof Paid Out count-up targets $800K+ (Nick TG #13400)",
+   "type": "present_in",
+   "path": "proof/index.html",
+   "pattern": "Math.floor(800*(1-Math.pow(1-p,3)))"
   }
  ]
 }
