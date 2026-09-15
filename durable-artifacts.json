@@ -649,6 +649,20 @@
    "type": "present_in",
    "path": "reviews/index.html",
    "pattern": "id=\"strip-trustprofile\""
+  },
+  {
+   "id": "reviews-mobile-no-sideways-pan",
+   "desc": "/reviews hero glow clipped so phones never pan sideways (Professor, SEO group #13266)",
+   "type": "present_in",
+   "path": "reviews/index.html",
+   "pattern": ".hero{overflow-x:clip}"
+  },
+  {
+   "id": "reviews-toprated-all-platforms",
+   "desc": "Top rated auto-slider draws from all 12 review platforms, not only Myfxbook/ProvenExpert/Cryptwerk (Professor #13266)",
+   "type": "present_in",
+   "path": "reviews/index.html",
+   "pattern": "Top picks from all 12 review platforms"
   }
  ]
 }
