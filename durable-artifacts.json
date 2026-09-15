@@ -78,16 +78,16 @@
   },
   {
    "id": "proof-peek-certs-batch",
-   "desc": "proof-peek shows the 17-24 Aug 2026 cert batch (Nick TG #11810)",
+   "desc": "proof-peek shows the 25 Aug - 12 Sep 2026 cert batch (Nick TG #13361)",
    "type": "present_in",
    "path": "proof-peek.js",
-   "pattern": "catalina-fuentes.webp"
+   "pattern": "freya-nakamura.webp"
   },
   {
    "id": "proof-peek-cert-img",
-   "desc": "top cert webp of the 17-24 Aug batch present",
+   "desc": "top cert webp of the 25 Aug - 12 Sep batch present",
    "type": "file_exists",
-   "path": "certs/catalina-fuentes.webp"
+   "path": "certs/freya-nakamura.webp"
   },
   {
    "id": "reviews-page",
@@ -778,6 +778,25 @@
    "desc": "No 'withdrawal is $50' copy left anywhere - the minimum is $100 (Nick TG #13305)",
    "type": "absent",
    "pattern": "withdrawal is $50"
+  },
+  {
+   "id": "proof-september-tab",
+   "desc": "September 2026 month tab on /proof (Nick TG #13361)",
+   "type": "present_in",
+   "path": "proof/index.html",
+   "pattern": "data-month=\"september\""
+  },
+  {
+   "id": "proof-september-cert",
+   "desc": "September 2026 certificate images live in /certs/full",
+   "type": "file_exists",
+   "path": "certs/full/september-Sofia_Bermudez.jpg"
+  },
+  {
+   "id": "proof-september-pdf",
+   "desc": "September 2026 archive PDF present for the download button",
+   "type": "file_exists",
+   "path": "downloads/fewpips-september-2026.pdf"
   }
  ]
 }
