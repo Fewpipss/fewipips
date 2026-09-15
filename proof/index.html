@@ -899,6 +899,9 @@ h1 .grad{
       var olds = stack.querySelectorAll(".card");
       olds.forEach(function(c){c.remove()});
       var n = state.items.length;
+      // Payout emails only exist for April - June: a month without items hides its carousel
+      // instead of showing two arrows over an empty stage.
+      var sec = stack.closest(".sec"); if(sec) sec.style.display = n ? "" : "none";
       totEl.textContent = n;
       posEl.textContent = n ? (state.idx+1) : 0;
       // Build dot row
@@ -1015,7 +1018,7 @@ h1 .grad{
     certs.filter(m);
     var sm = document.getElementById("selected-month");
     if(sm){
-      var names = {all:"All Months",april:"April 2026",may:"May 2026",june:"June 2026",july:"July 2026",august:"August 2026"};
+      var names = {all:"All Months",april:"April 2026",may:"May 2026",june:"June 2026",july:"July 2026",august:"August 2026",september:"September 2026"};
       sm.textContent = names[m] || m;
       sm.classList.remove("hidden");
     }
