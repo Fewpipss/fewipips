@@ -9,18 +9,18 @@
   // Real payout certificates. To swap/add: drop a webp in /certs and edit this list.
   // 17-24 Aug 2026 batch (Nick, 25 Aug 2026). Retired certs live on the proof page.
   var CERTS = [
-    { img: "/certs/catalina-fuentes.webp", amount: "$12,135.43" },
-    { img: "/certs/martin-escobar.webp",   amount: "$11,024.19" },
-    { img: "/certs/alejandro-pena.webp",   amount: "$9,427.77" },
-    { img: "/certs/alejandra-pinto.webp",  amount: "$7,811.37" },
-    { img: "/certs/yasmin-ortega.webp",    amount: "$7,650.64" }
+    { img: "/certs/freya-nakamura.webp", amount: "$13,981.87" },
+    { img: "/certs/sofia-bermudez.webp", amount: "$13,091.22" },
+    { img: "/certs/anais-leclerc.webp", amount: "$9,792.08" },
+    { img: "/certs/thiago-nascimento.webp", amount: "$9,721.90" },
+    { img: "/certs/leila-shirazi.webp", amount: "$9,562.15" }
   ];
 
-  // Top 3 performers (17-24 August 2026). Full leaderboard lives on the proof page.
+  // Top 3 performers (25 August - 12 September 2026). Full leaderboard lives on the proof page.
   var LEADERS = [
-    { rank: 1, name: "Catalina Fuentes", amount: "$12,135.43", account: "Future Based CFD · Instant" },
-    { rank: 2, name: "Martín Escobar",   amount: "$11,024.19", account: "Future Based CFD · Instant" },
-    { rank: 3, name: "Alejandro Peña",   amount: "$9,427.77",  account: "Future Based CFD · 1-Step" }
+    { rank: 1, name: "Freya Nakamura", amount: "$13,981.87", account: "Future Based CFD · Instant" },
+    { rank: 2, name: "Sofía Bermúdez", amount: "$13,091.22", account: "CFD · Instant" },
+    { rank: 3, name: "Anaïs Leclerc", amount: "$9,792.08", account: "Future Based CFD · 1-Step" }
   ];
 
   function injectStyles() {
