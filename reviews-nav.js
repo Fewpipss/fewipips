@@ -32,6 +32,14 @@
     for (var i = 0; i < links.length; i++) {
       if (links[i].textContent !== "Blogs") links[i].textContent = "Blogs";
       var col = links[i].parentElement;
+      // Both links are in the static HTML now (crawlable). Re-add them only if a
+      // hydration pass dropped them, so the footer always carries them.
+      if (col && !col.querySelector('a[href="/reviews/"]')) {
+        var r = document.createElement("a");
+        r.href = "/reviews/";
+        r.textContent = "Reviews";
+        col.appendChild(r);
+      }
       if (col && !col.querySelector('a[href="/proof/"]')) {
         var a = document.createElement("a");
         a.href = "/proof/";
