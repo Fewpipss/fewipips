@@ -832,6 +832,34 @@
    "type": "present_in",
    "path": "proof/index.html",
    "pattern": "Math.floor(800*(1-Math.pow(1-p,3)))"
+  },
+  {
+   "id": "reviews-link-footer-home",
+   "desc": "Crawlable footer link to /reviews/ on the homepage - the JS-injected nav link alone left the page an orphan (SEO group #13474)",
+   "type": "present_in",
+   "path": "index.html",
+   "pattern": "<a href=\"/reviews/\">Reviews</a>"
+  },
+  {
+   "id": "reviews-link-blog",
+   "desc": "Crawlable link to /reviews/ in the blog footer",
+   "type": "present_in",
+   "path": "blog/index.html",
+   "pattern": "href=\"/reviews/\""
+  },
+  {
+   "id": "reviews-link-proof",
+   "desc": "/proof links to /reviews/",
+   "type": "present_in",
+   "path": "proof/index.html",
+   "pattern": "href=\"/reviews/\""
+  },
+  {
+   "id": "proof-link-footer-home",
+   "desc": "Crawlable footer link to /proof/ on the homepage",
+   "type": "present_in",
+   "path": "index.html",
+   "pattern": "<a href=\"/proof/\">Proof of Payouts</a>"
   }
  ]
 }
