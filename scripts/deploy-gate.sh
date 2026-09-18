@@ -13,6 +13,8 @@
 # Exit 0 = GREEN (every durable artifact present) -> safe to deploy.
 # Exit 1 = RED  (something is missing) -> DO NOT deploy / block the merge.
 #
+# Also runs scripts/check-js.mjs: every inline script / .js file must parse (needs node).
+#
 # Complements verify-site.sh, which checks a LIVE/preview URL after deploy.
 
 set -uo pipefail
@@ -148,3 +150,14 @@ else:
     print("=" * 56)
     sys.exit(0)
 PY
+ARTIFACTS_RC=$?
+
+# Structural gate: every script the browser runs must parse (2026-09-18 homepage outage, PR #60).
+if command -v node >/dev/null 2>&1; then
+  node "$SCRIPT_DIR/check-js.mjs" "$BUILD_DIR"; JS_RC=$?
+else
+  echo "node required for the JS parse gate"; JS_RC=2
+fi
+
+[ "$ARTIFACTS_RC" -eq 0 ] && [ "$JS_RC" -eq 0 ] && exit 0
+exit 1
