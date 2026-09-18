@@ -866,6 +866,65 @@
    "type": "present_in",
    "path": "social-tiktok.js",
    "pattern": "row.insertBefore(tt, row.firstChild)"
+  },
+  {
+   "id": "help-hub-file",
+   "desc": "Help hub widget script exists (missing = no chat launcher at all)",
+   "type": "file_exists",
+   "path": "help-hub.js"
+  },
+  {
+   "id": "help-index-file",
+   "desc": "Help hub search index exists (rebuild: python3 scripts/build-help-index.py)",
+   "type": "file_exists",
+   "path": "help-index.json"
+  },
+  {
+   "id": "help-hub-avatar",
+   "desc": "Mascot launcher avatar exists (the widget branding Veljko asked for)",
+   "type": "file_exists",
+   "path": "fewpips-mascot-avatar.webp"
+  },
+  {
+   "id": "help-hub-every-page",
+   "desc": "help-hub.js loaded on every route page (a re-export drops the custom script tags)",
+   "type": "in_all_pages",
+   "pattern": "/help-hub.js"
+  },
+  {
+   "id": "help-hub-livechat-handoff",
+   "desc": "Help hub still opens the real LiveChat window (the bot and its compliance rules are untouched)",
+   "type": "present_in",
+   "path": "help-hub.js",
+   "pattern": "LiveChatWidget.call(\"maximize\")"
+  },
+  {
+   "id": "help-hub-boots-livechat",
+   "desc": "Hub can boot LiveChat itself on pages without the inline embed (blog posts had no chat at all)",
+   "type": "present_in",
+   "path": "help-hub.js",
+   "pattern": "cdn.livechatinc.com/tracking.js"
+  },
+  {
+   "id": "help-hub-clears-sticky-bar",
+   "desc": "Launcher measures the sticky Discord/Telegram bar so it never sits behind it",
+   "type": "present_in",
+   "path": "help-hub.js",
+   "pattern": "sd-split-bar"
+  },
+  {
+   "id": "greeting-targets-hub",
+   "desc": "Proactive greeting badge anchors to the hub launcher, not the removed LiveChat FAB",
+   "type": "present_in",
+   "path": "livechat-greeting.js",
+   "pattern": "#fp-hub-launch"
+  },
+  {
+   "id": "help-index-questions",
+   "desc": "Help index still carries the FAQ answers (an empty index = a dead search box)",
+   "type": "present_in",
+   "path": "help-index.json",
+   "pattern": "Payouts & funded accounts"
   }
  ]
 }
