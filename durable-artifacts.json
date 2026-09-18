@@ -190,10 +190,9 @@
    "pattern": "hash-nav-fix.js"
   },
   {
-   "id": "brand-ig-fewpips",
-   "desc": "Brand Instagram points to instagram.com/few.pips (was officialfewpips)",
-   "type": "present_in",
-   "path": "index.html",
+   "id": "brand-ig-removed",
+   "desc": "Fewpips Instagram is off the site - the account is blocked and cannot be recovered (Nick, SEO group 2026-09-18). Partner profile links keep their own IG.",
+   "type": "absent",
    "pattern": "instagram.com/few.pips"
   },
   {
@@ -519,7 +518,7 @@
    "id": "instant-100k-terms-chunk",
    "desc": "/terms/ tier exception mirrored in the terms chunk or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klq.js",
+   "path": "_next/static/chunks/0he1vgjwt7klr.js",
    "pattern": "Instant $100K exception"
   },
   {
@@ -572,7 +571,7 @@
    "id": "instant-ea-approval-faq-chunk",
    "desc": "/faq/ Instant rules answer carries the EA approval bracket (chunk = what hydration renders)",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4ey9.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eya.js",
    "pattern": "add-ons for that account (must seek approval from Fewpips)."
   },
   {
@@ -600,7 +599,7 @@
    "id": "instant-100k-ea-addon-terms-chunk",
    "desc": "/terms/ EA add-on approval mirrored in the terms chunk word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klq.js",
+   "path": "_next/static/chunks/0he1vgjwt7klr.js",
    "pattern": "paid add-ons for that account, with Expert Advisors subject to Fewpips approval"
   },
   {
@@ -689,7 +688,7 @@
    "id": "faq-sept-questions-chunk",
    "desc": "September top questions in the hydrating FAQ chunk, or hydration wipes them",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4ey9.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eya.js",
    "pattern": "Can I reset my account?"
   },
   {
@@ -757,7 +756,7 @@
    "id": "faq-partial-withdrawal-chunk",
    "desc": "Partial payout answer in the hydrating FAQ chunk, or hydration wipes it",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4ey9.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eya.js",
    "pattern": "Can I withdraw part of my balance?"
   },
   {
@@ -771,7 +770,7 @@
    "id": "faq-increase-consistency-price-chunk",
    "desc": "Increase Consistency Rule add-on price in the hydrating FAQ chunk",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4ey9.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eya.js",
    "pattern": "Cost: +12.5% of the challenge fee."
   },
   {
@@ -792,7 +791,7 @@
    "id": "terms-min-payout-100-chunk",
    "desc": "/terms/ payout clause in the hydrating terms chunk, word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klq.js",
+   "path": "_next/static/chunks/0he1vgjwt7klr.js",
    "pattern": "Minimum payout is $100 USD on CFD and Futures accounts."
   },
   {
@@ -860,6 +859,13 @@
    "type": "present_in",
    "path": "index.html",
    "pattern": "<a href=\"/proof/\">Proof of Payouts</a>"
+  },
+  {
+   "id": "footer-tiktok-first",
+   "desc": "TikTok icon still injected into the footer social row after the Instagram removal",
+   "type": "present_in",
+   "path": "social-tiktok.js",
+   "pattern": "row.insertBefore(tt, row.firstChild)"
   }
  ]
 }
