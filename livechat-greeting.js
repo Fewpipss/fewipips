@@ -1,13 +1,13 @@
-/* Fewpips - proactive LiveChat greeting.
-   On EVERY page load / refresh / client-side navigation the LiveChat FAB gets a red "1"
+/* Fewpips - proactive greeting for the help hub.
+   On EVERY page load / refresh / client-side navigation the mascot launcher gets a red "1"
    badge (as if a message arrived) and a greeting bubble pops up next to it. Clicking either
-   opens the real LiveChat window (window.LiveChatWidget "maximize"). The bubble has its own
+   opens the help hub (help-hub.js), falling back to the raw LiveChat window. The bubble has its own
    X to dismiss - that only hides it for the current view; it comes back on the next refresh
    or navigation. Own non-React DOM so it survives Next.js hydration + client-side routing. */
 (function () {
   var BADGE_ID = "fp-lc-badge";
   var BUBBLE_ID = "fp-lc-greet";
-  var FAB_SEL = ".chat-fab--livechat";
+  var FAB_SEL = "#fp-hub-launch";
   var GREET_DELAY = 2600;          // ms after landing before the bubble pops
   var dismissed = false;           // per-view close; reset on navigation/refresh
 
@@ -30,7 +30,7 @@
       "animation:fpLcPop .35s cubic-bezier(.2,1.4,.4,1) both}",
       "@keyframes fpLcPop{from{transform:scale(0)}to{transform:scale(1)}}",
       // greeting bubble
-      "#" + BUBBLE_ID + "{position:fixed;right:22px;bottom:170px;z-index:9999;width:300px;max-width:calc(100vw - 44px);",
+      "#" + BUBBLE_ID + "{position:fixed;right:22px;bottom:calc(var(--fph-bottom,24px) + 80px);z-index:9999;width:300px;max-width:calc(100vw - 44px);",
       "background:#0d0f0e;color:#fff;border:1px solid #ffffff1f;border-radius:16px;",
       "box-shadow:0 18px 50px #000000a6,0 0 0 1px #00ffc21f;padding:14px 14px 15px;",
       "font-family:var(--font-b,Inter,system-ui,sans-serif);cursor:pointer;",
@@ -52,15 +52,21 @@
       "#" + BUBBLE_ID + " .fp-x svg{width:15px;height:15px}",
       "#" + BUBBLE_ID + "::after{content:'';position:absolute;right:34px;bottom:-8px;width:16px;height:16px;",
       "background:#0d0f0e;border-right:1px solid #ffffff1f;border-bottom:1px solid #ffffff1f;transform:rotate(45deg)}",
-      "@media(max-width:560px){#" + BUBBLE_ID + "{right:14px;bottom:150px;width:270px}}"
+      "@media(max-width:560px){#" + BUBBLE_ID + "{right:14px;bottom:calc(var(--fph-bottom,24px) + 72px);width:270px}}"
     ].join("");
     (document.head || document.documentElement).appendChild(css);
   }
 
-  // Open the real LiveChat window, retrying while the widget script boots.
+  // Open the help hub, retrying while help-hub.js boots. If it never loads, fall back to
+  // the raw LiveChat window so the greeting is never a dead click.
   function openChat(tries) {
     tries = tries || 0;
-    if (window.LiveChatWidget && typeof window.LiveChatWidget.call === "function") {
+    if (window.FewpipsHub && typeof window.FewpipsHub.open === "function") {
+      try { window.FewpipsHub.open(); } catch (e) {}
+      dismissForView();
+      return;
+    }
+    if (tries >= 15 && window.LiveChatWidget && typeof window.LiveChatWidget.call === "function") {
       try { window.LiveChatWidget.call("maximize"); } catch (e) {}
       dismissForView();
       return;
@@ -107,7 +113,7 @@
     var box = document.createElement("div");
     box.id = BUBBLE_ID;
     box.setAttribute("role", "button");
-    box.setAttribute("aria-label", "Open live chat");
+    box.setAttribute("aria-label", "Open Fewpips help");
     box.innerHTML =
       '<button type="button" class="fp-x" aria-label="Dismiss">' + X_SVG + '</button>' +
       '<div class="fp-head"><span class="fp-av">' + CHAT_SVG + '</span>' +
