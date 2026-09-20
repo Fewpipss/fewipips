@@ -866,6 +866,28 @@
    "type": "present_in",
    "path": "social-tiktok.js",
    "pattern": "row.insertBefore(tt, row.firstChild)"
+  },
+  {
+   "id": "legal-excessive-margin-all-tabs",
+   "desc": "Excessive margin (70%+) rule in the Prohibited Activities list of ALL 5 rule sets (Nick, compliance enforcement, 2026-09-20)",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "<strong>Excessive margin</strong>",
+   "min": "5"
+  },
+  {
+   "id": "legal-prohibited-every-ruleset",
+   "desc": "Every rule set on /legal has its own Prohibited Activities section, CFD Instant included (Nick URGENT 2026-09-20)",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "Prohibited Activities</h4>",
+   "min": "5"
+  },
+  {
+   "id": "legal-instant-not-crossref-only",
+   "desc": "CFD Instant must not go back to only cross-referencing the other accounts' prohibited activities",
+   "type": "absent",
+   "pattern": "Prohibited Activities, SL/TP requirement, and 14-day inactivity all match"
   }
  ]
 }
