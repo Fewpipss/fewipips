@@ -116,6 +116,15 @@ for c in m["checks"]:
         ok = os.path.isfile(fp) and pat in read(fp)
         detail = f"'{pat}' in {c['path']}"
 
+    elif t == "count_in":
+        # a rule that must appear on EVERY tab of a single file (e.g. /legal has four
+        # rule books in one document) - "present_in" would pass on one copy
+        pat = c["pattern"]; fp = os.path.join(build, c["path"]); n = 0
+        if os.path.isfile(fp):
+            n = read(fp).count(pat)
+        ok = n >= int(c["min"])
+        detail = f"{n}x '{pat[:48]}' in {c['path']} (need >= {c['min']})"
+
     elif t == "absent":
         pat = c["pattern"]; hits = []
         for p in text_files():
