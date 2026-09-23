@@ -320,7 +320,7 @@
    "id": "paidout-800k",
    "desc": "hero Paid Out + Paid to Traders counters target $800K+ (Nick TG #13400, certificates total $814K) - was 600K",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x5.js",
    "pattern": "count:8e5"
   },
   {
@@ -462,28 +462,28 @@
    "id": "instant-100k-compare-col",
    "desc": "Instant $100K column present in the homepage Compare table data, max loss shows 10% only (Nick: no dollar figure, it is a trailing drawdown)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x5.js",
    "pattern": "size:\"$100K\",drawdown:\"10%\",minDays:\"3\""
   },
   {
    "id": "instant-100k-price",
    "desc": "Instant $100K price $1,699 on the pricing data (Compare + configurator)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x5.js",
    "pattern": "price:\"1,699\""
   },
   {
    "id": "instant-100k-configurator",
    "desc": "Instant $100K size + price wired into the Challenges configurator",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x5.js",
    "pattern": "1e5:\"1,699\""
   },
   {
    "id": "instant-100k-new-badge",
    "desc": "NEW badge date gate on the Instant $100K tier (hides after 2026-09-10 23:59 ET)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x5.js",
    "pattern": "Date.UTC(2026,8,11,4)"
   },
   {
@@ -544,7 +544,7 @@
    "id": "instant-100k-maxloss-pct-only",
    "desc": "Instant $100K max loss renders as 10% with no dollar figure in the Challenges configurator (Nick, Sep 3) - trailing drawdown, the dollar number moves",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x5.js",
    "pattern": "{name:\"Maximum Loss Limit\",value:{3e3:\"$150 (5%)\",5e3:\"$300 (6%)\",1e4:\"$700 (7%)\",25e3:\"$2,250 (9%)\",5e4:\"$5,000 (10%)\",1e5:\"10%\"}}"
   },
   {
@@ -557,14 +557,14 @@
    "id": "instant-ea-approval-configurator",
    "desc": "Instant configurator EAs row carries the Fewpips approval bracket (Nick, Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x5.js",
    "pattern": "{name:\"EAs\",value:\"Allowed (must seek approval from Fewpips)\""
   },
   {
    "id": "instant-ea-approval-compare-note",
    "desc": "Compare table Instant-tab note carries the EA approval bracket (Nick, Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x3.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x5.js",
    "pattern": "EAs allowed (must seek approval from Fewpips)."
   },
   {
@@ -888,6 +888,68 @@
    "desc": "CFD Instant must not go back to only cross-referencing the other accounts' prohibited activities",
    "type": "absent",
    "pattern": "Prohibited Activities, SL/TP requirement, and 14-day inactivity all match"
+  },
+  {
+   "id": "legal-soft-breach",
+   "desc": "Daily Loss Limit is a soft breach (pause to server reset, second hit in 7 days closes) on both evaluation rule sets (Nick 2026-09-23)",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "soft breach",
+   "min": "4"
+  },
+  {
+   "id": "legal-no-instant-breach-immediately",
+   "desc": "The blanket 'violations immediately breach' wording must not come back over the soft breach rule",
+   "type": "absent",
+   "pattern": "<li>Violations immediately breach the account.</li>"
+  },
+  {
+   "id": "legal-futures-no-weekend",
+   "desc": "Futures weekend holding is NOT permitted, challenge table included (Nick 2026-09-23)",
+   "type": "present_in",
+   "path": "legal/index.html",
+   "pattern": "<tr><td>Weekend Holding</td><td>Not permitted</td></tr>"
+  },
+  {
+   "id": "legal-futures-weekend-prose",
+   "desc": "Futures challenge prose says weekend holding is not permitted",
+   "type": "present_in",
+   "path": "legal/index.html",
+   "pattern": "Weekend holding is <strong>not permitted</strong> on Futures CFDs."
+  },
+  {
+   "id": "legal-no-challenge-consistency",
+   "desc": "No consistency rule on the Futures challenge - it exists only on funded accounts (Nick 2026-09-23)",
+   "type": "absent",
+   "pattern": "50% of the profit target"
+  },
+  {
+   "id": "home-no-challenge-consistency",
+   "desc": "CFD challenge plans must not advertise a consistency rule; only the funded/Instant rows keep 40%",
+   "type": "absent",
+   "pattern": "consistency:\"40%\",leverage:\"1:100\""
+  },
+  {
+   "id": "home-consistency-none-rows",
+   "desc": "The 15 CFD challenge rows (1-Step, 2-Step, 3-Step) carry consistency None",
+   "type": "count_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x5.js",
+   "pattern": "consistency:\"None\"",
+   "min": "16"
+  },
+  {
+   "id": "home-consistency-static-matches",
+   "desc": "Static homepage table matches the chunk, or hydration reverts it",
+   "type": "present_in",
+   "path": "index.html",
+   "pattern": "<tr><td>Consistency Rule</td><td class=\"\">None</td>"
+  },
+  {
+   "id": "futures-1step-consistency-none",
+   "desc": "Futures 1-Step challenge shows no consistency rule; the Instant (funded) column keeps 50%",
+   "type": "present_in",
+   "path": "futures/index.html",
+   "pattern": "<td class=\"\">50% max single day</td><td class=\"pop-col\">None</td>"
   }
  ]
 }
