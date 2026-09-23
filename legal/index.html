@@ -116,6 +116,7 @@
         Start: $100,000 → Low: $95,600 → Loss: $4,400 → <span class="vio">Violation</span>
       </div>
 
+      <p><strong>Soft breach:</strong> hitting the Daily Loss Limit is a <strong>soft breach</strong>. The account is paused and no further trades can be placed until the server reset. If the Daily Loss Limit is hit again within 7 days of that soft breach, the account is breached and closed. Instant accounts have no Daily Loss Limit, so this does not apply to them.</p>
       <h4>2. Maximum Loss Limit (MLL)</h4>
       <p>The MLL is a trailing loss limit referenced to the highest equity (balance + floating/open P&L) your account has reached. It moves up as the account makes profits and never moves down after losses. It is <strong>not capped at the starting balance</strong> - as your account grows, the floor keeps trailing up with it. On all Fewpips accounts the MLL is a trailing Maximum Loss Limit.</p>
       <table class="rules-tbl">
@@ -191,7 +192,8 @@
       <h4>8. Rule Enforcement</h4>
       <ul>
         <li>All rules apply to floating and closed trades.</li>
-        <li>Violations immediately breach the account.</li>
+        <li><strong>Daily Loss Limit - soft breach:</strong> hitting the Daily Loss Limit pauses the account. No further trades can be placed until the server reset. Hitting it again within 7 days of that soft breach breaches the account and it is closed.</li>
+        <li>Every other rule violation, including the Maximum Loss Limit, breaches the account immediately.</li>
         <li>The system always uses the lowest equity point for rule checks.</li>
         <li><strong>Account Activity:</strong> Accounts in the Challenge Phase will be marked inactive if no trades are placed for 7 consecutive days. Inactive accounts will be deactivated. One executed trade resets the timer.</li>
       </ul>
@@ -530,12 +532,11 @@
           <tr><td>Max Drawdown (Trailing)</td><td>8% - 10% by account size</td></tr>
           <tr><td>Trailing Type</td><td>Equity peak trailing (floor never falls)</td></tr>
           <tr><td>Min. Trading Days</td><td>2 - 3 days by account size</td></tr>
-          <tr><td>Consistency Rule</td><td>50% max single day (of profit target)</td></tr>
           <tr><td>Profit Split (post-pass)</td><td>Up to 90% (80% first 3 payouts, 90% from 4th)</td></tr>
           <tr><td>Payouts (post-pass)</td><td>Every 5 business days</td></tr>
           <tr><td>Minimum Withdrawal</td><td>$100 USD</td></tr>
           <tr><td>EAs</td><td>Allowed with pre-approval</td></tr>
-          <tr><td>Weekend Holding</td><td>Allowed</td></tr>
+          <tr><td>Weekend Holding</td><td>Not permitted</td></tr>
           <tr><td>Inactivity Cancellation</td><td>14 consecutive days</td></tr>
         </tbody>
       </table>
@@ -553,6 +554,7 @@
         <strong>Example - $50,000 1-Step Challenge:</strong> Daily loss limit = 4% = $2,000. Start: $50,000 → Low: $48,200 → Loss: $1,800 → <span class="ok">OK</span>. Start: $50,000 → Low: $47,900 → Loss: $2,100 → <span class="vio">Violation</span>.
       </div>
 
+      <p><strong>Soft breach:</strong> hitting the Daily Loss Limit is a <strong>soft breach</strong>. The account is paused and no further trades can be placed until the server reset. If the Daily Loss Limit is hit again within 7 days of that soft breach, the account is breached and closed. Instant accounts have no Daily Loss Limit, so this does not apply to them.</p>
       <h4>3. Max Drawdown - Trailing</h4>
       <p>The MLL is a trailing loss limit referenced to the highest equity (balance + floating/open P&L) your account has reached. It moves up as the account makes profits and never moves down after losses. It is <strong>not capped at the starting balance</strong> - as your account grows, the floor keeps trailing up with it. On all Fewpips accounts the MLL is a trailing Maximum Loss Limit.</p>
       <div class="example-box">
@@ -566,20 +568,14 @@
       <h4>4. Minimum Trading Days</h4>
       <p>2 - 3 active trading days per account size. Days do not need to be consecutive. To qualify as an active trading day, at least 1 trade must be held open for <strong>3 minutes or more</strong>. The "No Minimum Trading Days" add-on removes this requirement entirely.</p>
 
-      <h4>5. Consistency Rule</h4>
-      <p>No single trading day's profit may exceed <strong>50% of the profit target</strong>. This prevents reaching the target through a single aggressive day. If the threshold is exceeded the trader must continue trading to grow total profit until the flagged day falls within 50% or less.</p>
-      <div class="example-box">
-        <strong>Example - $50K Challenge, 5% target ($2,500):</strong> No single day can earn more than $1,250 (50% of target).
-      </div>
-
-      <h4>6. News Trading Policy</h4>
+      <h4>5. News Trading Policy</h4>
       <p>Trading prohibited 5 minutes before and 5 minutes after high-impact news. Restricted events: FOMC, NFP, CPI, interest rate decisions.</p>
 
-      <h4>7. EAs &amp; Bots</h4>
+      <h4>6. EAs &amp; Bots</h4>
       <p>EAs and automated bots are <strong>allowed with prior approval</strong> on the Future Based CFDs 1-Step Challenge. Submit strategy documentation for review.</p>
       <p><strong>Prohibited:</strong> HFT, latency arbitrage, tick manipulation, extreme grids/martingales, replication across multi-IPs, copy trading.</p>
 
-      <h4>8. Prohibited Activities</h4>
+      <h4>7. Prohibited Activities</h4>
       <ul>
         <li><strong>Same-account hedging</strong> &mdash; Holding simultaneously opposing positions (both long and short) on the same symbol within a single account is prohibited. This includes directly offsetting positions and partial hedges intended to lock equity, neutralise drawdown, or game profit-target/loss-limit rules.</li><li>Hedging between multiple accounts</li>
         <li><strong>Multiple IP abuse</strong> - A trader's Fewpips profile may be accessed from no more than three distinct IP addresses, counted across all accounts held and for the lifetime of the profile. Access from a fourth or further distinct address is classified as multiple IP abuse and is prohibited. The limit corresponds to the three-device access limit and applies regardless of whether the addresses are fixed-line, mobile or VPN in origin.</li>
@@ -599,19 +595,21 @@
 
       <p><strong>Engaging in any of the prohibited activities above will result in immediate termination of the account.</strong></p>
 
-      <h4>9. Allowed Instruments</h4>
+      <h4>8. Allowed Instruments</h4>
       <p>41 symbols across 7 asset categories: Indices, Metals, Energy, FX/Dollar, Commodities, Bonds, Volatility. All instruments are Feed -F futures-based CFDs that replicate real futures prices without overnight swap. They are <strong>not</strong> real exchange contracts from CME, NYMEX, or any other regulated exchange.</p>
 
-      <h4>10. Contract Expiry</h4>
+      <h4>9. Contract Expiry</h4>
       <p>All Future Based CFD instruments carry real expiry dates. Traders are responsible for monitoring contract expiry and closing or rolling positions before expiration. Feed -F instruments carry rolling quarterly expiration managed by the provider. Positions held through an expiry date may be forcibly closed at the prevailing market price.</p>
 
-      <h4>11. Enforcement, Inactivity &amp; Limits</h4>
+      <h4>10. Enforcement, Inactivity &amp; Limits</h4>
       <ul>
-        <li>All rules apply to floating and closed trades. Violations immediately breach the account - no grace period.</li>
+        <li>All rules apply to floating and closed trades.</li>
+        <li><strong>Daily Loss Limit - soft breach:</strong> hitting the Daily Loss Limit pauses the account until the server reset. Hitting it again within 7 days of that soft breach breaches the account and it is closed.</li>
+        <li>Every other rule violation, including the trailing Max Drawdown, breaches the account immediately - no grace period.</li>
         <li>System uses the lowest equity point of the day for daily loss checks.</li>
         <li>14 consecutive calendar days of no trading triggers automatic cancellation.</li>
         <li>Maximum of <strong>5 simultaneous Future Based CFD accounts</strong> per trader.</li>
-        <li>Weekend holding is permitted on Futures CFDs.</li>
+        <li>Weekend holding is <strong>not permitted</strong> on Futures CFDs.</li>
       </ul>
 
       <hr class="sec-rule"/>
