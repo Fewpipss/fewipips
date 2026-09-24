@@ -518,7 +518,7 @@
    "id": "instant-100k-terms-chunk",
    "desc": "/terms/ tier exception mirrored in the terms chunk or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klr.js",
+   "path": "_next/static/chunks/0he1vgjwt7kls.js",
    "pattern": "Instant $100K exception"
   },
   {
@@ -571,7 +571,7 @@
    "id": "instant-ea-approval-faq-chunk",
    "desc": "/faq/ Instant rules answer carries the EA approval bracket (chunk = what hydration renders)",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eya.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyb.js",
    "pattern": "add-ons for that account (must seek approval from Fewpips)."
   },
   {
@@ -599,7 +599,7 @@
    "id": "instant-100k-ea-addon-terms-chunk",
    "desc": "/terms/ EA add-on approval mirrored in the terms chunk word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klr.js",
+   "path": "_next/static/chunks/0he1vgjwt7kls.js",
    "pattern": "paid add-ons for that account, with Expert Advisors subject to Fewpips approval"
   },
   {
@@ -688,7 +688,7 @@
    "id": "faq-sept-questions-chunk",
    "desc": "September top questions in the hydrating FAQ chunk, or hydration wipes them",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eya.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyb.js",
    "pattern": "Can I reset my account?"
   },
   {
@@ -756,7 +756,7 @@
    "id": "faq-partial-withdrawal-chunk",
    "desc": "Partial payout answer in the hydrating FAQ chunk, or hydration wipes it",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eya.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyb.js",
    "pattern": "Can I withdraw part of my balance?"
   },
   {
@@ -770,7 +770,7 @@
    "id": "faq-increase-consistency-price-chunk",
    "desc": "Increase Consistency Rule add-on price in the hydrating FAQ chunk",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eya.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyb.js",
    "pattern": "Cost: +12.5% of the challenge fee."
   },
   {
@@ -791,7 +791,7 @@
    "id": "terms-min-payout-100-chunk",
    "desc": "/terms/ payout clause in the hydrating terms chunk, word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klr.js",
+   "path": "_next/static/chunks/0he1vgjwt7kls.js",
    "pattern": "Minimum payout is $100 USD on CFD and Futures accounts."
   },
   {
@@ -950,6 +950,40 @@
    "type": "present_in",
    "path": "futures/index.html",
    "pattern": "<td class=\"\">50% max single day</td><td class=\"pop-col\">None</td>"
+  },
+  {
+   "id": "futures-naming",
+   "desc": "Product is named Futures, not Future Based CFDs (Nick 2026-09-23). Lowercase 'futures-based CFDs' as a description is fine and stays",
+   "type": "absent",
+   "pattern": "Future Based CFD"
+  },
+  {
+   "id": "futures-naming-hyphen",
+   "desc": "The hyphenated Futures-Based CFD name must not come back either",
+   "type": "absent",
+   "pattern": "Futures-Based CFD"
+  },
+  {
+   "id": "futures-disclaimer-landing",
+   "desc": "Nick's Futures disclaimer on the /futures landing page (compliance, 2026-09-23)",
+   "type": "present_in",
+   "path": "futures/index.html",
+   "pattern": "References to &quot;Futures&quot; on this platform"
+  },
+  {
+   "id": "futures-disclaimer-hydrates",
+   "desc": "The same disclaimer is in the futures chunk, or hydration wipes it off the page",
+   "type": "present_in",
+   "path": "_next/static/chunks/0uj1y.q_i1wzz.js",
+   "pattern": "refer to futures-based Contracts for Difference (CFDs)"
+  },
+  {
+   "id": "futures-disclaimer-legal",
+   "desc": "The disclaimer also sits on both Futures rule documents on /legal",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "What Futures means on Fewpips",
+   "min": "2"
   }
  ]
 }
