@@ -18,9 +18,9 @@
 
   // Top 3 performers (25 August - 12 September 2026). Full leaderboard lives on the proof page.
   var LEADERS = [
-    { rank: 1, name: "Freya Nakamura", amount: "$13,981.87", account: "Future Based CFD · Instant" },
+    { rank: 1, name: "Freya Nakamura", amount: "$13,981.87", account: "Futures · Instant" },
     { rank: 2, name: "Sofía Bermúdez", amount: "$13,091.22", account: "CFD · Instant" },
-    { rank: 3, name: "Anaïs Leclerc", amount: "$9,792.08", account: "Future Based CFD · 1-Step" }
+    { rank: 3, name: "Anaïs Leclerc", amount: "$9,792.08", account: "Futures · 1-Step" }
   ];
 
   function injectStyles() {
