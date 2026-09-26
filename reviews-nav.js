@@ -9,7 +9,29 @@
     { href: "/proof/", label: "Proof" }
   ];
 
+  /* The Resources bubble is a single nowrap row. Four links fit a phone; the three
+     added below push it to 641px inside a 390px viewport, so FAQ and Proof end up
+     off-screen and Contact/Reviews are sliced (Dj, mobile menu screenshot 25.9).
+     Let it wrap inside the hamburger menu only - the desktop bar has the room and
+     must stay one row. Injected here so the fix travels with the links that cause
+     it, same self-contained pattern as header-dropdown.js. */
+  function injectStyles() {
+    if (document.getElementById("rv-mm-css")) return;
+    var css = document.createElement("style");
+    css.id = "rv-mm-css";
+    css.textContent = [
+      ".mm .nav-toggle--mm{flex-wrap:wrap;justify-content:center;gap:4px;",
+      "max-width:calc(100vw - 32px);border-radius:22px;padding:6px}",
+      // .mm a is width:100% with a divider - fine for the stacked links, but it
+      // would drop every pill onto its own line the moment wrapping is allowed
+      ".mm .nav-toggle--mm a{width:auto!important;border-bottom:none!important;",
+      "padding:9px 16px!important}"
+    ].join("");
+    document.head.appendChild(css);
+  }
+
   function add() {
+    injectStyles();
     var groups = document.querySelectorAll('.nav-toggle[aria-label="Resources"]');
     for (var i = 0; i < groups.length; i++) {
       var g = groups[i];

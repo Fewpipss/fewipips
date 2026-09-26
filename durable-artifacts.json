@@ -984,6 +984,20 @@
    "path": "legal/index.html",
    "pattern": "What Futures means on Fewpips",
    "min": "2"
+  },
+  {
+   "id": "mobile-menu-resources-wraps",
+   "desc": "The Resources bubble must wrap inside the hamburger menu - 7 links in one nowrap row overflow a phone and FAQ/Proof become untappable (Dj, 2026-09-25)",
+   "type": "present_in",
+   "path": "reviews-nav.js",
+   "pattern": ".mm .nav-toggle--mm{flex-wrap:wrap"
+  },
+  {
+   "id": "mobile-menu-pills-keep-width",
+   "desc": "Pills must override the .mm a width:100% rule, or wrapping drops every link onto its own line and the product toggle splits in two",
+   "type": "present_in",
+   "path": "reviews-nav.js",
+   "pattern": "width:auto!important"
   }
  ]
 }
