@@ -82,6 +82,18 @@ const ANNOUNCEMENTS: { start: string; end: string; img: string; imgM: string; al
     imgM: "/promo/strike-ext-2026-m.jpg",
     alt: "Fewpips STRIKE promo extended - buy one get one free, code STRIKE, ends Sep 18 23:59 ET",
   },
+  {
+    // The Last Strike - Gold Rush finale, 72 hours (Nick's marketing calendar, asked
+    // for it on the site too, TG #14129). Pick any deal of the Rush (Claim, Strike or
+    // Motherlode terms), every order counts 3x toward the $100K Grand Nugget draw.
+    // Window is Nick's: opens Mon Sep 28 09:00 ET, hard close Wed Sep 30 23:59 ET.
+    // Self-expires at the close, nothing to remove afterwards.
+    start: "2026-09-28T09:00:00-04:00",
+    end: "2026-09-30T23:59:59-04:00",
+    img: "/promo/laststrike-2026.png",
+    imgM: "/promo/laststrike-2026-m.png",
+    alt: "Fewpips The Last Strike - pick any deal of the Gold Rush, code LASTSTRIKE, ends Sep 30 23:59 ET",
+  },
 ];
 
 function pickDate(reqUrl: string): string {

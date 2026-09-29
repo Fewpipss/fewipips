@@ -1040,6 +1040,42 @@
    "type": "present_in",
    "path": "blog/account-types-and-sizes/index.html",
    "pattern": "Futures Instant accounts are $10K, $30K, $60K and $120K"
+  },
+  {
+   "id": "blog-account-ladder-current",
+   "desc": "The shared blog FAQ block must carry both full ladders - it was missing the $100K CFD Instant and the $120K Futures Instant until 2026-09-29",
+   "type": "present_in",
+   "path": "blog/account-types-and-sizes/index.html",
+   "pattern": "Futures Instant accounts are $10K, $30K, $60K and $120K",
+   "id": "last-strike-announcement",
+   "desc": "The Last Strike promo window in the middleware (Nick TG #14129) - Sep 28 09:00 to Sep 30 23:59 ET, self-expires",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "/promo/laststrike-2026.png"
+  },
+  {
+   "id": "last-strike-image",
+   "desc": "Last Strike desktop banner (webp is what the picture element actually serves)",
+   "type": "file_exists",
+   "path": "promo/laststrike-2026.webp"
+  },
+  {
+   "id": "last-strike-image-m",
+   "desc": "Last Strike mobile banner - this is the mobile LCP element",
+   "type": "file_exists",
+   "path": "promo/laststrike-2026-m.webp"
+  },
+  {
+   "id": "last-strike-png",
+   "desc": "Last Strike desktop png fallback, and the href the middleware preload is derived from",
+   "type": "file_exists",
+   "path": "promo/laststrike-2026.png"
+  },
+  {
+   "id": "last-strike-png-m",
+   "desc": "Last Strike mobile png fallback",
+   "type": "file_exists",
+   "path": "promo/laststrike-2026-m.png"
   }
  ]
 }
