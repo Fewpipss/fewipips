@@ -330,17 +330,25 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
             el.append(strikeBarStyle(), { html: true });
             el.append(strikeBarBoot, { html: true });
           }
-          // The promo banner is the mobile LCP element and its markup is injected by
-          // script AFTER hydration - preload today's image so it paints instantly.
+          // The banner markup is injected by script AFTER hydration, so preload the
+          // image or it pops in late.
+          //
+          // NOT fetchpriority="high". That was written when the banner was the mobile
+          // LCP element; with the current hero it is not - it sits below the fold,
+          // under a 100vh hero whose mascot image is what actually paints first.
+          // High priority made a below-the-fold 116KB image race the 72KB mascot:
+          // both started at 99ms and mobile LCP went 2.22s -> 2.90s (measured A/B on
+          // production via ?_promoDate). Default priority keeps the preload early
+          // enough to avoid the pop-in while letting the hero win the race.
           if (b) {
             el.append(
               '<link rel="preload" as="image" href="' + b.imgM.replace(/\.(png|jpg)$/, ".webp") +
-                '" media="(max-width:640px)" fetchpriority="high">',
+                '" media="(max-width:640px)">',
               { html: true },
             );
             el.append(
               '<link rel="preload" as="image" href="' + b.img.replace(/\.(png|jpg)$/, ".webp") +
-                '" media="(min-width:641px)" fetchpriority="high">',
+                '" media="(min-width:641px)">',
               { html: true },
             );
           }
