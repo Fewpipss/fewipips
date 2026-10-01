@@ -1076,6 +1076,20 @@
    "desc": "Last Strike mobile png fallback",
    "type": "file_exists",
    "path": "promo/laststrike-2026-m.png"
+  },
+  {
+   "id": "legal-one-sided-defined-all-tabs",
+   "desc": "One-sided betting carries its 90% definition in the Prohibited Activities list of ALL 5 rule sets (Nick TG #14260, 2026-09-30) - a bare bullet is what he asked us to replace",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "<strong>One-sided betting</strong> &mdash; Where more than 90%",
+   "min": "5"
+  },
+  {
+   "id": "legal-one-sided-no-bare-bullet",
+   "desc": "The undefined one-line version must not come back on any tab",
+   "type": "absent",
+   "pattern": "<li>One-sided betting</li>"
   }
  ]
 }
