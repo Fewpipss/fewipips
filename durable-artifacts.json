@@ -320,7 +320,7 @@
    "id": "paidout-800k",
    "desc": "hero Paid Out + Paid to Traders counters target $800K+ (Nick TG #13400, certificates total $814K) - was 600K",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x6.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
    "pattern": "count:8e5"
   },
   {
@@ -462,28 +462,28 @@
    "id": "instant-100k-compare-col",
    "desc": "Instant $100K column present in the homepage Compare table data, max loss shows 10% only (Nick: no dollar figure, it is a trailing drawdown)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x6.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
    "pattern": "size:\"$100K\",drawdown:\"10%\",minDays:\"3\""
   },
   {
    "id": "instant-100k-price",
    "desc": "Instant $100K price $1,699 on the pricing data (Compare + configurator)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x6.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
    "pattern": "price:\"1,699\""
   },
   {
    "id": "instant-100k-configurator",
    "desc": "Instant $100K size + price wired into the Challenges configurator",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x6.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
    "pattern": "1e5:\"1,699\""
   },
   {
    "id": "instant-100k-new-badge",
    "desc": "NEW badge date gate on the Instant $100K tier (hides after 2026-09-10 23:59 ET)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x6.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
    "pattern": "Date.UTC(2026,8,11,4)"
   },
   {
@@ -518,7 +518,7 @@
    "id": "instant-100k-terms-chunk",
    "desc": "/terms/ tier exception mirrored in the terms chunk or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7kls.js",
+   "path": "_next/static/chunks/0he1vgjwt7klt.js",
    "pattern": "Instant $100K exception"
   },
   {
@@ -544,7 +544,7 @@
    "id": "instant-100k-maxloss-pct-only",
    "desc": "Instant $100K max loss renders as 10% with no dollar figure in the Challenges configurator (Nick, Sep 3) - trailing drawdown, the dollar number moves",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x6.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
    "pattern": "{name:\"Maximum Loss Limit\",value:{3e3:\"$150 (5%)\",5e3:\"$300 (6%)\",1e4:\"$700 (7%)\",25e3:\"$2,250 (9%)\",5e4:\"$5,000 (10%)\",1e5:\"10%\"}}"
   },
   {
@@ -557,21 +557,21 @@
    "id": "instant-ea-approval-configurator",
    "desc": "Instant configurator EAs row carries the Fewpips approval bracket (Nick, Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x6.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
    "pattern": "{name:\"EAs\",value:\"Allowed (must seek approval from Fewpips)\""
   },
   {
    "id": "instant-ea-approval-compare-note",
    "desc": "Compare table Instant-tab note carries the EA approval bracket (Nick, Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x6.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
    "pattern": "EAs allowed (must seek approval from Fewpips)."
   },
   {
    "id": "instant-ea-approval-faq-chunk",
    "desc": "/faq/ Instant rules answer carries the EA approval bracket (chunk = what hydration renders)",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyc.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyd.js",
    "pattern": "add-ons for that account (must seek approval from Fewpips)."
   },
   {
@@ -599,7 +599,7 @@
    "id": "instant-100k-ea-addon-terms-chunk",
    "desc": "/terms/ EA add-on approval mirrored in the terms chunk word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7kls.js",
+   "path": "_next/static/chunks/0he1vgjwt7klt.js",
    "pattern": "paid add-ons for that account, with Expert Advisors subject to Fewpips approval"
   },
   {
@@ -688,7 +688,7 @@
    "id": "faq-sept-questions-chunk",
    "desc": "September top questions in the hydrating FAQ chunk, or hydration wipes them",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyc.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyd.js",
    "pattern": "Can I reset my account?"
   },
   {
@@ -756,7 +756,7 @@
    "id": "faq-partial-withdrawal-chunk",
    "desc": "Partial payout answer in the hydrating FAQ chunk, or hydration wipes it",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyc.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyd.js",
    "pattern": "Can I withdraw part of my balance?"
   },
   {
@@ -770,7 +770,7 @@
    "id": "faq-increase-consistency-price-chunk",
    "desc": "Increase Consistency Rule add-on price in the hydrating FAQ chunk",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyc.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyd.js",
    "pattern": "Cost: +12.5% of the challenge fee."
   },
   {
@@ -791,7 +791,7 @@
    "id": "terms-min-payout-100-chunk",
    "desc": "/terms/ payout clause in the hydrating terms chunk, word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7kls.js",
+   "path": "_next/static/chunks/0he1vgjwt7klt.js",
    "pattern": "Minimum payout is $100 USD on CFD and Futures accounts."
   },
   {
@@ -933,7 +933,7 @@
    "id": "home-consistency-none-rows",
    "desc": "The 15 CFD challenge rows (1-Step, 2-Step, 3-Step) carry consistency None",
    "type": "count_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x6.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
    "pattern": "consistency:\"None\"",
    "min": "16"
   },
@@ -974,7 +974,7 @@
    "id": "futures-disclaimer-hydrates",
    "desc": "The same disclaimer is in the futures chunk, or hydration wipes it off the page",
    "type": "present_in",
-   "path": "_next/static/chunks/0uj1y.q_i1x00.js",
+   "path": "_next/static/chunks/0uj1y.q_i1x01.js",
    "pattern": "refer to futures-based Contracts for Difference (CFDs)"
   },
   {
@@ -1024,14 +1024,14 @@
    "id": "futures-instant-120k-hydrates",
    "desc": "Same range in the futures chunk, or hydration reverts the table to $10K - $60K",
    "type": "present_in",
-   "path": "_next/static/chunks/0uj1y.q_i1x00.js",
+   "path": "_next/static/chunks/0uj1y.q_i1x01.js",
    "pattern": "sizes:\"$10K – $120K\""
   },
   {
    "id": "futures-instant-120k-faq",
    "desc": "The /faq Futures tab lists the $120K too (answers live in the chunk only, not in faq/index.html)",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyc.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyd.js",
    "pattern": "Instant Account: $10K, $30K, $60K, $120K."
   },
   {
@@ -1090,6 +1090,33 @@
    "desc": "The undefined one-line version must not come back on any tab",
    "type": "absent",
    "pattern": "<li>One-sided betting</li>"
+  },
+  {
+   "id": "discord-dead-invite-gone",
+   "desc": "The expired Discord invite 3UTqHFJPAC must never come back - it lands on Discord's Invite Invalid page (Nick TG #14417, 2026-10-02)",
+   "type": "absent",
+   "pattern": "discord.gg/3UTqHFJPAC"
+  },
+  {
+   "id": "discord-invite-home",
+   "desc": "Homepage carries the permanent invite hSyvuVYeRN (never expires, Fewpips server) - footer + CTA",
+   "type": "present_in",
+   "path": "index.html",
+   "pattern": "discord.gg/hSyvuVYeRN"
+  },
+  {
+   "id": "discord-invite-sticky-bar",
+   "desc": "The Join our Discord sticky bar injector uses the permanent invite",
+   "type": "present_in",
+   "path": "sticky-split.js",
+   "pattern": "discord.gg/hSyvuVYeRN"
+  },
+  {
+   "id": "discord-invite-hydrates",
+   "desc": "Same invite in the sticky Discord component chunk, or hydration puts the dead link back",
+   "type": "present_in",
+   "path": "_next/static/chunks/16fasywtg1r_6.js",
+   "pattern": "discord.gg/hSyvuVYeRN"
   }
  ]
 }

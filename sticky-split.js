@@ -5,7 +5,7 @@
    back on the next navigation or refresh. Own non-React element so it stays put. */
 (function () {
   var BAR_ID = "sd-split-bar";
-  var DISCORD_URL = "https://discord.gg/3UTqHFJPAC";
+  var DISCORD_URL = "https://discord.gg/hSyvuVYeRN";
   var TELEGRAM_URL = "https://t.me/FewpipsSupport";
   var closed = false; // per-view close; reset on navigation/refresh
 
