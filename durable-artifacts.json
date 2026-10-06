@@ -320,7 +320,7 @@
    "id": "paidout-800k",
    "desc": "hero Paid Out + Paid to Traders counters target $800K+ (Nick TG #13400, certificates total $814K) - was 600K",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x8.js",
    "pattern": "count:8e5"
   },
   {
@@ -462,28 +462,28 @@
    "id": "instant-100k-compare-col",
    "desc": "Instant $100K column present in the homepage Compare table data, max loss shows 10% only (Nick: no dollar figure, it is a trailing drawdown)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x8.js",
    "pattern": "size:\"$100K\",drawdown:\"10%\",minDays:\"3\""
   },
   {
    "id": "instant-100k-price",
    "desc": "Instant $100K price $1,699 on the pricing data (Compare + configurator)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x8.js",
    "pattern": "price:\"1,699\""
   },
   {
    "id": "instant-100k-configurator",
    "desc": "Instant $100K size + price wired into the Challenges configurator",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x8.js",
    "pattern": "1e5:\"1,699\""
   },
   {
    "id": "instant-100k-new-badge",
    "desc": "NEW badge date gate on the Instant $100K tier (hides after 2026-09-10 23:59 ET)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x8.js",
    "pattern": "Date.UTC(2026,8,11,4)"
   },
   {
@@ -544,7 +544,7 @@
    "id": "instant-100k-maxloss-pct-only",
    "desc": "Instant $100K max loss renders as 10% with no dollar figure in the Challenges configurator (Nick, Sep 3) - trailing drawdown, the dollar number moves",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x8.js",
    "pattern": "{name:\"Maximum Loss Limit\",value:{3e3:\"$150 (5%)\",5e3:\"$300 (6%)\",1e4:\"$700 (7%)\",25e3:\"$2,250 (9%)\",5e4:\"$5,000 (10%)\",1e5:\"10%\"}}"
   },
   {
@@ -557,14 +557,14 @@
    "id": "instant-ea-approval-configurator",
    "desc": "Instant configurator EAs row carries the Fewpips approval bracket (Nick, Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x8.js",
    "pattern": "{name:\"EAs\",value:\"Allowed (must seek approval from Fewpips)\""
   },
   {
    "id": "instant-ea-approval-compare-note",
    "desc": "Compare table Instant-tab note carries the EA approval bracket (Nick, Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x8.js",
    "pattern": "EAs allowed (must seek approval from Fewpips)."
   },
   {
@@ -933,7 +933,7 @@
    "id": "home-consistency-none-rows",
    "desc": "The 15 CFD challenge rows (1-Step, 2-Step, 3-Step) carry consistency None",
    "type": "count_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x8.js",
    "pattern": "consistency:\"None\"",
    "min": "16"
   },
@@ -974,7 +974,7 @@
    "id": "futures-disclaimer-hydrates",
    "desc": "The same disclaimer is in the futures chunk, or hydration wipes it off the page",
    "type": "present_in",
-   "path": "_next/static/chunks/0uj1y.q_i1x01.js",
+   "path": "_next/static/chunks/0uj1y.q_i1x02.js",
    "pattern": "refer to futures-based Contracts for Difference (CFDs)"
   },
   {
@@ -1024,7 +1024,7 @@
    "id": "futures-instant-120k-hydrates",
    "desc": "Same range in the futures chunk, or hydration reverts the table to $10K - $60K",
    "type": "present_in",
-   "path": "_next/static/chunks/0uj1y.q_i1x01.js",
+   "path": "_next/static/chunks/0uj1y.q_i1x02.js",
    "pattern": "sizes:\"$10K – $120K\""
   },
   {
@@ -1117,6 +1117,39 @@
    "type": "present_in",
    "path": "_next/static/chunks/16fasywtg1r_6.js",
    "pattern": "discord.gg/hSyvuVYeRN"
+  },
+  {
+   "id": "home-funded-traders-15k",
+   "desc": "Hero shows 15,000+ Funded Traders, written out in full (Nick TG #14553, 2026-10-06)",
+   "type": "present_in",
+   "path": "index.html",
+   "pattern": "<span>15,000<!-- -->+</span></strong><span>Funded Traders"
+  },
+  {
+   "id": "counters-no-zero-placeholder",
+   "desc": "No stat counter may ship a $0K placeholder in the static HTML - slow-JS visitors and crawlers saw $0K+ Paid to Traders (Nick TG #14462)",
+   "type": "absent",
+   "pattern": "<span>$<!-- -->0<!-- -->K"
+  },
+  {
+   "id": "counters-strip-no-zero",
+   "desc": "Same for the stats strip under the hero",
+   "type": "absent",
+   "pattern": "<div class=\"stat-num\">$<!-- -->0"
+  },
+  {
+   "id": "countup-starts-final-home",
+   "desc": "CountUp starts from the final value and formats en-US, so a counter is never stuck at 0 and never renders locale digits (Arabic 0 looks like a dot)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x8.js",
+   "pattern": "[c,d]=(0,s.useState)(u)"
+  },
+  {
+   "id": "countup-en-us-futures",
+   "desc": "Futures hero counters format en-US too",
+   "type": "present_in",
+   "path": "_next/static/chunks/0uj1y.q_i1x02.js",
+   "pattern": "toLocaleString(\"en-US\")"
   }
  ]
 }
