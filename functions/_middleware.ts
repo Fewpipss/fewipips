@@ -63,7 +63,7 @@ const SCHEDULE: Record<string, { img: string; imgM: string; alt: string }> = {
  * outside its window the daily SCHEDULE takes over again with nothing else to change.
  * Timestamps carry their own offset (-04:00 = EDT), so no timezone maths here.
  */
-const ANNOUNCEMENTS: { start: string; end: string; img: string; imgM: string; alt: string }[] = [
+const ANNOUNCEMENTS: { start: string; end: string; img: string; imgM: string; alt: string; paths?: string[] }[] = [
   {
     // Instant $100K launch. Live from deploy, auto-hides Fri 5 Sep 2026 18:00 US Eastern.
     // While it runs it supersedes the Claim Week banner on 3 and 4 Sep.
@@ -94,6 +94,26 @@ const ANNOUNCEMENTS: { start: string; end: string; img: string; imgM: string; al
     imgM: "/promo/laststrike-2026-m.png",
     alt: "Fewpips The Last Strike - pick any deal of the Gold Rush, code LASTSTRIKE, ends Sep 30 23:59 ET",
   },
+  {
+    // $200K Instant launch (Nick TG #14805-#14808, live Oct 8; artwork Dusan #14865).
+    // One banner per product, each on its own page via `paths`: the CFD account on the
+    // homepage, the Futures account on /futures. Two-week launch window - no end date was
+    // given, so this is our default; move `end` if Nick wants it shorter or longer.
+    start: "2026-10-08T11:00:00-04:00",
+    end: "2026-10-22T23:59:59-04:00",
+    img: "/promo/cfd-instant-200k.png",
+    imgM: "/promo/cfd-instant-200k-m.png",
+    alt: "New Fewpips CFD Instant $200K account - $2,599, no consistency rule, no withdrawal limit",
+    paths: ["/"],
+  },
+  {
+    start: "2026-10-08T11:00:00-04:00",
+    end: "2026-10-22T23:59:59-04:00",
+    img: "/promo/futures-instant-200k.png",
+    imgM: "/promo/futures-instant-200k-m.png",
+    alt: "New Fewpips Futures Instant $200K account - $1,299, no consistency rule, no withdrawal limit",
+    paths: ["/futures"],
+  },
 ];
 
 function pickDate(reqUrl: string): string {
@@ -112,7 +132,10 @@ function pickNow(reqUrl: string): number {
 
 function pickBanner(reqUrl: string): { img: string; imgM: string; alt: string } | null {
   const now = pickNow(reqUrl);
+  // an announcement with `paths` only shows on those pages ("/futures/" and "/futures" match)
+  const path = new URL(reqUrl).pathname.replace(/\/+$/, "") || "/";
   for (const a of ANNOUNCEMENTS) {
+    if (a.paths && !a.paths.includes(path)) continue;
     if (now >= Date.parse(a.start) && now < Date.parse(a.end)) return a;
   }
   return SCHEDULE[pickDate(reqUrl)] || null;
@@ -330,17 +353,25 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
             el.append(strikeBarStyle(), { html: true });
             el.append(strikeBarBoot, { html: true });
           }
-          // The promo banner is the mobile LCP element and its markup is injected by
-          // script AFTER hydration - preload today's image so it paints instantly.
+          // The banner markup is injected by script AFTER hydration, so preload the
+          // image or it pops in late.
+          //
+          // NOT fetchpriority="high". That was written when the banner was the mobile
+          // LCP element; with the current hero it is not - it sits below the fold,
+          // under a 100vh hero whose mascot image is what actually paints first.
+          // High priority made a below-the-fold 116KB image race the 72KB mascot:
+          // both started at 99ms and mobile LCP went 2.22s -> 2.90s (measured A/B on
+          // production via ?_promoDate). Default priority keeps the preload early
+          // enough to avoid the pop-in while letting the hero win the race.
           if (b) {
             el.append(
               '<link rel="preload" as="image" href="' + b.imgM.replace(/\.(png|jpg)$/, ".webp") +
-                '" media="(max-width:640px)" fetchpriority="high">',
+                '" media="(max-width:640px)">',
               { html: true },
             );
             el.append(
               '<link rel="preload" as="image" href="' + b.img.replace(/\.(png|jpg)$/, ".webp") +
-                '" media="(min-width:641px)" fetchpriority="high">',
+                '" media="(min-width:641px)">',
               { html: true },
             );
           }
