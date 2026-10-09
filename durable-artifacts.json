@@ -555,17 +555,17 @@
   },
   {
    "id": "instant-ea-approval-configurator",
-   "desc": "Instant configurator EAs row carries the Fewpips approval bracket (Nick, Sep 3)",
+   "desc": "Instant configurator EAs row: not allowed on $3K-$50K, paid add-on with Fewpips approval on $100K and $200K (Dylan TG #14886, 2026-10-09; approval bracket from Nick Sep 3)",
    "type": "present_in",
    "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
-   "pattern": "{name:\"EAs\",value:\"Allowed (must seek approval from Fewpips)\""
+   "pattern": "1e5:\"Paid add-on (approval required)\",2e5:\"Paid add-on (approval required)\""
   },
   {
    "id": "instant-ea-approval-compare-note",
-   "desc": "Compare table Instant-tab note carries the EA approval bracket (Nick, Sep 3)",
+   "desc": "Compare table Instant-tab note: EAs only as a paid add-on, approval required (Dylan TG #14886; Nick Sep 3)",
    "type": "present_in",
    "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
-   "pattern": "EAs allowed (must seek approval from Fewpips)."
+   "pattern": "EAs only as a paid add-on on the $100K and $200K (approval required)."
   },
   {
    "id": "instant-ea-approval-faq-chunk",
@@ -1245,6 +1245,33 @@
    "desc": "The banner preload must not be fetchpriority=high - it sits below the 100vh hero and stole ~0.7s of mobile LCP from the mascot (measured A/B, 2026-09-29)",
    "type": "absent",
    "pattern": "media=\"(max-width:640px)\" fetchpriority=\"high\">"
+  },
+  {
+   "id": "instant-profit-split-70-80-90",
+   "desc": "CFD Instant profit split tiers are 70% (first 3), 80% (next 3), 90% from the 7th - the homepage said 70/85/90 after 5/3/8 (Dylan TG #14886)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
+   "pattern": "70% (first 3 withdrawals), 80% (next 3), 90% from the 7th"
+  },
+  {
+   "id": "instant-tiers-no-85",
+   "desc": "The old 85% Instant tier must not come back",
+   "type": "absent",
+   "pattern": "Tier 2 85%"
+  },
+  {
+   "id": "faq-10k-instant-279",
+   "desc": "$10K CFD Instant costs $279 on /faq, matching the homepage price list (Dylan TG #14886)",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "$10K = $279,"
+  },
+  {
+   "id": "futures-instant-ea-addon-only",
+   "desc": "Futures Instant configurator: EAs not allowed on $10K-$60K, paid add-on on $120K and $200K (Dylan TG #14886)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0uj1y.q_i1x03.js",
+   "pattern": "12e4:\"Paid add-on (approval required)\",2e5:\"Paid add-on (approval required)\""
   }
  ]
 }
