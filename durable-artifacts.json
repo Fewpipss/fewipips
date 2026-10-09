@@ -320,7 +320,7 @@
    "id": "paidout-800k",
    "desc": "hero Paid Out + Paid to Traders counters target $800K+ (Nick TG #13400, certificates total $814K) - was 600K",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
    "pattern": "count:8e5"
   },
   {
@@ -462,28 +462,28 @@
    "id": "instant-100k-compare-col",
    "desc": "Instant $100K column present in the homepage Compare table data, max loss shows 10% only (Nick: no dollar figure, it is a trailing drawdown)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
    "pattern": "size:\"$100K\",drawdown:\"10%\",minDays:\"3\""
   },
   {
    "id": "instant-100k-price",
    "desc": "Instant $100K price $1,699 on the pricing data (Compare + configurator)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
    "pattern": "price:\"1,699\""
   },
   {
    "id": "instant-100k-configurator",
    "desc": "Instant $100K size + price wired into the Challenges configurator",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
    "pattern": "1e5:\"1,699\""
   },
   {
    "id": "instant-100k-new-badge",
    "desc": "NEW badge date gate on the Instant $100K tier (hides after 2026-09-10 23:59 ET)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
    "pattern": "Date.UTC(2026,8,11,4)"
   },
   {
@@ -495,10 +495,10 @@
   },
   {
    "id": "instant-100k-faq-sizes",
-   "desc": "/faq/ account-sizes answer covers Instant up to $100K",
+   "desc": "/faq/ account-sizes answer covers Instant up to $200K (CFD Instant $200K, Nick TG #14807, 2026-10-08)",
    "type": "present_in",
    "path": "faq/index.html",
-   "pattern": "Instant Accounts: $3K–$100K"
+   "pattern": "Instant Accounts: $3K–$200K"
   },
   {
    "id": "instant-100k-legal",
@@ -518,7 +518,7 @@
    "id": "instant-100k-terms-chunk",
    "desc": "/terms/ tier exception mirrored in the terms chunk or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klt.js",
+   "path": "_next/static/chunks/0he1vgjwt7klu.js",
    "pattern": "Instant $100K exception"
   },
   {
@@ -544,8 +544,8 @@
    "id": "instant-100k-maxloss-pct-only",
    "desc": "Instant $100K max loss renders as 10% with no dollar figure in the Challenges configurator (Nick, Sep 3) - trailing drawdown, the dollar number moves",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
-   "pattern": "{name:\"Maximum Loss Limit\",value:{3e3:\"$150 (5%)\",5e3:\"$300 (6%)\",1e4:\"$700 (7%)\",25e3:\"$2,250 (9%)\",5e4:\"$5,000 (10%)\",1e5:\"10%\"}}"
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
+   "pattern": "{name:\"Maximum Loss Limit\",value:{3e3:\"$150 (5%)\",5e3:\"$300 (6%)\",1e4:\"$700 (7%)\",25e3:\"$2,250 (9%)\",5e4:\"$5,000 (10%)\",1e5:\"10%\",2e5:\"10%\"}}"
   },
   {
    "id": "instant-100k-no-dollar-maxloss",
@@ -555,23 +555,23 @@
   },
   {
    "id": "instant-ea-approval-configurator",
-   "desc": "Instant configurator EAs row carries the Fewpips approval bracket (Nick, Sep 3)",
+   "desc": "Instant configurator EAs row: not allowed on $3K-$50K, paid add-on with Fewpips approval on $100K and $200K (Dylan TG #14886, 2026-10-09; approval bracket from Nick Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
-   "pattern": "{name:\"EAs\",value:\"Allowed (must seek approval from Fewpips)\""
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
+   "pattern": "1e5:\"Paid add-on (approval required)\",2e5:\"Paid add-on (approval required)\""
   },
   {
    "id": "instant-ea-approval-compare-note",
-   "desc": "Compare table Instant-tab note carries the EA approval bracket (Nick, Sep 3)",
+   "desc": "Compare table Instant-tab note: EAs only as a paid add-on, approval required (Dylan TG #14886; Nick Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
-   "pattern": "EAs allowed (must seek approval from Fewpips)."
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
+   "pattern": "EAs only as a paid add-on on the $100K and $200K (approval required)."
   },
   {
    "id": "instant-ea-approval-faq-chunk",
    "desc": "/faq/ Instant rules answer carries the EA approval bracket (chunk = what hydration renders)",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyd.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eye.js",
    "pattern": "add-ons for that account (must seek approval from Fewpips)."
   },
   {
@@ -599,7 +599,7 @@
    "id": "instant-100k-ea-addon-terms-chunk",
    "desc": "/terms/ EA add-on approval mirrored in the terms chunk word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klt.js",
+   "path": "_next/static/chunks/0he1vgjwt7klu.js",
    "pattern": "paid add-ons for that account, with Expert Advisors subject to Fewpips approval"
   },
   {
@@ -688,7 +688,7 @@
    "id": "faq-sept-questions-chunk",
    "desc": "September top questions in the hydrating FAQ chunk, or hydration wipes them",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyd.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eye.js",
    "pattern": "Can I reset my account?"
   },
   {
@@ -756,7 +756,7 @@
    "id": "faq-partial-withdrawal-chunk",
    "desc": "Partial payout answer in the hydrating FAQ chunk, or hydration wipes it",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyd.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eye.js",
    "pattern": "Can I withdraw part of my balance?"
   },
   {
@@ -770,7 +770,7 @@
    "id": "faq-increase-consistency-price-chunk",
    "desc": "Increase Consistency Rule add-on price in the hydrating FAQ chunk",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyd.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eye.js",
    "pattern": "Cost: +12.5% of the challenge fee."
   },
   {
@@ -791,7 +791,7 @@
    "id": "terms-min-payout-100-chunk",
    "desc": "/terms/ payout clause in the hydrating terms chunk, word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klt.js",
+   "path": "_next/static/chunks/0he1vgjwt7klu.js",
    "pattern": "Minimum payout is $100 USD on CFD and Futures accounts."
   },
   {
@@ -933,7 +933,7 @@
    "id": "home-consistency-none-rows",
    "desc": "The 15 CFD challenge rows (1-Step, 2-Step, 3-Step) carry consistency None",
    "type": "count_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8x7.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
    "pattern": "consistency:\"None\"",
    "min": "16"
   },
@@ -946,10 +946,10 @@
   },
   {
    "id": "futures-1step-consistency-none",
-   "desc": "Futures 1-Step challenge shows no consistency rule; the Instant column keeps 50% except the $120K tier",
+   "desc": "Futures 1-Step challenge shows no consistency rule; the Instant column keeps 50% except the $120K and $200K tiers",
    "type": "present_in",
    "path": "futures/index.html",
-   "pattern": "<td class=\"\">50% max single day ($120K: none)</td><td class=\"pop-col\">None</td>"
+   "pattern": "<td class=\"\">50% max single day ($120K and $200K: none)</td><td class=\"pop-col\">None</td>"
   },
   {
    "id": "futures-naming",
@@ -974,7 +974,7 @@
    "id": "futures-disclaimer-hydrates",
    "desc": "The same disclaimer is in the futures chunk, or hydration wipes it off the page",
    "type": "present_in",
-   "path": "_next/static/chunks/0uj1y.q_i1x01.js",
+   "path": "_next/static/chunks/0uj1y.q_i1x03.js",
    "pattern": "refer to futures-based Contracts for Difference (CFDs)"
   },
   {
@@ -1015,31 +1015,31 @@
   },
   {
    "id": "futures-instant-120k-landing",
-   "desc": "The /futures comparison table must show the $120K in the Instant size range",
+   "desc": "The /futures comparison table shows the full Instant range up to $200K (was $120K until 2026-10-08)",
    "type": "present_in",
    "path": "futures/index.html",
-   "pattern": "$10K – $120K"
+   "pattern": "$10K – $200K"
   },
   {
    "id": "futures-instant-120k-hydrates",
-   "desc": "Same range in the futures chunk, or hydration reverts the table to $10K - $60K",
+   "desc": "Same range in the futures chunk, or hydration reverts the table",
    "type": "present_in",
-   "path": "_next/static/chunks/0uj1y.q_i1x01.js",
-   "pattern": "sizes:\"$10K – $120K\""
+   "path": "_next/static/chunks/0uj1y.q_i1x03.js",
+   "pattern": "sizes:\"$10K – $200K\""
   },
   {
    "id": "futures-instant-120k-faq",
-   "desc": "The /faq Futures tab lists the $120K too (answers live in the chunk only, not in faq/index.html)",
+   "desc": "The /faq Futures tab lists every Instant size (answers live in the chunk only)",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyd.js",
-   "pattern": "Instant Account: $10K, $30K, $60K, $120K."
+   "path": "_next/static/chunks/0tg_rdy2h4eye.js",
+   "pattern": "Instant Account: $10K, $30K, $60K, $120K, $200K."
   },
   {
    "id": "blog-account-ladder-current",
-   "desc": "The shared blog FAQ block must carry both full ladders - it was missing the $100K CFD Instant and the $120K Futures Instant until 2026-09-29",
+   "desc": "The shared blog FAQ block must carry both full ladders - CFD Instant to $200K and Futures Instant to $200K since 2026-10-08",
    "type": "present_in",
    "path": "blog/account-types-and-sizes/index.html",
-   "pattern": "Futures Instant accounts are $10K, $30K, $60K and $120K"
+   "pattern": "Futures Instant accounts are $10K, $30K, $60K, $120K and $200K"
   },
   {
    "id": "blog-account-ladder-current",
@@ -1117,6 +1117,161 @@
    "type": "present_in",
    "path": "_next/static/chunks/16fasywtg1r_6.js",
    "pattern": "discord.gg/hSyvuVYeRN"
+  },
+  {
+   "id": "home-funded-traders-15k",
+   "desc": "Hero shows 15,000+ Funded Traders, written out in full (Nick TG #14553, 2026-10-06)",
+   "type": "present_in",
+   "path": "index.html",
+   "pattern": "<span>15,000<!-- -->+</span></strong><span>Funded Traders"
+  },
+  {
+   "id": "counters-no-zero-placeholder",
+   "desc": "No stat counter may ship a $0K placeholder in the static HTML - slow-JS visitors and crawlers saw $0K+ Paid to Traders (Nick TG #14462)",
+   "type": "absent",
+   "pattern": "<span>$<!-- -->0<!-- -->K"
+  },
+  {
+   "id": "counters-strip-no-zero",
+   "desc": "Same for the stats strip under the hero",
+   "type": "absent",
+   "pattern": "<div class=\"stat-num\">$<!-- -->0"
+  },
+  {
+   "id": "countup-starts-final-home",
+   "desc": "CountUp starts from the final value and formats en-US, so a counter is never stuck at 0 and never renders locale digits (Arabic 0 looks like a dot)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
+   "pattern": "[c,d]=(0,s.useState)(u)"
+  },
+  {
+   "id": "countup-en-us-futures",
+   "desc": "Futures hero counters format en-US too",
+   "type": "present_in",
+   "path": "_next/static/chunks/0uj1y.q_i1x03.js",
+   "pattern": "toLocaleString(\"en-US\")"
+  },
+  {
+   "id": "legal-200k-tier-sections",
+   "desc": "Both $200K Instant accounts have their own tier-exception section on /legal (CFD section 7, Futures section 12) - Nick TG #14807/#14808",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "$200K Account - Tier Exception",
+   "min": "2"
+  },
+  {
+   "id": "legal-200k-50-positions",
+   "desc": "Minimum trade count is 50 closed positions on the $200K Instant accounts, in both funded documents (Dylan TG #14814)",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "or 50 on the Instant $200,000 account",
+   "min": "2"
+  },
+  {
+   "id": "home-cfd-instant-200k-configurator",
+   "desc": "CFD Instant $200K at $2,599 in the Challenges configurator",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
+   "pattern": "1e5:\"1,699\",2e5:\"2,599\""
+  },
+  {
+   "id": "home-cfd-instant-200k-compare",
+   "desc": "CFD Instant $200K column in the Compare table",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
+   "pattern": "size:\"$200K\",drawdown:\"10%\",minDays:\"3\""
+  },
+  {
+   "id": "futures-configurator-120k-200k",
+   "desc": "The /futures price configurator offers $120K ($799) and $200K ($1,299) - the $120K was missing from it until 2026-10-09",
+   "type": "present_in",
+   "path": "_next/static/chunks/0uj1y.q_i1x03.js",
+   "pattern": "6e4:429,12e4:799,2e5:\"1,299\""
+  },
+  {
+   "id": "terms-200k-exception",
+   "desc": "Terms carry the $200K Instant exception (no consistency, no withdrawal cap, copy trading add-on, 50 positions)",
+   "type": "present_in",
+   "path": "terms/index.html",
+   "pattern": "Instant $200K exception."
+  },
+  {
+   "id": "terms-200k-exception-chunk",
+   "desc": "Same paragraph in the terms chunk, or hydration removes it",
+   "type": "present_in",
+   "path": "_next/static/chunks/0he1vgjwt7klu.js",
+   "pattern": "Instant $200K exception."
+  },
+  {
+   "id": "faq-cfd-instant-200k-price",
+   "desc": "/faq lists the $200K CFD Instant price",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "$100K = $1,699, $200K = $2,599."
+  },
+  {
+   "id": "banner-200k-announcement",
+   "desc": "$200K launch banners in the middleware: CFD on /, Futures on /futures (Dusan TG #14865)",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "paths: [\"/futures\"]"
+  },
+  {
+   "id": "banner-200k-cfd-webp",
+   "desc": "CFD $200K banner, desktop webp",
+   "type": "file_exists",
+   "path": "promo/cfd-instant-200k.webp"
+  },
+  {
+   "id": "banner-200k-cfd-webp-m",
+   "desc": "CFD $200K banner, mobile webp",
+   "type": "file_exists",
+   "path": "promo/cfd-instant-200k-m.webp"
+  },
+  {
+   "id": "banner-200k-futures-webp",
+   "desc": "Futures $200K banner, desktop webp",
+   "type": "file_exists",
+   "path": "promo/futures-instant-200k.webp"
+  },
+  {
+   "id": "banner-200k-futures-webp-m",
+   "desc": "Futures $200K banner, mobile webp",
+   "type": "file_exists",
+   "path": "promo/futures-instant-200k-m.webp"
+  },
+  {
+   "id": "banner-preload-not-high",
+   "desc": "The banner preload must not be fetchpriority=high - it sits below the 100vh hero and stole ~0.7s of mobile LCP from the mascot (measured A/B, 2026-09-29)",
+   "type": "absent",
+   "pattern": "media=\"(max-width:640px)\" fetchpriority=\"high\">"
+  },
+  {
+   "id": "instant-profit-split-70-80-90",
+   "desc": "CFD Instant profit split tiers are 70% (first 3), 80% (next 3), 90% from the 7th - the homepage said 70/85/90 after 5/3/8 (Dylan TG #14886)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0fvh0xh4dp8x9.js",
+   "pattern": "70% (first 3 withdrawals), 80% (next 3), 90% from the 7th"
+  },
+  {
+   "id": "instant-tiers-no-85",
+   "desc": "The old 85% Instant tier must not come back",
+   "type": "absent",
+   "pattern": "Tier 2 85%"
+  },
+  {
+   "id": "faq-10k-instant-279",
+   "desc": "$10K CFD Instant costs $279 on /faq, matching the homepage price list (Dylan TG #14886)",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "$10K = $279,"
+  },
+  {
+   "id": "futures-instant-ea-addon-only",
+   "desc": "Futures Instant configurator: EAs not allowed on $10K-$60K, paid add-on on $120K and $200K (Dylan TG #14886)",
+   "type": "present_in",
+   "path": "_next/static/chunks/0uj1y.q_i1x03.js",
+   "pattern": "12e4:\"Paid add-on (approval required)\",2e5:\"Paid add-on (approval required)\""
   }
  ]
 }
