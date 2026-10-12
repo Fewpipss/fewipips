@@ -292,14 +292,14 @@
         '</span><span class="fph-ic fph-go">' + I.chev + "</span></button></li>";
     }).join("");
     return '<div class="fph-scroll"><div class="fph-hero"><div class="fph-top"><img class="fph-logo" src="/fewpips-logo.png" alt="Fewpips">' + closeBtn() + "</div>" +
-      '<div class="fph-team">' + avatar() + "<span>Fewpips Support<br><span class=\"fph-hs\" style=\"font-weight:500;display:flex;align-items:center;font-size:12px\">" + statusHtml() + "</span></span></div>" +
+      '<div class="fph-team">' + avatar() + "<span>Fewpips Support<br><span class=\"fph-hs fph-st\" style=\"font-weight:500;display:flex;align-items:center;font-size:12px\">" + statusHtml() + "</span></span></div>" +
       '<h2 class="fph-hi">Hey trader <span aria-hidden="true">👋</span><b>How can we help?</b></h2></div>' +
       '<div class="fph-cards">' +
         '<a class="fph-card fph-row" href="' + TP_URL + '" target="_blank" rel="noopener"><span class="fph-ic fph-tp">' + I.star + '</span>' +
           '<span class="fph-grow"><span class="fph-t" style="display:block">Enjoying Fewpips?</span><span class="fph-s" style="display:block">Leave us a review on Trustpilot</span></span>' +
           '<span class="fph-ic fph-go">' + I.out + "</span></a>" +
         '<button type="button" class="fph-card fph-row" data-a="tab" data-v="message"><span class="fph-grow"><span class="fph-t" style="display:block">Send us a message</span>' +
-          '<span class="fph-s" style="display:flex;align-items:center">' + statusHtml() + '</span></span><span class="fph-ic fph-send">' + I.send + "</span></button>" +
+          '<span class="fph-s fph-st" style="display:flex;align-items:center">' + statusHtml() + '</span></span><span class="fph-ic fph-send">' + I.send + "</span></button>" +
         '<div class="fph-card"><button type="button" class="fph-sbox" data-a="tab" data-v="help"><span class="fph-grow" style="text-align:left">Search for help</span><span class="fph-ic">' + I.search + "</span></button>" +
           '<ul class="fph-list">' + pop + "</ul></div>" +
         '<a class="fph-card fph-row" href="' + DISCORD_URL + '" target="_blank" rel="noopener"><span class="fph-ic fph-dc">' + I.discord + '</span>' +
@@ -309,7 +309,7 @@
   }
 
   function vMessage() {
-    return '<div class="fph-hd">' + avatar("lg") + '<div class="fph-grow"><div class="fph-ht">Fewpips Support</div><div class="fph-hs">' + statusHtml() + "</div></div>" + closeBtn() + "</div>" +
+    return '<div class="fph-hd">' + avatar("lg") + '<div class="fph-grow"><div class="fph-ht">Fewpips Support</div><div class="fph-hs fph-st">' + statusHtml() + "</div></div>" + closeBtn() + "</div>" +
       '<div class="fph-scroll" id="fph-thread-wrap"><div class="fph-thread" id="fph-thread">' + threadHtml() + "</div></div>" + nav("message");
   }
   function threadHtml() {
@@ -541,6 +541,19 @@
   document.addEventListener("pointerover", function (e) {
     if (e.target && e.target.closest && e.target.closest(FAB_SEL)) loadIndex();
   }, { passive: true });
+
+  // LiveChat boots on the first interaction, so the status line may render before it knows
+  // whether the team is online - refresh it once LiveChat reports in
+  function refreshStatus() {
+    if (!root) return;
+    [].forEach.call(root.querySelectorAll(".fph-st"), function (n) { n.innerHTML = statusHtml(); });
+  }
+  try {
+    if (window.LiveChatWidget && window.LiveChatWidget.on) {
+      window.LiveChatWidget.on("ready", refreshStatus);
+      window.LiveChatWidget.on("availability_changed", refreshStatus);
+    }
+  } catch (e) {}
 
   window.FPHelp = { open: open, close: close };
   injectStyles();
