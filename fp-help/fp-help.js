@@ -74,11 +74,11 @@
     css.id = "fph-css";
     css.textContent = [
       // launcher: the mascot instead of the generic chat bubble
-      FAB_SEL + "{background:url(" + BASE + "head-160.webp) 50% 4px/100% auto no-repeat,linear-gradient(135deg,#00ffc2 0%,#0fcd37 100%)!important}",
+      FAB_SEL + "{background:#050505 url(" + BASE + "mascot-head.webp) center/cover no-repeat!important;box-shadow:inset 0 0 0 3px #0fcd37,0 8px 28px #00000073!important}",
       FAB_SEL + ">svg{opacity:0}",
       FAB_SEL + " .fph-fab-x{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:#001a0d}",
       FAB_SEL + " .fph-fab-x svg{width:30px;height:30px;opacity:1}",
-      FAB_SEL + ".fph-on{background:linear-gradient(135deg,#00ffc2 0%,#0fcd37 100%)!important}",
+      FAB_SEL + ".fph-on{background:linear-gradient(135deg,#00ffc2 0%,#0fcd37 100%)!important;box-shadow:0 8px 28px #00000073!important}",
       FAB_SEL + ".fph-on .fph-fab-x{display:flex}",
       // panel shell
       "#fph{position:fixed;right:105px;bottom:90px;z-index:2147483647;width:384px;height:min(680px,calc(100vh - 110px));",
@@ -94,7 +94,7 @@
       "#fph .fph-iconbtn{width:34px;height:34px;border-radius:50%;border:none;background:#ffffff12;display:flex;align-items:center;justify-content:center;transition:background .2s}",
       "#fph .fph-iconbtn:hover{background:#ffffff26}#fph .fph-iconbtn svg{width:18px;height:18px}",
       "#fph .fph-av{display:inline-block;width:36px;height:36px;border-radius:50%;flex:0 0 auto;",
-      "background:url(" + BASE + "head-160.webp) 50% 3px/100% auto no-repeat,linear-gradient(135deg,#00ffc2,#0fcd37);box-shadow:0 0 0 2px #0a0a0a}",
+      "background:#050505 url(" + BASE + "mascot-head.webp) center/cover no-repeat;box-shadow:0 0 0 2px #0fcd37}",
       "#fph .fph-av.sm{width:28px;height:28px}#fph .fph-av.lg{width:42px;height:42px}",
       "#fph .fph-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:6px;box-shadow:0 0 0 3px #22c55e2e}",
       "#fph .fph-dot.off{background:#9ca3af;box-shadow:0 0 0 3px #9ca3af26}",

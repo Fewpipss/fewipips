@@ -185,7 +185,7 @@
    "id": "fp-help-mascot",
    "desc": "Mascot head used as the chat launcher icon",
    "type": "file_exists",
-   "path": "fp-help/head-160.webp"
+   "path": "fp-help/mascot-head.webp"
   },
   {
    "id": "fp-help-home",
