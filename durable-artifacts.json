@@ -170,6 +170,58 @@
    "pattern": "livechat-greeting.js"
   },
   {
+   "id": "fp-help-script",
+   "desc": "Chat help panel (FundedNext-style home: Trustpilot, Send us a message topics, Search for help) in front of LiveChat",
+   "type": "file_exists",
+   "path": "fp-help/fp-help.js"
+  },
+  {
+   "id": "fp-help-panel",
+   "desc": "Help panel body, loaded on demand by the fp-help.js loader on first FAB hover/click",
+   "type": "file_exists",
+   "path": "fp-help/panel.js"
+  },
+  {
+   "id": "fp-help-index",
+   "desc": "Help panel search index (FAQ + blog), rebuilt by scripts/help-index.py in the gate",
+   "type": "file_exists",
+   "path": "fp-help/index.json"
+  },
+  {
+   "id": "fp-help-mascot",
+   "desc": "Mascot head used as the chat launcher icon",
+   "type": "file_exists",
+   "path": "fp-help/mascot-head.webp"
+  },
+  {
+   "id": "fp-help-home",
+   "desc": "fp-help.js wired on homepage",
+   "type": "present_in",
+   "path": "index.html",
+   "pattern": "/fp-help/fp-help.js"
+  },
+  {
+   "id": "fp-help-futures",
+   "desc": "fp-help.js wired on futures page",
+   "type": "present_in",
+   "path": "futures/index.html",
+   "pattern": "/fp-help/fp-help.js"
+  },
+  {
+   "id": "fp-help-faq",
+   "desc": "fp-help.js wired on FAQ page",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "/fp-help/fp-help.js"
+  },
+  {
+   "id": "fp-help-greeting-handoff",
+   "desc": "Greeting bubble opens the help panel when present",
+   "type": "present_in",
+   "path": "livechat-greeting.js",
+   "pattern": "window.FPHelp.open(\"home\")"
+  },
+  {
    "id": "hash-nav-fix-injector",
    "desc": "Cross-page hash navigation fix injector (built-output add-on)",
    "type": "file_exists",

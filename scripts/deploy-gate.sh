@@ -39,6 +39,14 @@ if ! command -v python3 >/dev/null 2>&1; then echo "python3 required"; exit 2; f
 # keep the /proof sitemap entry fresh automatically (no-op on a clean tree)
 [ -x "$SCRIPT_DIR/proof-sitemap.sh" ] && "$SCRIPT_DIR/proof-sitemap.sh" || true
 
+# chat help panel search index (fp-help/index.json) must match the FAQ chunk + blog posts:
+# rebuilt locally, a stale committed copy fails the gate in CI
+HELP_RC=0
+if [ -f "$SCRIPT_DIR/help-index.py" ]; then
+  if [ -n "${CI:-}" ]; then python3 "$SCRIPT_DIR/help-index.py" --check; HELP_RC=$?
+  else python3 "$SCRIPT_DIR/help-index.py" || HELP_RC=1; fi
+fi
+
 BUILD_DIR="$BUILD_DIR" MANIFEST="$MANIFEST" python3 - <<'PY'
 import json, os, re, sys
 
@@ -168,5 +176,5 @@ else
   echo "node required for the JS parse gate"; JS_RC=2
 fi
 
-[ "$ARTIFACTS_RC" -eq 0 ] && [ "$JS_RC" -eq 0 ] && exit 0
+[ "$ARTIFACTS_RC" -eq 0 ] && [ "$JS_RC" -eq 0 ] && [ "$HELP_RC" -eq 0 ] && exit 0
 exit 1
