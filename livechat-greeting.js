@@ -57,9 +57,15 @@
     (document.head || document.documentElement).appendChild(css);
   }
 
-  // Open the real LiveChat window, retrying while the widget script boots.
+  // Open the help panel (fp-help/fp-help.js) when it is on the page, else the real LiveChat
+  // window, retrying while the widget script boots.
   function openChat(tries) {
     tries = tries || 0;
+    if (window.FPHelp) {
+      window.FPHelp.open("home");
+      dismissForView();
+      return;
+    }
     if (window.LiveChatWidget && typeof window.LiveChatWidget.call === "function") {
       try { window.LiveChatWidget.call("maximize"); } catch (e) {}
       dismissForView();
@@ -143,6 +149,9 @@
     lastPath = location.pathname;
     reset();
   }
+
+  // fp-help.js hides the greeting when its panel opens from the FAB
+  window.FPGreeting = { dismiss: dismissForView };
 
   injectStyles();
   ensureBadge();

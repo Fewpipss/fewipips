@@ -56,6 +56,10 @@ banner), update the matching check in the same PR - the gate is a safety net, no
   .txt RSC payloads, other chunks). Do NOT use `?v=` queries on chunk script tags - the
   turbopack runtime matches chunks by exact URL and hydration silently stalls. Never set
   `immutable` on `/_next/static/*` in `_headers`.
+- The chat help panel (`fp-help/fp-help.js`, opened by the LiveChat FAB) searches
+  `fp-help/index.json`, built from the FAQ chunk + every blog post by `scripts/help-index.py`.
+  The gate rebuilds it locally and fails CI if it is stale - after a FAQ or blog edit, commit
+  the rebuilt `fp-help/index.json` too.
 - Same trap for IMAGES: optimizing an image in place keeps its URL, and `_headers` gives
   images a 30-day cache - CDN PoPs keep serving the old heavy file. Rename the image
   (e.g. `kyle.jpg` -> `kyle-b.jpg`) and update every reference (HTML, RSC .txt, chunks).
