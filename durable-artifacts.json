@@ -176,6 +176,12 @@
    "path": "fp-help/fp-help.js"
   },
   {
+   "id": "fp-help-panel",
+   "desc": "Help panel body, loaded on demand by the fp-help.js loader on first FAB hover/click",
+   "type": "file_exists",
+   "path": "fp-help/panel.js"
+  },
+  {
    "id": "fp-help-index",
    "desc": "Help panel search index (FAQ + blog), rebuilt by scripts/help-index.py in the gate",
    "type": "file_exists",
