@@ -110,7 +110,7 @@
       // home
       "#fph .fph-hero{padding:20px 20px 64px;background:radial-gradient(120% 90% at 90% -10%,#0fcd3766 0%,transparent 58%),radial-gradient(90% 80% at -10% -20%,#00ffc233 0%,transparent 60%),#050505}",
       "#fph .fph-top{display:flex;align-items:center;justify-content:space-between}",
-      "#fph .fph-logo{height:22px;width:auto;display:block}",
+      "#fph .fph-logo{height:44px;width:auto;display:block}",
       "#fph .fph-hero{position:relative;overflow:hidden}",
       "#fph .fph-mascot{position:absolute;right:8px;bottom:58px;width:128px;height:auto;pointer-events:none;filter:drop-shadow(0 10px 24px #0fcd3740)}",
       "#fph .fph-htext{position:relative;max-width:64%;margin-top:28px}",
