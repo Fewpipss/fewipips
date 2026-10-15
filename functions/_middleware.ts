@@ -342,13 +342,15 @@ function footerScript(): string {
  * marketing calendar in the AIM CRM) that puts the offer in the bot's chat greeting, so the
  * site and the bot always show the same code. The bot returns ONLY the live entry, never a
  * future code, so nothing leaks early. The schedule refreshes itself every month on the bot -
- * nothing to edit here. Edge-cached 60s; any failure returns [] (no card, nothing breaks).
+ * nothing to edit here. Live ANNOUNCEMENTS banners (above) are appended as image items, so a
+ * new site banner shows up in the chat panel carousel too. Edge-cached 60s; a failed bot call
+ * only drops the code card.
  */
 const PROMO_PATH = "/fp-help/promo.json";
 const PROMO_SRC = "https://fewpips-livechat-bot-production-a55d.up.railway.app/promo";
 
-async function promoJson(): Promise<Response> {
-  let body = "[]";
+async function promoJson(reqUrl: string): Promise<Response> {
+  let items: unknown[] = [];
   try {
     const r = await fetch(PROMO_SRC, {
       cf: { cacheTtl: 60, cacheEverything: true },
@@ -356,16 +358,28 @@ async function promoJson(): Promise<Response> {
     } as any);
     if (r.ok) {
       const d = await r.json();
-      if (Array.isArray(d)) body = JSON.stringify(d);
+      if (Array.isArray(d)) items = d;
     }
-  } catch (_e) { /* bot unreachable: no promo card */ }
+  } catch (_e) { /* bot unreachable: no code card, banners below still show */ }
+  // ...plus every site banner from ANNOUNCEMENTS that is live right now (the same windows as the
+  // hero banner, so the chat panel carousel rotates exactly what the site is running).
+  const now = pickNow(reqUrl);
+  for (const a of ANNOUNCEMENTS) {
+    const from = Date.parse(a.start), until = Date.parse(a.end);
+    if (now < from || now >= until) continue;
+    items.push({
+      id: a.img, active_from: new Date(from).toISOString(), active_until: new Date(until).toISOString(),
+      title: a.alt, img: a.img, imgM: a.imgM, url: HREF, cta: "Get funded",
+    });
+  }
+  const body = JSON.stringify(items);
   return new Response(body, {
     headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=60" },
   });
 }
 
 export const onRequest: PagesFunction<Env> = async (ctx) => {
-  if (new URL(ctx.request.url).pathname === PROMO_PATH) return promoJson();
+  if (new URL(ctx.request.url).pathname === PROMO_PATH) return promoJson(ctx.request.url);
   const res = await ctx.next();
   try {
     const ct = res.headers.get("content-type") || "";

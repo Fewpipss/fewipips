@@ -60,10 +60,14 @@ banner), update the matching check in the same PR - the gate is a safety net, no
   the panel, loaded on the first FAB hover/click) searches `fp-help/index.json`, built from the FAQ chunk + every blog post by `scripts/help-index.py`.
   The gate rebuilds it locally and fails CI if it is stale - after a FAQ or blog edit, commit
   the rebuilt `fp-help/index.json` too.
-  Tabs: Home, Messages, News, Help. The promo card (Home + News) and the teaser bubble's LIVE
-  strip read `/fp-help/promo.json`, which is NOT a file: `functions/_middleware.ts` proxies the
-  Fewpips LiveChat bot's `/promo` (live entry only, from the monthly marketing-calendar
-  schedule the bot greeting uses). Never add a static promo.json or hard-code a code there.
+  Tabs: Home, Messages, News, Help. Messages IS the real LiveChat window: panel.js pins
+  LiveChat's own `#chat-widget-container` onto the panel's chat slot with CSS
+  (`html.fph-chat-on`), so history, bots, attachments and the pre-chat form are LiveChat's.
+  LiveChat's minimize closes the panel. Promo carousel (Home), News cards, the pinned strip
+  above the chat and the teaser bubble's LIVE strip read `/fp-help/promo.json`, which is NOT a
+  file: `functions/_middleware.ts` proxies the Fewpips LiveChat bot's `/promo` (live code entry
+  only, from the monthly marketing-calendar schedule the bot greeting uses) and appends the
+  live ANNOUNCEMENTS banners. Never add a static promo.json or hard-code a code there.
 - Same trap for IMAGES: optimizing an image in place keeps its URL, and `_headers` gives
   images a 30-day cache - CDN PoPs keep serving the old heavy file. Rename the image
   (e.g. `kyle.jpg` -> `kyle-b.jpg`) and update every reference (HTML, RSC .txt, chunks).

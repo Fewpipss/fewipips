@@ -3,14 +3,17 @@
    click), so pages pay nothing for it until the chat is opened.
    The LiveChat FAB opens this panel instead of a bare pre-chat form:
      Home      - Trustpilot review card, "Send us a message", "Search for help", Discord
-     Messages  - click-by-click topics -> the most-asked answers + related posts -> our team
+     Messages  - the REAL LiveChat window, placed inside the panel body (no second window):
+                 history, bots, attachments, pre-chat form, routing all stay LiveChat's own
      News      - the promotion live right now + the 3 newest blog posts
      Help      - live search over every FAQ answer and every blog post (fp-help/index.json)
    The promo card (Home + News) reads fp-help/promo.json: the site middleware proxies the
    bot's /promo, which returns ONLY the entry live at this moment from the monthly marketing
    calendar schedule (never a future code). It is re-checked against the visitor's clock.
-   "Chat with our team" hands over to the real LiveChat window (maximize) with the chosen
-   topic as a session variable + message draft. The bot and its rules are untouched.
+   A topic or "Chat with our team" opens Messages with the topic as a session variable +
+   message draft. The bot and its rules are untouched. Embedding = CSS on LiveChat's own
+   #chat-widget-container (the site already resizes it the same way), pinned to the panel's
+   chat slot; the panel's tab bar stays under it.
    index.json is rebuilt from the FAQ chunk + blog pages by scripts/help-index.py (deploy gate).
    Own non-React DOM, so it survives hydration + client-side routing. z-index is the max so the
    panel sits above the Discord/Telegram bar (sticky-split.js); it closes before LiveChat opens. */
@@ -44,7 +47,8 @@
   var STOP = " a an the is are am do does did can i my me we you your our of to in on for and or with what how when where which who why it its be at as by from this that there any have has will about ".split(" ")
     .reduce(function (o, w) { if (w) o[w] = 1; return o; }, {});
 
-  var S = { open: false, stack: [], idx: null, idxP: null, promo: null, promoP: null, thread: [], topic: null, built: false };
+  var S = { open: false, stack: [], idx: null, idxP: null, promo: null, promoP: null, topic: null, built: false,
+    chat: false, quiet: false, lcBound: false, slide: 0, timer: null };
   var root, panel;
 
   var I = {
@@ -107,7 +111,11 @@
       "#fph .fph-hero{padding:20px 20px 64px;background:radial-gradient(120% 90% at 90% -10%,#0fcd3766 0%,transparent 58%),radial-gradient(90% 80% at -10% -20%,#00ffc233 0%,transparent 60%),#050505}",
       "#fph .fph-top{display:flex;align-items:center;justify-content:space-between}",
       "#fph .fph-logo{height:22px;width:auto;display:block}",
-      "#fph .fph-team{display:flex;align-items:center;gap:8px;margin:26px 0 14px;font-size:13px;color:#ffffffb3;font-weight:600}",
+      "#fph .fph-hero{position:relative;overflow:hidden}",
+      "#fph .fph-mascot{position:absolute;right:8px;bottom:44px;width:128px;height:auto;pointer-events:none;filter:drop-shadow(0 10px 24px #0fcd3740)}",
+      "#fph .fph-htext{position:relative;max-width:64%;margin-top:28px}",
+      "#fph .fph-tagl{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#00ffc2;margin-bottom:8px}",
+      "#fph .fph-pill{display:inline-flex;align-items:center;margin-top:12px;font-size:12px;font-weight:700;color:#ffffffcc;background:#ffffff0f;border:1px solid #ffffff1a;border-radius:999px;padding:5px 10px}",
       "#fph h2.fph-hi{margin:0;font:600 27px/1.2 " + H + ";color:#ffffff8c;letter-spacing:-.01em}",
       "#fph h2.fph-hi b{display:block;color:#fff;font-weight:700}",
       "#fph .fph-cards{padding:0 14px 16px;margin-top:-44px;display:flex;flex-direction:column;gap:12px}",
@@ -168,19 +176,11 @@
       "font-weight:800!important;font-size:15px;color:#001a0d!important;background:linear-gradient(135deg,#00ffc2,#0fcd37);box-shadow:0 8px 22px #0fcd3740;transition:transform .2s,box-shadow .2s}",
       "#fph .fph-cta:hover{transform:translateY(-1px);box-shadow:0 12px 28px #0fcd3759}",
       "#fph .fph-cta .fph-ic{width:18px;height:18px}",
-      // messages thread
-      "#fph .fph-thread{padding:16px 14px 18px;display:flex;flex-direction:column;gap:10px}",
       "#fph .fph-b{display:flex;gap:8px;align-items:flex-end;max-width:92%}",
-      "#fph .fph-b .fph-bub{background:#171717;border:1px solid #ffffff10;border-radius:16px 16px 16px 5px;padding:11px 13px;font-size:14.5px;line-height:1.5;color:#ffffffe6}",
-      "#fph .fph-b.me{align-self:flex-end}",
-      "#fph .fph-b.me .fph-bub{background:linear-gradient(135deg,#00ffc2,#0fcd37);color:#001a0d;font-weight:700;border:none;border-radius:16px 16px 5px 16px}",
-      "#fph .fph-b .fph-av{visibility:hidden}#fph .fph-b.first .fph-av{visibility:visible}",
       "#fph .fph-chips{display:flex;flex-wrap:wrap;gap:8px;padding-left:36px}",
       "#fph .fph-chip{border:1px solid #00ffc259;background:#00ffc20d;color:#00ffc2!important;border-radius:999px;padding:9px 14px;font-weight:700;font-size:13.5px;transition:background .15s,transform .15s}",
       "#fph .fph-chip:hover{background:#00ffc226;transform:translateY(-1px)}",
       "#fph .fph-chip.solid{background:linear-gradient(135deg,#00ffc2,#0fcd37);color:#001a0d!important;border-color:transparent}",
-      "#fph .fph-box{margin-left:36px;background:#121212;border:1px solid #ffffff12;border-radius:14px;padding:4px 12px}",
-      "#fph .fph-box .fph-post{margin:8px 0;background:#0c0c0c}",
       // promo card (Home + News): the offer live right now
       "#fph .fph-promo{padding:0;overflow:hidden;border-color:#00ffc240}",
       "#fph .fph-pb{display:block;position:relative;padding:16px 16px 14px;background:radial-gradient(110% 120% at 100% 0%,#0fcd3773 0%,transparent 60%),radial-gradient(80% 100% at 0% 100%,#00ffc233 0%,transparent 65%),#06120b;border-bottom:1px solid #00ffc226}",
@@ -212,6 +212,32 @@
       "#fph .fph-nread .fph-ic{width:14px;height:14px}",
       "#fph .fph-tab{position:relative}",
       "#fph .fph-tab .fph-pip{position:absolute;top:5px;left:calc(50% + 7px);width:8px;height:8px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 0 2px #080808}",
+      // home: promo carousel
+      "#fph .fph-car{position:relative;width:100%;min-width:0}",
+      "#fph .fph-track{display:flex;width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:14px}",
+      "#fph .fph-track::-webkit-scrollbar{display:none}",
+      "#fph .fph-track>*{flex:0 0 100%;min-width:100%;scroll-snap-align:start;margin:0;box-shadow:none}",
+      "#fph .fph-dots{display:flex;justify-content:center;gap:6px;margin-top:9px}",
+      "#fph .fph-dotb{width:7px;height:7px;padding:0;border:none;border-radius:999px;background:#ffffff33;transition:width .2s,background .2s}",
+      "#fph .fph-dotb.on{width:20px;background:#00ffc2}",
+      "#fph .fph-bn{display:flex;flex-direction:column;padding:0;overflow:hidden}",
+      "#fph .fph-bn picture,#fph .fph-bn img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#06120b}",
+      "#fph .fph-bn .fph-pfoot{margin:0;padding:11px 16px 13px}",
+      "#fph .fph-bn .fph-pclose{color:#ffffffc7;font-size:12.5px;line-height:1.35}",
+      // home: topics that open the chat with the question started
+      "#fph .fph-topics{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}",
+      "#fph .fph-topics .fph-chip{padding:7px 11px;font-size:12.5px}",
+      // messages = the real LiveChat window inside the panel
+      "#fph .fph-chat{flex:1;display:flex;flex-direction:column;min-height:0;background:#0a0a0a}",
+      "#fph .fph-strip{display:flex;align-items:center;gap:9px;padding:9px 12px;background:#06120b;border-bottom:1px solid #00ffc226;font-size:12.5px;line-height:1.35;color:#eafff6}",
+      "#fph .fph-strip .fph-live{flex:0 0 auto;font-size:10px;padding:3px 7px}",
+      "#fph .fph-strip .fph-pcta{padding:6px 11px;font-size:12px}",
+      "#fph .fph-slot{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#ffffffa6;font-size:14px}",
+      "#fph .fph-spin{display:block;width:26px;height:26px;margin:0 auto 12px;border-radius:50%;border:3px solid #00ffc233;border-top-color:#00ffc2;animation:fphSpin .8s linear infinite}",
+      "@keyframes fphSpin{to{transform:rotate(360deg)}}",
+      "html.fph-chat-on #fph{z-index:2147483646}",
+      "html.fph-chat-on #chat-widget-container{left:var(--fph-cx)!important;top:var(--fph-cy)!important;right:auto!important;bottom:auto!important;" +
+        "width:var(--fph-cw)!important;height:var(--fph-ch)!important;max-width:none!important;max-height:none!important;min-height:0!important;z-index:2147483647!important}",
       // bottom tabs
       "#fph .fph-nav{display:flex;border-top:1px solid #ffffff12;background:#080808;padding:6px 8px 8px}",
       "#fph .fph-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:none;padding:7px 0 3px;",
@@ -223,7 +249,7 @@
       "@media(max-width:560px){#fph{inset:0;width:100%;height:100%;height:100dvh;border-radius:0;border:none;animation-name:fphUp}",
       "html.fph-lock,html.fph-lock body{overflow:hidden!important}}",
       "@keyframes fphUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}",
-      "@media(prefers-reduced-motion:reduce){#fph{animation:none}#fph .fph-live:before{animation:none}}"
+      "@media(prefers-reduced-motion:reduce){#fph{animation:none}#fph .fph-live:before{animation:none}#fph .fph-track{scroll-behavior:auto}}"
     ].join("");
     (document.head || document.documentElement).appendChild(css);
   }
@@ -240,12 +266,14 @@
   }
   // The live promotion, or null. The endpoint already returns only the live entry; the
   // visitor's clock is checked again so a cached response never shows an expired code.
-  function livePromo() {
+  function livePromos() {
     var now = Date.now();
     return (S.promo || []).filter(function (p) {
-      return p && p.code && Date.parse(p.active_from) <= now && now < Date.parse(p.active_until);
-    })[0] || null;
+      return p && (p.code || p.img) && Date.parse(p.active_from) <= now && now < Date.parse(p.active_until);
+    });
   }
+  function livePromo() { return livePromos()[0] || null; }
+  function codePromo() { return livePromos().filter(function (p) { return p.code; })[0] || null; }
   function loadPromo() {
     if (S.promo) return Promise.resolve(livePromo());
     if (!S.promoP) {
@@ -311,22 +339,64 @@
     if (a === "offline") return '<span class="fph-dot off"></span>Leave us a message, we reply by email';
     return '<span class="fph-dot"></span>We are here to help';
   }
-  function chatWithTeam() {
-    var topic = S.topic;
-    close();
-    var tries = 0;
-    (function go() {
-      var w = window.LiveChatWidget;
-      if (w && typeof w.call === "function") {
-        try {
-          if (topic) w.call("set_session_variables", { help_topic: topic });
-          w.call("maximize", topic ? { messageDraft: "Hi, I have a question about " + topic.toLowerCase() + ": " } : undefined);
-        } catch (e) { try { w.call("maximize"); } catch (e2) {} }
-        return;
-      }
-      if (++tries < 30) setTimeout(go, 200); else location.href = "/contact/";
-    })();
+  // ---- the real LiveChat window, inside the panel ----
+  function lc() { return window.LiveChatWidget; }
+  function placeChat() {
+    var slot = el("fph-chat-slot");
+    if (!slot) return;
+    var r = slot.getBoundingClientRect(), d = document.documentElement.style;
+    d.setProperty("--fph-cx", Math.round(r.left) + "px");
+    d.setProperty("--fph-cy", Math.round(r.top) + "px");
+    d.setProperty("--fph-cw", Math.round(r.width) + "px");
+    d.setProperty("--fph-ch", Math.round(r.height) + "px");
   }
+  function bindLc() {
+    var w = lc();
+    if (S.lcBound || !w || !w.on) return;
+    S.lcBound = true;
+    // LiveChat's own minimize button = the visitor is done: close the whole panel
+    w.on("visibility_changed", function (d) {
+      if (d && d.visibility === "minimized" && S.chat && !S.quiet) close();
+    });
+  }
+  function mountChat() {
+    var w = lc(), topic = S.topic;
+    S.topic = null;
+    S.chat = true;
+    placeChat();
+    document.documentElement.classList.add("fph-chat-on");
+    // LiveChat loads on the first pointer/scroll/key event (site perf snippet). Opening the chat
+    // is that intent, so fire the snippet's own trigger once instead of loading it a second time.
+    if (!document.querySelector('script[src*="livechatinc.com/tracking.js"]')) {
+      try { window.dispatchEvent(new Event("pointermove")); } catch (e) {}
+    }
+    if (!w || typeof w.call !== "function") return chatFallback();
+    bindLc();
+    try {
+      if (topic) w.call("set_session_variables", { help_topic: topic });
+      w.call("maximize", topic ? { messageDraft: "Hi, I have a question about " + topic.toLowerCase() + ": " } : undefined);
+    } catch (e) { return chatFallback(); }
+    setTimeout(function () {             // LiveChat never showed up (blocked, offline network)
+      if (!S.chat) return;
+      var c = document.getElementById("chat-widget-container");
+      if (!c || c.offsetHeight < 50) chatFallback();
+    }, 12000);
+  }
+  function unmountChat() {
+    if (!S.chat) return;
+    S.chat = false;
+    document.documentElement.classList.remove("fph-chat-on");
+    var w = lc();
+    S.quiet = true; // our own minimize must not close the panel
+    try { w && w.call && w.call("minimize"); } catch (e) {}
+    setTimeout(function () { S.quiet = false; }, 400);
+  }
+  function chatFallback() {
+    var slot = el("fph-chat-slot");
+    if (slot) slot.innerHTML = '<div><div class="fph-s" style="margin:0 0 12px">The chat is taking longer than usual to load.</div>' +
+      '<a class="fph-more" href="/contact/">Contact the team<span class="fph-ic">' + I.chev + "</span></a></div>";
+  }
+  window.addEventListener("resize", function () { if (S.chat) placeChat(); });
 
   // ---- views ----
   function nav(tab) {
@@ -345,14 +415,55 @@
       '<span class="fph-pfoot"><span class="fph-pclose">' + (p.closes ? "Ends " + esc(p.closes) : "") + "</span>" +
       '<span class="fph-pcta">' + esc(p.cta || "Get funded") + '<span class="fph-ic">' + I.chev + "</span></span></span></span></a>";
   }
+  function bannerCard(p, lazy) {
+    var webp = function (u) { return String(u || "").replace(/\.(png|jpe?g)$/, ".webp"); };
+    var src = p.imgM || p.img;
+    return '<a class="fph-card fph-bn" href="' + esc(p.url) + '" target="_blank" rel="noopener" data-promo="' + esc(p.id) + '">' +
+      '<picture><source type="image/webp" srcset="' + esc(webp(src)) + '"><img src="' + esc(src) + '" alt="' + esc(p.title || "") + '"' +
+      (lazy ? ' loading="lazy"' : "") + ' decoding="async"></picture>' +
+      '<span class="fph-pfoot"><span class="fph-pclose">' + esc(p.title || "") + '</span><span class="fph-pcta">' + esc(p.cta || "Get funded") +
+      '<span class="fph-ic">' + I.chev + "</span></span></span></a>";
+  }
+  function anyCard(p, i) { return p.code ? promoCard(p) : bannerCard(p, i > 0); }
+  function carousel() {
+    var ps = livePromos();
+    if (!ps.length) return "";
+    if (ps.length === 1) return anyCard(ps[0], 0);
+    return '<div class="fph-car"><div class="fph-track" id="fph-track">' + ps.map(anyCard).join("") + "</div>" +
+      '<div class="fph-dots">' + ps.map(function (_, i) {
+        return '<button type="button" class="fph-dotb' + (i === 0 ? " on" : "") + '" data-a="slide" data-v="' + i + '" aria-label="Offer ' + (i + 1) + '"></button>';
+      }).join("") + "</div></div>";
+  }
+  function startCarousel() {
+    clearInterval(S.timer);
+    var tr = el("fph-track");
+    if (!tr) return;
+    var n = tr.children.length, paused = false;
+    function dots() {
+      var i = Math.round(tr.scrollLeft / Math.max(1, tr.clientWidth));
+      [].forEach.call(root.querySelectorAll(".fph-dotb"), function (b, k) { b.classList.toggle("on", k === i); });
+      S.slide = i;
+    }
+    tr.addEventListener("scroll", function () { requestAnimationFrame(dots); }, { passive: true });
+    ["pointerenter", "touchstart", "focusin"].forEach(function (t) { tr.addEventListener(t, function () { paused = true; }, { passive: true }); });
+    tr.addEventListener("pointerleave", function () { paused = false; });
+    if (window.matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+    S.timer = setInterval(function () {
+      if (paused || !el("fph-track")) return;
+      tr.scrollTo({ left: ((S.slide + 1) % n) * tr.clientWidth, behavior: "smooth" });
+    }, 6000);
+  }
+  function promoStrip(p) {
+    return '<a class="fph-strip" href="' + esc(p.url) + '" target="_blank" rel="noopener"><span class="fph-live">Live</span>' +
+      '<span class="fph-grow">' + esc(p.short || p.line) + '</span><span class="fph-pcta">' + esc(p.cta || "Get funded") + "</span></a>";
+  }
   function fmtDate(d) {
     var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || "");
     if (!m) return "";
     return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][+m[2] - 1] + " " + (+m[3]) + ", " + m[1];
   }
   function vNews() {
-    var p = livePromo(), items = "";
-    if (p) items += promoCard(p);
+    var items = livePromos().map(anyCard).join("");
     if (S.idx) {
       S.idx.blog.slice().sort(function (a, b) { return a.p < b.p ? 1 : a.p > b.p ? -1 : 0; }).slice(0, 3).forEach(function (b) {
         items += '<a class="fph-ni" href="' + esc(b.u) + '"><span class="fph-tags"><span class="fph-tg">Blog</span>' +
@@ -373,17 +484,24 @@
       return '<li><button type="button" class="fph-li" data-a="faqq" data-q="' + esc(q) + '"><span class="fph-grow">' + esc(q) +
         '</span><span class="fph-ic fph-go">' + I.chev + "</span></button></li>";
     }).join("");
+    var topics = TOPICS.filter(function (t) { return t.cat; }).map(function (t) {
+      return '<button type="button" class="fph-chip" data-a="topic" data-v="' + t.id + '">' + esc(t.label) + "</button>";
+    }).join("");
     return '<div class="fph-scroll"><div class="fph-hero"><div class="fph-top"><img class="fph-logo" src="/fewpips-logo.png" alt="Fewpips">' + closeBtn() + "</div>" +
-      '<div class="fph-team">' + avatar() + "<span>Fewpips Support<br><span class=\"fph-hs fph-st\" style=\"font-weight:500;display:flex;align-items:center;font-size:12px\">" + statusHtml() + "</span></span></div>" +
-      '<h2 class="fph-hi">Hey trader <span aria-hidden="true">👋</span><b>How can we help?</b></h2></div>' +
-      '<div class="fph-cards">' + (livePromo() ? promoCard(livePromo()) : "") +
+      '<img class="fph-mascot" src="' + BASE + 'mascot-hero.webp" alt="" aria-hidden="true" width="152" height="180">' +
+      '<div class="fph-htext"><span class="fph-tagl">Funded by discipline</span>' +
+      '<h2 class="fph-hi">Hey trader <span aria-hidden="true">👋</span><b>How can we help?</b></h2>' +
+      '<span class="fph-pill fph-st">' + statusHtml() + "</span></div></div>" +
+      '<div class="fph-cards">' + carousel() +
+        '<div class="fph-card"><button type="button" class="fph-row" data-a="tab" data-v="message" style="width:100%;border:none;background:none;padding:0;text-align:left">' +
+          '<span class="fph-grow"><span class="fph-t" style="display:block">Send us a message</span>' +
+          '<span class="fph-s fph-st" style="display:flex;align-items:center">' + statusHtml() + '</span></span><span class="fph-ic fph-send">' + I.send + "</span></button>" +
+          '<div class="fph-topics">' + topics + "</div></div>" +
+        '<div class="fph-card"><button type="button" class="fph-sbox" data-a="tab" data-v="help"><span class="fph-grow" style="text-align:left">Search for help</span><span class="fph-ic">' + I.search + "</span></button>" +
+          '<ul class="fph-list">' + pop + "</ul></div>" +
         '<a class="fph-card fph-row" href="' + TP_URL + '" target="_blank" rel="noopener"><span class="fph-ic fph-tp">' + I.star + '</span>' +
           '<span class="fph-grow"><span class="fph-t" style="display:block">Enjoying Fewpips?</span><span class="fph-s" style="display:block">Leave us a review on Trustpilot</span></span>' +
           '<span class="fph-ic fph-go">' + I.out + "</span></a>" +
-        '<button type="button" class="fph-card fph-row" data-a="tab" data-v="message"><span class="fph-grow"><span class="fph-t" style="display:block">Send us a message</span>' +
-          '<span class="fph-s fph-st" style="display:flex;align-items:center">' + statusHtml() + '</span></span><span class="fph-ic fph-send">' + I.send + "</span></button>" +
-        '<div class="fph-card"><button type="button" class="fph-sbox" data-a="tab" data-v="help"><span class="fph-grow" style="text-align:left">Search for help</span><span class="fph-ic">' + I.search + "</span></button>" +
-          '<ul class="fph-list">' + pop + "</ul></div>" +
         '<a class="fph-card fph-row" href="' + DISCORD_URL + '" target="_blank" rel="noopener"><span class="fph-ic fph-dc">' + I.discord + '</span>' +
           '<span class="fph-grow"><span class="fph-t" style="display:block">Join our Discord</span><span class="fph-s" style="display:block">Talk with other Fewpips traders</span></span>' +
           '<span class="fph-ic fph-go">' + I.out + "</span></a>" +
@@ -391,72 +509,9 @@
   }
 
   function vMessage() {
-    return '<div class="fph-hd">' + avatar("lg") + '<div class="fph-grow"><div class="fph-ht">Fewpips Support</div><div class="fph-hs fph-st">' + statusHtml() + "</div></div>" + closeBtn() + "</div>" +
-      '<div class="fph-scroll" id="fph-thread-wrap"><div class="fph-thread" id="fph-thread">' + threadHtml() + "</div></div>" + nav("message");
-  }
-  function threadHtml() {
-    var prev = null;
-    return S.thread.map(function (m) {
-      var h;
-      if (m.k === "bot") h = '<div class="fph-b' + (prev !== "bot" ? " first" : "") + '">' + avatar("sm") + '<div class="fph-bub">' + m.h + "</div></div>";
-      else if (m.k === "me") h = '<div class="fph-b me"><div class="fph-bub">' + esc(m.t) + "</div></div>";
-      else h = m.h; // chips / boxes
-      prev = m.k === "bot" ? "bot" : m.k === "me" ? "me" : prev;
-      return h;
-    }).join("");
-  }
-  function topicChips() {
-    return '<div class="fph-chips">' + TOPICS.map(function (t) {
-      return '<button type="button" class="fph-chip" data-a="topic" data-v="' + t.id + '">' + esc(t.label) + "</button>";
-    }).join("") + "</div>";
-  }
-  function startThread() {
-    S.thread = [
-      { k: "bot", h: "Hi there! Pick a topic and we will point you to the right answer, or straight to our team." },
-      { k: "bot", h: "What can we help you with today?" },
-      { k: "x", h: topicChips() }
-    ];
-  }
-  function pickTopic(id) {
-    var t = TOPICS.filter(function (x) { return x.id === id; })[0];
-    if (!t) return;
-    S.topic = t.label;
-    S.thread = S.thread.filter(function (m) { return m.k !== "x" || m.keep; });
-    S.thread.push({ k: "me", t: t.label });
-    if (!t.cat) {
-      S.thread.push({ k: "bot", h: "No problem. Our team will take it from here - tap below and tell us what's going on." });
-      S.thread.push({ k: "x", keep: true, h: '<div class="fph-chips"><button type="button" class="fph-chip solid" data-a="chat">Chat with our team</button></div>' });
-      return renderThread();
-    }
-    loadIndex().then(function () {
-      var items = [];
-      if (S.idx) S.idx.faq.forEach(function (f, i) { if (f.c === t.cat) items.push(i); });
-      var more = items.length > 5 ? items.length - 5 : 0;
-      var list = items.slice(0, 5).map(function (i) {
-        return '<li><button type="button" class="fph-li" data-a="faq" data-v="' + i + '"><span class="fph-grow">' + esc(S.idx.faq[i].q) +
-          '</span><span class="fph-ic fph-go">' + I.chev + "</span></button></li>";
-      }).join("");
-      if (more) list += '<li><button type="button" class="fph-li" data-a="cat" data-v="' + esc(t.cat) + '"><span class="fph-grow" style="color:#00ffc2;font-weight:700">See all ' + items.length + " answers</span><span class=\"fph-ic fph-go\">" + I.chev + "</span></button></li>";
-      var rel = search(t.kw, 0, 2).posts.map(function (p) { return postCard(S.idx.blog[p.i]); }).join("");
-      S.thread.push({ k: "bot", h: "Here is what traders ask most about " + esc(t.label.toLowerCase()) + ":" });
-      S.thread.push({ k: "x", keep: true, h: '<div class="fph-box"><ul class="fph-list" style="margin:0">' + list + "</ul></div>" });
-      if (rel) {
-        S.thread.push({ k: "bot", h: "These guides go deeper:" });
-        S.thread.push({ k: "x", keep: true, h: '<div class="fph-box" style="padding:0 10px">' + rel + "</div>" });
-      }
-      S.thread.push({ k: "bot", h: "Didn't find your answer?" });
-      S.thread.push({ k: "x", h: '<div class="fph-chips"><button type="button" class="fph-chip solid" data-a="chat">Chat with our team</button>' +
-        '<button type="button" class="fph-chip" data-a="again">Pick another topic</button></div>' });
-      renderThread();
-    });
-    renderThread();
-  }
-  function renderThread() {
-    var th = el("fph-thread");
-    if (!th) return;
-    th.innerHTML = threadHtml();
-    var w = el("fph-thread-wrap");
-    if (w) w.scrollTop = w.scrollHeight;
+    var p = codePromo();
+    return '<div class="fph-chat">' + (p ? promoStrip(p) : "") +
+      '<div class="fph-slot" id="fph-chat-slot"><div><span class="fph-spin"></span>Opening the chat with the Fewpips team...</div></div></div>' + nav("message");
   }
 
   function postCard(b, q) {
@@ -535,7 +590,8 @@
   }
   function render() {
     var st = top();
-    if (st.v === "message" && !S.thread.length) startThread();
+    if (st.v !== "message") unmountChat();
+    clearInterval(S.timer);
     panel.setAttribute("data-view", st.v);
     panel.innerHTML = st.v === "home" ? vHome() : st.v === "message" ? vMessage() : st.v === "news" ? vNews() : st.v === "help" ? vHelp(st) :
       st.v === "cat" ? vCat(st) : vFaq(st);
@@ -545,13 +601,18 @@
       inp.addEventListener("input", function () { st.q = inp.value; renderResults(inp.value); });
       if (st.focus !== false && window.matchMedia("(min-width:561px)").matches) setTimeout(function () { inp.focus(); }, 30);
     }
-    if (st.v === "message") renderThread();
+    if (st.v === "message") mountChat();
+    if (st.v === "home") startCarousel();
     if ((st.v === "faq" || st.v === "cat" || st.v === "news") && !S.idx) loadIndex().then(function () { if (top() === st) render(); });
     // the promo arrives after the first paint of the panel: redraw once it is known
     // (whole view only on Home/News; elsewhere just the tab bar, so a search in progress keeps its text)
     if (!S.promo) loadPromo().then(function (p) {
       if (!p || !S.open || top() !== st) return;
       if (st.v === "home" || st.v === "news") return render();
+      if (st.v === "message" && !el("fph-chat-slot").previousElementSibling && codePromo()) {
+        el("fph-chat-slot").insertAdjacentHTML("beforebegin", promoStrip(codePromo()));
+        placeChat();
+      }
       var n = panel.querySelector(".fph-nav");
       if (n) n.outerHTML = nav(st.tab);
     });
@@ -563,12 +624,17 @@
     if (a === "close") close();
     else if (a === "tab") go({ v: v, tab: v }, true);
     else if (a === "back") { if (S.stack.length > 1) { S.stack.pop(); render(); } else go({ v: "home", tab: "home" }, true); }
-    else if (a === "topic") pickTopic(v);
-    else if (a === "again") { S.topic = null; S.thread.push({ k: "bot", h: "Sure - what else can we help with?" }); S.thread.push({ k: "x", h: topicChips() }); renderThread(); }
-    else if (a === "chat") chatWithTeam();
+    else if (a === "topic") { S.topic = topicLabel(v); go({ v: "message", tab: "message" }, true); }
+    else if (a === "chat") { S.topic = S.topic || (top().v === "faq" && S.idx && S.idx.faq[top().i] ? S.idx.faq[top().i].c : null); go({ v: "message", tab: "message" }, true); }
+    else if (a === "slide") { var tr = el("fph-track"); if (tr) tr.scrollTo({ left: +v * tr.clientWidth, behavior: "smooth" }); }
     else if (a === "cat") go({ v: "cat", c: v, tab: top().tab });
     else if (a === "faq") go({ v: "faq", i: +v, tab: top().tab });
     else if (a === "faqq") loadIndex().then(function () { var i = faqIndex(b.getAttribute("data-q")); if (i > -1) go({ v: "faq", i: i, tab: "home" }); });
+  }
+
+  function topicLabel(id) {
+    var t = TOPICS.filter(function (x) { return x.id === id || x.label.toLowerCase() === String(id).toLowerCase(); })[0];
+    return t ? t.label : null;
   }
 
   // ---- open / close ----
@@ -602,6 +668,7 @@
     loadPromo();
     if (window.FPGreeting && window.FPGreeting.dismiss) window.FPGreeting.dismiss();
     var v = view || "home", st = { v: v, tab: v };
+    if (v === "message" && arg) S.topic = topicLabel(arg);
     if (v === "help") st.q = arg || "";
     if (v === "faq") st = { v: "faq", i: +arg || 0, tab: "help" };
     S.stack = v === "faq" ? [{ v: "help", tab: "help", q: "", focus: false }, st] : [st];
@@ -610,9 +677,11 @@
     document.documentElement.classList.add("fph-lock");
     fabState(true);
     render();
-    if (v === "message" && arg) pickTopic(arg);
+
   }
   function close() {
+    unmountChat();
+    clearInterval(S.timer);
     S.open = false;
     if (root && root.parentNode) root.parentNode.removeChild(root);
     document.documentElement.classList.remove("fph-lock");
