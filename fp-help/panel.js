@@ -193,6 +193,9 @@
       "#fph .fph-code .fph-ic{width:15px;height:15px}",
       "#fph .fph-code small{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#00ffc2b3}",
       "#fph .fph-pbody{display:block;padding:12px 16px 14px}",
+      "#fph .fph-pimgw{position:relative;display:block;background:#06120b}",
+      "#fph .fph-pimg{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}",
+      "#fph .fph-pimgw .fph-live{position:absolute;top:10px;right:10px;box-shadow:0 4px 14px #00000080}",
       "#fph .fph-pline{display:block;font-size:13.5px;line-height:1.5;color:#ffffffd1}",
       "#fph .fph-pfoot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}",
       "#fph .fph-pclose{font-size:12px;color:#ffffff8c;font-weight:600}",
@@ -283,11 +286,30 @@
   }
   function livePromo() { return livePromos()[0] || null; }
   function codePromo() { return livePromos().filter(function (p) { return p.code; })[0] || null; }
+  function getJson(url) {
+    return fetch(url, { credentials: "omit" }).then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; });
+  }
+  // The day's banner for a code promo: the latest banner of the same code dated on or before the
+  // window's start (US Eastern), so a campaign's closing day reuses its opening banner.
+  function etDate(iso) {
+    try { return new Date(iso).toLocaleDateString("en-CA", { timeZone: "America/New_York" }); } catch (e) { return String(iso).slice(0, 10); }
+  }
+  function attachBanners(promos, banners) {
+    promos.forEach(function (p) {
+      if (!p || !p.code || p.img) return;
+      var day = etDate(p.active_from), best = null;
+      (Array.isArray(banners) ? banners : []).forEach(function (b) {
+        if (b.code === p.code && b.date <= day && (!best || b.date > best.date)) best = b;
+      });
+      if (best) p.img = best.img;
+    });
+    return promos;
+  }
   function loadPromo() {
     if (S.promo) return Promise.resolve(livePromo());
     if (!S.promoP) {
-      S.promoP = fetch(BASE + "promo.json", { credentials: "omit" }).then(function (r) { return r.ok ? r.json() : []; })
-        .then(function (d) { S.promo = Array.isArray(d) ? d : []; return livePromo(); })
+      S.promoP = Promise.all([getJson(BASE + "promo.json"), getJson(BASE + "promo/banners.json")])
+        .then(function (r) { S.promo = attachBanners(Array.isArray(r[0]) ? r[0] : [], r[1]); return livePromo(); })
         .catch(function () { S.promo = []; return null; });
     }
     return S.promoP;
@@ -369,8 +391,9 @@
     });
   }
   function mountChat() {
-    var w = lc(), topic = S.topic;
+    var w = lc(), topic = S.topic, draft = S.draft;
     S.topic = null;
+    S.draft = null;
     S.chat = true;
     placeChat();
     document.documentElement.classList.add("fph-chat-on");
@@ -383,7 +406,7 @@
     bindLc();
     try {
       if (topic) w.call("set_session_variables", { help_topic: topic });
-      w.call("maximize", topic ? { messageDraft: "Hi, I have a question about " + topic.toLowerCase() + ": " } : undefined);
+      w.call("maximize", draft ? { messageDraft: draft } : topic ? { messageDraft: "Hi, I have a question about " + topic.toLowerCase() + ": " } : undefined);
     } catch (e) { return chatFallback(); }
     setTimeout(function () {             // LiveChat never showed up (blocked, offline network)
       if (!S.chat) return;
@@ -416,13 +439,25 @@
     }
     return '<nav class="fph-nav">' + t("home", "home", "Home") + t("message", "chat", "Messages") + t("news", "news", "News") + t("help", "help", "Help") + "</nav>";
   }
+  // A code promo. Claimed at checkout (Fewpips) the card links out; claimed IN the chat (HankoX,
+  // MagnoFX: "send MATCH300 in live chat") it opens the chat in the panel with the claim written.
+  // With the day's banner the image carries the headline, so only code, CTA and close time follow.
   function promoCard(p) {
-    return '<a class="fph-card fph-promo" href="' + esc(p.url) + '" target="_blank" rel="noopener" data-promo="' + esc(p.id) + '">' +
-      '<span class="fph-pb"><span class="fph-live">Live offer</span><span class="fph-ptitle">' + esc(p.title || p.code) + "</span>" +
-      '<span class="fph-code"><span class="fph-ic">' + I.tag + "</span><small>CODE</small>" + esc(p.code) + "</span></span>" +
-      '<span class="fph-pbody"><span class="fph-pline">' + esc(p.line) + "</span>" +
-      '<span class="fph-pfoot"><span class="fph-pclose">' + (p.closes ? "Ends " + esc(p.closes) : "") + "</span>" +
-      '<span class="fph-pcta">' + esc(p.cta || "Get funded") + '<span class="fph-ic">' + I.chev + "</span></span></span></span></a>";
+    var chat = p.claim === "live_chat";
+    var cta = chat
+      ? '<button type="button" class="fph-pcta" data-a="claim" data-v="' + esc(p.code) + '" style="border:none">' + esc(p.cta || "Claim in chat") + '<span class="fph-ic">' + I.chev + "</span></button>"
+      : '<span class="fph-pcta">' + esc(p.cta || "Get funded") + '<span class="fph-ic">' + I.chev + "</span></span>";
+    var code = '<span class="fph-code"><span class="fph-ic">' + I.tag + "</span><small>CODE</small>" + esc(p.code) + "</span>";
+    var open = chat ? '<div class="fph-card fph-promo" data-promo="' + esc(p.id) + '">'
+                    : '<a class="fph-card fph-promo" href="' + esc(p.url) + '" target="_blank" rel="noopener" data-promo="' + esc(p.id) + '">';
+    var body = p.img
+      ? '<span class="fph-pimgw"><img class="fph-pimg" src="' + esc(p.img) + '" alt="' + esc(p.title || p.code) + '" decoding="async"><span class="fph-live">Live offer</span></span>' +
+        '<span class="fph-pbody"><span class="fph-pfoot" style="margin-top:0">' + code + cta + "</span>" +
+        (p.closes ? '<span class="fph-pclose" style="display:block;margin-top:9px">Ends ' + esc(p.closes) + "</span>" : "") + "</span>"
+      : '<span class="fph-pb"><span class="fph-live">Live offer</span><span class="fph-ptitle">' + esc(p.title || p.code) + "</span>" + code + "</span>" +
+        '<span class="fph-pbody"><span class="fph-pline">' + esc(p.line) + "</span>" +
+        '<span class="fph-pfoot"><span class="fph-pclose">' + (p.closes ? "Ends " + esc(p.closes) : "") + "</span>" + cta + "</span></span>";
+    return open + body + (chat ? "</div>" : "</a>");
   }
   function bannerCard(p, lazy) {
     var webp = function (u) { return String(u || "").replace(/\.(png|jpe?g)$/, ".webp"); };
@@ -463,6 +498,8 @@
     }, 6000);
   }
   function promoStrip(p) {
+    if (p.claim === "live_chat")
+      return '<div class="fph-strip"><span class="fph-live">Live</span><span class="fph-grow">' + esc(p.short || p.line) + "</span></div>";
     return '<a class="fph-strip" href="' + esc(p.url) + '" target="_blank" rel="noopener"><span class="fph-live">Live</span>' +
       '<span class="fph-grow">' + esc(p.short || p.line) + '</span><span class="fph-pcta">' + esc(p.cta || "Get funded") + "</span></a>";
   }
@@ -634,6 +671,7 @@
     else if (a === "tab") go({ v: v, tab: v }, true);
     else if (a === "back") { if (S.stack.length > 1) { S.stack.pop(); render(); } else go({ v: "home", tab: "home" }, true); }
     else if (a === "topic") { S.topic = topicLabel(v); go({ v: "message", tab: "message" }, true); }
+    else if (a === "claim") { S.draft = "Hi, I have funded my account and would like to claim " + v + "."; go({ v: "message", tab: "message" }, true); }
     else if (a === "chat") { S.topic = S.topic || (top().v === "faq" && S.idx && S.idx.faq[top().i] ? S.idx.faq[top().i].c : null); go({ v: "message", tab: "message" }, true); }
     else if (a === "slide") { var tr = el("fph-track"); if (tr) tr.scrollTo({ left: +v * tr.clientWidth, behavior: "smooth" }); }
     else if (a === "cat") go({ v: "cat", c: v, tab: top().tab });
