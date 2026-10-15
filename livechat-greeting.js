@@ -3,13 +3,16 @@
    badge (as if a message arrived) and a greeting bubble pops up next to it. Clicking either
    opens the real LiveChat window (window.LiveChatWidget "maximize"). The bubble has its own
    X to dismiss - that only hides it for the current view; it comes back on the next refresh
-   or navigation. Own non-React DOM so it survives Next.js hydration + client-side routing. */
+   or navigation. Own non-React DOM so it survives Next.js hydration + client-side routing.
+   While a promotion is live, the bubble also carries a LIVE strip with the calendar's short
+   copy, read from fp-help/promo.json (the same live-only entry the help panel shows). */
 (function () {
   var BADGE_ID = "fp-lc-badge";
   var BUBBLE_ID = "fp-lc-greet";
   var FAB_SEL = ".chat-fab--livechat";
   var GREET_DELAY = 2600;          // ms after landing before the bubble pops
   var dismissed = false;           // per-view close; reset on navigation/refresh
+  var promo = null, promoAsked = false;
 
   var GREETING =
     "Hey there, welcome to Fewpips! Got a question about our challenges, rules or payouts? " +
@@ -52,6 +55,10 @@
       "#" + BUBBLE_ID + " .fp-x svg{width:15px;height:15px}",
       "#" + BUBBLE_ID + "::after{content:'';position:absolute;right:34px;bottom:-8px;width:16px;height:16px;",
       "background:#0d0f0e;border-right:1px solid #ffffff1f;border-bottom:1px solid #ffffff1f;transform:rotate(45deg)}",
+      "#" + BUBBLE_ID + " .fp-promo{display:flex;gap:8px;align-items:flex-start;margin:0 0 10px;padding:9px 10px;border-radius:10px;",
+      "background:#00ffc214;border:1px solid #00ffc240;font-size:.8rem;line-height:1.4;color:#eafff6}",
+      "#" + BUBBLE_ID + " .fp-live{flex:0 0 auto;margin-top:1px;font-size:.62rem;font-weight:800;letter-spacing:.12em;color:#001a0d;",
+      "background:#00ffc2;border-radius:999px;padding:2px 7px}",
       "@media(max-width:560px){#" + BUBBLE_ID + "{right:14px;bottom:150px;width:270px}}"
     ].join("");
     (document.head || document.documentElement).appendChild(css);
@@ -104,6 +111,29 @@
     if (el) el.remove();
   }
 
+  // The live promotion (or null). Asked once per page load, after load, so it never
+  // competes with the page itself; the visitor's clock is checked again on every show.
+  function askPromo() {
+    if (promoAsked || !window.fetch) return;
+    if (document.readyState !== "complete") { window.addEventListener("load", askPromo); return; }
+    promoAsked = true;
+    fetch("/fp-help/promo.json", { credentials: "omit" })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (d) { promo = Array.isArray(d) ? d : []; })
+      .catch(function () { promo = []; });
+  }
+  function livePromo() {
+    var now = Date.now();
+    return (promo || []).filter(function (p) {
+      return p && p.code && p.short && Date.parse(p.active_from) <= now && now < Date.parse(p.active_until);
+    })[0] || null;
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
   function showBubble() {
     if (dismissed) return;
     if (!document.querySelector(FAB_SEL)) return; // wait for the FAB to mount
@@ -118,6 +148,7 @@
       '<button type="button" class="fp-x" aria-label="Dismiss">' + X_SVG + '</button>' +
       '<div class="fp-head"><span class="fp-av">' + CHAT_SVG + '</span>' +
         '<span><span class="fp-name">Fewpips Support</span><br><span class="fp-status">Online now</span></span></div>' +
+      (livePromo() ? '<div class="fp-promo"><span class="fp-live">LIVE</span><span>' + esc(livePromo().short) + "</span></div>" : "") +
       '<div class="fp-msg">' + GREETING + '</div>';
     box.addEventListener("click", function (e) {
       if (e.target.closest(".fp-x")) return;
@@ -132,6 +163,7 @@
 
   // Show badge now + schedule the bubble. Used on first load and on every navigation.
   function present() {
+    askPromo();
     injectStyles();
     ensureBadge();
     setTimeout(showBubble, GREET_DELAY);

@@ -3,7 +3,7 @@
    The panel (fp-help/panel.js) and its search index (fp-help/index.json) load on the first
    hover/click of the FAB, so a page pays nothing for them until someone opens the chat.
    If panel.js cannot load, the click falls back to opening LiveChat directly, as before.
-   Deep link / QA: ?fphelp=home | message | message:<topic> | help | help:<query> | faq:<n> */
+   Deep link / QA: ?fphelp=home | message | message:<topic> | news | help | help:<query> | faq:<n> */
 (function () {
   if (window.FPHelp) return;
 

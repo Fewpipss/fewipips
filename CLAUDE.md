@@ -60,6 +60,10 @@ banner), update the matching check in the same PR - the gate is a safety net, no
   the panel, loaded on the first FAB hover/click) searches `fp-help/index.json`, built from the FAQ chunk + every blog post by `scripts/help-index.py`.
   The gate rebuilds it locally and fails CI if it is stale - after a FAQ or blog edit, commit
   the rebuilt `fp-help/index.json` too.
+  Tabs: Home, Messages, News, Help. The promo card (Home + News) and the teaser bubble's LIVE
+  strip read `/fp-help/promo.json`, which is NOT a file: `functions/_middleware.ts` proxies the
+  Fewpips LiveChat bot's `/promo` (live entry only, from the monthly marketing-calendar
+  schedule the bot greeting uses). Never add a static promo.json or hard-code a code there.
 - Same trap for IMAGES: optimizing an image in place keeps its URL, and `_headers` gives
   images a 30-day cache - CDN PoPs keep serving the old heavy file. Rename the image
   (e.g. `kyle.jpg` -> `kyle-b.jpg`) and update every reference (HTML, RSC .txt, chunks).

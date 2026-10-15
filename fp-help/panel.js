@@ -4,7 +4,11 @@
    The LiveChat FAB opens this panel instead of a bare pre-chat form:
      Home      - Trustpilot review card, "Send us a message", "Search for help", Discord
      Messages  - click-by-click topics -> the most-asked answers + related posts -> our team
+     News      - the promotion live right now + the 3 newest blog posts
      Help      - live search over every FAQ answer and every blog post (fp-help/index.json)
+   The promo card (Home + News) reads fp-help/promo.json: the site middleware proxies the
+   bot's /promo, which returns ONLY the entry live at this moment from the monthly marketing
+   calendar schedule (never a future code). It is re-checked against the visitor's clock.
    "Chat with our team" hands over to the real LiveChat window (maximize) with the chosen
    topic as a session variable + message draft. The bot and its rules are untouched.
    index.json is rebuilt from the FAQ chunk + blog pages by scripts/help-index.py (deploy gate).
@@ -40,7 +44,7 @@
   var STOP = " a an the is are am do does did can i my me we you your our of to in on for and or with what how when where which who why it its be at as by from this that there any have has will about ".split(" ")
     .reduce(function (o, w) { if (w) o[w] = 1; return o; }, {});
 
-  var S = { open: false, stack: [], idx: null, idxP: null, thread: [], topic: null, built: false };
+  var S = { open: false, stack: [], idx: null, idxP: null, promo: null, promoP: null, thread: [], topic: null, built: false };
   var root, panel;
 
   var I = {
@@ -54,6 +58,8 @@
     home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>',
     chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
     help: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M9.2 9a3 3 0 0 1 5.8 1c0 2-3 2.6-3 4.5M12 17.5h.01"/></svg>',
+    news: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+    tag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>',
     doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 17h5"/></svg>',
     star: '<svg viewBox="0 0 24 24"><path fill="#fff" d="m12 3 2.6 6.1 6.6.5-5 4.3 1.5 6.5L12 16.9l-5.7 3.5 1.5-6.5-5-4.3 6.6-.5z"/></svg>',
     discord: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.6 19.6 0 0 0 15.4 3l-.6 1.3a18 18 0 0 0-5.6 0L8.6 3a19.6 19.6 0 0 0-4.9 1.5C.6 9.1-.3 13.7.1 18.2a19.8 19.8 0 0 0 6 3l1.3-2a12.7 12.7 0 0 1-2-1l.5-.4a14 14 0 0 0 12.2 0l.5.4a12.7 12.7 0 0 1-2 1l1.3 2a19.7 19.7 0 0 0 6-3c.5-5.2-.8-9.7-3.6-13.8M8 15.4c-1.2 0-2.2-1.1-2.2-2.4S6.8 10.6 8 10.6s2.2 1.1 2.2 2.4-1 2.4-2.2 2.4m8 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4"/></svg>'
@@ -175,6 +181,37 @@
       "#fph .fph-chip.solid{background:linear-gradient(135deg,#00ffc2,#0fcd37);color:#001a0d!important;border-color:transparent}",
       "#fph .fph-box{margin-left:36px;background:#121212;border:1px solid #ffffff12;border-radius:14px;padding:4px 12px}",
       "#fph .fph-box .fph-post{margin:8px 0;background:#0c0c0c}",
+      // promo card (Home + News): the offer live right now
+      "#fph .fph-promo{padding:0;overflow:hidden;border-color:#00ffc240}",
+      "#fph .fph-pb{display:block;position:relative;padding:16px 16px 14px;background:radial-gradient(110% 120% at 100% 0%,#0fcd3773 0%,transparent 60%),radial-gradient(80% 100% at 0% 100%,#00ffc233 0%,transparent 65%),#06120b;border-bottom:1px solid #00ffc226}",
+      "#fph .fph-live{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#001a0d;background:#00ffc2;border-radius:999px;padding:4px 9px}",
+      "#fph .fph-live:before{content:'';width:6px;height:6px;border-radius:50%;background:#001a0d;animation:fphPulse 1.6s ease-in-out infinite}",
+      "@keyframes fphPulse{50%{opacity:.25}}",
+      "#fph .fph-ptitle{display:block;margin:10px 0 10px;font:800 19px/1.2 " + H + ";letter-spacing:.01em;color:#fff}",
+      "#fph .fph-code{display:inline-flex;align-items:center;gap:7px;border:1px dashed #00ffc28c;border-radius:9px;padding:6px 10px;background:#00ffc214;color:#00ffc2;font:800 15px/1 " + F + ";letter-spacing:.08em}",
+      "#fph .fph-code .fph-ic{width:15px;height:15px}",
+      "#fph .fph-code small{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#00ffc2b3}",
+      "#fph .fph-pbody{display:block;padding:12px 16px 14px}",
+      "#fph .fph-pline{display:block;font-size:13.5px;line-height:1.5;color:#ffffffd1}",
+      "#fph .fph-pfoot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}",
+      "#fph .fph-pclose{font-size:12px;color:#ffffff8c;font-weight:600}",
+      "#fph .fph-pcta{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:8px 14px;font-weight:800;font-size:13px;color:#001a0d;background:linear-gradient(135deg,#00ffc2,#0fcd37);white-space:nowrap}",
+      "#fph .fph-pcta .fph-ic{width:14px;height:14px}",
+      // news
+      "#fph .fph-nhd{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 12px;background:#050505;border-bottom:1px solid #ffffff12}",
+      "#fph .fph-nhd b{display:block;font:700 18px/1.2 " + H + "}#fph .fph-nhd span{font-size:12.5px;color:#ffffff99}",
+      "#fph .fph-news{padding:14px 14px 18px;display:flex;flex-direction:column;gap:12px}",
+      "#fph .fph-ni{display:block;background:#131313;border:1px solid #ffffff14;border-radius:14px;padding:14px 16px;transition:border-color .2s,transform .2s}",
+      "#fph .fph-ni:hover{border-color:#00ffc259;transform:translateY(-1px)}",
+      "#fph .fph-tags{display:flex;gap:6px;margin-bottom:8px}",
+      "#fph .fph-tg{font-size:11px;font-weight:700;border-radius:999px;padding:3px 9px;color:#00ffc2;background:#00ffc214;border:1px solid #00ffc233}",
+      "#fph .fph-tg.dim{color:#ffffffa6;background:#ffffff0d;border-color:#ffffff1a}",
+      "#fph .fph-ni .fph-t{display:block;font-size:15px}",
+      "#fph .fph-ni .fph-s{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}",
+      "#fph .fph-nread{display:inline-flex;align-items:center;gap:4px;margin-top:9px;font-size:13px;font-weight:700;color:#00ffc2}",
+      "#fph .fph-nread .fph-ic{width:14px;height:14px}",
+      "#fph .fph-tab{position:relative}",
+      "#fph .fph-tab .fph-pip{position:absolute;top:5px;left:calc(50% + 7px);width:8px;height:8px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 0 2px #080808}",
       // bottom tabs
       "#fph .fph-nav{display:flex;border-top:1px solid #ffffff12;background:#080808;padding:6px 8px 8px}",
       "#fph .fph-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:none;padding:7px 0 3px;",
@@ -186,7 +223,7 @@
       "@media(max-width:560px){#fph{inset:0;width:100%;height:100%;height:100dvh;border-radius:0;border:none;animation-name:fphUp}",
       "html.fph-lock,html.fph-lock body{overflow:hidden!important}}",
       "@keyframes fphUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}",
-      "@media(prefers-reduced-motion:reduce){#fph{animation:none}}"
+      "@media(prefers-reduced-motion:reduce){#fph{animation:none}#fph .fph-live:before{animation:none}}"
     ].join("");
     (document.head || document.documentElement).appendChild(css);
   }
@@ -200,6 +237,23 @@
         .catch(function () { S.idxP = null; return null; });
     }
     return S.idxP;
+  }
+  // The live promotion, or null. The endpoint already returns only the live entry; the
+  // visitor's clock is checked again so a cached response never shows an expired code.
+  function livePromo() {
+    var now = Date.now();
+    return (S.promo || []).filter(function (p) {
+      return p && p.code && Date.parse(p.active_from) <= now && now < Date.parse(p.active_until);
+    })[0] || null;
+  }
+  function loadPromo() {
+    if (S.promo) return Promise.resolve(livePromo());
+    if (!S.promoP) {
+      S.promoP = fetch(BASE + "promo.json", { credentials: "omit" }).then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (d) { S.promo = Array.isArray(d) ? d : []; return livePromo(); })
+        .catch(function () { S.promo = []; return null; });
+    }
+    return S.promoP;
   }
   function faqIndex(q) {
     if (!S.idx) return -1;
@@ -277,10 +331,39 @@
   // ---- views ----
   function nav(tab) {
     function t(id, icon, label) {
+      var pip = id === "news" && tab !== "news" && livePromo() ? '<span class="fph-pip" aria-hidden="true"></span>' : "";
       return '<button type="button" class="fph-tab' + (tab === id ? " on" : "") + '" data-a="tab" data-v="' + id + '">' +
-        '<span class="fph-ic">' + I[icon] + "</span>" + label + "</button>";
+        '<span class="fph-ic">' + I[icon] + "</span>" + label + pip + "</button>";
     }
-    return '<nav class="fph-nav">' + t("home", "home", "Home") + t("message", "chat", "Messages") + t("help", "help", "Help") + "</nav>";
+    return '<nav class="fph-nav">' + t("home", "home", "Home") + t("message", "chat", "Messages") + t("news", "news", "News") + t("help", "help", "Help") + "</nav>";
+  }
+  function promoCard(p) {
+    return '<a class="fph-card fph-promo" href="' + esc(p.url) + '" target="_blank" rel="noopener" data-promo="' + esc(p.id) + '">' +
+      '<span class="fph-pb"><span class="fph-live">Live offer</span><span class="fph-ptitle">' + esc(p.title || p.code) + "</span>" +
+      '<span class="fph-code"><span class="fph-ic">' + I.tag + "</span><small>CODE</small>" + esc(p.code) + "</span></span>" +
+      '<span class="fph-pbody"><span class="fph-pline">' + esc(p.line) + "</span>" +
+      '<span class="fph-pfoot"><span class="fph-pclose">' + (p.closes ? "Ends " + esc(p.closes) : "") + "</span>" +
+      '<span class="fph-pcta">' + esc(p.cta || "Get funded") + '<span class="fph-ic">' + I.chev + "</span></span></span></span></a>";
+  }
+  function fmtDate(d) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || "");
+    if (!m) return "";
+    return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][+m[2] - 1] + " " + (+m[3]) + ", " + m[1];
+  }
+  function vNews() {
+    var p = livePromo(), items = "";
+    if (p) items += promoCard(p);
+    if (S.idx) {
+      S.idx.blog.slice().sort(function (a, b) { return a.p < b.p ? 1 : a.p > b.p ? -1 : 0; }).slice(0, 3).forEach(function (b) {
+        items += '<a class="fph-ni" href="' + esc(b.u) + '"><span class="fph-tags"><span class="fph-tg">Blog</span>' +
+          (b.p ? '<span class="fph-tg dim">' + fmtDate(b.p) + "</span>" : "") + "</span>" +
+          '<span class="fph-t">' + esc(b.t) + '</span><span class="fph-s">' + esc(b.d) + "</span>" +
+          '<span class="fph-nread">Read the article<span class="fph-ic">' + I.chev + "</span></span></a>";
+      });
+    } else items += '<div class="fph-empty">Loading the latest...</div>';
+    return '<div class="fph-nhd"><span class="fph-row" style="gap:10px">' + avatar() + '<span><b>Latest</b><span>From the Fewpips team</span></span></span>' + closeBtn() + "</div>" +
+      '<div class="fph-scroll"><div class="fph-news">' + items +
+      '<a class="fph-more" href="/blog/" style="justify-content:center;margin-top:4px">All articles<span class="fph-ic">' + I.chev + "</span></a></div></div>" + nav("news");
   }
   function closeBtn() { return '<button type="button" class="fph-iconbtn" data-a="close" aria-label="Close">' + I.x + "</button>"; }
   function backBtn() { return '<button type="button" class="fph-iconbtn" data-a="back" aria-label="Back">' + I.back + "</button>"; }
@@ -293,7 +376,7 @@
     return '<div class="fph-scroll"><div class="fph-hero"><div class="fph-top"><img class="fph-logo" src="/fewpips-logo.png" alt="Fewpips">' + closeBtn() + "</div>" +
       '<div class="fph-team">' + avatar() + "<span>Fewpips Support<br><span class=\"fph-hs fph-st\" style=\"font-weight:500;display:flex;align-items:center;font-size:12px\">" + statusHtml() + "</span></span></div>" +
       '<h2 class="fph-hi">Hey trader <span aria-hidden="true">👋</span><b>How can we help?</b></h2></div>' +
-      '<div class="fph-cards">' +
+      '<div class="fph-cards">' + (livePromo() ? promoCard(livePromo()) : "") +
         '<a class="fph-card fph-row" href="' + TP_URL + '" target="_blank" rel="noopener"><span class="fph-ic fph-tp">' + I.star + '</span>' +
           '<span class="fph-grow"><span class="fph-t" style="display:block">Enjoying Fewpips?</span><span class="fph-s" style="display:block">Leave us a review on Trustpilot</span></span>' +
           '<span class="fph-ic fph-go">' + I.out + "</span></a>" +
@@ -454,7 +537,7 @@
     var st = top();
     if (st.v === "message" && !S.thread.length) startThread();
     panel.setAttribute("data-view", st.v);
-    panel.innerHTML = st.v === "home" ? vHome() : st.v === "message" ? vMessage() : st.v === "help" ? vHelp(st) :
+    panel.innerHTML = st.v === "home" ? vHome() : st.v === "message" ? vMessage() : st.v === "news" ? vNews() : st.v === "help" ? vHelp(st) :
       st.v === "cat" ? vCat(st) : vFaq(st);
     if (st.v === "help") {
       var inp = el("fph-q");
@@ -463,7 +546,15 @@
       if (st.focus !== false && window.matchMedia("(min-width:561px)").matches) setTimeout(function () { inp.focus(); }, 30);
     }
     if (st.v === "message") renderThread();
-    if ((st.v === "faq" || st.v === "cat") && !S.idx) loadIndex().then(function () { if (top() === st) render(); });
+    if ((st.v === "faq" || st.v === "cat" || st.v === "news") && !S.idx) loadIndex().then(function () { if (top() === st) render(); });
+    // the promo arrives after the first paint of the panel: redraw once it is known
+    // (whole view only on Home/News; elsewhere just the tab bar, so a search in progress keeps its text)
+    if (!S.promo) loadPromo().then(function (p) {
+      if (!p || !S.open || top() !== st) return;
+      if (st.v === "home" || st.v === "news") return render();
+      var n = panel.querySelector(".fph-nav");
+      if (n) n.outerHTML = nav(st.tab);
+    });
   }
   function onClick(e) {
     var b = e.target.closest("[data-a]");
@@ -508,6 +599,7 @@
     build();
     root.style.animation = instant ? "none" : ""; // a deep link lands open, no entrance animation
     loadIndex();
+    loadPromo();
     if (window.FPGreeting && window.FPGreeting.dismiss) window.FPGreeting.dismiss();
     var v = view || "home", st = { v: v, tab: v };
     if (v === "help") st.q = arg || "";
@@ -544,6 +636,7 @@
 
   // the loader (fp-help.js) owns the FAB click and the deep links, and calls in here
   window.__fphPanel = { open: open, close: close, isOpen: function () { return S.open; } };
+  loadPromo(); // panel.js itself loads on the first FAB hover, so the offer is usually ready by the click
   injectStyles();
   loadIndex(); // this file loads on the first hover/click, so warm the index up with it
 })();

@@ -334,7 +334,38 @@ function footerScript(): string {
   );
 }
 
+/**
+ * /fp-help/promo.json - the promotion live RIGHT NOW, for the chat help panel (promo card on
+ * Home + News tab) and the teaser bubble (livechat-greeting.js).
+ *
+ * Source: the Fewpips LiveChat bot's /promo, i.e. the same monthly schedule (built from the
+ * marketing calendar in the AIM CRM) that puts the offer in the bot's chat greeting, so the
+ * site and the bot always show the same code. The bot returns ONLY the live entry, never a
+ * future code, so nothing leaks early. The schedule refreshes itself every month on the bot -
+ * nothing to edit here. Edge-cached 60s; any failure returns [] (no card, nothing breaks).
+ */
+const PROMO_PATH = "/fp-help/promo.json";
+const PROMO_SRC = "https://fewpips-livechat-bot-production-a55d.up.railway.app/promo";
+
+async function promoJson(): Promise<Response> {
+  let body = "[]";
+  try {
+    const r = await fetch(PROMO_SRC, {
+      cf: { cacheTtl: 60, cacheEverything: true },
+      signal: AbortSignal.timeout(4000),
+    } as any);
+    if (r.ok) {
+      const d = await r.json();
+      if (Array.isArray(d)) body = JSON.stringify(d);
+    }
+  } catch (_e) { /* bot unreachable: no promo card */ }
+  return new Response(body, {
+    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=60" },
+  });
+}
+
 export const onRequest: PagesFunction<Env> = async (ctx) => {
+  if (new URL(ctx.request.url).pathname === PROMO_PATH) return promoJson();
   const res = await ctx.next();
   try {
     const ct = res.headers.get("content-type") || "";
