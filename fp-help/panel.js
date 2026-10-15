@@ -112,7 +112,7 @@
       "#fph .fph-top{display:flex;align-items:center;justify-content:space-between}",
       "#fph .fph-logo{height:22px;width:auto;display:block}",
       "#fph .fph-hero{position:relative;overflow:hidden}",
-      "#fph .fph-mascot{position:absolute;right:8px;bottom:44px;width:128px;height:auto;pointer-events:none;filter:drop-shadow(0 10px 24px #0fcd3740)}",
+      "#fph .fph-mascot{position:absolute;right:8px;bottom:58px;width:128px;height:auto;pointer-events:none;filter:drop-shadow(0 10px 24px #0fcd3740)}",
       "#fph .fph-htext{position:relative;max-width:64%;margin-top:28px}",
       "#fph .fph-tagl{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#00ffc2;margin-bottom:8px}",
       "#fph .fph-pill{display:inline-flex;align-items:center;margin-top:12px;font-size:12px;font-weight:700;color:#ffffffcc;background:#ffffff0f;border:1px solid #ffffff1a;border-radius:999px;padding:5px 10px}",
@@ -488,7 +488,7 @@
       return '<button type="button" class="fph-chip" data-a="topic" data-v="' + t.id + '">' + esc(t.label) + "</button>";
     }).join("");
     return '<div class="fph-scroll"><div class="fph-hero"><div class="fph-top"><img class="fph-logo" src="/fewpips-logo.png" alt="Fewpips">' + closeBtn() + "</div>" +
-      '<img class="fph-mascot" src="' + BASE + 'mascot-hero.webp" alt="" aria-hidden="true" width="152" height="180">' +
+      '<img class="fph-mascot" src="' + BASE + 'mascot-hero-v2.webp" alt="" aria-hidden="true" width="152" height="180">' +
       '<div class="fph-htext"><span class="fph-tagl">Funded by discipline</span>' +
       '<h2 class="fph-hi">Hey trader <span aria-hidden="true">👋</span><b>How can we help?</b></h2>' +
       '<span class="fph-pill fph-st">' + statusHtml() + "</span></div></div>" +
