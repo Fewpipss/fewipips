@@ -91,10 +91,11 @@
       FAB_SEL + ".fph-on .fph-fab-x{display:flex}",
       // panel shell
       "#fph{position:fixed;right:105px;bottom:90px;z-index:2147483647;width:384px;height:min(680px,calc(100vh - 110px));",
-      "display:flex;flex-direction:column;overflow:hidden;background:#0a0a0a;color:#fff;font-family:" + F + ";",
+      "display:flex;flex-direction:column;overflow:hidden;color:#fff;font-family:" + F + ";",
       "border:1px solid #ffffff17;border-radius:20px;box-shadow:0 24px 70px #000000c4,0 0 0 1px #00ffc214;",
       "transform-origin:100% 100%;animation:fphIn .28s cubic-bezier(.2,.9,.3,1.1) both}",
       "@keyframes fphIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}",
+      "#fph{background:radial-gradient(130% 55% at 105% 102%,#0fcd372e 0%,transparent 60%),radial-gradient(110% 45% at -12% 58%,#00ffc217 0%,transparent 62%),linear-gradient(180deg,#0a0a0a 0%,#06120b 100%)}",
       "#fph *{box-sizing:border-box}#fph button{font:inherit;color:inherit;cursor:pointer}",
       "#fph a{color:inherit;text-decoration:none}",
       "#fph .fph-scroll{flex:1;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ffffff26 transparent}",
@@ -108,7 +109,7 @@
       "#fph .fph-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:6px;box-shadow:0 0 0 3px #22c55e2e}",
       "#fph .fph-dot.off{background:#9ca3af;box-shadow:0 0 0 3px #9ca3af26}",
       // home
-      "#fph .fph-hero{padding:20px 20px 64px;background:radial-gradient(120% 90% at 90% -10%,#0fcd3766 0%,transparent 58%),radial-gradient(90% 80% at -10% -20%,#00ffc233 0%,transparent 60%),#050505}",
+      "#fph .fph-hero{padding:20px 20px 64px;background:radial-gradient(120% 90% at 90% -10%,#0fcd3766 0%,transparent 58%),radial-gradient(90% 80% at -10% -20%,#00ffc233 0%,transparent 60%),linear-gradient(180deg,#050505 0%,#05050500 100%)}",
       "#fph .fph-top{display:flex;align-items:center;justify-content:space-between}",
       "#fph .fph-logo{height:44px;width:auto;display:block}",
       "#fph .fph-hero{position:relative;overflow:hidden}",
@@ -119,7 +120,7 @@
       "#fph h2.fph-hi{margin:0;font:600 27px/1.2 " + H + ";color:#ffffff8c;letter-spacing:-.01em}",
       "#fph h2.fph-hi b{display:block;color:#fff;font-weight:700}",
       "#fph .fph-cards{padding:0 14px 16px;margin-top:-44px;display:flex;flex-direction:column;gap:12px}",
-      "#fph .fph-card{display:block;width:100%;text-align:left;background:#131313;border:1px solid #ffffff14;border-radius:14px;",
+      "#fph .fph-card{display:block;width:100%;text-align:left;background:linear-gradient(160deg,#131313 0%,#0c0c0c 100%);border:1px solid #ffffff14;border-radius:14px;",
       "padding:14px 16px;transition:border-color .2s,transform .2s,background .2s;box-shadow:0 8px 24px #00000059}",
       "#fph a.fph-card:hover,#fph button.fph-card:hover{border-color:#00ffc259;transform:translateY(-1px);background:#161616}",
       "#fph .fph-row{display:flex;align-items:center;gap:12px}",
@@ -141,7 +142,7 @@
       "#fph .fph-li .fph-go{width:16px;height:16px}",
       "#fph .fph-li .fph-kind{width:18px;height:18px;color:#ffffff66}",
       // headers for inner views
-      "#fph .fph-hd{display:flex;align-items:center;gap:10px;padding:14px 14px 12px;background:#050505;border-bottom:1px solid #ffffff12}",
+      "#fph .fph-hd{display:flex;align-items:center;gap:10px;padding:14px 14px 12px;background:linear-gradient(135deg,#050505 0%,#06120b 100%);border-bottom:1px solid #ffffff12}",
       "#fph .fph-hd .fph-ht{font:700 16px/1.2 " + H + "}",
       "#fph .fph-hd .fph-hs{font-size:12px;color:#ffffff99;margin-top:2px;display:flex;align-items:center}",
       "#fph .fph-hd.center{justify-content:space-between}",
@@ -198,7 +199,7 @@
       "#fph .fph-pcta{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:8px 14px;font-weight:800;font-size:13px;color:#001a0d;background:linear-gradient(135deg,#00ffc2,#0fcd37);white-space:nowrap}",
       "#fph .fph-pcta .fph-ic{width:14px;height:14px}",
       // news
-      "#fph .fph-nhd{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 12px;background:#050505;border-bottom:1px solid #ffffff12}",
+      "#fph .fph-nhd{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 12px;background:linear-gradient(135deg,#050505 0%,#06120b 100%);border-bottom:1px solid #ffffff12}",
       "#fph .fph-nhd b{display:block;font:700 18px/1.2 " + H + "}#fph .fph-nhd span{font-size:12.5px;color:#ffffff99}",
       "#fph .fph-news{padding:14px 14px 18px;display:flex;flex-direction:column;gap:12px}",
       "#fph .fph-ni{display:block;background:#131313;border:1px solid #ffffff14;border-radius:14px;padding:14px 16px;transition:border-color .2s,transform .2s}",
@@ -228,7 +229,7 @@
       "#fph .fph-topics{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}",
       "#fph .fph-topics .fph-chip{padding:7px 11px;font-size:12.5px}",
       // messages = the real LiveChat window inside the panel
-      "#fph .fph-chat{flex:1;display:flex;flex-direction:column;min-height:0;background:#0a0a0a}",
+      "#fph .fph-chat{flex:1;display:flex;flex-direction:column;min-height:0}",
       "#fph .fph-strip{display:flex;align-items:center;gap:9px;padding:9px 12px;background:#06120b;border-bottom:1px solid #00ffc226;font-size:12.5px;line-height:1.35;color:#eafff6}",
       "#fph .fph-strip .fph-live{flex:0 0 auto;font-size:10px;padding:3px 7px}",
       "#fph .fph-strip .fph-pcta{padding:6px 11px;font-size:12px}",
@@ -238,6 +239,14 @@
       "html.fph-chat-on #fph{z-index:2147483646}",
       "html.fph-chat-on #chat-widget-container{left:var(--fph-cx)!important;top:var(--fph-cy)!important;right:auto!important;bottom:auto!important;" +
         "width:var(--fph-cw)!important;height:var(--fph-ch)!important;max-width:none!important;max-height:none!important;min-height:0!important;z-index:2147483647!important}",
+      // CTAs: animated border (a glint running round it), brand colours; static where @property is unsupported
+      "@property --fph-a{syntax:'<angle>';inherits:false;initial-value:0deg}",
+      "@keyframes fphBorder{to{--fph-a:360deg}}",
+      "#fph .fph-pcta,#fph .fph-cta,#fph .fph-ctab{position:relative;isolation:isolate}",
+      "#fph .fph-pcta::before,#fph .fph-cta::before,#fph .fph-ctab::before{content:'';position:absolute;inset:-2px;border-radius:inherit;padding:2px;pointer-events:none;" +
+        "background:conic-gradient(from var(--fph-a),#0fcd37 0%,#00ffc2 18%,#ffffffee 26%,#00ffc2 34%,#0fcd37 52%,#0fcd3700 70%,#0fcd37 100%);" +
+        "-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:fphBorder 3.2s linear infinite}",
+      "#fph .fph-ctab::before{inset:-1px;padding:1.5px;animation-duration:4.8s}",
       // bottom tabs
       "#fph .fph-nav{display:flex;border-top:1px solid #ffffff12;background:#080808;padding:6px 8px 8px}",
       "#fph .fph-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:none;padding:7px 0 3px;",
@@ -249,7 +258,7 @@
       "@media(max-width:560px){#fph{inset:0;width:100%;height:100%;height:100dvh;border-radius:0;border:none;animation-name:fphUp}",
       "html.fph-lock,html.fph-lock body{overflow:hidden!important}}",
       "@keyframes fphUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}",
-      "@media(prefers-reduced-motion:reduce){#fph{animation:none}#fph .fph-live:before{animation:none}#fph .fph-track{scroll-behavior:auto}}"
+      "@media(prefers-reduced-motion:reduce){#fph{animation:none}#fph .fph-live:before{animation:none}#fph .fph-track{scroll-behavior:auto}#fph .fph-pcta::before,#fph .fph-cta::before,#fph .fph-ctab::before{animation:none}}"
     ].join("");
     (document.head || document.documentElement).appendChild(css);
   }
@@ -493,7 +502,7 @@
       '<h2 class="fph-hi">Hey trader <span aria-hidden="true">👋</span><b>How can we help?</b></h2>' +
       '<span class="fph-pill fph-st">' + statusHtml() + "</span></div></div>" +
       '<div class="fph-cards">' + carousel() +
-        '<div class="fph-card"><button type="button" class="fph-row" data-a="tab" data-v="message" style="width:100%;border:none;background:none;padding:0;text-align:left">' +
+        '<div class="fph-card fph-ctab"><button type="button" class="fph-row" data-a="tab" data-v="message" style="width:100%;border:none;background:none;padding:0;text-align:left">' +
           '<span class="fph-grow"><span class="fph-t" style="display:block">Send us a message</span>' +
           '<span class="fph-s fph-st" style="display:flex;align-items:center">' + statusHtml() + '</span></span><span class="fph-ic fph-send">' + I.send + "</span></button>" +
           '<div class="fph-topics">' + topics + "</div></div>" +
