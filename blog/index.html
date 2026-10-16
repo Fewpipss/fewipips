@@ -161,6 +161,22 @@ a{color:inherit;text-decoration:none}
   .mascot-break-inner{flex-direction:column;gap:1.5rem;text-align:center}
   .mascot-break-text{text-align:center}
 }
+/* Phones: the same look without per-frame GPU work while scrolling (SEO group, 16 Oct).
+   Blurred animated orbs, full-screen animated layers and backdrop blurs over a fixed
+   background were redrawn on every scroll frame; soft gradients and solid panels look the
+   same and cost nothing. */
+@media (max-width:1024px),(hover:none) and (pointer:coarse){
+  .orb{filter:none;animation:none}
+  .orb-1{background:radial-gradient(closest-side,rgba(15,205,55,.07),transparent)}
+  .orb-2{background:radial-gradient(closest-side,rgba(0,255,194,.06),transparent)}
+  .orb-3{background:radial-gradient(closest-side,rgba(66,255,0,.05),transparent)}
+  .orb-4{background:radial-gradient(closest-side,rgba(15,205,55,.04),transparent)}
+  .noise,.scanlines,.particles-container{display:none}
+  .top-gradient-line,.hero-badge .pulse,.mascot-break-img{animation:none}
+  .blog-hero::after{filter:none}
+  .blog-nav{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(5,7,9,.97)}
+  .blog-card-badge,.blog-cta{-webkit-backdrop-filter:none;backdrop-filter:none}
+}
 </style>
 </head>
 <body>
