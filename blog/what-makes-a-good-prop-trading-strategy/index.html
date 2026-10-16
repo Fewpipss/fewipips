@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script>(function(){var l=function(){if(window.__gtagLoaded)return;window.__gtagLoaded=1;var s=document.createElement("script");s.async=1;s.src="https://www.googletagmanager.com/gtag/js?id=G-67ZBBEE4JC";document.head.appendChild(s)};window.addEventListener("load",function(){("requestIdleCallback"in window?requestIdleCallback:function(f){setTimeout(f,1500)})(l)});setTimeout(l,6e3)})();</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-67ZBBEE4JC');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Does a Good Prop Trading Strategy Actually Look Like? | Fewpips Blog</title>
+<meta name="description" content="A good prop trading strategy reads like a rulebook: defined entries and exits, a measurable edge, a known worst losing streak and size set by the drawdown.">
+<meta name="keywords" content="prop trading strategy, prop firm strategy rules, risk per trade, fewpips">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Fewpips">
+<link rel="canonical" href="https://www.fewpips.com/blog/what-makes-a-good-prop-trading-strategy/">
+<meta property="og:title" content="What Does a Good Prop Trading Strategy Actually Look Like?">
+<meta property="og:description" content="A good prop trading strategy reads like a rulebook: defined entries and exits, a measurable edge, a known worst losing streak and size set by the drawdown.">
+<meta property="og:url" content="https://www.fewpips.com/blog/what-makes-a-good-prop-trading-strategy/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fewpips">
+<meta property="og:image" content="https://www.fewpips.com/blog/mascot-1-teaching.webp">
+<meta property="article:published_time" content="2026-10-16T09:00:00Z">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Does a Good Prop Trading Strategy Actually Look Like?">
+<meta name="twitter:description" content="A good prop trading strategy reads like a rulebook: defined entries and exits, a measurable edge, a known worst losing streak and size set by the drawdown.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"></noscript>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BlogPosting",
+ "headline": "What Does a Good Prop Trading Strategy Actually Look Like?",
+ "description": "A good prop trading strategy reads like a rulebook: defined entries and exits, a measurable edge, a known worst losing streak and size set by the drawdown.",
+ "author": {
+  "@type": "Organization",
+  "name": "Fewpips"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Fewpips",
+  "url": "https://www.fewpips.com"
+ },
+ "image": "https://www.fewpips.com/blog/mascot-1-teaching.webp",
+ "datePublished": "2026-10-16",
+ "dateModified": "2026-10-16",
+ "mainEntityOfPage": "https://www.fewpips.com/blog/what-makes-a-good-prop-trading-strategy/"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What Is a Good Risk-To-Reward Ratio for A Prop Firm Strategy?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "There is no magic number. What matters is expectancy: win rate times average win, minus loss rate times average loss, after costs. A 1:2 ratio with a 40% win rate is positive. A 1:1 ratio with a 40% win rate is not."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I Use My Personal-Account Strategy On a Prop Account?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Only if it passes with the prop rules applied. Re-test it against a trailing floor, a daily loss limit and any hedging or news restrictions. If it breaks one, adjust it first."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How Many Trades Per Day Should a Prop Strategy Take?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "There is no fixed count. Take enough to build a record, but few enough that a bad run cannot reach the daily limit. On Fewpips, positions opened and closed within 30 seconds are prohibited, so check your hold time before you build around scalping."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How Do I Know If a Prop Firm's Rules Suit My Strategy?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "List your worst losing streak, your typical hold time and your average daily loss, then compare them with the firm's limits. The Fewpips FAQ answers the common rule questions in one place."
+   }
+  }
+ ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050709;--bg2:#080a0e;--bg-card:#0c0e14;
+  --border:rgba(255,255,255,.06);--text:#e8f5ea;--text-muted:#7a8a80;--white:#fff;
+  --green:#0fcd37;--green-light:#42ff00;--green-cyan:#00ffc2;
+  --gradient:linear-gradient(135deg,#00ffc2,#42ff00);
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',ui-sans-serif,system-ui,sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--green);text-decoration:none;transition:opacity .2s}
+a:hover{opacity:.85}
+.page-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(140px);animation:orbDrift 25s ease-in-out infinite}
+.orb-1{width:500px;height:500px;background:rgba(15,205,55,.06);top:-150px;left:-100px;animation-delay:0s}
+.orb-2{width:450px;height:450px;background:rgba(0,255,194,.05);bottom:-200px;right:-80px;animation-delay:-8s}
+.orb-3{width:350px;height:350px;background:rgba(66,255,0,.04);top:50%;left:60%;animation-delay:-16s}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-50px) scale(1.1)}66%{transform:translate(-30px,40px) scale(.9)}}
+.grid-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(15,205,55,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(15,205,55,.025) 1px,transparent 1px);
+  background-size:80px 80px}
+.dot-field{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(15,205,55,.08) 1px,transparent 1px);
+  background-size:40px 40px;opacity:.3}
+.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.015;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:128px 128px}
+.content{position:relative;z-index:1}
+.blog-nav{position:sticky;top:0;z-index:100;background:rgba(5,7,9,.85);backdrop-filter:blur(24px) saturate(1.2);border-bottom:1px solid var(--border);padding:0 2rem;height:72px;display:flex;align-items:center;justify-content:space-between}
+.blog-nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.blog-nav-logo img{height:32px}
+.blog-nav-logo span{font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:1px;text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.875rem;color:var(--text-muted)}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{display:inline-flex;padding:.55rem 1.4rem;border-radius:10px;background:var(--gradient);color:#000!important;font-weight:700;font-size:.8rem;box-shadow:0 0 20px rgba(15,205,55,.15)}
+.post-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.post-hero-bg{height:320px;position:relative;overflow:hidden}
+.post-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.post-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 0%,rgba(5,7,9,.6) 40%,rgba(5,7,9,.3) 100%)}
+.post-hero-glow{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);width:600px;height:200px;background:radial-gradient(ellipse,rgba(15,205,55,.08),transparent 70%);pointer-events:none;z-index:1}
+.post-header{max-width:780px;margin:0 auto;padding:2rem 2rem 1.5rem;text-align:center;position:relative;z-index:2;margin-top:-80px}
+.post-header .breadcrumb{font-size:.75rem;color:var(--text-muted);margin-bottom:1.25rem}
+.post-header .breadcrumb a{color:var(--text-muted);text-decoration:none}
+.post-header .breadcrumb a:hover{color:var(--green)}
+.post-header .category{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;border-radius:8px;background:rgba(5,7,9,.7);backdrop-filter:blur(10px);border:1px solid rgba(15,205,55,.2);font-size:.65rem;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.post-header .category .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:catPulse 2s ease-in-out infinite}
+@keyframes catPulse{0%,100%{opacity:1}50%{opacity:.4}}
+.post-header h1{font-family:'Poppins',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:var(--white);line-height:1.25;margin-bottom:1rem;letter-spacing:-.3px}
+.post-header .meta{font-size:.8rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.post-header .meta span{display:flex;align-items:center;gap:.3rem}
+.glow-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(15,205,55,.2) 20%,rgba(15,205,55,.4) 50%,rgba(15,205,55,.2) 80%,transparent);margin:0}
+.post-content{max-width:780px;margin:0 auto;padding:2.5rem 2rem 4rem;position:relative}
+.post-content article{font-size:1.05rem;line-height:1.85}
+.post-content h2{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;line-height:1.3;position:relative;padding-left:1rem;border-left:3px solid var(--green)}
+.post-content h3{font-family:'Poppins',sans-serif;font-size:1.15rem;font-weight:600;color:var(--white);margin:2rem 0 .75rem}
+.post-content p{margin-bottom:1.25rem;color:var(--text)}
+.post-content ul,.post-content ol{margin:1rem 0 1.5rem 1.5rem;color:var(--text)}
+.post-content li{margin-bottom:.5rem}
+.post-content strong{color:var(--white);font-weight:600}
+.post-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.9rem;border-radius:12px;overflow:hidden}
+.post-content th{text-align:left;padding:.75rem 1rem;background:rgba(15,205,55,.08);border:1px solid rgba(15,205,55,.12);color:var(--green);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.5px}
+.post-content td{padding:.75rem 1rem;border:1px solid var(--border);color:var(--text)}
+.post-content tr:hover td{background:rgba(15,205,55,.03)}
+.post-content blockquote{border-left:3px solid var(--green);padding:1rem 1.5rem;margin:1.5rem 0;background:rgba(15,205,55,.03);border-radius:0 12px 12px 0;font-style:italic;color:var(--text-muted)}
+.example-box{background:rgba(15,205,55,.04);border:1px solid rgba(15,205,55,.12);border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-size:.97rem;line-height:1.7}
+.example-box strong{color:var(--green-cyan)}
+.answer-box{background:rgba(0,255,194,.05);border:1px solid rgba(0,255,194,.16);border-radius:14px;padding:1.1rem 1.4rem;margin:0 0 1.75rem;font-size:1.02rem;line-height:1.7}
+.answer-box strong{color:var(--green-cyan)}
+.steps{counter-reset:step;list-style:none;margin:1.5rem 0!important;padding:0}
+.steps li{position:relative;padding:0 0 1.1rem 3rem;margin:0;counter-increment:step}
+.steps li::before{content:counter(step);position:absolute;left:0;top:-2px;width:2rem;height:2rem;border-radius:50%;background:var(--gradient);color:#000;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.post-mascot-float{position:fixed;bottom:2rem;right:2rem;width:100px;height:100px;opacity:.08;pointer-events:none;z-index:0;animation:mascotBob 4s ease-in-out infinite}
+@keyframes mascotBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.post-cta{max-width:780px;margin:0 auto 4rem;padding:2.5rem;text-align:center;border-radius:20px;background:rgba(12,14,20,.8);border:1px solid rgba(15,205,55,.12);position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+.post-cta::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(15,205,55,.08),transparent 70%);pointer-events:none}
+.post-cta::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(0,255,194,.06),transparent 70%);pointer-events:none}
+.post-cta h2{font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:700;color:var(--white);margin:0 0 .5rem!important;border:none;padding:0;position:relative}
+.post-cta p{color:var(--text-muted);margin-bottom:1.25rem;font-size:.95rem;position:relative}
+.post-cta a.cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 2rem;border-radius:12px;background:var(--gradient);color:#000!important;font-weight:700;font-size:.875rem;box-shadow:0 0 25px rgba(15,205,55,.15);transition:all .2s;position:relative}
+.post-cta a.cta-btn:hover{box-shadow:0 0 40px rgba(15,205,55,.3);transform:translateY(-2px)}
+.blog-footer{border-top:1px solid var(--border);padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;max-width:780px;margin:0 auto;flex-wrap:wrap;gap:1rem}
+.blog-footer-left{font-size:.78rem;color:var(--text-muted)}
+.blog-footer-links{display:flex;gap:1.5rem}
+.blog-footer-links a{font-size:.78rem;color:var(--text-muted);transition:color .2s}
+.blog-footer-links a:hover{color:var(--green)}
+@media(max-width:640px){
+  .post-header{padding:1.5rem 1.5rem 1rem;margin-top:-60px}
+  .post-content{padding:1.5rem 1.5rem 3rem}
+  .nav-links .desk-only{display:none}
+  .post-hero-bg{height:220px}
+  .post-mascot-float{display:none}
+  .blog-footer{flex-direction:column;text-align:center}
+}
+/* Phones: the same look without per-frame GPU work while scrolling (SEO group, 16 Oct).
+   Blurred animated orbs and backdrop blurs over a fixed background were re-blurred on every
+   scroll frame; soft gradients and solid panels look the same and cost nothing. */
+@media (max-width:1024px),(hover:none) and (pointer:coarse){
+  .orb{filter:none;animation:none}
+  .orb-1{background:radial-gradient(closest-side,rgba(15,205,55,.06),transparent)}
+  .orb-2{background:radial-gradient(closest-side,rgba(0,255,194,.05),transparent)}
+  .orb-3{background:radial-gradient(closest-side,rgba(66,255,0,.04),transparent)}
+  .noise,.post-mascot-float{display:none}
+  .blog-nav{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(5,7,9,.97)}
+  .post-header .category,.post-cta{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .post-header .category .dot{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="page-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="grid-pattern"></div>
+<div class="dot-field"></div>
+<div class="noise"></div>
+<div class="content">
+<nav class="blog-nav">
+  <a href="/" class="blog-nav-logo"><img src="/fewpips-logo.png" alt="Fewpips" width="120" height="33"><span>Blog</span></a>
+  <div class="nav-links">
+    <a href="/blog/" class="desk-only">All Posts</a>
+    <a href="/faq/" class="desk-only">FAQ</a>
+    <a href="https://crm.fewpips.com/auth/signup" class="nav-cta">Get Funded</a>
+  </div>
+</nav>
+<div class="post-hero">
+  <div class="post-hero-bg"><img src="/blog/mascot-1-teaching.webp" alt="Fewpips mascot teaching on a whiteboard" loading="eager"></div>
+  <div class="post-hero-glow"></div>
+</div>
+<header class="post-header">
+  <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; Trading Strategy</div>
+  <div class="category"><span class="dot"></span> Trading Strategy</div>
+  <h1>What Does a Good Prop Trading Strategy Actually Look Like?</h1>
+  <div class="meta"> <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 6 min read</span> <span>Published October 16, 2026</span> <span>Fewpips Team</span> </div>
+</header>
+<div class="glow-divider"></div>
+<main class="post-content">
+<article><p><em>(Hint: it reads like a rulebook, not a hunch.)</em></p>
+<p><strong>Short answer:</strong> A good prop trading strategy is one you can write down as rules, size against a known drawdown, and survive being wrong with. It has defined entries, a defined exit when the idea fails, a measurable edge, a controlled trade count and a plan for bad days. It is not the strategy with the highest win rate. It is the one that still has an account after a bad week.</p>
+<h2>Why A Profitable Strategy Is Not Enough</h2>
+<p>Most traders ask, "Does my strategy make money?" On a prop account that is half the question. The real one is, "Does it make money without touching a limit on the way?"</p>
+<p>Here is the logic. Prop firms judge the <strong>path</strong>, not the average. Almost every firm combines a <strong>maximum drawdown</strong> with a <strong>daily loss limit</strong>, and many make the drawdown <strong>trailing</strong>, so the floor rises as your equity does. A strategy with a great average and one ugly week still fails. The rules do not care how it ends up.</p>
+<p>The wider evidence is not kind to winging it. A study of Brazilian equity futures found that <strong>97%</strong> of individuals who day traded for more than <strong>300 days</strong> lost money (Chague, De-Losso and Giovannetti). Effort alone fixed nothing. A defined process has to.</p>
+<h2>The Seven Traits of a Strategy That Survives</h2>
+<ul>
+<li><strong>Defined entry criteria.</strong> If you cannot state each condition in one sentence, you are guessing. "It looks strong" is not a condition.</li>
+<li><strong>Defined invalidation.</strong> Know the price or event that proves you wrong before you click. The stop goes in with the trade.</li>
+<li><strong>A measurable risk/reward profile.</strong> Win rate, average win, average loss. Written down. Win <strong>40%</strong> of the time at <strong>1:2</strong> and you still average <strong>0.2R</strong> per trade.</li>
+<li><strong>Controlled frequency.</strong> Enough trades to build a record, not so many that you burn the daily limit by lunch. Fees and minimum-day rules punish both extremes.</li>
+<li><strong>Known maximum drawdown.</strong> Your worst peak-to-trough in testing. If you do not know it, the floor will tell you.</li>
+<li><strong>A clear no-trade condition.</strong> Major news, thin liquidity, a day you are tired. Name it. Skipping trades is part of the system.</li>
+<li><strong>Rules for losing streaks.</strong> Decide in advance what happens after three losses: stop, cut size, walk away. Decide it calm, not angry.</li>
+</ul>
+<h2>Why Your Personal-Account Strategy Does Not Carry Over</h2>
+<p>On a personal account you can hold a loser for three weeks, average down, hedge or size up to recover. Nobody stops you. The only limit is your own pain.</p>
+<p>A prop account swaps that freedom for hard constraints. There is a floor you cannot cross, a daily cap on losses, and usually restrictions on hedging, news trading or per-trade risk. Rules differ by firm, so test your strategy against the exact set you plan to trade. A method that only works when you are allowed to be wrong for a long time is not a prop strategy.</p>
+<h3>Pick Your Risk Per Trade First</h3>
+<p>One decision sets everything else: how much you risk per trade. On a <strong>$50K</strong> account:</p>
+<ul>
+<li><strong>Conservative:</strong> 0.25% risk, <strong>$125</strong> per trade. Slow growth, very long streaks survivable.</li>
+<li><strong>Balanced:</strong> 0.5% risk, <strong>$250</strong> per trade.</li>
+<li><strong>Aggressive:</strong> 1% risk, <strong>$500</strong> per trade. Four losses in a day hits a 4% daily limit.</li>
+</ul>
+<h3>A worked example</h3>
+<p>Say your account has a <strong>9%</strong> maximum loss limit and a <strong>4%</strong> daily limit.</p>
+<ul>
+<li>Maximum loss limit: 9% of $50K = <strong>$4,500</strong>. Starting floor: <strong>$45,500</strong>.</li>
+<li>Drawdown budget: half the limit, <strong>$2,250</strong>. That is a rule of thumb, not a firm rule.</li>
+<li>Worst losing streak in your test sample: <strong>9 trades</strong>.</li>
+<li>Risk per trade: $2,250 ÷ 9 = <strong>$250</strong>, or <strong>0.5%</strong>.</li>
+<li>Daily stop: three losses is <strong>$750</strong>, well inside the <strong>4%</strong> daily limit of $2,000.</li>
+</ul>
+<p>In plain English: <strong>risk per trade = drawdown budget ÷ worst losing streak.</strong></p>
+<p><strong>Watch out:</strong> The biggest mistake is sizing up after a loss to "get it back." That is how a 0.5% strategy turns into a 3% day. It is also how you land on the daily limit. Cut size after losses. Never raise it.</p>
+<h3>How This Connects to The Platform Rules</h3>
+<p>The example uses real numbers. A <strong>$50K</strong> Fewpips 1-Step CFD challenge has a <strong>9%</strong> trailing Maximum Loss Limit and a <strong>4%</strong> daily loss limit, both listed in <a href="/legal/">the Fewpips trading rules</a>. Three details shape your strategy:</p>
+<ul>
+<li>The floor trails your highest equity and never moves down, even after a payout.</li>
+<li>Hitting the daily limit on an evaluation account is a <strong>soft breach</strong>: the account is paused until the server reset. Hit it again within <strong>7 days</strong> and it is breached. The Maximum Loss Limit has no soft version.</li>
+<li>No single trade idea may lose more than <strong>2%</strong> of the starting balance, so <strong>$1,000</strong> on $50K. A trade idea is every entry on the same symbol, in the same direction, within <strong>10 minutes</strong>.</li>
+</ul>
+<p>Our guides to <a href="/blog/loss-limits-explained/">loss limits explained</a>, <a href="/blog/static-vs-trailing-drawdown/">static vs trailing drawdown</a> and <a href="/blog/position-sizing-prop-firm-challenge/">position sizing for prop challenges</a> show how these stack.</p>
+<h2>How The Math Changes as Your Account Moves</h2>
+<p>Recalculate whenever equity moves. Your budget comes from your distance to the floor, not from the number you started with.</p>
+<p>Lose, and the floor stays put while your cushion shrinks, so your dollar risk shrinks with it. Win, and a trailing floor rises behind you, so redo the math instead of trusting the old cushion. Take a payout, and on Fewpips the floor still does not drop, so leave enough equity above it.</p>
+<p>Losses make you smaller. Profit never lets you coast. That is why this approach is self-correcting.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>What Is a Good Risk-To-Reward Ratio for A Prop Firm Strategy?</h3>
+<p>There is no magic number. What matters is expectancy: win rate times average win, minus loss rate times average loss, after costs. A 1:2 ratio with a 40% win rate is positive. A 1:1 ratio with a 40% win rate is not.</p>
+<h3>Can I Use My Personal-Account Strategy On a Prop Account?</h3>
+<p>Only if it passes with the prop rules applied. Re-test it against a trailing floor, a daily loss limit and any hedging or news restrictions. If it breaks one, adjust it first.</p>
+<h3>How Many Trades Per Day Should a Prop Strategy Take?</h3>
+<p>There is no fixed count. Take enough to build a record, but few enough that a bad run cannot reach the daily limit. On Fewpips, positions opened and closed within 30 seconds are prohibited, so check your hold time before you build around scalping.</p>
+<h3>How Do I Know If a Prop Firm's Rules Suit My Strategy?</h3>
+<p>List your worst losing streak, your typical hold time and your average daily loss, then compare them with the firm's limits. The <a href="/faq/">Fewpips FAQ</a> answers the common rule questions in one place.</p>
+<h2>The Fewpips take</h2>
+<p>A prop strategy is a set of rules with a number attached to each one. Know your worst streak, size to it, and write down when you do not trade. Strategies that survive are boring on purpose. Want to see how traders get on under these rules? Browse <a href="/proof/">every payout certificate, by month</a>, or read <a href="/reviews/">what funded traders say about Fewpips</a>.</p>
+<p>The Fewpips 1-Step CFD challenge starts at <strong>$59</strong> for a <strong>$5K</strong> account with a <strong>10%</strong> profit target and no time limit, so write the rules, trade them and get funded.</p>
+<p><em>Fewpips is a simulation-based evaluation platform. All trading is done with virtual funds, and rewards are based on simulated performance. Nothing here is financial advice.</em></p></article>
+</main>
+<div class="glow-divider"></div>
+<div class="post-cta">
+  <h2>Ready to Get Funded?</h2>
+  <p>Challenges from $59. No time limits. Up to 90% profit split. Available on CFD and Futures accounts.</p>
+  <a href="https://crm.fewpips.com/auth/signup" class="cta-btn">Get Funded Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+<img class="post-mascot-float" src="/blog/hero-account-types.webp" alt="" aria-hidden="true">
+<footer class="blog-footer">
+  <div class="blog-footer-left">&copy; 2026 Fewpips. All rights reserved.</div>
+  <div class="blog-footer-links">
+    <a href="/">Home</a><a href="/blog/">Blog</a><a href="/reviews/">Reviews</a><a href="/proof/">Proof</a><a href="/faq/">FAQ</a><a href="/terms/">Terms</a><a href="/contact/">Contact</a>
+  </div>
+</footer>
+</div>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "92c7587e087849c39a8dee8322e4721d"}'></script>
+<script src="/sticky-split.js" defer></script><script src="/social-tiktok.js" defer></script><script src="/reviews-nav.js" defer></script><script src="/livechat-greeting.js" defer></script><script src="/fp-help/fp-help.js" defer></script><script src="/hash-nav-fix.js" defer></script></body>
+</html>
