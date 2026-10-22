@@ -1167,7 +1167,7 @@
    "id": "discord-invite-hydrates",
    "desc": "Same invite in the sticky Discord component chunk, or hydration puts the dead link back",
    "type": "present_in",
-   "path": "_next/static/chunks/16fasywtg1r_6.js",
+   "path": "_next/static/chunks/16fasywtg1r_7.js",
    "pattern": "discord.gg/hSyvuVYeRN"
   },
   {
