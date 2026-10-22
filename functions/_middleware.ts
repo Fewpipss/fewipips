@@ -347,7 +347,7 @@ function footerScript(): string {
  * only drops the code card.
  */
 const PROMO_PATH = "/fp-help/promo.json";
-const PROMO_SRC = "https://fewpips-livechat-bot-production-a55d.up.railway.app/promo";
+const PROMO_SRC = "https://agents.aimcompany.co/fewpips-bot/promo"; // the bot left Railway on 2026-10-22
 
 async function promoJson(reqUrl: string): Promise<Response> {
   let items: unknown[] = [];
