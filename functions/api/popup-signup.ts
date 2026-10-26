@@ -1,4 +1,4 @@
-// deploy-marker: popup capture v2 — sheet creds moved to env vars (2026-06-24)
+// deploy-marker: popup capture v3 — AC direct + sheet in parallel, duplicates succeed (2026-10-22)
 /**
  * Fewpips Discount Popup — Signup endpoint (ActiveCampaign)
  *
@@ -6,10 +6,12 @@
  *   { first_name, email, timezone, source, url, referrer }
  * and expects 200 { ok: true } on success, 4xx/5xx { error } otherwise.
  *
- * On success this:
- *   1. Forwards the lead to the contacts sheet (primary capture, gates the 200).
- *   2. Best-effort upserts the contact into ActiveCampaign + triggers the
- *      welcome automation that delivers the discount code (only if CRM_* set).
+ * Two capture paths run in parallel; the user gets 200 as soon as EITHER succeeds:
+ *   1. The contacts sheet (Apps Script, which also syncs to ActiveCampaign).
+ *   2. A direct ActiveCampaign upsert + list subscribe (only if CRM_* set),
+ *      which triggers the welcome automation that emails the code.
+ * Repeat signups (same email) always succeed, so a returning visitor can
+ * claim the code again.
  *
  * Required env vars (set encrypted in the Cloudflare Pages project):
  *   - SHEET_WEBHOOK_URL  Google Apps Script contacts-sheet endpoint (primary capture)
@@ -40,6 +42,8 @@ interface Env {
   CRM_TAG_ID?: string;
   RATE_LIMIT_KV?: KVNamespace;
 }
+
+const UPSTREAM_TIMEOUT_MS = 8000;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -89,6 +93,7 @@ async function pushToCrm(
   const syncRes = await fetch(`${base}/api/3/contact/sync`, {
     method: "POST",
     headers,
+    signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
     body: JSON.stringify({
       contact: {
         email: payload.email,
@@ -120,6 +125,7 @@ async function pushToCrm(
       fetch(`${base}/api/3/contactLists`, {
         method: "POST",
         headers,
+        signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
         body: JSON.stringify({
           contactList: { list: Number(env.CRM_LIST_ID), contact: contactId, status: 1 },
         }),
@@ -132,6 +138,7 @@ async function pushToCrm(
       fetch(`${base}/api/3/contactTags`, {
         method: "POST",
         headers,
+        signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
         body: JSON.stringify({
           contactTag: { contact: contactId, tag: Number(env.CRM_TAG_ID) },
         }),
@@ -172,6 +179,7 @@ async function forwardToSheet(
       method: "POST",
       headers: { "Content-Type": "application/json" },
       redirect: "follow",
+      signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
       body: JSON.stringify({
         token,
         first_name: payload.first_name,
@@ -182,11 +190,10 @@ async function forwardToSheet(
         referrer: payload.referrer,
       }),
     });
-    if (!res.ok) {
-      const detail = await res.text().catch(() => "");
-      return { ok: false, error: `sheet ${res.status}: ${detail.slice(0, 200)}` };
-    }
-    return { ok: true };
+    const detail = await res.text().catch(() => "");
+    // A repeat signup is a success: the visitor still gets the code.
+    if (res.ok || /"duplicate"\s*:\s*true/.test(detail)) return { ok: true };
+    return { ok: false, error: `sheet ${res.status}: ${detail.slice(0, 200)}` };
   } catch (e) {
     return { ok: false, error: `sheet fetch failed: ${String(e).slice(0, 200)}` };
   }
@@ -221,25 +228,30 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
   const lead: SignupBody = { first_name, email, timezone, source, url, referrer };
 
-  // Primary capture: forward the lead to the contacts sheet. Awaited and gates
-  // the response, so the user only sees success when the lead was captured.
-  const sheet = await forwardToSheet(lead, ctx.env);
-  if (!sheet.ok) {
-    console.error("popup-signup sheet forward failed:", sheet.error);
-    return json({ error: "Signup failed" }, 502);
-  }
-
-  // Best-effort: also upsert into ActiveCampaign + trigger the welcome
-  // automation when the CRM env vars are configured. Never blocks the
-  // user-facing response, so a missing/failed CRM never breaks the popup.
-  ctx.waitUntil(
-    pushToCrm(ctx.env, lead)
+  // Run both capture paths in parallel and answer as soon as one lands, so a
+  // slow or failing Apps Script can no longer show the user an error.
+  const run = (name: string, p: Promise<{ ok: boolean; error?: string }>) =>
+    p
+      .catch((e) => ({ ok: false, error: `threw: ${String(e).slice(0, 200)}` }))
       .then((r) => {
-        if (!r.ok) console.error("popup-signup CRM push (non-blocking) failed:", r.error);
-      })
-      .catch((e) => console.error("popup-signup CRM push threw:", e)),
-  );
+        if (!r.ok) console.error(`popup-signup ${name} failed:`, r.error);
+        return r.ok;
+      });
+  const sheet = run("sheet", forwardToSheet(lead, ctx.env));
+  const crm = run("CRM", pushToCrm(ctx.env, lead));
+  ctx.waitUntil(Promise.all([sheet, crm]));
 
+  const captured = await new Promise<boolean>((resolve) => {
+    let pending = 2;
+    const done = (ok: boolean) => {
+      if (ok) resolve(true);
+      else if (--pending === 0) resolve(false);
+    };
+    sheet.then(done);
+    crm.then(done);
+  });
+
+  if (!captured) return json({ error: "Signup failed" }, 502);
   return json({ ok: true });
 };
 
