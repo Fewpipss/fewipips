@@ -570,7 +570,7 @@
    "id": "instant-100k-terms-chunk",
    "desc": "/terms/ tier exception mirrored in the terms chunk or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klv.js",
+   "path": "_next/static/chunks/0he1vgjwt7klw.js",
    "pattern": "Instant $100K exception"
   },
   {
@@ -651,7 +651,7 @@
    "id": "instant-100k-ea-addon-terms-chunk",
    "desc": "/terms/ EA add-on approval mirrored in the terms chunk word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klv.js",
+   "path": "_next/static/chunks/0he1vgjwt7klw.js",
    "pattern": "paid add-ons for that account, with Expert Advisors subject to Fewpips approval"
   },
   {
@@ -843,7 +843,7 @@
    "id": "terms-min-payout-100-chunk",
    "desc": "/terms/ payout clause in the hydrating terms chunk, word-for-word or hydration reverts it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klv.js",
+   "path": "_next/static/chunks/0he1vgjwt7klw.js",
    "pattern": "Minimum payout is $100 USD on CFD and Futures accounts."
   },
   {
@@ -1251,7 +1251,7 @@
    "id": "terms-200k-exception-chunk",
    "desc": "Same paragraph in the terms chunk, or hydration removes it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klv.js",
+   "path": "_next/static/chunks/0he1vgjwt7klw.js",
    "pattern": "Instant $200K exception."
   },
   {
@@ -1350,7 +1350,7 @@
    "id": "terms-500k-exception-chunk",
    "desc": "/terms chunk carries the same Instant $500K paragraph, or hydration drops it",
    "type": "present_in",
-   "path": "_next/static/chunks/0he1vgjwt7klv.js",
+   "path": "_next/static/chunks/0he1vgjwt7klw.js",
    "pattern": "Instant $500K exception. The Fewpips Instant $500,000 account and the Fewpips Futures Instant $500,000 account"
   },
   {
@@ -1378,6 +1378,28 @@
    "desc": "$500K launch banners (Dusan #15909) with webp twins",
    "type": "file_exists",
    "path": "promo/cfd-instant-500k.webp"
+  },
+  {
+   "id": "legal-account-limits",
+   "desc": "/legal states the account limits in both CFD documents: $300,000 combined CFD, 5 Futures accounts, case-by-case increase via support (Nick TG #15990)",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "<strong>Account Limits:</strong> The combined value of all CFD accounts held by one trader may not exceed <strong>$300,000</strong>",
+   "min": "2"
+  },
+  {
+   "id": "terms-account-limits-html",
+   "desc": "/terms section 4 carries the account limits (HTML)",
+   "type": "present_in",
+   "path": "terms/index.html",
+   "pattern": "Account limits. The combined value of all CFD accounts held by one trader may not exceed $300,000"
+  },
+  {
+   "id": "terms-account-limits-chunk",
+   "desc": "/terms chunk carries the same account-limits paragraph, or hydration drops it",
+   "type": "present_in",
+   "path": "_next/static/chunks/0he1vgjwt7klw.js",
+   "pattern": "Account limits. The combined value of all CFD accounts held by one trader may not exceed $300,000"
   }
  ]
 }
