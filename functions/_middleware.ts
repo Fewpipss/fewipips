@@ -65,6 +65,27 @@ const SCHEDULE: Record<string, { img: string; imgM: string; alt: string }> = {
  */
 const ANNOUNCEMENTS: { start: string; end: string; img: string; imgM: string; alt: string; paths?: string[] }[] = [
   {
+    // $500K Instant launch (Nick TG #15843, live Oct 27; artwork Dusan #15909, banners
+    // asked for on the site TG #15971). Same shape as the $200K launch below: CFD on the
+    // homepage, Futures on /futures. Two-week default window - no end date was given.
+    // US clocks change on Nov 1, so the end carries -05:00 (EST). A November promo
+    // banner meant to override these must sit ABOVE them (first match wins).
+    start: "2026-10-27T11:00:00-04:00",
+    end: "2026-11-10T23:59:59-05:00",
+    img: "/promo/cfd-instant-500k.png",
+    imgM: "/promo/cfd-instant-500k-m.png",
+    alt: "New Fewpips CFD Instant $500K account - $4,999, no consistency rule, no withdrawal limit",
+    paths: ["/"],
+  },
+  {
+    start: "2026-10-27T11:00:00-04:00",
+    end: "2026-11-10T23:59:59-05:00",
+    img: "/promo/futures-instant-500k.png",
+    imgM: "/promo/futures-instant-500k-m.png",
+    alt: "New Fewpips Futures Instant $500K account - $3,499, no consistency rule, no withdrawal limit",
+    paths: ["/futures"],
+  },
+  {
     // Instant $100K launch. Live from deploy, auto-hides Fri 5 Sep 2026 18:00 US Eastern.
     // While it runs it supersedes the Claim Week banner on 3 and 4 Sep.
     start: "2026-09-03T00:00:00-04:00",
