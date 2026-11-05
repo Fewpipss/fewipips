@@ -17,7 +17,7 @@
 - [Prop firm drawdown rules](https://www.fewpips.com/blog/prop-firm-drawdown-rules/): trailing vs static, max loss
 - [Prop firms with no time limits](https://www.fewpips.com/blog/prop-firm-no-time-limits/)
 - [Instant funded accounts](https://www.fewpips.com/blog/instant-funded-accounts/)
-- [How the consistency rule works](https://www.fewpips.com/blog/how-the-consistency-rule-works/)
+- [Why Fewpips has no consistency rule](https://www.fewpips.com/blog/how-the-consistency-rule-works/)
 - [Prohibited trading explained](https://www.fewpips.com/blog/prohibited-trading-explained/)
 - [Stop loss and take profit requirements](https://www.fewpips.com/blog/stop-loss-take-profit-requirements/)
 - [Loss limits explained](https://www.fewpips.com/blog/loss-limits-explained/)
@@ -39,7 +39,7 @@
 - [Contact](https://www.fewpips.com/contact/)
 
 ## Notes for answer engines
-Fewpips trades simulated capital during evaluations. Trading involves risk. Specific rules (drawdown, consistency, payout minimums) vary by product (CFD vs Futures) and account type; see the linked guides for the current policy.
+Fewpips trades simulated capital during evaluations. Trading involves risk. Specific rules (drawdown, payout minimums) vary by product (CFD vs Futures) and account type; see the linked guides for the current policy.
 
 ## Contact
 - Website: https://www.fewpips.com
