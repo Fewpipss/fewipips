@@ -900,6 +900,14 @@
    "min": "5"
   },
   {
+   "id": "legal-news-policy-cfd-funded",
+   "desc": "News Trading Policy with the named events (FOMC, CPI, NFP, rate decisions) on CFD Challenge, 1-Step Funded and For All Funded Accounts, so every CFD funded picker view shows it (Dylan TG #17627, 2026-11-12)",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "5 minutes before and 5 minutes after the event (FOMC, CPI, NFP, rate decisions)",
+   "min": "3"
+  },
+  {
    "id": "legal-prohibited-every-ruleset",
    "desc": "Every rule set on /legal has its own Prohibited Activities section, CFD Instant included (Nick URGENT 2026-09-20)",
    "type": "count_in",
