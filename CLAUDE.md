@@ -68,10 +68,18 @@ banner), update the matching check in the same PR - the gate is a safety net, no
   file: `functions/_middleware.ts` proxies the Fewpips LiveChat bot's `/promo` (live code entry
   only, from the monthly marketing-calendar schedule the bot greeting uses) and appends the
   live ANNOUNCEMENTS banners. Never add a static promo.json or hard-code a code there.
-  The code promo card shows the day's calendar banner from `fp-help/promo/banners.json`
+  The code promo card shows the live code's banner from the BANNER FEED (below); the older
+  monthly step is only its fallback - the card used to read it from `fp-help/promo/banners.json`
   ({code, date, img}; latest banner of the same code dated on or before the window). Monthly:
   `~/web-projekti/livechat-panels/banners.py YYYY-MM` writes the webp files + banners.json here
   from Dusan's CRM 960x540 banners; new file names every month (30-day image cache).
+- PROMO BANNERS FOLLOW THE CRM MARKETING CALENDAR ON THEIR OWN (since 2026-11-18). The hero-slot
+  banner on / and /futures comes from `https://agents.aimcompany.co/fewpips-banners/feed.json`, a
+  service on the AIM server built from the calendar's website promo rows (same windows as the bot
+  greeting) + the month's CRM banner set; images are served same-origin at `/promo-live/<name>`.
+  Do NOT hand-add monthly promo banners. `ANNOUNCEMENTS` is only for what the calendar does not
+  carry (product launches) and wins over the feed. A promo without a banner alerts Djordje on
+  Telegram; a calendar row can point at its own art with `banner_img:` + `banner_img_m:` lines.
 - Same trap for IMAGES: optimizing an image in place keeps its URL, and `_headers` gives
   images a 30-day cache - CDN PoPs keep serving the old heavy file. Rename the image
   (e.g. `kyle.jpg` -> `kyle-b.jpg`) and update every reference (HTML, RSC .txt, chunks).

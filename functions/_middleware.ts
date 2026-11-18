@@ -13,6 +13,10 @@
  * so we inject a small resilient script that inserts the banner after hydration
  * and re-inserts it if React removes it. Reuses the existing .promo-banner-section CSS.
  *
+ * SINCE 2026-11-18 THE MONTHLY PROMO BANNERS NEED NO EDIT HERE: they come from the AIM CRM
+ * marketing calendar through the BANNER FEED (see below). Hand-edit only for something the
+ * calendar does not carry, e.g. a product launch banner in ANNOUNCEMENTS.
+ *
  * TO EDIT: change SCHEDULE (add/remove a date) + drop images in /promo/. For a banner
  * that must start or end at a specific TIME rather than a whole day, add an entry to
  * ANNOUNCEMENTS instead - it wins over SCHEDULE while its window is open.
@@ -161,13 +165,81 @@ function pickNow(reqUrl: string): number {
   return Date.now();
 }
 
-function pickBanner(reqUrl: string): { img: string; imgM: string; alt: string } | null {
+/**
+ * BANNER FEED - the banners follow the AIM CRM marketing calendar on their own (2026-11-18,
+ * Nick TG #17904: no November banner had ever been added here by hand, so the site ran none).
+ * A service on the AIM server (AIM team: ~/AIM/deploy-fewpips-banners.sh) reads the calendar's
+ * website promo rows - the SAME windows as the LiveChat bot greeting, incl. weekday codes opening
+ * at 09:00 ET - takes the month's CRM banner set, and publishes feed.json + 1500x250 / 960x540
+ * webp+jpg with content-hashed names. It alerts Djordje on Telegram when a promo has no banner.
+ *
+ * Order: hand-made ANNOUNCEMENTS (product launches) win, then the feed, then SCHEDULE.
+ * Images are served from THIS origin (/promo-live/<name>, edge-cached, immutable), so the page
+ * opens no extra connection. Feed unreachable -> the last good copy (edge cache, 7 days);
+ * nothing at all -> simply no banner. ?_promoDate previews feed windows too.
+ */
+const FEED = "https://agents.aimcompany.co/fewpips-banners";
+const LIVE_IMG = "/promo-live/";
+const LIVE_NAME = /^[a-z0-9-]{8,80}\.(webp|jpg)$/;
+type Banner = { start: string; end: string; img: string; imgM: string; alt: string; code?: string; paths?: string[] };
+
+async function loadFeed(ctx: { request: Request; waitUntil(p: Promise<unknown>): void }): Promise<Banner[]> {
+  const last = new Request(new URL("/__banner-feed-last", ctx.request.url).toString());
+  let d: any = null;
+  try {
+    const r = await fetch(FEED + "/feed.json", {
+      cf: { cacheTtl: 60, cacheEverything: true },
+      signal: AbortSignal.timeout(1500),
+    } as any);
+    if (r.ok) {
+      d = await r.json();
+      if (r.headers.get("cf-cache-status") !== "HIT") {
+        ctx.waitUntil(caches.default.put(last, new Response(JSON.stringify(d), {
+          headers: { "content-type": "application/json", "cache-control": "public, max-age=604800" },
+        })).catch(() => {}));
+      }
+    }
+  } catch (_e) { /* fall back to the last good copy below */ }
+  if (!d) {
+    try { const c = await caches.default.match(last); if (c) d = await c.json(); } catch (_e) { /* none */ }
+  }
+  const out: Banner[] = [];
+  for (const b of d && Array.isArray(d.banners) ? d.banners : []) {
+    if (!b || !LIVE_NAME.test(b.img) || !LIVE_NAME.test(b.imgM)) continue;
+    if (isNaN(Date.parse(b.start)) || isNaN(Date.parse(b.end))) continue;
+    out.push({
+      start: b.start, end: b.end, img: LIVE_IMG + b.img, imgM: LIVE_IMG + b.imgM, code: String(b.code || ""),
+      // goes into an attribute inside a JS string below: no quotes, brackets or backslashes
+      alt: String(b.alt || "Fewpips promo").replace(/["'<>\\&`]/g, "").slice(0, 300),
+    });
+  }
+  return out;
+}
+
+async function liveImage(name: string): Promise<Response> {
+  if (!LIVE_NAME.test(name)) return new Response("Not found", { status: 404 });
+  const r = await fetch(FEED + "/img/" + name, {
+    cf: { cacheTtlByStatus: { "200-299": 31536000, "404": 60, "500-599": 0 }, cacheEverything: true },
+  } as any);
+  if (!r.ok) return new Response("Not found", { status: 404, headers: { "cache-control": "no-store" } });
+  return new Response(r.body, {
+    headers: {
+      "content-type": name.endsWith(".webp") ? "image/webp" : "image/jpeg",
+      "cache-control": "public, max-age=31536000, immutable", // names are content-hashed
+    },
+  });
+}
+
+function pickBanner(reqUrl: string, feed: Banner[]): { img: string; imgM: string; alt: string } | null {
   const now = pickNow(reqUrl);
   // an announcement with `paths` only shows on those pages ("/futures/" and "/futures" match)
   const path = new URL(reqUrl).pathname.replace(/\/+$/, "") || "/";
   for (const a of ANNOUNCEMENTS) {
     if (a.paths && !a.paths.includes(path)) continue;
     if (now >= Date.parse(a.start) && now < Date.parse(a.end)) return a;
+  }
+  for (const f of feed) {
+    if (now >= Date.parse(f.start) && now < Date.parse(f.end)) return f;
   }
   return SCHEDULE[pickDate(reqUrl)] || null;
 }
@@ -381,8 +453,10 @@ const PROMO_PATH = "/fp-help/promo.json";
 // The bot moved from Railway to the AIM server on 2026-10-22 (the Railway URL is a 404 since).
 const PROMO_SRC = "https://agents.aimcompany.co/fewpips-bot/promo";
 
-async function promoJson(reqUrl: string): Promise<Response> {
-  let items: unknown[] = [];
+async function promoJson(ctx: { request: Request; waitUntil(p: Promise<unknown>): void }): Promise<Response> {
+  const reqUrl = ctx.request.url;
+  const feedP = loadFeed(ctx);
+  let items: any[] = [];
   try {
     const r = await fetch(PROMO_SRC, {
       cf: { cacheTtl: 60, cacheEverything: true },
@@ -393,9 +467,17 @@ async function promoJson(reqUrl: string): Promise<Response> {
       if (Array.isArray(d)) items = d;
     }
   } catch (_e) { /* bot unreachable: no code card, banners below still show */ }
+  const now = pickNow(reqUrl);
+  // The code card shows the calendar banner of its own code from the feed (960x540 webp), so the
+  // panel no longer needs the monthly fp-help/promo/banners.json step (still the fallback).
+  const feed = await feedP;
+  for (const it of items) {
+    if (!it || !it.code || it.img) continue;
+    const f = feed.find((x) => x.code === it.code && now >= Date.parse(x.start) && now < Date.parse(x.end));
+    if (f) it.img = f.imgM.replace(/\.jpg$/, ".webp");
+  }
   // ...plus every site banner from ANNOUNCEMENTS that is live right now (the same windows as the
   // hero banner, so the chat panel carousel rotates exactly what the site is running).
-  const now = pickNow(reqUrl);
   for (const a of ANNOUNCEMENTS) {
     const from = Date.parse(a.start), until = Date.parse(a.end);
     if (now < from || now >= until) continue;
@@ -411,13 +493,16 @@ async function promoJson(reqUrl: string): Promise<Response> {
 }
 
 export const onRequest: PagesFunction<Env> = async (ctx) => {
-  if (new URL(ctx.request.url).pathname === PROMO_PATH) return promoJson(ctx.request.url);
+  const path = new URL(ctx.request.url).pathname;
+  if (path === PROMO_PATH) return promoJson(ctx);
+  if (path.startsWith(LIVE_IMG)) return liveImage(path.slice(LIVE_IMG.length));
+  // the feed is read in parallel with the page itself, so it adds no wait on an edge-cache hit
+  const feedP = TARGET_PATHS.has(path) ? loadFeed(ctx).catch(() => [] as Banner[]) : null;
   const res = await ctx.next();
   try {
     const ct = res.headers.get("content-type") || "";
     if (!ct.includes("text/html")) return res;
-    const path = new URL(ctx.request.url).pathname;
-    const b = TARGET_PATHS.has(path) ? pickBanner(ctx.request.url) : null;
+    const b = feedP ? pickBanner(ctx.request.url, await feedP) : null;
     const sb = strikeBarOn(ctx.request.url); // top bar: every page, not just the landings
 
     const transformed = new HTMLRewriter()

@@ -1529,6 +1529,20 @@
    "desc": "Cash Drop Nov 17-18 banner (November CRM set, Nick TG #17904) with webp twins",
    "type": "file_exists",
    "path": "promo/cashdrop-2026-11-17-m.webp"
+  },
+  {
+   "id": "banner-feed-wired",
+   "desc": "Promo banners follow the AIM CRM marketing calendar via the AIM server banner feed (Nick TG #17904, 2026-11-18) - removing this puts the site back on hand-added banners",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "const FEED = \"https://agents.aimcompany.co/fewpips-banners\";"
+  },
+  {
+   "id": "banner-feed-images-route",
+   "desc": "Feed banner images are served same-origin at /promo-live/ (no extra connection for the page)",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "if (path.startsWith(LIVE_IMG)) return liveImage(path.slice(LIVE_IMG.length));"
   }
  ]
 }
