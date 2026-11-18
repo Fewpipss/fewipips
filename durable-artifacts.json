@@ -78,10 +78,10 @@
   },
   {
    "id": "proof-peek-certs-batch",
-   "desc": "proof-peek shows the 25 Aug - 12 Sep 2026 cert batch (Nick TG #13361)",
+   "desc": "proof-peek shows the 14 Sep - 15 Nov 2026 cert batch (Nick TG #17913)",
    "type": "present_in",
    "path": "proof-peek.js",
-   "pattern": "freya-nakamura.webp"
+   "pattern": "Top 3 performers (14 September - 15 November 2026)"
   },
   {
    "id": "proof-peek-cert-img",
@@ -369,11 +369,11 @@
    "pattern": "refundable within 48 hours"
   },
   {
-   "id": "paidout-800k",
-   "desc": "hero Paid Out + Paid to Traders counters target $800K+ (Nick TG #13400, certificates total $814K) - was 600K",
+   "id": "paidout-1-2m",
+   "desc": "hero Paid Out + Paid to Traders counters show $1.2M+ (Nick TG #17913, certificates total $1,259,073) - was $800K+",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
-   "pattern": "count:8e5"
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
+   "pattern": "count:1.2e6"
   },
   {
    "id": "tier-volume-thresholds",
@@ -514,28 +514,28 @@
    "id": "instant-100k-compare-col",
    "desc": "Instant $100K column present in the homepage Compare table data, max loss shows 10% only (Nick: no dollar figure, it is a trailing drawdown)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "size:\"$100K\",drawdown:\"10%\",minDays:\"3\""
   },
   {
    "id": "instant-100k-price",
    "desc": "Instant $100K price $1,699 on the pricing data (Compare + configurator)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "price:\"1,699\""
   },
   {
    "id": "instant-100k-configurator",
    "desc": "Instant $100K size + price wired into the Challenges configurator",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "1e5:\"1,699\""
   },
   {
    "id": "instant-100k-new-badge",
    "desc": "NEW badge date gate, now on the Instant $500K tier (hides after 2026-11-10 23:59 ET; was the $100K until 2026-09-10)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "Date.UTC(2026,10,11,5)"
   },
   {
@@ -596,7 +596,7 @@
    "id": "instant-100k-maxloss-pct-only",
    "desc": "Instant $100K max loss renders as 10% with no dollar figure in the Challenges configurator (Nick, Sep 3) - trailing drawdown, the dollar number moves",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "{name:\"Maximum Loss Limit\",value:{3e3:\"$150 (5%)\",5e3:\"$300 (6%)\",1e4:\"$700 (7%)\",25e3:\"$2,250 (9%)\",5e4:\"$5,000 (10%)\",1e5:\"10%\",2e5:\"10%\",5e5:\"10%\"}}"
   },
   {
@@ -609,14 +609,14 @@
    "id": "instant-ea-approval-configurator",
    "desc": "Instant configurator EAs row: not allowed on $3K-$50K, paid add-on with Fewpips approval on $100K and $200K (Dylan TG #14886, 2026-10-09; approval bracket from Nick Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "1e5:\"Paid add-on (approval required)\",2e5:\"Paid add-on (approval required)\""
   },
   {
    "id": "instant-ea-approval-compare-note",
    "desc": "Compare table Instant-tab note: EAs only as a paid add-on, approval required (Dylan TG #14886; Nick Sep 3)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "EAs only as a paid add-on on the $100K and $200K (approval required)."
   },
   {
@@ -850,13 +850,6 @@
    "path": "downloads/fewpips-september-2026.pdf"
   },
   {
-   "id": "proof-paidout-800k",
-   "desc": "/proof Paid Out count-up targets $800K+ (Nick TG #13400)",
-   "type": "present_in",
-   "path": "proof/index.html",
-   "pattern": "Math.floor(800*(1-Math.pow(1-p,3)))"
-  },
-  {
    "id": "reviews-link-footer-home",
    "desc": "Crawlable footer link to /reviews/ on the homepage - the JS-injected nav link alone left the page an orphan (SEO group #13474)",
    "type": "present_in",
@@ -959,7 +952,7 @@
    "id": "home-consistency-none-rows",
    "desc": "Every homepage compare row (CFD challenges and Instant) carries consistency None - consistency rule removed on all accounts (Dylan TG #16820, 2026-11-05)",
    "type": "count_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "consistency:\"None\"",
    "min": "23"
   },
@@ -1162,7 +1155,7 @@
    "id": "countup-starts-final-home",
    "desc": "CountUp starts from the final value and formats en-US, so a counter is never stuck at 0 and never renders locale digits (Arabic 0 looks like a dot)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "[c,d]=(0,s.useState)(u)"
   },
   {
@@ -1192,14 +1185,14 @@
    "id": "home-cfd-instant-200k-configurator",
    "desc": "CFD Instant $200K at $2,599 in the Challenges configurator",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "1e5:\"1,699\",2e5:\"2,599\""
   },
   {
    "id": "home-cfd-instant-200k-compare",
    "desc": "CFD Instant $200K column in the Compare table",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "size:\"$200K\",drawdown:\"10%\",minDays:\"3\""
   },
   {
@@ -1271,7 +1264,7 @@
    "id": "instant-profit-split-70-80-90",
    "desc": "CFD Instant profit split tiers are 70% (first 3), 80% (next 3), 90% from the 7th - the homepage said 70/85/90 after 5/3/8 (Dylan TG #14886)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "70% (first 3 withdrawals), 80% (next 3), 90% from the 7th"
   },
   {
@@ -1332,7 +1325,7 @@
    "id": "home-instant-500k-configurator",
    "desc": "Homepage configurator offers the $500K CFD Instant at $4,999 (Nick TG #15974)",
    "type": "present_in",
-   "path": "_next/static/chunks/0fvh0xh4dp8xc.js",
+   "path": "_next/static/chunks/0fvh0xh4dp8xd.js",
    "pattern": "2e5:\"2,599\",5e5:\"4,999\""
   },
   {
@@ -1543,6 +1536,26 @@
    "type": "present_in",
    "path": "functions/_middleware.ts",
    "pattern": "if (path.startsWith(LIVE_IMG)) return liveImage(path.slice(LIVE_IMG.length));"
+  },
+  {
+   "id": "proof-batch-nov18",
+   "desc": "/proof carries the 14 Sep - 15 Nov 2026 certificate batch (Nick TG #17913): 293 certificates",
+   "type": "present_in",
+   "path": "proof/index.html",
+   "pattern": "\"numberOfItems\":293"
+  },
+  {
+   "id": "proof-pdf-november",
+   "desc": "November 2026 certificate archive PDF",
+   "type": "file_exists",
+   "path": "downloads/fewpips-november-2026.pdf"
+  },
+  {
+   "id": "proof-paidout-1-2m",
+   "desc": "/proof Paid out count-up reaches 1.2M+",
+   "type": "present_in",
+   "path": "proof/index.html",
+   "pattern": "el.textContent = v + \"M+\";"
   }
  ]
 }
