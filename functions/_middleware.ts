@@ -65,6 +65,16 @@ const SCHEDULE: Record<string, { img: string; imgM: string; alt: string }> = {
  */
 const ANNOUNCEMENTS: { start: string; end: string; img: string; imgM: string; alt: string; paths?: string[] }[] = [
   {
+    // The Cash Drop, Momentum edition (AIM CRM marketing calendar, website row Nov 17;
+    // banner from the November CRM set). Missing from the site, Nick TG #17904.
+    // Opens Tue Nov 17 00:01 ET, closes Wed Nov 18 23:59 ET as the banner says.
+    start: "2026-11-17T00:01:00-05:00",
+    end: "2026-11-18T23:59:59-05:00",
+    img: "/promo/cashdrop-2026-11-17.jpg",
+    imgM: "/promo/cashdrop-2026-11-17-m.jpg",
+    alt: "Fewpips Cash Drop - bonus credited on activation plus 20% off the big Instants, code CASHDROP, ends Wed Nov 18 23:59 ET",
+  },
+  {
     // $500K Instant launch (Nick TG #15843, live Oct 27; artwork Dusan #15909, banners
     // asked for on the site TG #15971). Same shape as the $200K launch below: CFD on the
     // homepage, Futures on /futures. Two-week default window - no end date was given.
@@ -368,7 +378,8 @@ function footerScript(): string {
  * only drops the code card.
  */
 const PROMO_PATH = "/fp-help/promo.json";
-const PROMO_SRC = "https://fewpips-livechat-bot-production-a55d.up.railway.app/promo";
+// The bot moved from Railway to the AIM server on 2026-10-22 (the Railway URL is a 404 since).
+const PROMO_SRC = "https://agents.aimcompany.co/fewpips-bot/promo";
 
 async function promoJson(reqUrl: string): Promise<Response> {
   let items: unknown[] = [];

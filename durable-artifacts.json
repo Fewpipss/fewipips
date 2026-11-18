@@ -1516,6 +1516,19 @@
    "desc": "Retired consistency-rule wording must not come back - consistency rule removed on all accounts (Dylan TG #16820, 2026-11-05)",
    "type": "absent",
    "pattern": "carry a 40% consistency rule"
+  },
+  {
+   "id": "promo-src-aim-server",
+   "desc": "/fp-help/promo.json proxies the Fewpips bot on the AIM server (the Railway bot URL has been a 404 since the move on 2026-10-22, so the chat panel code card was empty)",
+   "type": "present_in",
+   "path": "functions/_middleware.ts",
+   "pattern": "const PROMO_SRC = \"https://agents.aimcompany.co/fewpips-bot/promo\""
+  },
+  {
+   "id": "banner-cashdrop-nov17-images",
+   "desc": "Cash Drop Nov 17-18 banner (November CRM set, Nick TG #17904) with webp twins",
+   "type": "file_exists",
+   "path": "promo/cashdrop-2026-11-17-m.webp"
   }
  ]
 }
