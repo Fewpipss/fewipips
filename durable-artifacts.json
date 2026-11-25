@@ -623,15 +623,15 @@
    "id": "instant-ea-approval-faq-chunk",
    "desc": "/faq/ Instant rules answer carries the EA approval bracket (chunk = what hydration renders)",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyg.js",
-   "pattern": "add-ons for that account (must seek approval from Fewpips)."
+   "path": "_next/static/chunks/0tg_rdy2h4eyh.js",
+   "pattern": "an add-on for that account (must seek approval from Fewpips)."
   },
   {
    "id": "instant-ea-approval-faq-ssr",
    "desc": "/faq/ Instant rules answer EA approval bracket mirrored in SSR HTML",
    "type": "present_in",
    "path": "faq/index.html",
-   "pattern": "add-ons for that account (must seek approval from Fewpips)."
+   "pattern": "an add-on for that account (must seek approval from Fewpips)."
   },
   {
    "id": "instant-100k-ea-addon-legal",
@@ -740,7 +740,7 @@
    "id": "faq-sept-questions-chunk",
    "desc": "September top questions in the hydrating FAQ chunk, or hydration wipes them",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyg.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyh.js",
    "pattern": "Can I reset my account?"
   },
   {
@@ -801,7 +801,7 @@
    "id": "faq-partial-withdrawal-chunk",
    "desc": "Partial payout answer in the hydrating FAQ chunk, or hydration wipes it",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyg.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyh.js",
    "pattern": "Can I withdraw part of my balance?"
   },
   {
@@ -1050,7 +1050,7 @@
    "id": "futures-instant-120k-faq",
    "desc": "The /faq Futures tab lists every Instant size (answers live in the chunk only)",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyg.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyh.js",
    "pattern": "Instant Account: $10K, $30K, $60K, $120K, $200K, $500K."
   },
   {
@@ -1403,7 +1403,7 @@
    "id": "no-consistency-faq-chunk",
    "desc": "Same /faq/ answer in the hydrating FAQ chunk",
    "type": "present_in",
-   "path": "_next/static/chunks/0tg_rdy2h4eyg.js",
+   "path": "_next/static/chunks/0tg_rdy2h4eyh.js",
    "pattern": "No. There is no consistency rule on any Fewpips account, CFD or Futures."
   },
   {
@@ -1556,6 +1556,52 @@
    "type": "present_in",
    "path": "proof/index.html",
    "pattern": "el.textContent = v + \"M+\";"
+  },
+  {
+   "id": "legal-ptp-every-tab",
+   "desc": "Prohibited Trading Practices (7 rules, Nick TG #18222-#18226, 2026-11-24) on all four /legal tabs",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "<h3>Prohibited Trading Practices</h3>",
+   "min": "4"
+  },
+  {
+   "id": "legal-ptp-rule3-every-tab",
+   "desc": "Rule 3 (max 3 trades of the same lot size) on all four tabs",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "You may have a maximum of 3 trades of the same lot size on the same instrument open at any given time.",
+   "min": "4"
+  },
+  {
+   "id": "legal-ptp-table-every-tab",
+   "desc": "Rule 3 lot-size table on all four tabs",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "<th>Previous trade</th><th>Maximum size of next trade</th>",
+   "min": "4"
+  },
+  {
+   "id": "legal-ptp-picker",
+   "desc": "The account picker keeps the Prohibited Trading Practices block in all 7 CFD views (it slices by H3)",
+   "type": "count_in",
+   "path": "legal/index.html",
+   "pattern": "'Prohibited Trading Practices']",
+   "min": "7"
+  },
+  {
+   "id": "faq-copy-trading-addon",
+   "desc": "FAQ answers copy trading with rule 6 (Copy Trading add-on on all purchases, Nick TG #18222)",
+   "type": "present_in",
+   "path": "faq/index.html",
+   "pattern": "Is copy trading allowed?"
+  },
+  {
+   "id": "faq-copy-trading-addon-chunk",
+   "desc": "Same FAQ entry in the hydrating FAQ chunk",
+   "type": "present_in",
+   "path": "_next/static/chunks/0tg_rdy2h4eyh.js",
+   "pattern": "{q:\"Is copy trading allowed?\""
   }
  ]
 }
