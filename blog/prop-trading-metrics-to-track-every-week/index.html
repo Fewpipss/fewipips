@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script>(function(){var l=function(){if(window.__gtagLoaded)return;window.__gtagLoaded=1;var s=document.createElement("script");s.async=1;s.src="https://www.googletagmanager.com/gtag/js?id=G-67ZBBEE4JC";document.head.appendChild(s)};window.addEventListener("load",function(){("requestIdleCallback"in window?requestIdleCallback:function(f){setTimeout(f,1500)})(l)});setTimeout(l,6e3)})();</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-67ZBBEE4JC');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Prop Trading Metrics Traders Should Track Every Week | Fewpips Blog</title>
+<meta name="description" content="Twelve numbers to track every week on a prop account, and the four that decide whether it survives: expectancy, drawdown, losing streaks and rule violations.">
+<meta name="keywords" content="prop trading metrics, trading journal, expectancy, profit factor, win rate, weekly trading review">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Fewpips">
+<link rel="canonical" href="https://www.fewpips.com/blog/prop-trading-metrics-to-track-every-week/">
+<meta property="og:title" content="The Prop Trading Metrics Traders Should Track Every Week">
+<meta property="og:description" content="Twelve numbers to track every week on a prop account, and the four that decide whether it survives: expectancy, drawdown, losing streaks and rule violations.">
+<meta property="og:url" content="https://www.fewpips.com/blog/prop-trading-metrics-to-track-every-week/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fewpips">
+<meta property="og:image" content="https://www.fewpips.com/blog/hero-dashboard.webp">
+<meta property="article:published_time" content="2026-11-25T09:00:00Z">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Prop Trading Metrics Traders Should Track Every Week">
+<meta name="twitter:description" content="Twelve numbers to track every week on a prop account, and the four that decide whether it survives: expectancy, drawdown, losing streaks and rule violations.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"></noscript>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BlogPosting",
+ "headline": "The Prop Trading Metrics Traders Should Track Every Week",
+ "description": "Twelve numbers to track every week on a prop account, and the four that decide whether it survives: expectancy, drawdown, losing streaks and rule violations.",
+ "author": {
+  "@type": "Organization",
+  "name": "Fewpips"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Fewpips",
+  "url": "https://www.fewpips.com"
+ },
+ "image": "https://www.fewpips.com/blog/hero-dashboard.webp",
+ "datePublished": "2026-11-25",
+ "dateModified": "2026-11-25",
+ "mainEntityOfPage": "https://www.fewpips.com/blog/prop-trading-metrics-to-track-every-week/"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What Is a Good Win Rate for Prop Trading?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "There is no single good number. It depends on your risk/reward. At 1:1 you need above 50% to break even, and at 2:1 you need above 33.3%."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How Often Should I Review My Trading Stats?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Do a full review weekly and a quick glance at the end of each day. Do not change your strategy based on one week of data."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What Is a Good Profit Factor?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Anything above 1.0 means you made more than you lost. Many traders aim for 1.5 or higher, but a profit factor built on 15 trades means very little. Judge it over a month or more."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What Counts as a Rule Violation on a Prop Firm Account?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Hitting a loss limit counts, and so do prohibited behaviors such as hedging, positions opened and closed within 30 seconds, and losing more than 2% of the starting balance on one trade idea. Breaking your own plan counts too."
+   }
+  }
+ ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050709;--bg2:#080a0e;--bg-card:#0c0e14;
+  --border:rgba(255,255,255,.06);--text:#e8f5ea;--text-muted:#7a8a80;--white:#fff;
+  --green:#0fcd37;--green-light:#42ff00;--green-cyan:#00ffc2;
+  --gradient:linear-gradient(135deg,#00ffc2,#42ff00);
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',ui-sans-serif,system-ui,sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--green);text-decoration:none;transition:opacity .2s}
+a:hover{opacity:.85}
+.page-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(140px);animation:orbDrift 25s ease-in-out infinite}
+.orb-1{width:500px;height:500px;background:rgba(15,205,55,.06);top:-150px;left:-100px;animation-delay:0s}
+.orb-2{width:450px;height:450px;background:rgba(0,255,194,.05);bottom:-200px;right:-80px;animation-delay:-8s}
+.orb-3{width:350px;height:350px;background:rgba(66,255,0,.04);top:50%;left:60%;animation-delay:-16s}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-50px) scale(1.1)}66%{transform:translate(-30px,40px) scale(.9)}}
+.grid-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(15,205,55,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(15,205,55,.025) 1px,transparent 1px);
+  background-size:80px 80px}
+.dot-field{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(15,205,55,.08) 1px,transparent 1px);
+  background-size:40px 40px;opacity:.3}
+.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.015;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:128px 128px}
+.content{position:relative;z-index:1}
+.blog-nav{position:sticky;top:0;z-index:100;background:rgba(5,7,9,.85);backdrop-filter:blur(24px) saturate(1.2);border-bottom:1px solid var(--border);padding:0 2rem;height:72px;display:flex;align-items:center;justify-content:space-between}
+.blog-nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.blog-nav-logo img{height:32px}
+.blog-nav-logo span{font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:1px;text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.875rem;color:var(--text-muted)}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{display:inline-flex;padding:.55rem 1.4rem;border-radius:10px;background:var(--gradient);color:#000!important;font-weight:700;font-size:.8rem;box-shadow:0 0 20px rgba(15,205,55,.15)}
+.post-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.post-hero-bg{height:320px;position:relative;overflow:hidden}
+.post-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.post-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 0%,rgba(5,7,9,.6) 40%,rgba(5,7,9,.3) 100%)}
+.post-hero-glow{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);width:600px;height:200px;background:radial-gradient(ellipse,rgba(15,205,55,.08),transparent 70%);pointer-events:none;z-index:1}
+.post-header{max-width:780px;margin:0 auto;padding:2rem 2rem 1.5rem;text-align:center;position:relative;z-index:2;margin-top:-80px}
+.post-header .breadcrumb{font-size:.75rem;color:var(--text-muted);margin-bottom:1.25rem}
+.post-header .breadcrumb a{color:var(--text-muted);text-decoration:none}
+.post-header .breadcrumb a:hover{color:var(--green)}
+.post-header .category{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;border-radius:8px;background:rgba(5,7,9,.7);backdrop-filter:blur(10px);border:1px solid rgba(15,205,55,.2);font-size:.65rem;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.post-header .category .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:catPulse 2s ease-in-out infinite}
+@keyframes catPulse{0%,100%{opacity:1}50%{opacity:.4}}
+.post-header h1{font-family:'Poppins',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:var(--white);line-height:1.25;margin-bottom:1rem;letter-spacing:-.3px}
+.post-header .meta{font-size:.8rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.post-header .meta span{display:flex;align-items:center;gap:.3rem}
+.glow-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(15,205,55,.2) 20%,rgba(15,205,55,.4) 50%,rgba(15,205,55,.2) 80%,transparent);margin:0}
+.post-content{max-width:780px;margin:0 auto;padding:2.5rem 2rem 4rem;position:relative}
+.post-content article{font-size:1.05rem;line-height:1.85}
+.post-content h2{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;line-height:1.3;position:relative;padding-left:1rem;border-left:3px solid var(--green)}
+.post-content h3{font-family:'Poppins',sans-serif;font-size:1.15rem;font-weight:600;color:var(--white);margin:2rem 0 .75rem}
+.post-content p{margin-bottom:1.25rem;color:var(--text)}
+.post-content ul,.post-content ol{margin:1rem 0 1.5rem 1.5rem;color:var(--text)}
+.post-content li{margin-bottom:.5rem}
+.post-content strong{color:var(--white);font-weight:600}
+.post-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.9rem;border-radius:12px;overflow:hidden}
+.post-content th{text-align:left;padding:.75rem 1rem;background:rgba(15,205,55,.08);border:1px solid rgba(15,205,55,.12);color:var(--green);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.5px}
+.post-content td{padding:.75rem 1rem;border:1px solid var(--border);color:var(--text)}
+.post-content tr:hover td{background:rgba(15,205,55,.03)}
+.post-content blockquote{border-left:3px solid var(--green);padding:1rem 1.5rem;margin:1.5rem 0;background:rgba(15,205,55,.03);border-radius:0 12px 12px 0;font-style:italic;color:var(--text-muted)}
+.example-box{background:rgba(15,205,55,.04);border:1px solid rgba(15,205,55,.12);border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-size:.97rem;line-height:1.7}
+.example-box strong{color:var(--green-cyan)}
+.answer-box{background:rgba(0,255,194,.05);border:1px solid rgba(0,255,194,.16);border-radius:14px;padding:1.1rem 1.4rem;margin:0 0 1.75rem;font-size:1.02rem;line-height:1.7}
+.answer-box strong{color:var(--green-cyan)}
+.steps{counter-reset:step;list-style:none;margin:1.5rem 0!important;padding:0}
+.steps li{position:relative;padding:0 0 1.1rem 3rem;margin:0;counter-increment:step}
+.steps li::before{content:counter(step);position:absolute;left:0;top:-2px;width:2rem;height:2rem;border-radius:50%;background:var(--gradient);color:#000;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.post-mascot-float{position:fixed;bottom:2rem;right:2rem;width:100px;height:100px;opacity:.08;pointer-events:none;z-index:0;animation:mascotBob 4s ease-in-out infinite}
+@keyframes mascotBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.post-cta{max-width:780px;margin:0 auto 4rem;padding:2.5rem;text-align:center;border-radius:20px;background:rgba(12,14,20,.8);border:1px solid rgba(15,205,55,.12);position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+.post-cta::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(15,205,55,.08),transparent 70%);pointer-events:none}
+.post-cta::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(0,255,194,.06),transparent 70%);pointer-events:none}
+.post-cta h2{font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:700;color:var(--white);margin:0 0 .5rem!important;border:none;padding:0;position:relative}
+.post-cta p{color:var(--text-muted);margin-bottom:1.25rem;font-size:.95rem;position:relative}
+.post-cta a.cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 2rem;border-radius:12px;background:var(--gradient);color:#000!important;font-weight:700;font-size:.875rem;box-shadow:0 0 25px rgba(15,205,55,.15);transition:all .2s;position:relative}
+.post-cta a.cta-btn:hover{box-shadow:0 0 40px rgba(15,205,55,.3);transform:translateY(-2px)}
+.blog-footer{border-top:1px solid var(--border);padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;max-width:780px;margin:0 auto;flex-wrap:wrap;gap:1rem}
+.blog-footer-left{font-size:.78rem;color:var(--text-muted)}
+.blog-footer-links{display:flex;gap:1.5rem}
+.blog-footer-links a{font-size:.78rem;color:var(--text-muted);transition:color .2s}
+.blog-footer-links a:hover{color:var(--green)}
+@media(max-width:640px){
+  .post-header{padding:1.5rem 1.5rem 1rem;margin-top:-60px}
+  .post-content{padding:1.5rem 1.5rem 3rem}
+  .nav-links .desk-only{display:none}
+  .post-hero-bg{height:220px}
+  .post-mascot-float{display:none}
+  .blog-footer{flex-direction:column;text-align:center}
+}
+/* Phones: the same look without per-frame GPU work while scrolling (SEO group, 16 Oct).
+   Blurred animated orbs and backdrop blurs over a fixed background were re-blurred on every
+   scroll frame; soft gradients and solid panels look the same and cost nothing. */
+@media (max-width:1024px),(hover:none) and (pointer:coarse){
+  .orb{filter:none;animation:none}
+  .orb-1{background:radial-gradient(closest-side,rgba(15,205,55,.06),transparent)}
+  .orb-2{background:radial-gradient(closest-side,rgba(0,255,194,.05),transparent)}
+  .orb-3{background:radial-gradient(closest-side,rgba(66,255,0,.04),transparent)}
+  .noise,.post-mascot-float{display:none}
+  .blog-nav{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(5,7,9,.97)}
+  .post-header .category,.post-cta{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .post-header .category .dot{animation:none}
+}
+.post-content .yt-embed{margin:1.75rem 0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);aspect-ratio:16/9;background:#000;position:relative}.post-content .yt-embed a,.post-content .yt-embed iframe{display:block;width:100%;height:100%;border:0}.post-content .yt-embed img{width:100%;height:100%;object-fit:cover;display:block;margin:0;border-radius:0}.post-content .yt-play{position:absolute;left:50%;top:50%;width:68px;height:48px;margin:-24px 0 0 -34px;border-radius:12px;background:rgba(15,205,55,.92);transition:transform .15s}.post-content .yt-play:after{content:"";position:absolute;left:27px;top:14px;border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #000}.post-content .yt-facade:hover .yt-play{transform:scale(1.08)}</style>
+</head>
+<body>
+<div class="page-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="grid-pattern"></div>
+<div class="dot-field"></div>
+<div class="noise"></div>
+<div class="content">
+<nav class="blog-nav">
+  <a href="/" class="blog-nav-logo"><img src="/fewpips-logo.png" alt="Fewpips" width="120" height="33"><span>Blog</span></a>
+  <div class="nav-links">
+    <a href="/blog/" class="desk-only">All Posts</a>
+    <a href="/faq/" class="desk-only">FAQ</a>
+    <a href="https://crm.fewpips.com/auth/signup" class="nav-cta">Get Funded</a>
+  </div>
+</nav>
+<div class="post-hero">
+  <div class="post-hero-bg"><img src="/blog/hero-dashboard.webp" alt="Fewpips dashboard with payout figures" loading="eager"></div>
+  <div class="post-hero-glow"></div>
+</div>
+<header class="post-header">
+  <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; Trading Strategy</div>
+  <div class="category"><span class="dot"></span> Trading Strategy</div>
+  <h1>The Prop Trading Metrics Traders Should Track Every Week</h1>
+  <div class="meta"> <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 6 min read</span> <span>Published November 25, 2026</span> <span>Fewpips Team</span> </div>
+</header>
+<div class="glow-divider"></div>
+<main class="post-content">
+<article><p><em>(Twelve numbers, one weekly review, and the four that decide whether your account survives)</em></p>
+<p><strong>Short answer:</strong> Track twelve numbers every week: win rate, average winner, average loser, risk/reward, expectancy, maximum drawdown, consecutive losses, average trades per day, best session, worst session, rule violations, and profit factor.</p>
+<p>Only four of them drive decisions: <strong>expectancy</strong>, <strong>maximum drawdown</strong>, <strong>consecutive losses</strong>, and <strong>rule violations</strong>. The other eight explain why those four move. Review them once a week, same day, same sheet.</p>
+<h2>Why Weekly Tracking Matters</h2>
+<p>Most traders check one number: profit. Green week, good. Red week, bad. That is not analysis. It is a mood.</p>
+<p>Here is the logic. One week of P&amp;L is mostly noise. The ingredients behind it (how often you win, how big, how big you lose, whether you followed your plan) are far steadier. Track those, and you spot a leak early. Ignore them and your first warning is a paused or closed account under <a href="/legal/">the Fewpips trading rules</a>.</p>
+<p>More screen time will not fix this. A study of Brazilian equity-futures day traders found that 97% of those who persisted for more than 300 days lost money, with no evidence of learning from day trading alone. You can read the full paper, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3423101" target="_blank" rel="noopener">Day Trading for a Living?</a>, on SSRN. Time does not teach you. Measuring does.</p>
+<h2>The Weekly Dashboard</h2>
+<ul>
+<li><strong>Win rate:</strong> winners divided by total closed trades.</li>
+<li><strong>Average winner:</strong> gross profit divided by number of winners.</li>
+<li><strong>Average loser:</strong> gross loss divided by number of losers.</li>
+<li><strong>Risk/reward:</strong> average winner divided by average loser.</li>
+<li><strong>Expectancy:</strong> what the average trade is worth in dollars.</li>
+<li><strong>Maximum drawdown:</strong> the biggest drop from an equity peak this week, plus how far you sit above your Maximum Loss Limit floor.</li>
+<li><strong>Consecutive losses:</strong> your longest losing streak.</li>
+<li><strong>Average trades per day:</strong> closed trades divided by days traded.</li>
+<li><strong>Best session:</strong> your most profitable window (Asia, London, New York).</li>
+<li><strong>Worst session:</strong> your biggest bleeder.</li>
+<li><strong>Rule violations:</strong> every time you broke your plan or a platform rule.</li>
+<li><strong>Profit factor:</strong> gross profit divided by gross loss.</li>
+</ul>
+<h2>The Four Numbers That Matter</h2>
+<ul>
+<li><strong>Expectancy</strong> is the only number that says whether your strategy pays. Win rate alone lies. A 35% win rate at 3:1 risk/reward beats a 60% win rate at 0.5:1. <a href="/blog/what-makes-a-good-prop-trading-strategy/">What a good prop trading strategy actually looks like</a> shows the sizing math behind it.</li>
+<li><strong>Maximum drawdown</strong> matters because on every Fewpips account, the Maximum Loss Limit trails your highest equity and only moves up. Hit it, and the account closes immediately.</li>
+<li><strong>Consecutive losses</strong> are your tilt alarm, and <a href="/blog/three-losing-trades-in-a-row/">what to do after three consecutive losing trades</a> is the playbook for when it fires.</li>
+<li><strong>Rule violations</strong> are the simplest number on the sheet. The target is zero.</li>
+</ul>
+<p>Everything else is context. Session data tells you when to stop trading. Trades per day tells you whether you are overtrading.</p>
+<h2>Set Your Weekly Tripwire First</h2>
+<p>Before any math, decide how much you can lose in a week before you stop. This is your own rule, not a platform rule. Measure it from the week's opening equity. On a <strong>$50,000</strong> account, pick one:</p>
+<ul>
+<li><strong>1.5% = $750</strong></li>
+<li><strong>2.5% = $1,250</strong></li>
+<li><strong>3.5% = $1,750</strong></li>
+</ul>
+<p>Hit it, close the platform, and finish the review. The 1-Step daily loss limit is 4%, so the 3.5% option leaves almost no room. <a href="/blog/prop-trading-risk-management-plan/">A prop trading risk management plan built from scratch</a> shows how to size every position inside whichever number you choose.</p>
+<h3>A Worked Example</h3>
+<p>Here is an illustrative week on that $50K account:</p>
+<ul>
+<li><strong>Trades:</strong> 20 closed, 9 winners, 11 losers</li>
+<li><strong>Win rate:</strong> 9 / 20 = <strong>45%</strong></li>
+<li><strong>Average winner:</strong> $2,700 / 9 = <strong>$300</strong></li>
+<li><strong>Average loser:</strong> $1,650 / 11 = <strong>$150</strong></li>
+<li><strong>Risk/reward:</strong> $300 / $150 = <strong>2.0</strong></li>
+<li><strong>Expectancy:</strong> (0.45 × $300) - (0.55 × $150) = $135 - $82.50 = <strong>$52.50 per trade</strong></li>
+<li><strong>Check:</strong> 20 × $52.50 = <strong>$1,050</strong>, which matches $2,700 - $1,650</li>
+<li><strong>Profit factor:</strong> $2,700 / $1,650 = <strong>1.64</strong></li>
+</ul>
+<p>Expectancy is your win rate times your average winner, minus your loss rate times your average loser. At 2:1 risk/reward, you only need to win <strong>33.3%</strong> of the time to break even.</p>
+<h3>Watch Out</h3>
+<p>Do not log a winning trade as clean when it broke a rule. A trade held under 30 seconds, a hedge, or a trade idea that lost more than 2% of the starting balance is still a violation, even if it paid. Count it. Winners that break rules train the habit that ends accounts.</p>
+<p>Fewpips CFD challenges have no time limit, so nothing rushes your weekly review. Just place at least one trade every 7 days, because a challenge with no trades for 7 days is marked inactive.</p>
+<h2>How This Connects to Platform Rules</h2>
+<p>Your dashboard is an early-warning system for two hard limits. On every account with a daily loss limit (Instant accounts have none), hitting it is a soft breach. The account pauses until the server reset, and a second hit within 7 days breaches and closes it. <a href="/faq/">The Fewpips FAQ</a> has the short version.</p>
+<p>The Maximum Loss Limit is stricter. It never moves down after losses, so a rising consecutive-loss count is usually your first sign you are heading toward it.</p>
+<h2>How The Dashboard Adjusts as You Grow</h2>
+<p>Your numbers change as your account does. As equity climbs, the floor trails up with it, so recheck your cushion every week. Your tripwire dollars grow with the balance, because they are percentages.</p>
+<p>Withdrawals need care. The Maximum Loss Limit does not drop when you withdraw, so leave enough equity above the floor. On funded accounts, you also need at least <strong>25 closed positions</strong> at payout (50 on the Instant $200K and $500K accounts), so watch average trades per day. To see what payout day looks like in practice, browse <a href="/proof/">every payout certificate, by month</a>.</p>
+<p>After a month, switch to rolling four-week numbers. One bad week stops looking like a crisis, and one great week stops looking like proof. The system corrects itself because every threshold is built from your own recent data.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>What Is a Good Win Rate for Prop Trading?</h3>
+<p>There is no single good number. It depends on your risk/reward. At 1:1 you need above 50% to break even, and at 2:1 you need above 33.3%.</p>
+<h3>How Often Should I Review My Trading Stats?</h3>
+<p>Do a full review weekly and a quick glance at the end of each day. Do not change your strategy based on one week of data.</p>
+<h3>What Is a Good Profit Factor?</h3>
+<p>Anything above 1.0 means you made more than you lost. Many traders aim for 1.5 or higher, but a profit factor built on 15 trades means very little. Judge it over a month or more.</p>
+<h3>What Counts as a Rule Violation on a Prop Firm Account?</h3>
+<p>Hitting a loss limit counts, and so do prohibited behaviors such as hedging, positions opened and closed within 30 seconds, and losing more than 2% of the starting balance on one trade idea. Breaking your own plan counts too.</p>
+<h2>The Fewpips Take</h2>
+<p>Your P&amp;L tells you what happened. Your dashboard tells you why.</p>
+<p>Watch <strong>expectancy</strong>, <strong>drawdown</strong>, <strong>losing streaks</strong>, and <strong>violations</strong>, and let the other eight numbers explain the story. A trader who reviews on Sunday rarely gets surprised on Wednesday.</p>
+<p>Want to see how other traders handle the routine? Read <a href="/reviews/">what funded traders say about Fewpips</a>.</p>
+<p><em>New to Fewpips? Here is a quick walkthrough of the site.</em></p>
+<div class="yt-embed"><a class="yt-facade" href="https://www.youtube.com/watch?v=BCZSkQlQJP4" data-yt="BCZSkQlQJP4" target="_blank" rel="noopener" aria-label="Play video: Fewpips Website Walkthrough: Everything You Need to Know"><img src="https://i.ytimg.com/vi/BCZSkQlQJP4/hqdefault.jpg" alt="Fewpips Website Walkthrough: Everything You Need to Know" loading="lazy" width="480" height="360"><span class="yt-play" aria-hidden="true"></span></a></div>
+<p>The Fewpips CFD 1-Step Challenge starts at <strong>$59</strong> for a $5K account, with a <strong>10%</strong> profit target and <strong>no time limit</strong>, so build your dashboard and get funded.</p>
+<p><em>Fewpips is a simulation-based evaluation platform. All trading is done with virtual funds, and rewards are based on simulated performance. Nothing here is financial advice.</em></p></article>
+<p class="pref-source" style="margin:2.2rem 0 0;font-size:.95rem"><a href="https://www.google.com/preferences/source?q=fewpips.com" style="color:var(--green);font-weight:600;text-decoration:underline">Add Fewpips as a preferred source on Google</a></p>
+</main>
+<div class="glow-divider"></div>
+<div class="post-cta">
+  <h2>Ready to Get Funded?</h2>
+  <p>Challenges from $59. No time limits. Up to 90% profit split. Available on CFD and Futures accounts.</p>
+  <a href="https://crm.fewpips.com/auth/signup" class="cta-btn">Get Funded Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+<img class="post-mascot-float" src="/blog/hero-account-types.webp" alt="" aria-hidden="true">
+<footer class="blog-footer">
+  <div class="blog-footer-left">&copy; 2026 Fewpips. All rights reserved.</div>
+  <div class="blog-footer-links">
+    <a href="/">Home</a><a href="/blog/">Blog</a><a href="/reviews/">Reviews</a><a href="/proof/">Proof</a><a href="/faq/">FAQ</a><a href="/terms/">Terms</a><a href="/contact/">Contact</a>
+  </div>
+<div class="blog-footer-pref" style="width:100%;text-align:center;font-size:.78rem"><a href="https://www.google.com/preferences/source?q=fewpips.com" style="color:var(--text-muted);text-decoration:underline">Add Fewpips as a preferred source on Google</a></div>
+</footer>
+</div>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "92c7587e087849c39a8dee8322e4721d"}'></script>
+<script src="/sticky-split.js" defer></script><script src="/social-tiktok.js" defer></script><script src="/reviews-nav.js" defer></script><script src="/livechat-greeting.js" defer></script><script src="/fp-help/fp-help.js" defer></script><script src="/hash-nav-fix.js" defer></script><script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".yt-facade");if(!a)return;e.preventDefault();var f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+a.dataset.yt+"?autoplay=1&rel=0";f.title=a.getAttribute("aria-label").replace("Play video: ","");f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";f.allowFullscreen=true;a.parentNode.replaceChild(f,a)});</script></body>
+</html>
