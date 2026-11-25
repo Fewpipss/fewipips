@@ -1602,6 +1602,80 @@
    "type": "present_in",
    "path": "_next/static/chunks/0tg_rdy2h4eyh.js",
    "pattern": "{q:\"Is copy trading allowed?\""
+  },
+  {
+   "id": "blog-ob6-post",
+   "desc": "SEO article OB6 published 2026-11-25 (CRM FEW-7)",
+   "type": "file_exists",
+   "path": "blog/how-trading-deadlines-change-trader-behavior/index.html"
+  },
+  {
+   "id": "blog-ob6-on-index",
+   "desc": "OB6 card on /blog/",
+   "type": "present_in",
+   "path": "blog/index.html",
+   "pattern": "href=\"/blog/how-trading-deadlines-change-trader-behavior/\" class=\"blog-card\""
+  },
+  {
+   "id": "blog-ob6-in-sitemap",
+   "desc": "OB6 in sitemap",
+   "type": "present_in",
+   "path": "sitemap.xml",
+   "pattern": "<loc>https://www.fewpips.com/blog/how-trading-deadlines-change-trader-behavior/</loc>"
+  },
+  {
+   "id": "blog-ob5-post",
+   "desc": "SEO article OB5 published 2026-11-25 (CRM FEW-7)",
+   "type": "file_exists",
+   "path": "blog/prop-trading-metrics-to-track-every-week/index.html"
+  },
+  {
+   "id": "blog-ob5-on-index",
+   "desc": "OB5 card on /blog/",
+   "type": "present_in",
+   "path": "blog/index.html",
+   "pattern": "href=\"/blog/prop-trading-metrics-to-track-every-week/\" class=\"blog-card\""
+  },
+  {
+   "id": "blog-ob5-in-sitemap",
+   "desc": "OB5 in sitemap",
+   "type": "present_in",
+   "path": "sitemap.xml",
+   "pattern": "<loc>https://www.fewpips.com/blog/prop-trading-metrics-to-track-every-week/</loc>"
+  },
+  {
+   "id": "blog-ob4-post",
+   "desc": "SEO article OB4 published 2026-11-25 (CRM FEW-7)",
+   "type": "file_exists",
+   "path": "blog/prop-trading-vs-personal-trading-account/index.html"
+  },
+  {
+   "id": "blog-ob4-on-index",
+   "desc": "OB4 card on /blog/",
+   "type": "present_in",
+   "path": "blog/index.html",
+   "pattern": "href=\"/blog/prop-trading-vs-personal-trading-account/\" class=\"blog-card\""
+  },
+  {
+   "id": "blog-ob4-in-sitemap",
+   "desc": "OB4 in sitemap",
+   "type": "present_in",
+   "path": "sitemap.xml",
+   "pattern": "<loc>https://www.fewpips.com/blog/prop-trading-vs-personal-trading-account/</loc>"
+  },
+  {
+   "id": "blog-ob-500k-50-positions",
+   "desc": "Nov articles say 50 positions on the Instant $200K AND $500K accounts",
+   "type": "present_in",
+   "path": "blog/prop-trading-vs-personal-trading-account/index.html",
+   "pattern": "(50 on the Instant $200K and $500K accounts)"
+  },
+  {
+   "id": "blog-ob4-gap-trading-note",
+   "desc": "OB4 weekend line carries the gap-trading rule (PTP, Nick TG #18222)",
+   "type": "present_in",
+   "path": "blog/prop-trading-vs-personal-trading-account/index.html",
+   "pattern": "last 2 hours before the market closes for the weekend"
   }
  ]
 }

@@ -32,9 +32,27 @@
   </url>
   <url>
     <loc>https://www.fewpips.com/blog/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.fewpips.com/blog/how-trading-deadlines-change-trader-behavior/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.fewpips.com/blog/prop-trading-metrics-to-track-every-week/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.fewpips.com/blog/prop-trading-vs-personal-trading-account/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.fewpips.com/blog/weekend-gap-protection-guide/</loc>
